@@ -5,6 +5,8 @@ div.mainWrapper {
 
 .privPolicy{
     text-align: center;
+    font-weight: 400;
+    font-size: 110%;
 }
 
 .privPolicy ul{
