@@ -7,7 +7,7 @@ h1{
 }
 .flip-card {
     background-color: transparent;
-    width: 350px;
+    width: 300px;
     height: 350px;
     perspective: 1000px;
     margin: auto;
@@ -51,11 +51,16 @@ h1{
     transform: rotateY(180deg);
   }
   .flip-card-front img{
-    width: 350px;
+    width: 300px;
     height: 350px;
   }
   #line2{
-    width: 1000px;
+    width: 950px;
+    height: auto;
+    margin: auto;
+  }
+  #line1{
+    width: 1300px;
     height: auto;
     margin: auto;
   }
