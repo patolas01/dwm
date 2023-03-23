@@ -1,4 +1,13 @@
-body {
-    margin-left: 10svw;
-    margin-right: 10svw;
+div.mainWrapper {
+    padding-left: 10svw;
+    padding-right: 10svw;
 }
+
+.privPolicy{
+    text-align: center;
+}
+
+.privPolicy ul{
+    text-align: justify;
+}
+
