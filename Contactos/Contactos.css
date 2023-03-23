@@ -54,3 +54,8 @@ h1{
     width: 350px;
     height: 350px;
   }
+  #line2{
+    width: 1000px;
+    height: auto;
+    margin: auto;
+  }
