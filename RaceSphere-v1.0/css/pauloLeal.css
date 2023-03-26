@@ -1,5 +1,19 @@
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin-left: 10svw;
-    margin-right: 10svw;
+body{
+    background-color: blanchedalmond;
 }
+
+div.mainWrapper {
+    padding-left: 10svw;
+    padding-right: 10svw;
+}
+
+.privPolicy{
+    text-align: center;
+    font-weight: 400;
+    font-size: 110%;
+}
+
+.privPolicy ul{
+    text-align: justify;
+}
+
