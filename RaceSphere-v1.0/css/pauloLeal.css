@@ -59,30 +59,34 @@ div.number {
     font-family: 'Righteous', cursive;
     font-size: 300%;
     height: 20%;
-    margin-top: 15px;
+    margin-top: 10%;
 }
 
 div.place {
+    display: grid;
+    justify-content: center;
     text-align: center;
     border: 1px solid black;
     width: 33%;
 }
 
 div.driverPic {
-    margin-top: 35px;
-
+    border: 1px solid black;
+    margin-top: 8%;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 div.driverPic img {
-    height: 100px;
-    width: 90px;
+    width: 95%;
     object-fit: cover;
 }
 
 
 div.driverName{
     margin-left: 10%;
-    padding-top: 10%;
+    padding-top: 8%;
     text-align: left;
 }
 
