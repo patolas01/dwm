@@ -9,7 +9,9 @@
 
 <body>
     <div class="results">
+        <h1>Resultados</h1>
         <div class="resultCard" id="wrc">
+            <h2 class="cardTitle">WRC</h2>
             <div class="place">
                 <div class="number">3</div>
                 <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>

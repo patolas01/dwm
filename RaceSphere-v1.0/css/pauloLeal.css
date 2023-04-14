@@ -33,7 +33,7 @@ div.resultCard {
     background-color: black;
     border-radius: 15px;
     transition-duration: 800ms;
-    display: inline-flex;
+    display: flex;
 }
 
 div.resultCard:hover {
@@ -106,3 +106,4 @@ div.driverName{
     line-height: 60%;
     font-weight: 100;
 }
+
