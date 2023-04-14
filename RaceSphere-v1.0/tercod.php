@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <?php include('bootstrapInc.php'); ?>
-        <link rel="stylesheet" href="css/main.css">
+
         <link rel="stylesheet" href="css/luissilva.css">
         <title>Termos e condições</title>
 </head>
