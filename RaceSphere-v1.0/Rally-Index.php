@@ -14,12 +14,15 @@
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
+    <div id="">
+
+    </div>
     <div id="rightinfo">
-        <div id="timer">
-            <div id="days"></div>
-            <div id="hours"></div>
-            <div id="minutes"></div>
-            <div id="seconds"></div>
+        <div class="timer" id="timer">
+            <div class="timer" id="days"></div>
+            <div class="timer" id="hours"></div>
+            <div class="timer" id="minutes"></div>
+            <div class="timer" id="seconds"></div>
         </div>
     </div>
     <div id="divteste">
