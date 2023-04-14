@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
+    <div id="divteste">
+        
+    </div>
     <div id="rightinfo">
         
     </div>
