@@ -7,10 +7,14 @@
     <title>RaceSphere Rally</title>
     <?php
         include 'bootstrapInc.php';
+        include 'jquery/main.js'
     ?>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
+    <div id="divteste">
+        
+    </div>
     <div id="rightinfo">
         tebas
     </div>

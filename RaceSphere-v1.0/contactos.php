@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 
-<body>
+<body id="contactos">
   <h1>Contactos</h1>
   <div id="line1">
     <div class="flip-card">
