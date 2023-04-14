@@ -9,8 +9,9 @@
 
 <body>
     <?php include('navbar.php'); ?>
+    <h1>Resultados</h1>
     <div class="results">
-        <h1>Resultados</h1>
+
         <div class="resultCard" id="wrc">
             <h2 class="cardTitle">WRC</h2>
             <div class="place">
@@ -39,7 +40,7 @@
             </div>
         </div>
         <div class="resultCard" id="f1">
-            
+
         </div>
         <div class="resultCard" id="motogp">
         </div>

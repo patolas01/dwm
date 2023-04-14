@@ -3,6 +3,7 @@
 
 body {
     background-color: blanchedalmond;
+    text-align: center;
 }
 
 div.mainWrapper {
@@ -21,6 +22,7 @@ div.mainWrapper {
 }
 
 div.results {
+    text-align: center;
     margin-top: 50px;
     display: flex;
     justify-content: center;
@@ -46,7 +48,8 @@ div.resultCard:hover {
 }
 
 .resultCard#wrc {
-    background-color: #3e7ccd;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(0deg, rgba(2, 0, 36, 1) 0%, rgba(40, 78, 134, 1) 23%, rgba(62, 124, 205, 1) 100%);
     color: white;
 }
 
@@ -70,7 +73,7 @@ div.place {
     width: 33%;
 }
 
-div.place:last-child{
+div.place:last-child {
     border: 0;
 }
 
@@ -90,20 +93,19 @@ div.driverPic img {
 }
 
 
-div.driverName{
+div.driverName {
     margin-left: 12%;
     padding-top: 5%;
     text-align: left;
 }
 
-.driverName .firstName{
+.driverName .firstName {
     margin: 0;
     padding: 0;
     font-size: 120%;
 }
 
-.driverName .lastName{
+.driverName .lastName {
     line-height: 60%;
     font-weight: 100;
 }
-
