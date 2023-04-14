@@ -9,7 +9,7 @@
         include 'bootstrapInc.php';
         include 'jquery/main.js'
     ?>
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="css/danielribeiro">
 </head>
 <body>
     <div id="rightinfo">
