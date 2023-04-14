@@ -76,11 +76,12 @@ h1 {
 }
 
 #rightinfo{
-  float: right;
+  right: 0px;
   background-color: orangered;
-  width: 15%;
+  width: 20%;
   height: 100%;
-  display: flex;
+  display: block;
+  position: fixed;
 }
 #divteste{
   height: 3000px;
