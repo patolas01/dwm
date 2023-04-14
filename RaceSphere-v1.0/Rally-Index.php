@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
-    <div id="">
-
-    </div>
     <div id="rightinfo">
+    <div id="logoEvento">
+        <img src="img/logo-vodafone-rally-de-portugal-2023.png">
+    </div>
         <div class="timer" id="timer">
             <div class="timer" id="days"></div>
             <div class="timer" id="hours"></div>
