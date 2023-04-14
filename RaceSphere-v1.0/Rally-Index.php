@@ -7,12 +7,13 @@
     <title>RaceSphere Rally</title>
     <?php
         include 'bootstrapInc.php';
+        include 'jquery/main.js'
     ?>
     <link rel="stylesheet" href="">
 </head>
 <body>
     <div id="rightinfo">
-        
+
     </div>
 </body>
 </html>
