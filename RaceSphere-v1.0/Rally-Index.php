@@ -16,7 +16,7 @@
         
     </div>
     <div id="rightinfo">
-        tebas
+        
     </div>
 </body>
 </html>
