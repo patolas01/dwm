@@ -8,8 +8,6 @@
     <?php
         include 'bootstrapInc.php';
     ?>
-    <script src="jquery/main.js"></script>
-    <script src="jquery/jquery-3.6.3.min.js"></script>
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
