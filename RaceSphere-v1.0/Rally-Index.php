@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
+    <?php
+        include 'navbar.php';
+     ?>
     <div id="rightinfo">
         
     </div>
