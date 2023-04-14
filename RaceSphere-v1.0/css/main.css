@@ -7,5 +7,9 @@ body {
 }
 
 nav{
-    background-color: black;
+    background-color: rgb(245, 125, 14);
+    color: black;
+}
+nav a{
+    color: black;
 }
