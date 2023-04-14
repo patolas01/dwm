@@ -13,7 +13,7 @@
 </head>
 <body>
     <div id="rightinfo">
-
+        
     </div>
 </body>
 </html>
