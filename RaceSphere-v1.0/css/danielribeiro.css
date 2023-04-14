@@ -79,17 +79,26 @@ h1 {
 /*css index rally*/
 /*css lateral direita*/
 #rightinfo{
-  right: 0px;
+  right: 0;
+  background-color: black;
+  width: 20%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+#sticky{
+  right: 0;
   background-color: black;
   width: 20%;
   height: 100%;
   display: block;
   position: fixed;
+  top: 0;
 }
 /*css lateral direita*/
-#divteste{
+#principal{
   height: 3000px;
-  width: 100px;
+  width: 100%;
   background-color: #2980b9;
 }
 /*Timer*/
