@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
   <title>Contactos</title>
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/contactos.css">
+  <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 
 <body>

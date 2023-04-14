@@ -74,3 +74,11 @@ h1 {
   display: flex;
   justify-content: center;
 }
+
+#rightinfo{
+  float: right;
+  background-color: orangered;
+  width: 12%;
+  height: 100%;
+  position: fixed;
+}
