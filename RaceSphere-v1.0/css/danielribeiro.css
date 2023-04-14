@@ -1,3 +1,4 @@
+/*css Contactos*/
 body#contactos{
   margin: 0;
   background-image: url("https://www.gtplanet.net/wp-content/uploads/2022/08/amg-gt-at-watkins-glen-gt7.jpg");
@@ -74,7 +75,8 @@ h1 {
   display: flex;
   justify-content: center;
 }
-
+/*css Contactos*/
+/*css index rally*/
 #rightinfo{
   right: 0px;
   background-color: black;
@@ -87,6 +89,11 @@ h1 {
   height: 3000px;
   width: 100px;
   background-color: #2980b9;
+}
+/*Timer*/
+div#timer{
+  width: 100%;
+  text-align: center;
 }
 div.timer{
   display: inline-block;
@@ -117,3 +124,16 @@ span{
   font-size: 20px;
   color: #abcd58;
 }
+/*Timer*/
+#logoEvento{
+  width: 100%;
+  height: 150px;
+  display: block;
+}
+#logoEvento img{
+  width: 100%;
+  height: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+/*css index rally*/
