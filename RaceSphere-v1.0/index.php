@@ -17,7 +17,7 @@
             </div>
             <div class="place">
                 <div class="number">1</div>
-                <div class="driverPic" id="1"><img src="img/alo.png" alt="driver"></div>
+                <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
                 <div class="driverName" id="1"><h4 class="firstName">Max</h4><p class="lastName">Verstappen</p></div>
             </div>
             <div class="place">
