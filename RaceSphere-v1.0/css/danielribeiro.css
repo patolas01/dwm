@@ -79,21 +79,11 @@ h1 {
 /*css index rally*/
 /*css lateral direita*/
 #rightinfo{
-  right: 0;
+  float: right;
   background-color: black;
   width: 20%;
   height: 100%;
   display: block;
-  position: absolute;
-}
-#sticky{
-  right: 0;
-  background-color: black;
-  width: 20%;
-  height: 100%;
-  display: block;
-  position: fixed;
-  top: 0;
 }
 /*css lateral direita*/
 #principal{
