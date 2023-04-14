@@ -13,8 +13,11 @@
     <link rel="stylesheet" href="css/danielribeiro.css">
 </head>
 <body>
+    <?php
+        include 'navbar.php';
+    ?>
     <div id="rightinfo">
-        <h3></h3>
+        <h3 id="titulolateral">Vodafone Rally de Portugal 2023</h3>
     <div id="logoEvento">
         <img src="img/logo-vodafone-rally-de-portugal-2023.png">
     </div>
@@ -26,7 +29,7 @@
         </div>
     </div>
     <div id="divteste">
- pixota
+ 
     </div>
 </body>
 </html>
