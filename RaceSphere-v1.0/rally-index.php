@@ -26,8 +26,8 @@
             <div class="timer" id="seconds"></div>
         </div>
     </div>
-    <div id="divteste">
- 
+    <div id="principal">
+        <div class=""></div>
     </div>
 </body>
 </html>

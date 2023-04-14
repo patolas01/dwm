@@ -27,4 +27,19 @@ function makeTimer() {
 	}
 
 	setInterval(function() { makeTimer(); }, 1000);
+
+	window.onscroll = function() {myFunction()};
+
+var navbar = document.getElementById("rightinfo");
+var sticky = navbar.offsetTop;
+
+function myFunction() {
+  if (window.pageYOffset >= sticky) {
+    navbar.classList.add("sticky")
+	navbar.classList.remove("rightinfo")
+  } else {
+    navbar.classList.remove("sticky");
+	navbar.classList.add("rightinfo")
+  }
+}
     //Jquery Daniel Ribeiro
