@@ -80,10 +80,14 @@ h1 {
 /*css lateral direita*/
 #rightinfo{
   float: right;
-  background-color: black;
+  background-color: white;
   width: 20%;
   height: 100svh;
   display: block;
+  background-image: url("../img/img_daniel/fundo\ lateral\ direita.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 /*css lateral direita*/
 #principal{
@@ -95,42 +99,42 @@ h1 {
 div#timer{
   width: 100%;
   text-align: center;
+  font-size: 20px;
 }
 div.timer{
   display: inline-block;
   line-height: 1;
   padding: 10px;
-  font-size: 10px;
+  border: 3px solid orangered;
+  border-radius: 5px;
+  background-color: orangered;
 }
 
 span{
   display: block;
-  font-size: 10px;
-  color: white;
+  font-size: 20px;
+  color: black;
 }
 
 #days {
   font-size: 20px;
-  color: #db4844;
+  color: black;
 }
 #hours {
   font-size: 20px;
-  color: #f07c22;
+  color: black;
 }
 #minutes {
   font-size: 20px;
-  color: #f6da74;
-}
-#seconds {
-  font-size: 20px;
-  color: #abcd58;
+  color: black
 }
 /*Timer*/
 /*css lateral direita*/
 #logoEvento{
-  width: 100%;
+  width: 95%;
   height: 150px;
   display: block;
+  margin: auto;
 }
 #logoEvento img{
   width: 100%;
@@ -141,16 +145,72 @@ span{
 h3#titulolateral{
   text-align: center;
   color: white;
+  
+}
+#rightTitles{
+  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(2px);
+}
+#nextEvent{
+  background-color: orange;
+  width: 100%;
+  text-align: center;
+  height: fit-content;
 }
 /*css lateral direita*/
 /*css esquerda*/
-.caixa{
+/*css Mini-Caixas de Noticias*/
+div#caixa1{
   border: 5px double black;
-  width: 200px;
-  height: 200px;
-  background-image: url(data:image/jpeg;base64,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);
+  width: 100%;
+  height: 260px;
+  background-image: url("../img/img_daniel/despiste.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
+  background-position: center;
 }
+div#caixa2{
+  border: 5px double black;
+  width: 100%;
+  height: 260px;
+  background-image: url("../img/img_daniel/1-Rovanpera-Toyota-VRP-900.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+}
+div#caixa3{
+  border: 5px double black;
+  width: 100%;
+  height: 260px;
+  background-image: url("../img/img_daniel/VODAFONE-RALLY-PORTUGAL-AL-ATTIYAH.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+}
+div#caixa4{
+  border: 5px double black;
+  width: 100%;
+  height: 260px;
+  background-image: url("../img/img_daniel/Kalle\ Rovanpera.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+  background-position: center;
+}
+div.descricaoNoticia{
+  text-align: center;
+  width: 100%;
+  height: 50px;
+  color: white;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  position: absolute;
+  bottom: 0;
+  overflow: hidden;
+}
+/*css Mini-Caixas de Noticias*/
 /*css esquerda*/
 /*css index rally*/
