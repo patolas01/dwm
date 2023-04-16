@@ -31,6 +31,7 @@
 
     </div>
     <div id="principal">
+        
         <div class="container-xxl text-center">
             <div class="row">
                 <div class="col">
