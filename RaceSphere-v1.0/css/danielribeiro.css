@@ -155,12 +155,10 @@ h3#titulolateral{
   width: 90%;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  border-top: 5px solid black;
-  border-right: 5px solid black;
-  border-bottom: 5px solid black;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
   padding-left: 5px;
+  margin: auto;
+  -webkit-backdrop-filter: brightness(30%);
+  backdrop-filter: brightness(30%);
 }
 /*Css calendário*/
 #rightSchedule{
@@ -168,10 +166,10 @@ h3#titulolateral{
   height: 100%;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
-  border-top: 5px solid black;
-  border-right: 5px solid black;
-  border-top-right-radius: 5px;
   padding-left: 5px;
+  margin: auto;
+  -webkit-backdrop-filter: brightness(30%);
+  backdrop-filter: brightness(30%);
 }
 #schedule{
   border: 5px solid black;
@@ -248,8 +246,8 @@ div.descricaoNoticia{
   color: white;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: contrast(5%);
-  backdrop-filter: contrast(5%);
+  -webkit-backdrop-filter: brightness(30%);
+  backdrop-filter: brightness(30%);
   position: absolute;
   bottom: 0;
   overflow: hidden;
