@@ -97,14 +97,17 @@ h1 {
 }
 /*Timer*/
 div#timer{
-  width: 100%;
+  width: 95%;
   text-align: center;
   font-size: 15px;
+  margin-left: calc(5% - (15px / 2));
+  margin-right: calc(5% - 5px);
   margin-top: 5px;
   margin-bottom: 5px;
-  border: 3px solid orangered;
-  border-radius: 5px;
+  border: 5px solid black;
+  border-radius: 15px;
   background-color: orangered;
+  
 }
 div.timer{
   display: inline-block;
@@ -171,9 +174,11 @@ h3#titulolateral{
   padding-left: 5px;
 }
 #schedule{
-  border: 1px solid black;
+  border: 5px solid black;
+  border-radius: 5px;
   background-color: orangered;
   margin-right: 5px;
+  margin-top: 5px;
 }
 #seta{
   font-size: 30px;
@@ -243,6 +248,8 @@ div.descricaoNoticia{
   color: white;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: contrast(5%);
+  backdrop-filter: contrast(5%);
   position: absolute;
   bottom: 0;
   overflow: hidden;
