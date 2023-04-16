@@ -10,6 +10,7 @@
     include 'bootstrapInc.php';
     ?>
     <link rel="stylesheet" href="css/danielribeiro.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -24,15 +25,33 @@
             <h3 id="titulolateral">Vodafone Rally de Portugal 2023</h3>
             <h3 id="titulolateral">11-15 Abril</h3>
         </div>
-        <div id="logoEvento">
-            <img src="img/img_daniel/logo-vodafone-rally-de-portugal-2023.png">
-        </div>
+
         <div class="timer" id="timer">
+            <div id="logoEvento">
+                <img src="img/img_daniel/logo-vodafone-rally-de-portugal-2023.png">
+            </div>
             <div class="timer" id="days"></div>
             <div class="timer" id="hours"></div>
             <div class="timer" id="minutes"></div>
         </div>
-
+        <div id="rightSchedule">
+            <h3 id="titulolateral">Calendario do Evento</h3>
+            <div id="schedule">
+                <div class="container text-center">
+                    <div class="row">
+                        <div class="col">
+                            11 <span>Maio</span>
+                        </div>
+                        <div class="col-6">
+                            Race <span>15:00</span>
+                        </div>
+                        <div class="col">
+                            <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="principal">
 
