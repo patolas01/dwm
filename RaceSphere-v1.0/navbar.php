@@ -14,7 +14,7 @@
                     <a class="nav-link" href="rally-index.php">WRC</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="motogp-index.php">MotoGP</a>
+                    <a class="nav-link" href="wec-index.php">FIA WEC</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link disabled">Showroom</a>

@@ -57,10 +57,12 @@ div.resultCard {
 
 div.outerCard:hover {
     transform: scale(105%);
+    cursor: pointer;
 }
 
 .resultCard#f1 {
     background-color: #FF1801;
+    background: linear-gradient(0deg, #c61100 0%, #FF1801 100%);
     color: white;
 }
 
@@ -70,8 +72,9 @@ div.outerCard:hover {
     color: white;
 }
 
-.resultCard#motogp {
-    background-color: #c3c3c3;
+.resultCard#wec {
+    background-color: #00b430;
+    background: linear-gradient(0deg, #018224 0%, #00a72d 100%);
     color: white;
 }
 
@@ -125,4 +128,4 @@ div.driverName {
 .driverName .lastName {
     line-height: 60%;
     font-weight: 100;
-}   
+}
