@@ -104,37 +104,97 @@
         </div>
     </div>
     <div id="principal">
-        <h1>Rally Championships </h1>
-        <div id="vencedor">
-            <div id="vencedorDentro">
-                <div id="firstplace">
-                    <h4>1º Lugar</h4>
+        <h1>WRC</h1>
+        <div id="winners">
+            <div class="vencedor">
+                <div class="vencedorDentro">
+                    <div id="firstplace">
+                        <h4>1º Lugar</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="vencedor">
+                <div class="vencedorDentro">
+                    <div id="firstplace">
+                        <h4>1º Lugar</h4>
+                    </div>
+                </div>
+            </div>
+            <div class="vencedor">
+                <div class="vencedorDentro">
+                    <div id="firstplace">
+                        <h4>1º Lugar</h4>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="container-xxl text-center">
-            <div class="row">
-                <div class="col">
-                    <div id="caixa1">
-                        <div class="descricaoNoticia">Piloto e co-piloto morrem em despiste no Rally Villa de Tineo em
-                            Espanha</div>
+        <div class="bd-example">
+            <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="img/img_daniel/rally wrc.jpg" class="d-block w-100" alt="xd">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Ford arranca o ano de 2022 com victória</h5>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/img_daniel/rally-collection.avif" class="d-block w-100" alt="xd">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Red Bull acaba o rally de Portugal em grande</h5>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <img src="img/img_daniel/fundo vencedor.png" class="d-block w-100" alt="xd">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>Jõao Matos da Silva assina contrato com Ferrari</h5>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col">
-                    <div id="caixa2">
-                        <div class="descricaoNoticia">Vodafone Rally de Portugal renova excelência Ambiental FIA</div>
+                <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+        <div id="news">
+            <div class="container-xxl text-center">
+                <div class="row">
+                    <div class="col">
+                        <div id="caixa1">
+                            <div class="descricaoNoticia">Piloto e co-piloto morrem em despiste no Rally Villa de Tineo
+                                em
+                                Espanha</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div id="caixa3">
-                        <div class="descricaoNoticia">A ligação de Al-Attiyah ao Vodafone Rally de Portugal</div>
+                    <div class="col">
+                        <div id="caixa2">
+                            <div class="descricaoNoticia">Vodafone Rally de Portugal renova excelência Ambiental FIA
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div id="caixa4">
-                        <div class="descricaoNoticia">Kalle Rovanperä vence na Estónia e aumenta vantagem no Mundial de
-                            ralis</div>
+                    <div class="col">
+                        <div id="caixa3">
+                            <div class="descricaoNoticia">A ligação de Al-Attiyah ao Vodafone Rally de Portugal</div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div id="caixa4">
+                            <div class="descricaoNoticia">Kalle Rovanperä vence na Estónia e aumenta vantagem no Mundial
+                                de
+                                ralis</div>
+                        </div>
                     </div>
                 </div>
             </div>
