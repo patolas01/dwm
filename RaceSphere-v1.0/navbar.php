@@ -19,7 +19,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled">Showroom</a>
+                    <a class="nav-link enable" href="Showroom.php">Showroom</a>
                 </li>
             </ul>
         </div>

@@ -1,4 +1,6 @@
-
+body {
+    background-color: rgb(242, 242, 242);
+}
 
 .faq-heading {
     text-align: center;
