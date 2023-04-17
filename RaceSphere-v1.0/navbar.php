@@ -5,7 +5,7 @@
             <span class="navbar-toggler-icon">tebas</span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand justify-content-center" href="index.php"><img src="img/logo.svg" alt="RaceSphere" width="30" class="align-self-center">RaceSphere</a>
+            <a class="navbar-brand justify-content-center" href="index.php"><img src="img/logo.svg" alt="RaceSphere" height="35" class="align-self-center"> RaceSphere</a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
