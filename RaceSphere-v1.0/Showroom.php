@@ -18,7 +18,7 @@
         <?php
         include 'navbar.php';
         ?>
-        <h1>Showroom</h1>
+        <h1 class="titulo">Showroom</h1>
         
 </body>
 
