@@ -1,6 +1,5 @@
 /*css Contactos*/
 body#contactos{
-  margin: 0;
   background-image: url("https://www.gtplanet.net/wp-content/uploads/2022/08/amg-gt-at-watkins-glen-gt7.jpg");
   background-size: cover;
   background-attachment: fixed;
@@ -78,6 +77,11 @@ h1 {
 /*css Contactos*/
 /*css index rally*/
 /*css lateral direita*/
+body#rally-index{
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 #rightinfo{
   float: right;
   background-color: white;
@@ -112,25 +116,29 @@ div#timer{
 div.timer{
   display: inline-block;
   line-height: 1;
-  padding: 10px;
+  padding: 5px;
 }
 
 span{
   display: block;
-  font-size: 15px;
+  font-size: 10px;
   color: black;
 }
 
 #days {
-  font-size: 15px;
+  font-size: 20px;
   color: black;
 }
 #hours {
-  font-size: 15px;
+  font-size: 20px;
   color: black;
 }
 #minutes {
-  font-size: 15px;
+  font-size: 20px;
+  color: black
+}
+#seconds{
+  font-size: 20px;
   color: black
 }
 /*Timer*/
@@ -159,17 +167,19 @@ h3#titulolateral{
   margin: auto;
   -webkit-backdrop-filter: brightness(30%);
   backdrop-filter: brightness(30%);
+  margin-top: 10px;
 }
 /*Css calendário*/
 #rightSchedule{
   width: 90%;
-  height: 100%;
+  height: fit-content;
   -webkit-backdrop-filter: blur(2px);
   backdrop-filter: blur(2px);
   padding-left: 5px;
   margin: auto;
   -webkit-backdrop-filter: brightness(30%);
   backdrop-filter: brightness(30%);
+  padding-bottom: 5px;
 }
 #schedule{
   border: 5px solid black;
@@ -186,17 +196,10 @@ h3#titulolateral{
   align-items: center;
 }
 /*Css calendário*/
-#nextEvent{
-  background-color: orange;
-  width: 100%;
-  text-align: center;
-  height: fit-content;
-}
 /*css lateral direita*/
 /*css esquerda*/
 /*css Mini-Caixas de Noticias*/
 div#caixa1{
-  border: 5px double black;
   width: 100%;
   height: 260px;
   background-image: url("../img/img_daniel/despiste.jpg");
@@ -207,7 +210,6 @@ div#caixa1{
   margin-top: 10px;
 }
 div#caixa2{
-  border: 5px double black;
   width: 100%;
   height: 260px;
   background-image: url("../img/img_daniel/1-Rovanpera-Toyota-VRP-900.jpg");
@@ -218,7 +220,6 @@ div#caixa2{
   margin-top: 10px;
 }
 div#caixa3{
-  border: 5px double black;
   width: 100%;
   height: 260px;
   background-image: url("../img/img_daniel/VODAFONE-RALLY-PORTUGAL-AL-ATTIYAH.jpg");
@@ -229,7 +230,6 @@ div#caixa3{
   margin-top: 10px;
 }
 div#caixa4{
-  border: 5px double black;
   width: 100%;
   height: 260px;
   background-image: url("../img/img_daniel/Kalle\ Rovanpera.jpg");

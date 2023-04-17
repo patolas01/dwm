@@ -13,14 +13,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body>
+<body id="rally-index">
     <?php
     include 'navbar.php';
     ?>
     <div class="sticky-top" id="rightinfo">
-        <div id="nextEvent">
-            <h2>Próximo Evento</h2>
-        </div>
         <div id="rightTitles">
             <h3 id="titulolateral">Vodafone Rally de Portugal 2023</h3>
             <h3 id="titulolateral">11-15 Abril</h3>
@@ -33,6 +30,7 @@
             <div class="timer" id="days"></div>
             <div class="timer" id="hours"></div>
             <div class="timer" id="minutes"></div>
+            <div class="timer" id="seconds"></div>
         </div>
         <div id="rightSchedule">
             <h3 id="titulolateral">Calendario do Evento</h3>
