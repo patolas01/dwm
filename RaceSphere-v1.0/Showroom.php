@@ -18,17 +18,32 @@
         <?php
         include 'navbar.php';
         ?>
-        <h1 class="titulo">Showroom</h1>
-        <div class="container">
-                <div class="row align-items-start">
-                        <div class="col-md-5 ">
 
+        <div class="container">
+                <h1 class="titulo">Showroom</h1>
+                <div class="row align-items-center">
+                        <div class="col-md-5 ">
+                                <h3>Carros</h3>
+                                <a href="carros.php">
+                                        <div class="img-1">
+
+                                        </div>
+                                </a>
                         </div>
 
                         <div class="col-md-5 offset-md-2">
+                                <h3>Equipamentos</h3>
+                                <a href="equipamentos.php">
+                                        <div class="img-2">
 
+                                        </div>
+                                </a>
                         </div>
                 </div>
         </div>
+        <?php
+        include 'footer.php';
+        ?>
 </body>
+
 </html>

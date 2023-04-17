@@ -66,27 +66,47 @@ body {
 
 /*Showroom*/
 h1.titulo{
-    padding-top: 1%;
+    padding-top: 1.5%;
     padding: 20px 60px;
     text-align: center;
 }
 
 div.col-md-5{
-    background-color: #777;
-    border-radius: 10px;
-    height: 300px;
+    margin-top: 10px;
+    background-color: #444343;
+    border-radius: 20px;
+    height: 350px;
+    transition-duration: 800ms;
 }
 
-div.col-md-5{
+div.col-md-5:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+
+div.img-1, div.img-2{
+    height: 88%;
+    width: calc(100% + 6.6%);
+    margin-left: -3.3%;
+}
+
+div.img-1{
     background-image: url(../img/f1-luis.jpg);
-    background-size: contain;
+    border-radius: 20px;
+    background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
 }
 
-div.col-md-5 div.offset-md-2 {
-    background-color: #777;
-    border-radius: 10px;
-    height: 300px;
+div.img-2{
     background-image: url(../img/equipamento-luis.jpg);
+    border-radius: 20px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+h3{
+    color: black;
+    text-align: center;
 }
