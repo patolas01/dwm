@@ -20,13 +20,13 @@
         ?>
         <h1 class="titulo">Showroom</h1>
         <div class="container">
-                <div class="row">
-                        <div class="col-5">
-                                <img src="img/f1-luis.jpeg" alt="f1"></img>
+                <div class="row align-items-start">
+                        <div class="col-md-5 ">
+
                         </div>
 
-                        <div class="col-5">
-                                <img src="img/equipamento-luis.jpg" alt="equipamento"></img>
+                        <div class="col-md-5 offset-md-2">
+
                         </div>
                 </div>
         </div>

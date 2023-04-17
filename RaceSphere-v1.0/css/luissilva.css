@@ -71,15 +71,22 @@ h1.titulo{
     text-align: center;
 }
 
-
-div.carros{
-    background-color: #444;
-    height: 100px;
-    width: 100px;
+div.col-md-5{
+    background-color: #777;
+    border-radius: 10px;
+    height: 300px;
 }
 
-div.equipamentos{
+div.col-md-5{
+    background-image: url(../img/f1-luis.jpg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+div.col-md-5 div.offset-md-2 {
     background-color: #777;
-    height: 100px;
-    width: 100px;
+    border-radius: 10px;
+    height: 300px;
+    background-image: url(../img/equipamento-luis.jpg);
 }
