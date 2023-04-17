@@ -34,7 +34,7 @@
         </div>
         <div id="rightSchedule">
             <h3 id="titulolateral">Calendario do Evento</h3>
-            <div id="schedule">
+            <div class="schedule">
                 <div class="container text-center">
                     <div class="row">
                         <div class="col">
@@ -44,12 +44,14 @@
                             Race <span>15:00</span>
                         </div>
                         <div class="col">
-                            <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            <div class="scheduleArrow">
+                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="schedule">
+            <div class="schedule">
                 <div class="container text-center">
                     <div class="row">
                         <div class="col">
@@ -59,12 +61,14 @@
                             Sprint <span>15:00</span>
                         </div>
                         <div class="col">
-                            <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            <div class="scheduleArrow">
+                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="schedule">
+            <div class="schedule">
                 <div class="container text-center">
                     <div class="row">
                         <div class="col">
@@ -74,19 +78,25 @@
                             Race <span>17:00</span>
                         </div>
                         <div class="col">
-                            <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            <div class="scheduleArrow">
+                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="schedule">
+            <div class="schedule">
                 <div class="container text-center">
                     <div class="row">
                         <div class="col-9">
-                            Mais horários
+                            <div class="scheduleArrow">
+                                Mais horários
+                            </div>
                         </div>
                         <div class="col">
-                            <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            <div class="scheduleArrow">
+                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
