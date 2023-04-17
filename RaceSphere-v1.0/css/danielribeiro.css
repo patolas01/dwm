@@ -264,16 +264,25 @@ div.descricaoNoticia{
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
 }
-div#vencedor{
+/*css pódio*/
+#winners{
   width: 90%;
-  margin-top: 15px;
-  margin: auto;
   height: 500px;
-  background-image: url(../img/img_daniel/fundo\ vencedor.png);
+  background-image: url(../img/img_daniel/fundo\ vencedor.webp);
   background-size: cover;
   background-repeat: no-repeat;
+  margin: auto;
+  margin-top: 15px;
 }
-#vencedorDentro{
+div.vencedor{
+  width: calc(100% / 3);
+  height: 500px;
+  background-image: url(../img/max.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  float: left;
+}
+.vencedorDentro{
   float: left;
   width: 150px;
   height: 500px;
@@ -287,6 +296,29 @@ div#vencedor{
   height: fit-content;
   color: white;
   padding: 5px;
+}
+/*css pódio*/
+#news{
+  padding-top: 30px;
+  width: 90%;
+  height: fit-content;
+  margin: auto;
+}
+.bd-example{
+  width: 90%;
+  margin: auto;
+  height: 500px;
+  margin-top: 10px;
+  overflow: hidden;
+}
+.bd-example img{
+  object-fit: cover;
+  height: 500px;
+  object-position: center;
+}
+.carousel-caption{
+  background: rgb(0,0,0);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.1540265764508929) 100%);
 }
 /*css Mini-Caixas de Noticias*/
 /*css esquerda*/
