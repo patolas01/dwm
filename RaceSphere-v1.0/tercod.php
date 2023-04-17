@@ -20,7 +20,7 @@
         ?>
         <main>
 
-                <h1 class="faq-heading">Termos e condições</h1>
+                <h1 class="titulo">Termos e condições</h1>
 
                 <section class="faq-container">
 
@@ -31,7 +31,7 @@
 
                                 <!-- faq answer -->
                                 <div class="faq-body">
-                                        <p>Ao acessar ao site <a href="index.html">RaceSphere</a>, concorda em cumprir estes
+                                        <p>Ao acessar ao site <a href="index.php">RaceSphere</a>, concorda em cumprir estes
                                                 termos de serviço, todas as leis e regulamentos aplicáveis ​​e concorda que é
                                                 responsável pelo
                                                 cumprimento

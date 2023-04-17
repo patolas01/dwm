@@ -1,12 +1,5 @@
 body {
     background-color: rgb(242, 242, 242);
-    text-align: center;
-}
-
-.faq-heading {
-    text-align: center;
-    border-bottom: #777;
-    padding: 20px 60px;
 }
 
 .faq-container {
@@ -46,12 +39,12 @@ body {
 
 .active,
 .faq-page:hover {
-    background-color: #F9F9F9;
+    background-color: rgb(242, 242, 242);
 }
 
 .faq-body {
     padding: 0 18px;
-    background-color: white;
+    background-color: rgb(242, 242, 242);
     display: none;
     overflow: hidden;
 }
@@ -72,6 +65,8 @@ body {
 /*FAQ*/
 
 /*Showroom*/
-h1{
+h1.titulo{
     padding-top: 1%;
+    padding: 20px 60px;
+    text-align: center;
 }
