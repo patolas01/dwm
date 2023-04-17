@@ -20,6 +20,21 @@
         ?>
         <h1 class="titulo">Showroom</h1>
         
-</body>
+        <div class="carros">
 
+        </div>
+
+        <div class="equipamentos">
+
+        </div>
+
+
+
+
+
+
+
+
+
+</body>
 </html>
