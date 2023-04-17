@@ -70,3 +70,16 @@ h1.titulo{
     padding: 20px 60px;
     text-align: center;
 }
+
+
+div.carros{
+    background-color: #444;
+    height: 100px;
+    width: 100px;
+}
+
+div.equipamentos{
+    background-color: #777;
+    height: 100px;
+    width: 100px;
+}

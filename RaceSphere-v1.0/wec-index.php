@@ -23,48 +23,136 @@
             <h1> Resultados </h1>
             <hr class="hrTitle">
         </div>
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingOne">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                        Accordion Item #1
-                    </button>
-                </h2>
-                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-                    data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
+        <div class="accordion" id="accordionExample">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                            aria-expanded="true" aria-controls="collapseOne">
+                            Última Corrida
+                        </button>
+                    </h2>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="outerCard">
+                            <img class="outerCard-img" src="img\wec-logo.png" alt="logotipo da categoria">
+                            <div class="resultCard" id="wec">
+                                <div class="place">
+                                    <div class="number">3</div>
+                                    <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                                    <div class="driverName" id="3">
+                                        <h4 class="firstName">Sergio</h4>
+                                        <p class="lastName">Perez</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">1</div>
+                                    <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                                    <div class="driverName" id="1">
+                                        <h4 class="firstName">Max</h4>
+                                        <p class="lastName">Verstappen</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">2</div>
+                                    <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                                    <div class="driverName" id="2">
+                                        <h4 class="firstName">Fernando</h4>
+                                        <p class="lastName">Alonso</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                        Accordion Item #2
-                    </button>
-                </h2>
-                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-                    data-bs-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine
-                        this being filled with some actual content.</div>
+            <div class="card">
+                <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Penúltima Corrida
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="outerCard">
+                            <img class="outerCard-img" src="img\wec-logo.png" alt="logotipo da categoria">
+                            <div class="resultCard" id="wec">
+                                <div class="place">
+                                    <div class="number">3</div>
+                                    <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                                    <div class="driverName" id="3">
+                                        <h4 class="firstName">Sergio</h4>
+                                        <p class="lastName">Perez</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">1</div>
+                                    <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                                    <div class="driverName" id="1">
+                                        <h4 class="firstName">Max</h4>
+                                        <p class="lastName">Verstappen</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">2</div>
+                                    <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                                    <div class="driverName" id="2">
+                                        <h4 class="firstName">Fernando</h4>
+                                        <p class="lastName">Alonso</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="accordion-item">
-                <h2 class="accordion-header" id="flush-headingThree">
-                    <button class="accordion-button collapsed" type="button" data-toggle="collapse"
-                        data-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        Accordion Item #3
-                    </button>
-                </h2>
-                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
-                    data-parent="#accordionFlushExample">
-                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate
-                        the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more
-                        exciting happening here in terms of content, but just filling up the space to make it look, at
-                        least at first glance, a bit more representative of how this would look in a real-world
-                        application.</div>
+            <div class="card">
+                <div class="card-header" id="headingThree">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Antepenúltima Corrida
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                    <div class="card-body">
+                        <div class="outerCard">
+                            <img class="outerCard-img" src="img\wec-logo.png" alt="logotipo da categoria">
+                            <div class="resultCard" id="wec">
+                                <div class="place">
+                                    <div class="number">3</div>
+                                    <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                                    <div class="driverName" id="3">
+                                        <h4 class="firstName">Sergio</h4>
+                                        <p class="lastName">Perez</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">1</div>
+                                    <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                                    <div class="driverName" id="1">
+                                        <h4 class="firstName">Max</h4>
+                                        <p class="lastName">Verstappen</p>
+                                    </div>
+                                </div>
+                                <div class="place">
+                                    <div class="number">2</div>
+                                    <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                                    <div class="driverName" id="2">
+                                        <h4 class="firstName">Fernando</h4>
+                                        <p class="lastName">Alonso</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -37,6 +37,7 @@ body {
     padding-top: 25px;
     float: right;
     width: 49%;
+    text-align: center;
 }
 
 #newsTitle {
@@ -48,4 +49,118 @@ body {
     height: 1px;
     background-color: #000000;
     border: none;
+}
+
+.card {
+    width: 90%;
+}
+
+.outerCard {
+    transition-duration: 800ms;
+    position: relative;
+    height: 100%;
+    background-color: #4d4d4d;
+    margin: 30px;
+    border-radius: 15px;
+}
+
+.outerCard-img {
+    height: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+div.resultCard {
+    height: 280px;
+    width: 420px;
+    background-color: black;
+    border-radius: 15px;
+    display: flex;
+    margin-left: 70px;
+}
+
+div.outerCard:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+
+.resultCard#f1 {
+    background-color: #FF1801;
+    background: linear-gradient(0deg, #c61100 0%, #FF1801 100%);
+    color: white;
+}
+
+.resultCard#wrc {
+    background: rgb(40, 78, 134);
+    background: linear-gradient(0deg, rgba(40, 78, 134, 1) 0%, rgba(78, 155, 255, 1) 100%);
+    color: white;
+}
+
+.resultCard#wec {
+    background-color: #00b430;
+    background: linear-gradient(0deg, #018224 0%, #00a72d 100%);
+    color: white;
+}
+
+div.number {
+    font-family: 'Righteous', cursive;
+    font-size: 300%;
+    height: 20%;
+    margin-top: 10%;
+}
+
+div.place {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    border-right: 1px solid black;
+    width: 33%;
+}
+
+div.place:last-child {
+    border: 0;
+}
+
+div.driverPic {
+    /* border: 1px solid black; */
+    margin-top: 8%;
+    width: 90%;
+    height: fixed;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.driverPic img {
+    width: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+
+div.driverName {
+    margin-left: 12%;
+    padding-top: 5%;
+    text-align: left;
+}
+
+.driverName .firstName {
+    margin: 0;
+    padding: 0;
+    font-size: 120%;
+}
+
+.driverName .lastName {
+    line-height: 60%;
+    font-weight: 100;
+}
+
+.navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+
+.navbar-brand {
+    float: none;
 }
