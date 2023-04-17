@@ -19,22 +19,16 @@
         include 'navbar.php';
         ?>
         <h1 class="titulo">Showroom</h1>
-        
-        <div class="carros">
+        <div class="container">
+                <div class="row">
+                        <div class="col-5">
+                                <img src="img/f1-luis.jpeg" alt="f1"></img>
+                        </div>
 
+                        <div class="col-5">
+                                <img src="img/equipamento-luis.jpg" alt="equipamento"></img>
+                        </div>
+                </div>
         </div>
-
-        <div class="equipamentos">
-
-        </div>
-
-
-
-
-
-
-
-
-
 </body>
 </html>
