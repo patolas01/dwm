@@ -95,9 +95,10 @@ body#rally-index{
 }
 /*css lateral direita*/
 #principal{
-  height: 3000px;
-  width: 100%;
+  height: 2000px;
+  width: 80%;
   background-color: #2980b9;
+  margin-top: 0;
 }
 /*Timer*/
 div#timer{
@@ -126,19 +127,19 @@ span{
 }
 
 #days {
-  font-size: 20px;
+  font-size: 30px;
   color: black;
 }
 #hours {
-  font-size: 20px;
+  font-size: 30px;
   color: black;
 }
 #minutes {
-  font-size: 20px;
+  font-size: 30px;
   color: black
 }
 #seconds{
-  font-size: 20px;
+  font-size: 30px;
   color: black
 }
 /*Timer*/
@@ -262,6 +263,30 @@ div.descricaoNoticia{
   overflow: hidden;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+}
+div#vencedor{
+  width: 90%;
+  margin-top: 15px;
+  margin: auto;
+  height: 500px;
+  background-image: url(../img/img_daniel/fundo\ vencedor.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+#vencedorDentro{
+  float: left;
+  width: 150px;
+  height: 500px;
+  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: brightness(30%);
+  backdrop-filter: brightness(30%);
+}
+#firstplace{
+  width: 100%;
+  height: fit-content;
+  color: white;
+  padding: 5px;
 }
 /*css Mini-Caixas de Noticias*/
 /*css esquerda*/
