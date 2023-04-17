@@ -2,8 +2,6 @@ html,
 body {
     margin: 0;
     padding: 0;
-    background-image: url('../img/backgdPG.jpg');
-    background-repeat: repeat;
 }
 
 #container {
@@ -17,4 +15,37 @@ body {
     height: fit-content;
     margin-top: 30px;
     margin-bottom: 30px;
+}
+
+.vl {
+    margin-top: 100px;
+    border-left: 1px solid black;
+    height: 500px;
+    position: fixed;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
+
+#left {
+    padding-top: 25px;
+    float: left;
+    width: 49%;
+}
+
+#right {
+    padding-top: 25px;
+    float: right;
+    width: 49%;
+}
+
+#newsTitle {
+    display: flex;
+}
+
+.hrTitle {
+    width: 25%;
+    height: 1px;
+    background-color: #000000;
+    border: none;
 }
