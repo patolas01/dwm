@@ -1,5 +1,6 @@
 body {
     background-color: rgb(242, 242, 242);
+    text-align: center;
 }
 
 .faq-heading {
@@ -69,3 +70,8 @@ body {
     /* Unicode character for "minus" sign (-) */
 }
 /*FAQ*/
+
+/*Showroom*/
+h1{
+    padding-top: 1%;
+}

@@ -18,6 +18,7 @@
         <?php
         include 'navbar.php';
         ?>
+        <h1>Showroom</h1>
         
 </body>
 
