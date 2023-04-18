@@ -3,7 +3,7 @@
 
 <head>
     <?php include('bootstrapInc.php'); ?>
-    <title>Página Principal</title>
+    <title>Página Principal da Formula 1</title>
     <link rel="stylesheet" href="css/alex.css">
 </head>
 
