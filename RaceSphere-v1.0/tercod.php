@@ -209,7 +209,10 @@
                         <hr class="hr-line">
                 </section>
         </main>
-        <script src="js/main.js"></script>
+        <?php
+        include 'footer.php';
+        ?>
+        
 </body>
-
+<script src="js/main.js"></script>
 </html>
