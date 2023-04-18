@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <form action="Ficha4Ex1.php" method="POST">
-        Nome<input name="nome" placeholder="nome" required><br><br>
-        Idade<input name="idade" placeholder="idade"><br><br>
+    <form action="#" method="POST">
+        Nome<input name="nome" placeholder="Nome" required><br><br>
+        Email<input name="email" placeholder="email"><br><br>
         Unidade Curricular:<br>
         <input type="radio" name="UC" value="PW">PW<br><br>
         <input type="radio" name="UC" value="CTI">CTI<br><br>
@@ -20,11 +20,11 @@
         <input type="radio" name="lingua" value="PHP">PHP<br><br>
         <input type="radio" name="lingua" value="C">C<br><br>
         <input type="radio" name="lingua" value="JAVASCRIPT">JAVASCRIPT<br><br>
-        <input type="submit">
+        <input type="submit" name="submit">
     </form>
     <?php
-    echo "O aluno ".$_POST["nome"]." com o email ".$_POST["email"].", dá a linguagem PHP na unidade curricular
-    PWS";
+    if(isset($_POST["submit"]))
+    echo "O aluno ".$_POST["nome"]." com o email ".$_POST["email"].", dá a linguagem ".$_POST["lingua"]." na unidade curricular ".$_POST["UC"];
     ?>
 </body>
 
