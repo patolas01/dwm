@@ -37,7 +37,7 @@ body {
 
 .faq-body {
     margin: auto;
-    text-align: center; 
+    text-align: center;
     width: 50%;
     padding: auto;
 
@@ -69,4 +69,31 @@ body {
     content: "\2796";
     /* Unicode character for "minus" sign (-) */
 }
-/*FAQ*/
+
+
+/*F1 - INDEX*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 1366px;
+    margin: 0 auto;
+}
+
+.image-container {
+    width: 100%;
+
+}
+
+.image-container img {
+    width: 100%;
+}
+
+.card {
+    width: 20%;
+    display: grid
+}
+
+/*F1 - INDEX*/

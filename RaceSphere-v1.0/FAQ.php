@@ -17,14 +17,11 @@
         <h1 class="faq-heading">FAQ'S</h1>
 
         <section class="faq-container">
-            <!-- F1 -->
 
             <div class="faq-one">
 
-                <!-- faq question -->
                 <h1 class="faq-page">F1 é considerado um desporto?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>
                         Embora os carros de F1 sejam obras-primas tecnológicas, eles ainda os colocam à prova.
@@ -39,10 +36,8 @@
 
             <div class="faq-two">
 
-                <!-- faq question -->
                 <h1 class="faq-page">Como fazem para que os pitstops sejam tão rápidos?</h1>
 
-                <!-- faq answer -->
 
                 <div class="faq-body">
                     <p>O pit stop mais rápido da história foi de 1,82 segundos. Cada décimo de segundo conta em uma
@@ -56,10 +51,8 @@
 
             <div class="faq-three">
 
-                <!-- faq question -->
                 <h1 class="faq-page">Quanto combustivel é consumido por um carro de F1?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>Muita gasolina. Se um carro padrão consome cerca de 6 litros por 100 km, um carro de F1 consome
                         até 45 litros por 100 km.
@@ -72,13 +65,12 @@
             <hr class="hr-line">
 
 
-            <!-- Rally -->
+
             <div class="faq-four">
 
-                <!-- faq question -->
+
                 <h1 class="faq-page">Porque é que se chama rally?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>
                         O rally foi a primeira modalidade automobilística a existir desde a invenção do automóvel. A
@@ -90,11 +82,8 @@
 
             <div class="faq-five">
 
-                <!-- faq question -->
                 <h1 class="faq-page">Qual é a razão para um carro de Rally ter uma "Rollcage", e carros diários não?
                 </h1>
-
-                <!-- faq answer -->
 
                 <div class="faq-body">
                     <p>Os carros seriam muito mais seguros, se todos tivessem rollcage instalados, mas pela estrutura e
@@ -109,11 +98,8 @@
 
 
             <div class="faq-six">
-
-                <!-- faq question -->
                 <h1 class="faq-page">O que é considerado rally</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p> Um rally refere-se a um período de aumento contínuo nos preços de ações, índices ou títulos. A
                         palavra rally é normalmente usada como uma chave para meios de comunicação de negócios, como a
@@ -123,13 +109,10 @@
 
             <hr class="hr-line">
 
-            <!-- MotoGP -->
             <div class="faq-seven">
 
-                <!-- faq question -->
                 <h1 class="faq-page">MotoGP é mais complicado do que F1?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>
                         Sem dúvida, uma moto de MotoGP é muito mais difícil de conduzir do que um carro de Fórmula 1,
@@ -143,10 +126,7 @@
 
             <div class="faq-eight">
 
-                <!-- faq question -->
                 <h1 class="faq-page">Quanto custam as motas do MotoGP?</h1>
-
-                <!-- faq answer -->
 
                 <div class="faq-body">
                     <p>As motas de corrida custam por volta dos US$ 2 milhões.
@@ -159,10 +139,8 @@
 
             <div class="faq-nine">
 
-                <!-- faq question -->
                 <h1 class="faq-page">Quais são as regras de MotoGP?</h1>
 
-                <!-- faq answer -->
                 <div class="faq-body">
                     <p>As motos de corrida de MotoGP têm até 1000 cc, pesam até 157 kg e atingem uma velocidade máxima
                         de cerca de 350 km/he geram uma potência de cerca de 250 cv. As motos de corrida têm
