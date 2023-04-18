@@ -11,13 +11,13 @@
     <?php include('navbar.php'); ?>
 
     <div class="image-container">
-        <img src="teste.jpg" alt="Imagem">
+    <img src="img/img_alex/backg.jpg">
         <!--Titulo-slogan-->
     </div>
 
     <!--BOOTSTRAP-->
     <div class="card">
-        <img src="..." class="card-img-top" alt="...">
+        <img src="" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">Titulo</h5>
             <p class="card-text">Noticia.................................................</p>
