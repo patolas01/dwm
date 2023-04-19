@@ -16,26 +16,26 @@
                 <div class="resultCard" id="wrc">
                     <div class="place">
                         <div class="number">3</div>
-                        <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                        <div class="driverPic" id="3"><img src="" alt="driver"></div>
                         <div class="driverName" id="3">
-                            <h4 class="firstName">Sergio</h4>
-                            <p class="lastName">Perez</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">1</div>
-                        <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                        <div class="driverPic" id="1"><img src="" alt="driver"></div>
                         <div class="driverName" id="1">
-                            <h4 class="firstName">Max</h4>
-                            <p class="lastName">Verstappen</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">2</div>
-                        <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                        <div class="driverPic" id="2"><img src="" alt="driver"></div>
                         <div class="driverName" id="2">
-                            <h4 class="firstName">Fernando</h4>
-                            <p class="lastName">Alonso</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                 </div>
@@ -47,26 +47,26 @@
                 <div class="resultCard" id="f1">
                     <div class="place">
                         <div class="number">3</div>
-                        <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                        <div class="driverPic" id="3"><img src="" alt="driver"></div>
                         <div class="driverName" id="3">
-                            <h4 class="firstName">Sergio</h4>
-                            <p class="lastName">Perez</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">1</div>
-                        <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                        <div class="driverPic" id="1"><img src="" alt="driver"></div>
                         <div class="driverName" id="1">
-                            <h4 class="firstName">Max</h4>
-                            <p class="lastName">Verstappen</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">2</div>
-                        <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                        <div class="driverPic" id="2"><img src="" alt="driver"></div>
                         <div class="driverName" id="2">
-                            <h4 class="firstName">Fernando</h4>
-                            <p class="lastName">Alonso</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
 
@@ -78,33 +78,32 @@
                 <div class="resultCard" id="wec">
                     <div class="place">
                         <div class="number">3</div>
-                        <div class="driverPic" id="3"><img src="img/perez.png" alt="driver"></div>
+                        <div class="driverPic" id="3"><img src="" alt="driver"></div>
                         <div class="driverName" id="3">
-                            <h4 class="firstName">Sergio</h4>
-                            <p class="lastName">Perez</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">1</div>
-                        <div class="driverPic" id="1"><img src="img/max.png" alt="driver"></div>
+                        <div class="driverPic" id="1"><img src="" alt="driver"></div>
                         <div class="driverName" id="1">
-                            <h4 class="firstName">Max</h4>
-                            <p class="lastName">Verstappen</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                     <div class="place">
                         <div class="number">2</div>
-                        <div class="driverPic" id="2"><img src="img/alo.png" alt="driver"></div>
+                        <div class="driverPic" id="2"><img src="" alt="driver"></div>
                         <div class="driverName" id="2">
-                            <h4 class="firstName">Fernando</h4>
-                            <p class="lastName">Alonso</p>
+                            <h4 class="firstName"></h4>
+                            <p class="lastName"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <h1>Notícias</h1>
     <div class="newsBox">
@@ -137,6 +136,7 @@
             </div>
         </div>
     </div>
+    <script src="jquery/main.js"></script>
 
     <?php include "footer.php"; ?>
 </body>
