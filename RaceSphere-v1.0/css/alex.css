@@ -94,3 +94,13 @@ body {
   .card {
     margin-bottom: 1rem;
   }
+
+  #info{
+    text-align: center;
+    font-size: 5pt;
+  }
+
+  .Paragraph{
+    float: right;
+    margin-left: 20px;
+  }
