@@ -10,9 +10,12 @@
 <body>
     <?php include('navbar.php'); ?>
 
-    <div class="image">
+    <div class="indeximage">
         <img src="img/img_alex/backg.jpg">
-        <!--Titulo-slogan-->
+        <div class="text">
+        <h2>Formula 1</h2>
+        <p>Velocidade, adrenalina e emoção: acompanhe o melhor do mundo da Fórmula 1 aqui!</p>
+    </div>
     </div>
 
     <div class="container noticias">
@@ -50,27 +53,33 @@
 
     <p id="info"></p>
 
-    <p>A Fórmula 1, também conhecida como F1, é uma categoria de automobilismo de alto desempenho que envolve corridas
-        de carros em circuitos ao redor do mundo. A F1 é considerada a categoria mais prestigiosa do automobilismo
-        mundial, com equipes e pilotos de renome internacional competindo pelo título de Campeão Mundial de Pilotos e
-        Construtores a cada temporada.
 
-        Os carros de F1 são especialmente projetados para alcançar altas velocidades e oferecer desempenho excepcional
-        em curvas e retas. Eles são equipados com motores potentes e tecnologias avançadas, tornando a F1 uma das
-        categorias mais tecnologicamente avançadas do esporte a motor.
-
-        Além disso, a F1 é uma categoria que envolve muito mais do que apenas pilotar carros em alta velocidade. Requer
-        habilidades de pilotagem, estratégia de corrida, trabalho em equipe, engenharia e muito mais. Os fãs da F1 são
-        atraídos pela emoção e pela competitividade da categoria, bem como pela tecnologia avançada e pelas estratégias
-        de corrida envolvidas.
-
-        A cada temporada, a F1 atrai milhões de espectadores de todo o mundo, com corridas emocionantes e disputas
-        acirradas pelo título. Se você é um fã de esportes a motor ou simplesmente um entusiasta da tecnologia e da
-        velocidade, a F1 é uma categoria que definitivamente vale a pena acompanhar.</p>
-    <div class="Paragraph">
-        <img src="img/img_alex/carrof1textoindex.jpg" alt="Imagem de um carro de F1">
+    <div class="wrapper">
+        <img class="img" src="img/img_alex/carrof1textoindex.jpg" alt="Imagem de um carro de F1">
+        <div class="text-box">
+            <h2>Formula 1</h2>
+            <p>  A Fórmula 1, também conhecida como F1, é uma categoria de automobilismo de alto desempenho que
+                envolve corridas
+                de carros em circuitos ao redor do mundo. A F1 é considerada a categoria mais prestigiosa do
+                automobilismo
+                mundial, com equipes e pilotos de renome internacional competindo pelo título de Campeão Mundial de
+                Pilotos e
+                Construtores a cada temporada.Os carros de F1 são especialmente projetados para alcançar altas
+                velocidades e
+                oferecer desempenho
+                excepcional
+                em curvas e retas. Eles são equipados com motores potentes e tecnologias avançadas, tornando a F1
+                uma das
+                categorias mais tecnologicamente avançadas do esporte a motor.
+                Além disso, a F1 é uma categoria que envolve muito mais do que apenas pilotar carros em alta
+                velocidade. Requer
+                habilidades de pilotagem, estratégia de corrida, trabalho em equipe, engenharia e muito mais. Os fãs
+                da F1 são
+                atraídos pela emoção e pela competitividade da categoria, bem como pela tecnologia avançada e pelas
+                estratégias
+                de corrida envolvidas.</p>
+        </div>
     </div>
-
 
     <script>
 
