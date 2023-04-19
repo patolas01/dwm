@@ -169,6 +169,7 @@ div.driverName {
     margin-left: 25px;
     border: 1px solid #000000;
     background-color: #f7f7f7;
+    margin-bottom: 10px;
 }
 
 .noticia img {
@@ -176,6 +177,6 @@ div.driverName {
     float: left;
 }
 
-.noticia h3 {
-    margin: 27px 0px;
+.noticia h5 {
+    margin: 37px 0px;
 }

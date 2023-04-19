@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <?php include 'navbar.php'; ?>
     <div id="container">
         <h1>RaceSphere</h1>
         <div class="about">
@@ -26,6 +27,8 @@
                 de todo o mundo (Formula 1 , MotoGP e Rally).</p>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 <!--kekw graça-->
+
 </html>

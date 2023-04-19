@@ -17,7 +17,15 @@
         </div>
         <div class="noticia">
             <img src="img/carroPeugeot.jpg" alt="Carro">
-            <h3>WEC: PEUGEOT COM DECORAÇÃO ESPECIAL PARA LE MANS</h3>
+            <h5>WEC: PEUGEOT COM DECORAÇÃO ESPECIAL PARA LE MANS</h5>
+        </div>
+        <div class="noticia">
+            <img src="img/carroPeugeot.jpg" alt="Carro">
+            <h5>WEC: PEUGEOT COM DECORAÇÃO ESPECIAL PARA LE MANS</h5>
+        </div>
+        <div class="noticia">
+            <img src="img/carroPeugeot.jpg" alt="Carro">
+            <h5>WEC: PEUGEOT COM DECORAÇÃO ESPECIAL PARA LE MANS</h5>
         </div>
     </div>
 
@@ -162,6 +170,7 @@
             </div>
         </div>
     </div>
+    <?php include 'footer.php'; ?>
 </body>
 
 </html>
