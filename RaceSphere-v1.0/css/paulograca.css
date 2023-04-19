@@ -164,3 +164,21 @@ div.driverName {
 .navbar-brand {
     float: none;
 }
+
+.noticia {
+    margin-left: 25px;
+    border: 1px solid #000000;
+}
+
+.news {
+}
+
+.news img {
+    width: 30%;
+    float: left;
+    position: relative;
+}
+
+.news h3 {
+    margin: 0px 10px;
+}

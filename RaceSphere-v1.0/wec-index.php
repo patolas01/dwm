@@ -15,7 +15,8 @@
             <h1> Noticias </h1>
             <hr class="hrTitle">
         </div>
-    </div>
+    <!-- #region -->
+
     <div class="vl"></div>
     <div id="right">
         <div id="newsTitle">
