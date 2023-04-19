@@ -13,7 +13,8 @@
     <div class="indeximage">
         <img src="img/img_alex/backg.jpg">
         <div class="text">
-        <p>Velocidade, adrenalina e emoção: acompanhe o melhor do mundo da Fórmula 1 aqui!</p>
+            <h2>Formula 1</h2>
+            <p>Velocidade, adrenalina e emoção: acompanhe o melhor do mundo da Fórmula 1 aqui!</p>
     </div>
     </div>
 
