@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <?php include('bootstrapInc.php'); ?>
+
         <link rel="stylesheet" href="css/luissilva.css">
         <title>Showroom</title>
 </head>
@@ -18,23 +19,32 @@
         <?php
         include 'navbar.php';
         ?>
-        <h1 class="titulo">Showroom</h1>
-        
-        <div class="carros">
 
+        <div class="container">
+                <h1 class="titulo">Showroom</h1>
+                <div class="row align-items-center">
+                        <div class="col-md-5 ">
+                                <h3>Carros</h3>
+                                <a href="carros.php">
+                                        <div class="img-1">
+
+                                        </div>
+                                </a>
+                        </div>
+
+                        <div class="col-md-5 offset-md-2">
+                                <h3>Equipamentos</h3>
+                                <a href="equipamentos.php">
+                                        <div class="img-2">
+
+                                        </div>
+                                </a>
+                        </div>
+                </div>
         </div>
-
-        <div class="equipamentos">
-
-        </div>
-
-
-
-
-
-
-
-
-
+        <?php
+        include 'footer.php';
+        ?>
 </body>
+
 </html>

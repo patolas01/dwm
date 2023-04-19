@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(242, 242, 242);
+    background-color: #f2f2f2;
 }
 
 .faq-container {
@@ -66,7 +66,47 @@ body {
 
 /*Showroom*/
 h1.titulo{
-    padding-top: 1%;
+    padding-top: 1.5%;
     padding: 20px 60px;
+    text-align: center;
+}
+
+div.col-md-5{
+    margin-top: 10px;
+    background-color: #444343;
+    border-radius: 20px;
+    height: 350px;
+    transition-duration: 800ms;
+}
+
+div.col-md-5:hover {
+    transform: scale(105%);
+    cursor: pointer;
+}
+
+div.img-1, div.img-2{
+    height: 89%;
+    width: calc(100% + 6.8%);
+    margin-left: -3.4%;
+}
+
+div.img-1{
+    background-image: url(../img/f1-luis.jpg);
+    border-radius: 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+div.img-2{
+    background-image: url(../img/equipamento-luis.jpg);
+    border-radius: 20px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+h3{
+    color: black;
     text-align: center;
 }
