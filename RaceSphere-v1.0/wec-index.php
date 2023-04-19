@@ -15,7 +15,11 @@
             <h1> Noticias </h1>
             <hr class="hrTitle">
         </div>
-    <!-- #region -->
+        <div class="noticia">
+            <img src="img/carroPeugeot.jpg" alt="Carro">
+            <h3>WEC: PEUGEOT COM DECORAÇÃO ESPECIAL PARA LE MANS</h3>
+        </div>
+    </div>
 
     <div class="vl"></div>
     <div id="right">

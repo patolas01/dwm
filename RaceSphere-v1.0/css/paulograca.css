@@ -168,17 +168,14 @@ div.driverName {
 .noticia {
     margin-left: 25px;
     border: 1px solid #000000;
+    background-color: #f7f7f7;
 }
 
-.news {
-}
-
-.news img {
+.noticia img {
     width: 30%;
     float: left;
-    position: relative;
 }
 
-.news h3 {
-    margin: 0px 10px;
+.noticia h3 {
+    margin: 27px 0px;
 }
