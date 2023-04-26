@@ -19,37 +19,48 @@
         include 'navbar.php';
         ?>
 
-        <div class="container">
-                <h1 class="titulo">Showroom</h1>
-                <div class="row align-items-center">
-                        <div class="col-md-5 ">
-                                <h3>Carros</h3>
-                                <a href="carros.php">
-                                        <div class="img-1">
+        <div class="container-fluid">
+                <div class="row">
+                        <div class="col-md bar">
+                                <div class="bar-wrapper">
+                                        <h1 class="title">CARROS</h1>
+                                        <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e
+                                                revisitar
+                                                memórias antigas
+                                                ou então explorar toda a tecnologia moderna e evolução do mundo
+                                                automóvel</p>
+                                </div>
+                                <div class="bar-img" id="leftBar">
 
-                                        </div>
-                                </a>
+                                </div>
                         </div>
+                        <div class="col-md bar">
+                                <div class="bar-wrapper">
+                                        <h1 class="title">EQUIPAMENTOS</h1>
+                                        <p class="descr">Segurança em primeiro lugar, o conforto vem muito depois.
+                                                Observe
+                                                alguns dos equipamentos usados em diversas categorias. Desde Fatos,
+                                                Luvas,
+                                                Capacetes e Sapatos</p>
+                                </div>
 
-                        <div class="col-md-5 offset-md-2">
-                                <h3>Equipamentos</h3>
-                                <a href="equipamentos.php">
-                                        <div class="img-2">
+                                <div class="bar-img" id="rightBar">
 
-                                        </div>
-                                </a>
+                                </div>
                         </div>
                 </div>
         </div>
+
+
         <?php
         include 'footer.php';
         ?>
 </body>
 <script src="jquery/jquery-3.6.4.min.js"></script>
 <script>
-        jQuery(document).ready(function($) {
-                alert("Clik numa das imagens para ir para a página respetiva");
-        });
+        // jQuery(document).ready(function ($) {
+        //         alert("Clik numa das imagens para ir para a página respetiva");
+        // });
 </script>
 
 </html>
