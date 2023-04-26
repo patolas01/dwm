@@ -160,9 +160,9 @@ div.driverName {
 .newsBox .card {
     transition-duration: 212ms;
     border: 2px solid gainsboro;
-    width: 15%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 20%;
+    margin-left: 1%;
+    margin-right: 1%;
 }
 
 .newsBox .card:hover {
