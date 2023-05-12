@@ -1,0 +1,30 @@
+Daniel Ribeiro:
+- contactos.php
+- contactos.css
+- User Stories, Requisitos funcionais/não funcionais e Cruzamento dos Requisitos
+- persona-DanielRibeiro.pdf
+
+Paulo Leal:
+- privacyPolicy.php
+- main.css
+- pauloLeal.css
+- Perfis de Utilizador e  Requisitos funcionais do Front-End
+- persona-PauloLeal.pdf
+
+Luis Silva:
+- tercod.php
+- luissilva.css
+- Perfil de utilizador e Requisitos funcionais/não funcionais
+- persona-LuisSilva.pdf
+
+Alex Costa:
+- alex.css
+- FAQ.php
+- main.js
+- Perfil de utilizador e Requisitos funcionais
+- persona-Alex.png
+
+Paulo Graça:
+- sobre.php
+- paulograca.css
+- persona-PauloGraça.jpg
