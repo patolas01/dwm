@@ -30,13 +30,17 @@
             $query = "select email, pass from utilizador where email='" . $email . "' and pass='" . $password . "'";
             $result_set = $conn->query($query);
             if ($result_set) { 
-                if($result_set->num_rows==1)?>
+                if($result_set->num_rows==1){?>
                 <script>
                     window.setTimeout(function () {
                         location.href = "listUser.php";
                     }, 3000);
                 </script>
                 <?php
+                }
+                else{
+                    echo "Erro na autenticação credenciais erradas tente de novo";
+                }
             } else {
                 $code = $conn->errno; // error code of the most recent operation
                 $message = $conn->error; // error message of the most recent op.
