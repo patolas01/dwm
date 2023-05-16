@@ -30,7 +30,11 @@
             $query = "select email, pass from utilizador where email='" . $email . "' and pass='" . $password . "'";
             $result_set = $conn->query($query);
             if ($result_set) {
-                // Iterates the result
+                <script>
+                    window.setTimeout(function (){
+                        location.href="homepag.php";
+                    },3000);
+                </script>
             } else {
                 $code = $conn->errno; // error code of the most recent operation
                 $message = $conn->error; // error message of the most recent op.
