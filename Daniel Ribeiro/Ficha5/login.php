@@ -29,7 +29,8 @@
             $password = hash('sha512', $plaintext_password);
             $query = "select email, pass from utilizador where email='" . $email . "' and pass='" . $password . "'";
             $result_set = $conn->query($query);
-            if ($result_set) { ?>
+            if ($result_set) { 
+                if($result_set->num_rows==1)?>
                 <script>
                     window.setTimeout(function () {
                         location.href = "listUser.php";
