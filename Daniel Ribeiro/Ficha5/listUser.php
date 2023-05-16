@@ -6,15 +6,8 @@
 </head>
 
 <body>
-    <form action="Ficha4Ex7.php" method="POST">
-        <center><br>
-            <input type="text" name="email" placeholder="Email"><br><br>
-            <input type="text" name="pass" placeholder="Password"><br><br>
-            <input type="submit" name="submit">
-        </center>
-    </form>
+    <center>
     <?php
-    if (isset($_POST['submit'])) {
         $host = "localhost";
         $database = "pws";
         $user = "root";
@@ -27,23 +20,23 @@
             $email = $_POST['email'];
             $plaintext_password = $_POST['pass'];
             $password = hash('sha512', $plaintext_password);
-            $query = "select email, pass from utilizador where email='" . $email . "' and pass='" . $password . "'";
+            $query = "select * from utilizador";
             $result_set = $conn->query($query);
-            if ($result_set) { ?>
-                <script>
-                    window.setTimeout(function () {
-                        location.href = "listUser.php";
-                    }, 3000);
-                </script>
-                <?php
+            if ($result_set) {
+                while ($row = $result_set->fetch_assoc()) {
+                    ?><table><tr><td>
+                    <?php
+                    echo $row['nome'];
+                    ?></td></tr></table>
+                    <?php
+                }
             } else {
                 $code = $conn->errno; // error code of the most recent operation
                 $message = $conn->error; // error message of the most recent op.
                 printf("<p>Query error: %d %s</p>", $code, $message);
             }
         }
-    }
-    ?>
+    ?></center>
 </body>
 
 </html>
