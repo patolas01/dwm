@@ -7,7 +7,7 @@
 
 <body>
     <center>
-    <?php
+        <?php
         $host = "localhost";
         $database = "pws";
         $user = "root";
@@ -17,17 +17,21 @@
             echo "Failed to connect to MySQL: " . $conn->connect_error;
             exit();
         } else {
-            $email = $_POST['email'];
-            $plaintext_password = $_POST['pass'];
-            $password = hash('sha512', $plaintext_password);
             $query = "select * from utilizador";
             $result_set = $conn->query($query);
             if ($result_set) {
                 while ($row = $result_set->fetch_assoc()) {
-                    ?><table><tr><td>
-                    <?php
-                    echo $row['nome'];
-                    ?></td></tr></table>
+                    ?>
+                    <table>
+                        <tr>
+                            <td>
+                                <?php
+                                echo $row['nome'];
+                                ?>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </table>
                     <?php
                 }
             } else {
@@ -36,7 +40,8 @@
                 printf("<p>Query error: %d %s</p>", $code, $message);
             }
         }
-    ?></center>
+        ?>
+    </center>
 </body>
 
 </html>

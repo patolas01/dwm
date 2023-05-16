@@ -6,7 +6,7 @@
 </head>
 
 <body>
-    <form action="Ficha4Ex7.php" method="POST">
+    <form action="login.php" method="POST">
         <center><br>
             <input type="text" name="email" placeholder="Email"><br><br>
             <input type="text" name="pass" placeholder="Password"><br><br>
