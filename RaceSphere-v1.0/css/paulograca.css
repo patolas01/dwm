@@ -181,3 +181,8 @@ div.driverName {
 .noticia h5 {
     margin: 37px 0px;
 }
+
+div#categoria {
+    text-align: center; 
+    margin-top: 30px;
+}
