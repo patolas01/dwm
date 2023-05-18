@@ -23,7 +23,7 @@
         ?>
         <h1>Tabela Admins e Pressmans</h1>
         <table class="table table-success table-striped-columns">
-            <tr><th>Id</th><th>Nome</th><th>Cargo</th><th>Email</th></tr>
+            <tr><th>Id</th><th>Nome</th><th>Cargo</th><th>Email</th><th>Editar contas</th><th>Eliminar contas</th></tr>
             <?php
             while ($row = $result_set->fetch_assoc()) {
                 $id_user=$row['id_admin'];
@@ -50,8 +50,12 @@
                         ?>
                     </td>
                     <td>
+                        <form action="userManagement.php" method="POST"><button name="editar" type="submit"
+                                value="<?php echo $id_user ?>" onclick='this.form.submit()'>Editar</button></form>
+                    </td>
+                    <td>
                         <form action="userManagement.php" method="POST"><button name="eliminar" type="submit"
-                                value="<?php echo $id_user ?>" onclick='this.form.submit()'>eliminar</button></form>
+                                value="<?php echo $id_user ?>" onclick='this.form.submit()'>Eliminar</button></form>
                     </td>
                 </tr>
 
