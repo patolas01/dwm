@@ -27,18 +27,26 @@
             $email = $_POST['email'];
             $plaintext_password = $_POST['pass'];
             $password = hash('sha512', $plaintext_password);
-            $query = "select email, pass from utilizador where email='" . $email . "' and pass='" . $password . "'";
+            $query = "select email, pass, nome from utilizador where email='" . $email . "' and pass='" . $password . "'";
             $result_set = $conn->query($query);
-            if ($result_set) { 
-                if($result_set->num_rows==1){?>
-                <script>
-                    window.setTimeout(function () {
-                        location.href = "listUser.php";
-                    }, 3000);
-                </script>
-                <?php
-                }
-                else{
+            if ($result_set) {
+                if ($result_set->num_rows == 1) {
+                    while ($row = $result_set->fetch_assoc()) {
+                        $nome = $row['nome'];
+                        $_SESSION = array();
+                        $_SESSION["email"] = $email;
+                        $_SESSION["nome"] = $nome;
+                    }
+                    if ($email == "admin@gmail.com") { ?>
+                        <script>
+                            window.setTimeout(function () {
+                                location.href = "listUser.php";
+                            }, 3000);
+                        </script>
+                        <?php
+                    }
+                    echo "Bem-Vindo ".$_SESSION["nome"];
+                } else {
                     echo "Erro na autenticação credenciais erradas tente de novo";
                 }
             } else {
