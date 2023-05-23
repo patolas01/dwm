@@ -15,7 +15,7 @@
 
 <body id="rally-index">
     <?php
-    include '../navbar.php';
+    include 'navbar.php';
     include '../sqli/conn.php';
     $query = "select * from administrador";
     $result_set = $conn->query($query);
@@ -50,8 +50,7 @@
                         ?>
                     </td>
                     <td>
-                        <form action="userManagement.php" method="POST"><button name="editar" type="submit"
-                                value="<?php echo $id_user ?>" onclick='this.form.submit()'>Editar</button></form>
+                        <form action="editUsers.php" method="POST"><button><a href="editUsers.php?id=<?=$id_user?>">Editar</a></button></form>
                     </td>
                     <td>
                         <form action="userManagement.php" method="POST"><button name="eliminar" type="submit"
