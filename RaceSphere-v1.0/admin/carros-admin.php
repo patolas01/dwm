@@ -37,8 +37,8 @@
                 // Obter os valores dos outros campos do formulário
 
                 // Consulta SQL para inserir os dados na tabela
-                $sql = "insert into carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, idcarrofoto)
-        values ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '')";
+                $sql = "insert into carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro,)
+        values ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro',)";
 
                 // Executa a consulta e verifica se foi bem-sucedida
                 if ($conn->query($sql) === TRUE) {
@@ -46,6 +46,9 @@
                 } else {
                         echo "Erro ao inserir os dados: " . $conn->error;
                 }
+
+                ini_set('display_errors', 1);
+                error_reporting(E_ALL);
         }
         ?>
 
@@ -93,7 +96,6 @@
                         <div class="form-group">
                                 <label for="trac_carro">Tipo de Tração:</label>
                                 <select class="form-control" id="trac_carro" name="trac_carro">
-                                        <option value="">Nenhum</option>
                                         <?php
                                         foreach ($trac_carro_enum as $option) {
                                                 echo "<option value='$option'>$option</option>";
@@ -104,7 +106,6 @@
                         <div class="form-group">
                                 <label for="caixa_carro">Tipo de Caixa:</label>
                                 <select class="form-control" id="caixa_carro" name="caixa_carro">
-                                        <option value="">Nenhum</option>
                                         <?php
                                         foreach ($caixa_carro_enum as $option) {
                                                 echo "<option value='$option'>$option</option>";
@@ -115,7 +116,6 @@
                         <div class="form-group">
                                 <label for="comb_carro">Tipo de Combustível:</label>
                                 <select class="form-control" id="comb_carro" name="comb_carro">
-                                        <option value="">Nenhum</option>
                                         <?php
                                         foreach ($comb_carro_enum as $option) {
                                                 echo "<option value='$option'>$option</option>";
@@ -241,7 +241,7 @@
                         $("#cilind_carro").val("");
                         $("#hp_carro").val("");
                         $("#desc_carro").val("");
-                        $("#idfotocarro").val("");
+                        $("#idcarrofoto").val("");
                         // Limpar os outros campos do formulário
                 });
 
