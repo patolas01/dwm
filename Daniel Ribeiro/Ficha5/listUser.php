@@ -1,3 +1,6 @@
+<?php
+    session_start();
+    ?>
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +35,10 @@
                                         <?php
                                         echo $row['nome'];
                                         ?>
+                                    </td>
+                                    <td>
+                                        <form action="edit.php" method="POST"><button name="editar" type="submit"
+                                                value="<?php echo $email ?>" onclick='this.form.submit()'>editar</button></form>
                                     </td>
                                     <td>
                                         <form action="listUser.php" method="POST"><button name="eliminar" type="submit"

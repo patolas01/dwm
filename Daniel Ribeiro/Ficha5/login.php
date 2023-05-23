@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +35,7 @@
             if ($result_set) {
                 if ($result_set->num_rows == 1) {
                     while ($row = $result_set->fetch_assoc()) {
+                        
                         $nome = $row['nome'];
                         $_SESSION = array();
                         $_SESSION["email"] = $email;
