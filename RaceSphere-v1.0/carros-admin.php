@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <?php include('bootstrapInc.php'); ?>
+        <?php include('sqli/conn.php'); ?>
         <link rel="stylesheet" href="css/luissilva.css">
         <title>Carros Admin</title>
 </head>
