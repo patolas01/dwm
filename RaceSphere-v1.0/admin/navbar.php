@@ -5,7 +5,7 @@
             <span class="navbar-brand"><img src="../img/logo.svg" alt="RaceSphere" height="60" width="60"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <a class="navbar-brand " href="index.php"><img src="../img/logoExt.svg" alt="RaceSphere" height="30"
+            <a class="navbar-brand " href="../index.php"><img src="../img/logoExt.svg" alt="RaceSphere" height="30"
                     class="d-inline-block align-top"></a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">

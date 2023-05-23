@@ -17,6 +17,7 @@
 <body>
         <?php
         include 'navbar.php';
+        include '../sqli/conn.php';
         ?>
 
 
