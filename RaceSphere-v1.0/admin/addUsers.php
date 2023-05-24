@@ -24,14 +24,14 @@
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Novo Admin/User</h3>
+                        <h3>Novo Admin/Pressman</h3>
                         <p>Preencha o formulário</p>
-                        <form class="requires-validation" novalidate>
+                        <form action="addUsers.php" action="POST" class="requires-validation" novalidate>
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="name" placeholder="Nome" required>
-                                <div class="valid-feedback">Username field is valid!</div>
-                                <div class="invalid-feedback">Username field cannot be blank!</div>
+                                <div class="valid-feedback">O campo nome é válido!</div>
+                                <div class="invalid-feedback">O campo nome não pode estar a branco!</div>
                             </div>
 
                             <div class="col-md-12">
@@ -41,10 +41,10 @@
                             </div>
 
                             <div class="col-md-12">
-                                <select class="form-select mt-3" required>
+                                <select name="cargo" class="form-select mt-3" required>
                                     <option selected disabled value="">Cargo</option>
-                                    <option value="Admin">Administrador</option>
-                                    <option value="Pressman">Pressman</option>
+                                    <option value="admin">Administrador</option>
+                                    <option value="press">Pressman</option>
                                 </select>
                                 <div class="valid-feedback">Cargo selecionado</div>
                                 <div class="invalid-feedback">Por favor selecione um cargo</div>
@@ -67,7 +67,7 @@
 
 
                             <div class="form-button mt-3">
-                                <button id="submit" type="submit" class="btn btn-primary">Registar</button>
+                                <button name="submit" type="submit" class="btn btn-primary">Registar</button>
                             </div>
                         </form>
                     </div>
@@ -75,6 +75,40 @@
             </div>
         </div>
     </div>
+    <?php
+    if (isset($_POST["submit"])) {
+        $nomeNovoRegisto = $_POST["name"];
+        $emailNovoRegisto = $_POST["email"];
+        $cargoNovoRegisto = $_POST["cargo"];
+        $passwordNovoRegistoSemEncriptacao = $_POST["password"];
+        $passwordNovoRegisto = hash('sha512', $passwordNovoRegistoSemEncriptacao);
+        $query = "select * from administrador where email = '" . $emailNovoRegisto . "'";
+        $result_set = $conn->query($query);
+        if ($result_set) {
+            if ($result_set->num_rows == 1) { ?>
+                <script>
+                    alert("Email já existe!");
+                </script>
+                <?php
+            } else {
+                $query = "Insert into administrador (id_admin, nome_admin, cargo_admin, email_admin, password_admin) VALUES (NULL, '" . $nomeNovoRegisto . "', '" . $cargoNovoRegisto . "', '" . $emailNovoRegisto . "', '" . $passwordNovoRegisto . "'   )";
+                $result_insert = $conn->query($query);
+                if ($result_insert) {
+                    ?>
+                    <script>
+                        let cargo = "<?php echo $cargoNovoRegisto; ?>"
+                        alert("Novo " + cargo + " adicionado");
+                        window.setTimeout(function () {
+                            location.href = "userManagement.php";
+                        }, 0);
+                    </script>
+                    <?php
+                }
+            }
+
+        }
+    }
+    ?>
     <?php
     include '../footer.php';
     ?>

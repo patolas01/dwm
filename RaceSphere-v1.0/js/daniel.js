@@ -9,8 +9,12 @@ $(document).ready(function(){
             event.preventDefault()
             event.stopPropagation()
           }
+          else{
+            
+          }
     
           form.classList.add('was-validated')
         }, false)
       })
     })()
+})

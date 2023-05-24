@@ -329,7 +329,7 @@ div#tabelasListagemUsers{
   padding-right: 2%;
 }
 div#tabelasListagemUsers h1{
-  color: white;
+  color: black;
 }
 a{
   text-decoration: none;
@@ -357,7 +357,7 @@ div#botaoAddUsers{
 
 html, body {
     height: 100%;
-    background-color: #152733;
+    background-color: white;
     overflow: hidden;
 }
 /*Form Admin/Pressman*/
@@ -391,7 +391,7 @@ html, body {
 }
 
 .form-content .form-items {
-    border: 3px solid #fff;
+    border: 3px solid black;
     padding: 40px;
     display: inline-block;
     width: 100%;
@@ -405,7 +405,7 @@ html, body {
 }
 
 .form-content h3 {
-    color: #fff;
+    color: black;
     text-align: left;
     font-size: 28px;
     font-weight: 600;
@@ -417,7 +417,7 @@ html, body {
 }
 
 .form-content p {
-    color: #fff;
+    color: black;
     text-align: left;
     font-size: 17px;
     font-weight: 300;
@@ -427,7 +427,7 @@ html, body {
 
 
 .form-content label, .was-validated .form-check-input:invalid~.form-check-label, .was-validated .form-check-input:valid~.form-check-label{
-    color: #fff;
+    color: black;
 }
 
 .form-content input[type=text], .form-content input[type=password], .form-content input[type=email], .form-content select {
@@ -437,10 +437,10 @@ html, body {
     border: 0;
     outline: 0;
     border-radius: 6px;
-    background-color: #fff;
+    background-color: black;
     font-size: 15px;
     font-weight: 300;
-    color: #8D8D8D;
+    color: orange;
     -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease;
     margin-top: 16px;
@@ -448,14 +448,14 @@ html, body {
 
 
 .btn-primary{
-    background-color: #6C757D;
+    background-color: orange;
     outline: none;
     border: 0px;
      box-shadow: none;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active{
-    background-color: #495056;
+    background-color: orange;
     outline: none !important;
     border: none !important;
      box-shadow: none;
@@ -467,11 +467,11 @@ html, body {
     padding: 8px 20px;
     border-radius: 6px;
     text-align: left;
-    background-color: #fff;
+    background-color: black;
     border: 0;
     font-size: 15px;
     font-weight: 300;
-    color: #8D8D8D;
+    color: orange;
     outline: none;
     resize: none;
     height: 120px;
@@ -482,8 +482,8 @@ html, body {
 
 .form-content textarea:hover, .form-content textarea:focus {
     border: 0;
-    background-color: #ebeff8;
-    color: #8D8D8D;
+    background-color: black;
+    color: orange;
 }
 
 .mv-up{
@@ -492,10 +492,10 @@ html, body {
 }
 
 .invalid-feedback{
-    color: #ff606e;
+    color: red;
 }
 
 .valid-feedback{
-   color: #2acc80;
+   color: green;
 }
 /*css addUsers.php*/
