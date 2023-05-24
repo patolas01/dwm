@@ -159,13 +159,13 @@
                                                                 <th>Marca</th>
                                                                 <th>Modelo</th>
                                                                 <th>Ano</th>
-                                                                <th>Trac</th>
+                                                                <th>Tração</th>
                                                                 <th>Caixa</th>
-                                                                <th>Comb</th>
-                                                                <th>Cilindros</th>
-                                                                <th>hp</th>
-                                                                <th class="col-2">desc</th>
-                                                                <th>Id foto carro</th>
+                                                                <th class="col-1">Combustivel</th>
+                                                                <th >Cilindros</th>
+                                                                <th class="col-1">Potência</th>
+                                                                <th class="col-1">Descrição</th>
+                                                                <th>Id foto</th>
                                                                 <th class="col-2">Ações</th>
                                                         </tr>
                                                 </thead>
@@ -190,7 +190,7 @@
                                                                         echo "<td>" . $row["hp_carro"] . "</td>";
                                                                         echo "<td>" . $row["desc_carro"] . "</td>";
                                                                         echo "<td>" . $row["idcarrofoto"] . "</td>";
-                                                                        echo "<td><button class='btn btn-danger btn-delete'>Excluir</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
+                                                                        echo "<td><button class='btn btn-danger btn-delete'>Eliminar</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
                                                                         echo "</tr>";
                                                                 }
                                                         } else {
