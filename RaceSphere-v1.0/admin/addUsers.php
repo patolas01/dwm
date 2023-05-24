@@ -11,7 +11,6 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="../js/daniel.js"></script>
 </head>
 
 <body>
@@ -67,7 +66,7 @@
 
 
                             <div class="form-button mt-3">
-                                <button name="submit" type="submit" class="btn btn-primary">Registar</button>
+                                <button id="registoAdminPressman" type="submit" class="btn btn-primary">Registar</button>
                             </div>
                         </form>
                     </div>
@@ -75,40 +74,6 @@
             </div>
         </div>
     </div>
-    <?php
-    if (isset($_POST["submit"])) {
-        $nomeNovoRegisto = $_POST["name"];
-        $emailNovoRegisto = $_POST["email"];
-        $cargoNovoRegisto = $_POST["cargo"];
-        $passwordNovoRegistoSemEncriptacao = $_POST["password"];
-        $passwordNovoRegisto = hash('sha512', $passwordNovoRegistoSemEncriptacao);
-        $query = "select * from administrador where email = '" . $emailNovoRegisto . "'";
-        $result_set = $conn->query($query);
-        if ($result_set) {
-            if ($result_set->num_rows == 1) { ?>
-                <script>
-                    alert("Email já existe!");
-                </script>
-                <?php
-            } else {
-                $query = "Insert into administrador (id_admin, nome_admin, cargo_admin, email_admin, password_admin) VALUES (NULL, '" . $nomeNovoRegisto . "', '" . $cargoNovoRegisto . "', '" . $emailNovoRegisto . "', '" . $passwordNovoRegisto . "'   )";
-                $result_insert = $conn->query($query);
-                if ($result_insert) {
-                    ?>
-                    <script>
-                        let cargo = "<?php echo $cargoNovoRegisto; ?>"
-                        alert("Novo " + cargo + " adicionado");
-                        window.setTimeout(function () {
-                            location.href = "userManagement.php";
-                        }, 0);
-                    </script>
-                    <?php
-                }
-            }
-
-        }
-    }
-    ?>
     <?php
     include '../footer.php';
     ?>
