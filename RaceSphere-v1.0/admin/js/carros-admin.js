@@ -35,33 +35,4 @@ $(document).ready(function () {
                 $("#desc_carro").val("");
                 $("#idcarrofoto").val("");
         });
-
-
-        // Ao clicar no botão de eliminar
-        
-
-
-        // Ao clicar no botão de editar
-        $("#table-body").on("click", ".btn-edit", function () {
-                var row = $(this).closest("tr");
-                var id_carro = row.find("td:nth-child(1)").text();
-                var marca_carro = row.find("td:nth-child(2)").text();
-                var modelo_carro = row.find("td:nth-child(3)").text();
-                // Obter os valores dos outros campos da linha
-
-                // Preencher o formulário de edição com os valores
-                $("#id_carro").val(id_carro);
-                $("#marca_carro").val(marca_carro);
-                $("#modelo_carro").val(modelo_carro);
-                // Preencher os outros campos do formulário de edição
-
-                // Remover a linha da tabela
-                row.remove();
-        });
-
-
-
-
-
-        
 });
