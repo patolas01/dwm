@@ -1,5 +1,6 @@
 body {
     background-color: #f2f2f2;
+    width: 100%;
 }
 
 .faq-container {
@@ -148,3 +149,23 @@ p {
 #rightBar {
     background-image: url(../img/equip_back.jpg);
 }
+
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    font-size: 0.9rem;
+}
+
+.table {
+    table-layout: fixed;
+  }
+
+  .table td {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }

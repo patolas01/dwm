@@ -4,24 +4,6 @@ $(document).ready(function() {
             document.getElementById("insert-form").submit();
     });
 
-
-    var mensagem = document.createElement("div");
-    mensagem.textContent = "<?php echo $mensagem; ?>";
-    mensagem.style.backgroundColor = "<?php echo $corDeFundo; ?>";
-    mensagem.style.color = "white";
-    mensagem.style.position = "fixed";
-    mensagem.style.top = "60px";
-    mensagem.style.right = "10px";
-    mensagem.style.padding = "10px";
-    mensagem.style.borderRadius = "5px";
-    document.body.appendChild(mensagem);
-
-    setTimeout(function() {
-            mensagem.parentNode.removeChild(mensagem);
-    }, 5000); // 5 segundos (em milissegundos)
-
-
-
     // Ao enviar o formulário de inserção
     $("#insert-form").submit(function(event) {
             event.preventDefault();

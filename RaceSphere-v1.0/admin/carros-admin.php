@@ -10,7 +10,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <?php include('bootstrapInc.php'); ?>
-        <link rel="stylesheet" href="css/luissilva.css">
+        <link rel="stylesheet" href="../css/luissilva.css">
         <title>Carros Admin</title>
 </head>
 
@@ -36,8 +36,8 @@
                 // Obter os valores dos outros campos do formulário
 
                 // Consulta SQL para inserir os dados na tabela
-                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, idcarrofoto)
-        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$idcarrofoto')";
+                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro)
+        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro')";
                 // Executa a consulta e verifica se foi bem-sucedida
                 if ($conn->query($sql) === TRUE) {
                         // Dados inseridos com sucesso
@@ -58,19 +58,19 @@
                 <!-- Formulário de inserção de dados -->
                 <h2>Inserir Carro</h2>
                 <form id="insert-form" method="POST">
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="id_carro">ID:</label>
                                 <input type="text" class="form-control" id="id_carro" name="id_carro">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="marca_carro">Marca:</label>
                                 <input type="text" class="form-control" id="marca_carro" name="marca_carro" maxlength="50" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="modelo_carro">Modelo:</label>
                                 <input type="text" class="form-control" id="modelo_carro" name="modelo_carro" maxlength="60" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="ano_carro">Ano:</label>
                                 <input type="number" class="form-control" id="ano_carro" name="ano_carro" required>
                         </div><?php
@@ -95,7 +95,7 @@
                                         return $enum_values;
                                 }
                                 ?>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="trac_carro">Tipo de Tração:</label>
                                 <select class="form-control" id="trac_carro" name="trac_carro">
                                         <?php
@@ -105,7 +105,7 @@
                                         ?>
                                 </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="caixa_carro">Tipo de Caixa:</label>
                                 <select class="form-control" id="caixa_carro" name="caixa_carro">
                                         <?php
@@ -115,7 +115,7 @@
                                         ?>
                                 </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="comb_carro">Tipo de Combustível:</label>
                                 <select class="form-control" id="comb_carro" name="comb_carro">
                                         <?php
@@ -125,19 +125,19 @@
                                         ?>
                                 </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="cilind_carro">Cilindrada:</label>
                                 <input type="number" class="form-control" id="cilind_carro" name="cilind_carro">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="hp_carro">Potência:</label>
                                 <input type="number" class="form-control" id="hp_carro" name="hp_carro">
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="desc_carro">Descrição:</label>
                                 <input type="text" class="form-control" id="desc_carro" name="desc_carro" required>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-md-6">
                                 <label for="idcarrofoto">Id foto carro:</label>
                                 <input type="text" class="form-control" id="idcarrofoto" name="idcarrofoto">
                         </div>
@@ -147,59 +147,85 @@
                 </form>
 
                 <!-- Tabela de visualização dos dados -->
-                <h2 class="mt-3">Carros</h2>
+                <h2 class="mt-5">Carros</h2>
                 <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ID, Marca ou Modelo">
-                <table class="table table-striped mt-3">
-                        <thead>
-                                <tr>
-                                        <th>ID</th>
-                                        <th>Marca</th>
-                                        <th>Modelo</th>
-                                        <th>Ano</th>
-                                        <th>Trac</th>
-                                        <th>Caixa</th>
-                                        <th>Comb</th>
-                                        <th>Cilindros</th>
-                                        <th>hp</th>
-                                        <th>desc</th>
-                                        <th>Id foto carro</th>
-                                        <th>Ações</th>
-                                </tr>
-                        </thead>
-                        <tbody id="table-body">
-                                <?php
-                                // Consulta para obter os dados da tabela
-                                $sql_select = "SELECT * FROM carro";
-                                $result = $conn->query($sql_select);
+                <div class="container mt-3">
+                        <div class="row">
+                                <div class="co-md-8">
+                                        <table class="table table-striped mt-3">
+                                                <thead>
+                                                        <tr>
+                                                                <th>ID</th>
+                                                                <th>Marca</th>
+                                                                <th>Modelo</th>
+                                                                <th>Ano</th>
+                                                                <th>Trac</th>
+                                                                <th>Caixa</th>
+                                                                <th>Comb</th>
+                                                                <th>Cilindros</th>
+                                                                <th>hp</th>
+                                                                <th class="col-2">desc</th>
+                                                                <th>Id foto carro</th>
+                                                                <th class="col-2">Ações</th>
+                                                        </tr>
+                                                </thead>
+                                                <tbody id="table-body">
+                                                        <?php
+                                                        // Consulta para obter os dados da tabela
+                                                        $sql_select = "SELECT * FROM carro";
+                                                        $result = $conn->query($sql_select);
 
-                                // Exibir os dados na tabela
-                                if ($result->num_rows > 0) {
-                                        while ($row = $result->fetch_assoc()) {
-                                                echo "<tr>";
-                                                echo "<td>" . $row["id_carro"] . "</td>";
-                                                echo "<td>" . $row["marca_carro"] . "</td>";
-                                                echo "<td>" . $row["modelo_carro"] . "</td>";
-                                                echo "<td>" . $row["ano_carro"] . "</td>";
-                                                echo "<td>" . $row["trac_carro"] . "</td>";
-                                                echo "<td>" . $row["caixa_carro"] . "</td>";
-                                                echo "<td>" . $row["comb_carro"] . "</td>";
-                                                echo "<td>" . $row["cilind_carro"] . "</td>";
-                                                echo "<td>" . $row["hp_carro"] . "</td>";
-                                                echo "<td>" . $row["desc_carro"] . "</td>";
-                                                echo "<td>" . $row["idcarrofoto"] . "</td>";
-                                                echo "<td><button class='btn btn-danger btn-delete'>Excluir</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
-                                                echo "</tr>";
-                                        }
-                                } else {
-                                        echo "<tr><td colspan='12'>Nenhum resultado encontrado.</td></tr>";
-                                }
-                                ?>
-                        </tbody>
-                </table>
+                                                        // Exibir os dados na tabela
+                                                        if ($result->num_rows > 0) {
+                                                                while ($row = $result->fetch_assoc()) {
+                                                                        echo "<tr>";
+                                                                        echo "<td>" . $row["id_carro"] . "</td>";
+                                                                        echo "<td>" . $row["marca_carro"] . "</td>";
+                                                                        echo "<td>" . $row["modelo_carro"] . "</td>";
+                                                                        echo "<td>" . $row["ano_carro"] . "</td>";
+                                                                        echo "<td>" . $row["trac_carro"] . "</td>";
+                                                                        echo "<td>" . $row["caixa_carro"] . "</td>";
+                                                                        echo "<td>" . $row["comb_carro"] . "</td>";
+                                                                        echo "<td>" . $row["cilind_carro"] . "</td>";
+                                                                        echo "<td>" . $row["hp_carro"] . "</td>";
+                                                                        echo "<td>" . $row["desc_carro"] . "</td>";
+                                                                        echo "<td>" . $row["idcarrofoto"] . "</td>";
+                                                                        echo "<td><button class='btn btn-danger btn-delete'>Excluir</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
+                                                                        echo "</tr>";
+                                                                }
+                                                        } else {
+                                                                echo "<tr><td colspan='12'>Nenhum resultado encontrado.</td></tr>";
+                                                        }
+                                                        ?>
+                                                </tbody>
+                                        </table>
+                                </div>
+                        </div>
+                </div>
         </div>
         <?php
         include 'footer.php';
         ?>
 </body>
-<script src="js/carros-admin.js"> </script>
+<script src="js/carros-admin.js"></script>
+<script>
+        var mensagem = "<?php echo $mensagem; ?>";
+        var corDeFundo = "<?php echo $corDeFundo; ?>";
+
+        var mensagemElement = document.createElement("div");
+        mensagemElement.textContent = mensagem;
+        mensagemElement.style.backgroundColor = corDeFundo;
+        mensagemElement.style.color = "white";
+        mensagemElement.style.position = "fixed";
+        mensagemElement.style.top = "60px";
+        mensagemElement.style.right = "10px";
+        mensagemElement.style.padding = "10px";
+        mensagemElement.style.borderRadius = "5px";
+        document.body.appendChild(mensagemElement);
+
+        setTimeout(function() {
+                mensagemElement.parentNode.removeChild(mensagemElement);
+        }, 5000); // 5 segundos (em milissegundos)
+</script>
+
 </html>
