@@ -21,7 +21,6 @@
 
 
 
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $marca_carro = $_POST['marca_carro'];
                 $modelo_carro = $_POST['modelo_carro'];
@@ -73,28 +72,33 @@
                         <div class="form-group col-md-6">
                                 <label for="ano_carro">Ano:</label>
                                 <input type="number" class="form-control" id="ano_carro" name="ano_carro" required>
-                        </div><?php
-                                $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";
-                                $result_enum_values = $conn->query($sql_enum_values);
+                        </div>
+                        <?php
+                        $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";
+                        $result_enum_values = $conn->query($sql_enum_values);
 
-                                $enum_values = array();
+                        $enum_values = array();
 
-                                while ($row = $result_enum_values->fetch_assoc()) {
-                                        $enum_values[] = $row['COLUMN_TYPE'];
-                                }
+                        while ($row = $result_enum_values->fetch_assoc()) {
+                                $enum_values[] = $row['COLUMN_TYPE'];
+                        }
 
-                                // Extrai os valores ENUM de cada campo
-                                $trac_carro_enum = extract_enum_values($enum_values[0]);
-                                $caixa_carro_enum = extract_enum_values($enum_values[1]);
-                                $comb_carro_enum = extract_enum_values($enum_values[2]);
+                        // Extrai os valores ENUM de cada campo
+                        $trac_carro_enum = extract_enum_values($enum_values[0]);
+                        $caixa_carro_enum = extract_enum_values($enum_values[1]);
+                        $comb_carro_enum = extract_enum_values($enum_values[2]);
 
-                                function extract_enum_values($enum_definition)
-                                {
-                                        preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
-                                        $enum_values = explode("','", $matches[1]);
-                                        return $enum_values;
-                                }
-                                ?>
+                        function extract_enum_values($enum_definition)
+                        {
+                                preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
+                                $enum_values = explode("','", $matches[1]);
+
+                                return $enum_values;
+                        }
+
+                        // Configura a codificação UTF-8 para a conexão com o banco de dados
+                        $conn->set_charset("utf8");
+                        ?>
                         <div class="form-group col-md-6">
                                 <label for="trac_carro">Tipo de Tração:</label>
                                 <select class="form-control" id="trac_carro" name="trac_carro">
@@ -162,7 +166,7 @@
                                                                 <th>Tração</th>
                                                                 <th>Caixa</th>
                                                                 <th class="col-1">Combustivel</th>
-                                                                <th >Cilindros</th>
+                                                                <th>Cilindros</th>
                                                                 <th class="col-1">Potência</th>
                                                                 <th class="col-1">Descrição</th>
                                                                 <th>Id foto</th>
