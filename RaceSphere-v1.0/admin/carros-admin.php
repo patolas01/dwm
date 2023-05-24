@@ -95,7 +95,7 @@
 
                                 return $enum_values;
                         }
-                        
+
                         ?>
                         <div class="form-group col-md-6">
                                 <label for="trac_carro">Tipo de Tração:</label>
@@ -177,6 +177,23 @@
                                                         $sql_select = "SELECT * FROM carro";
                                                         $result = $conn->query($sql_select);
 
+                                                        // Verificar se o método de solicitação é DELETE e se o ID do carro foi fornecido
+                                                        if ($_SERVER["REQUEST_METHOD"] == "DELETE" && isset($_GET['id'])) {
+                                                                $idCarro = $_GET['id'];
+
+                                                                // Consulta SQL para excluir o carro com o ID especificado
+                                                                $sqlExcluirCarro = "DELETE FROM carro WHERE id_carro = '$idCarro'";
+
+                                                                // Executar a consulta de exclusão
+                                                                if ($conn->query($sqlExcluirCarro) === TRUE) {
+                                                                        // A exclusão foi bem-sucedida
+                                                                        http_response_code(200); // Código de resposta HTTP 200 (OK)
+                                                                } else {
+                                                                        // Ocorreu um erro ao excluir o carro
+                                                                        http_response_code(500); // Código de resposta HTTP 500 (Erro interno do servidor)
+                                                                }
+                                                        }
+
                                                         // Exibir os dados na tabela
                                                         if ($result->num_rows > 0) {
                                                                 while ($row = $result->fetch_assoc()) {
@@ -192,7 +209,7 @@
                                                                         echo "<td>" . $row["hp_carro"] . "</td>";
                                                                         echo "<td>" . $row["desc_carro"] . "</td>";
                                                                         echo "<td>" . $row["idcarrofoto"] . "</td>";
-                                                                        echo "<td><button class='btn btn-danger btn-delete'>Eliminar</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
+                                                                        echo "<td><button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
                                                                         echo "</tr>";
                                                                 }
                                                         } else {
@@ -211,23 +228,65 @@
 </body>
 <script src="js/carros-admin.js"></script>
 <script>
-        var mensagem = "<?php echo $mensagem; ?>";
-        var corDeFundo = "<?php echo $corDeFundo; ?>";
+        
 
-        var mensagemElement = document.createElement("div");
-        mensagemElement.textContent = mensagem;
-        mensagemElement.style.backgroundColor = corDeFundo;
-        mensagemElement.style.color = "white";
-        mensagemElement.style.position = "fixed";
-        mensagemElement.style.top = "60px";
-        mensagemElement.style.right = "10px";
-        mensagemElement.style.padding = "10px";
-        mensagemElement.style.borderRadius = "5px";
-        document.body.appendChild(mensagemElement);
 
-        setTimeout(function() {
-                mensagemElement.parentNode.removeChild(mensagemElement);
-        }, 5000); // 5 segundos (em milissegundos)
+
+        // Função para exibir a mensagem de sucesso ou erro
+        function exibirMensagem(mensagem, corDeFundo) {
+                var mensagemElement = document.createElement("div");
+                mensagemElement.textContent = mensagem;
+                mensagemElement.style.backgroundColor = corDeFundo;
+                mensagemElement.style.color = "white";
+                mensagemElement.style.position = "fixed";
+                mensagemElement.style.top = "60px";
+                mensagemElement.style.right = "10px";
+                mensagemElement.style.padding = "10px";
+                mensagemElement.style.borderRadius = "5px";
+                document.body.appendChild(mensagemElement);
+
+                setTimeout(function() {
+                        mensagemElement.parentNode.removeChild(mensagemElement);
+                }, 5000); // 5 segundos (em milissegundos)
+        }
+
+        // Função para lidar com o evento de exclusão
+        function excluirCarro(idCarro) {
+                // Confirmar a exclusão com o usuário
+                var confirmarExclusao = confirm("Tem certeza que deseja excluir este carro?");
+
+                if (confirmarExclusao) {
+                        // Enviar uma solicitação DELETE para excluir o carro
+                        fetch(`carros-admin.php?id=${idCarro}`, {
+                                        method: "DELETE"
+                                })
+                                .then(function(response) {
+                                        if (response.ok) {
+                                                // Exclusão bem-sucedida
+                                                exibirMensagem("Carro excluído com sucesso", "green");
+                                                // Recarregar a página após 2 segundos para atualizar a tabela
+                                                setTimeout(function() {
+                                                        location.reload();
+                                                }, 2000);
+                                        } else {
+                                                // Ocorreu um erro ao excluir o carro
+                                                throw new Error("Erro ao excluir o carro");
+                                        }
+                                })
+                                .catch(function(error) {
+                                        // Ocorreu um erro
+                                        exibirMensagem(error.message, "red");
+                                });
+                }
+        }
+
+        // Lidar com o evento de clique no botão de exclusão
+        document.addEventListener("click", function(event) {
+                if (event.target.classList.contains("btn-delete")) {
+                        var idCarro = event.target.getAttribute("data-id");
+                        excluirCarro(idCarro);
+                }
+        });
 </script>
 
 </html>
