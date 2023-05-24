@@ -32,124 +32,21 @@
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
                 $idcarrofoto = $_POST['idcarrofoto'];
-                // Obter os valores dos outros campos do formulário
 
-                // Consulta SQL para inserir os dados na tabela
+
+
                 $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro)
         VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro')";
-                // Executa a consulta e verifica se foi bem-sucedida
-                if ($conn->query($sql) === TRUE) {
-                        // Dados inseridos com sucesso
-                        $mensagem = "Dados inseridos com sucesso!";
-                        $corDeFundo = "green";
-                } else {
-                        // Ocorreu um erro ao inserir os dados
-                        $mensagem = "Erro ao inserir os dados: " . $conn->error;
-                        $corDeFundo = "red";
-                }
-
-                ini_set('display_errors', 1);
-                error_reporting(E_ALL);
         }
         ?>
 
         <div class="container mt-3">
-                <!-- Formulário de inserção de dados -->
-                <h2>Inserir Carro</h2>
-                <form id="insert-form" method="POST">
-                        <div class="form-group col-md-6">
-                                <label for="id_carro">ID:</label>
-                                <input type="text" class="form-control" id="id_carro" name="id_carro">
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="marca_carro">Marca:</label>
-                                <input type="text" class="form-control" id="marca_carro" name="marca_carro" maxlength="50" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="modelo_carro">Modelo:</label>
-                                <input type="text" class="form-control" id="modelo_carro" name="modelo_carro" maxlength="60" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="ano_carro">Ano:</label>
-                                <input type="number" class="form-control" id="ano_carro" name="ano_carro" required>
-                        </div>
-                        <?php
-                        $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";
-                        $result_enum_values = $conn->query($sql_enum_values);
-
-                        $enum_values = array();
-
-                        while ($row = $result_enum_values->fetch_assoc()) {
-                                $enum_values[] = $row['COLUMN_TYPE'];
-                        }
-
-                        // Extrai os valores ENUM de cada campo
-                        $trac_carro_enum = extract_enum_values($enum_values[0]);
-                        $caixa_carro_enum = extract_enum_values($enum_values[1]);
-                        $comb_carro_enum = extract_enum_values($enum_values[2]);
-
-                        function extract_enum_values($enum_definition)
-                        {
-                                preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
-                                $enum_values = explode("','", $matches[1]);
-
-                                return $enum_values;
-                        }
-
-                        ?>
-                        <div class="form-group col-md-6">
-                                <label for="trac_carro">Tipo de Tração:</label>
-                                <select class="form-control" id="trac_carro" name="trac_carro">
-                                        <?php
-                                        foreach ($trac_carro_enum as $option) {
-                                                echo "<option value='$option'>$option</option>";
-                                        }
-                                        ?>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="caixa_carro">Tipo de Caixa:</label>
-                                <select class="form-control" id="caixa_carro" name="caixa_carro">
-                                        <?php
-                                        foreach ($caixa_carro_enum as $option) {
-                                                echo "<option value='$option'>$option</option>";
-                                        }
-                                        ?>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="comb_carro">Tipo de Combustível:</label>
-                                <select class="form-control" id="comb_carro" name="comb_carro">
-                                        <?php
-                                        foreach ($comb_carro_enum as $option) {
-                                                echo "<option value='$option'>$option</option>";
-                                        }
-                                        ?>
-                                </select>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="cilind_carro">Cilindrada:</label>
-                                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro">
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="hp_carro">Potência:</label>
-                                <input type="number" class="form-control" id="hp_carro" name="hp_carro">
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="desc_carro">Descrição:</label>
-                                <input type="text" class="form-control" id="desc_carro" name="desc_carro" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                                <label for="idcarrofoto">Id foto carro:</label>
-                                <input type="text" class="form-control" id="idcarrofoto" name="idcarrofoto">
-                        </div>
-                        <!-- Adicione os outros campos do formulário aqui -->
-
-                        <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
-                </form>
-
-                <!-- Tabela de visualização dos dados -->
-                <h2 class="mt-5">Carros</h2>
+                <div class="container mt-3">
+                        <h2 class="mt-5">
+                                Lista de carros:
+                                <a href="carros-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
+                        </h2>
+                </div>
                 <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
                 <div class="container mt-3">
                         <div class="row">
@@ -168,33 +65,25 @@
                                                                 <th class="col-1">Potência</th>
                                                                 <th class="col-1">Descrição</th>
                                                                 <th>Id foto</th>
-                                                                <th class="col-2">Ações</th>
+                                                                <th class="col-3">Ações</th>
                                                         </tr>
                                                 </thead>
                                                 <tbody id="table-body">
                                                         <?php
-                                                        // Consulta para obter os dados da tabela
-                                                        $sql_select = "SELECT * FROM carro";
+                                                        $sql_select = "SELECT * FROM carro ORDER BY id_carro ASC";
                                                         $result = $conn->query($sql_select);
 
-                                                        // Verificar se o método de solicitação é DELETE e se o ID do carro foi fornecido
                                                         if ($_SERVER["REQUEST_METHOD"] == "DELETE" && isset($_GET['id'])) {
                                                                 $idCarro = $_GET['id'];
+                                                                $sqlEleminarCarro = "DELETE FROM carro WHERE id_carro = '$idCarro'";
 
-                                                                // Consulta SQL para excluir o carro com o ID especificado
-                                                                $sqlExcluirCarro = "DELETE FROM carro WHERE id_carro = '$idCarro'";
-
-                                                                // Executar a consulta de exclusão
-                                                                if ($conn->query($sqlExcluirCarro) === TRUE) {
-                                                                        // A exclusão foi bem-sucedida
-                                                                        http_response_code(200); // Código de resposta HTTP 200 (OK)
+                                                                if ($conn->query($sqlEleminarCarro) === TRUE) {
+                                                                        http_response_code(200);
                                                                 } else {
-                                                                        // Ocorreu um erro ao excluir o carro
-                                                                        http_response_code(500); // Código de resposta HTTP 500 (Erro interno do servidor)
+                                                                        http_response_code(500);
                                                                 }
                                                         }
 
-                                                        // Exibir os dados na tabela
                                                         if ($result->num_rows > 0) {
                                                                 while ($row = $result->fetch_assoc()) {
                                                                         echo "<tr>";
@@ -209,7 +98,10 @@
                                                                         echo "<td>" . $row["hp_carro"] . "</td>";
                                                                         echo "<td>" . $row["desc_carro"] . "</td>";
                                                                         echo "<td>" . $row["idcarrofoto"] . "</td>";
-                                                                        echo "<td><button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button> <button class='btn btn-primary btn-edit'>Editar</button></td>";
+                                                                        echo "<td>";
+                                                                        echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button>";
+                                                                        echo " <button class='btn btn-primary btn-edit'><a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] . "\" class=\"btn btn-primary\">Editar</a></button>";
+                                                                        echo "</td>";
                                                                         echo "</tr>";
                                                                 }
                                                         } else {
@@ -228,11 +120,6 @@
 </body>
 <script src="js/carros-admin.js"></script>
 <script>
-        
-
-
-
-        // Função para exibir a mensagem de sucesso ou erro
         function exibirMensagem(mensagem, corDeFundo) {
                 var mensagemElement = document.createElement("div");
                 mensagemElement.textContent = mensagem;
@@ -247,45 +134,61 @@
 
                 setTimeout(function() {
                         mensagemElement.parentNode.removeChild(mensagemElement);
-                }, 5000); // 5 segundos (em milissegundos)
+                }, 5000);
         }
 
-        // Função para lidar com o evento de exclusão
-        function excluirCarro(idCarro) {
-                // Confirmar a exclusão com o usuário
-                var confirmarExclusao = confirm("Tem certeza que deseja excluir este carro?");
 
-                if (confirmarExclusao) {
-                        // Enviar uma solicitação DELETE para excluir o carro
+        function eleminarCarro(idCarro) {
+                var confirmarEleminar = confirm("Tem certeza que deseja eleminar estes dados?");
+
+                if (confirmarEleminar) {
                         fetch(`carros-admin.php?id=${idCarro}`, {
                                         method: "DELETE"
                                 })
                                 .then(function(response) {
                                         if (response.ok) {
-                                                // Exclusão bem-sucedida
-                                                exibirMensagem("Carro excluído com sucesso", "green");
-                                                // Recarregar a página após 2 segundos para atualizar a tabela
-                                                setTimeout(function() {
-                                                        location.reload();
-                                                }, 2000);
+                                                exibirMensagem("dados eliminados com sucesso!", "green");
+                                                removerLinhaTabela(idCarro);
                                         } else {
-                                                // Ocorreu um erro ao excluir o carro
-                                                throw new Error("Erro ao excluir o carro");
+                                                exibirMensagem("Erro, os dados não foram eliminados!", "red");
                                         }
                                 })
                                 .catch(function(error) {
-                                        // Ocorreu um erro
                                         exibirMensagem(error.message, "red");
+                                        ini_set('display_errors', 1);
+                                        error_reporting(E_ALL);
                                 });
                 }
         }
 
-        // Lidar com o evento de clique no botão de exclusão
+
         document.addEventListener("click", function(event) {
                 if (event.target.classList.contains("btn-delete")) {
                         var idCarro = event.target.getAttribute("data-id");
-                        excluirCarro(idCarro);
+                        eleminarCarro(idCarro);
                 }
+        });
+
+        function removerLinhaTabela(idCarro) {
+                var tabela = document.getElementById("table-body");
+                var linhas = tabela.getElementsByTagName("tr");
+
+                for (var i = 0; i < linhas.length; i++) {
+                        var colunaID = linhas[i].getElementsByTagName("td")[0];
+                        if (colunaID.innerText == idCarro) {
+                                tabela.removeChild(linhas[i]);
+                                break;
+                        }
+                }
+        }
+
+        // Pesquisar
+        $("#search").keyup(function() {
+                var searchText = $(this).val().toLowerCase();
+
+                $("#table-body tr").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
+                });
         });
 </script>
 

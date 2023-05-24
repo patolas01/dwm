@@ -21,6 +21,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="cargos.php">Cargos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="carros-admin.php">Carros</a>
+                </li>
             </ul>
         </div>
     </div>
