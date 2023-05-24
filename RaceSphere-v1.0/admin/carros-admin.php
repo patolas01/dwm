@@ -4,7 +4,6 @@
 <head>
 
         <meta charset="UTF-8">
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,14 +36,17 @@
                 // Obter os valores dos outros campos do formulário
 
                 // Consulta SQL para inserir os dados na tabela
-                $sql = "insert into carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro,)
-        values ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro',)";
-
+                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, idcarrofoto)
+        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$idcarrofoto')";
                 // Executa a consulta e verifica se foi bem-sucedida
                 if ($conn->query($sql) === TRUE) {
-                        echo "Dados inseridos com sucesso!";
+                        // Dados inseridos com sucesso
+                        $mensagem = "Dados inseridos com sucesso!";
+                        $corDeFundo = "green";
                 } else {
-                        echo "Erro ao inserir os dados: " . $conn->error;
+                        // Ocorreu um erro ao inserir os dados
+                        $mensagem = "Erro ao inserir os dados: " . $conn->error;
+                        $corDeFundo = "red";
                 }
 
                 ini_set('display_errors', 1);
@@ -125,7 +127,7 @@
                         </div>
                         <div class="form-group">
                                 <label for="cilind_carro">Cilindrada:</label>
-                                <input type="number" step="any" class="form-control" id="cilind_carro" name="cilind_carro">
+                                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro">
                         </div>
                         <div class="form-group">
                                 <label for="hp_carro">Potência:</label>
@@ -205,6 +207,22 @@
                         event.preventDefault();
                         document.getElementById("insert-form").submit();
                 });
+
+
+                var mensagem = document.createElement("div");
+                mensagem.textContent = "<?php echo $mensagem; ?>";
+                mensagem.style.backgroundColor = "<?php echo $corDeFundo; ?>";
+                mensagem.style.color = "white";
+                mensagem.style.position = "fixed";
+                mensagem.style.top = "60px";
+                mensagem.style.right = "10px";
+                mensagem.style.padding = "10px";
+                mensagem.style.borderRadius = "5px";
+                document.body.appendChild(mensagem);
+
+                setTimeout(function() {
+                        mensagem.parentNode.removeChild(mensagem);
+                }, 5000); // 5 segundos (em milissegundos)
 
 
 
