@@ -18,34 +18,51 @@
     include 'navbar.php';
     include '../sqli/conn.php';
     $editar = $_GET["id"];
-    $query = "select nome_user, email_user, telefone_user from utilizador where id_user='" . $editar . "'";
+    $query = "select email_admin, cargo_admin, nome_admin from administrador where id_admin='" . $editar . "'";
     $result_set = $conn->query($query);
     if ($result_set) {
         while ($row = $result_set->fetch_assoc()) {
-            $telefone = $row['telefone_user'];
-            $nome = $row['nome_user'];
-            $email = $row['email_user'];
+            $cargo = $row['cargo_admin'];
+            $nome = $row['nome_admin'];
+            $email = $row['email_admin'];
+            $pass = $row['cargo_admin'];
         }
     }
     ?>
-    <form action="editUsers.php?id=<?= $editar ?>" method="POST">
+    <form action="editAdminPress.php?id=<?= $editar ?>" method="POST">
         <center><br>
             <input type="text" name="nome" placeholder=<?php echo "'".$nome."'"?>><br><br>
-            <input type="text" name="telefone" placeholder=<?php echo "'".$telefone."'"?>><br><br>
+            <?php
+            if ($cargo == "admin") { ?>
+                <select name="cargo">
+                    <option value="admin" selected>Administrador</option>
+                    <option value="pressman">Pressman</option>
+                </select><br><br>
+                <?php
+            } else {
+                ?>
+                <select name="cargo">
+                    <option value="admin">Administrador</option>
+                    <option value="pressman" selected>Pressman</option>
+                </select><br><br>
+                <?php
+            }
+            ?>
             <input type="submit" name="editar2">
         </center>
     </form>
     <?php
     if (isset($_POST["editar2"])) {
+        $emailnovo = $_POST["email"];
         $nomenovo = $_POST["nome"];
-        $telefonenovo = $_POST["telefone"];
-        if ($telefonenovo == "") {
-            $telefonenovo = $telefone;
+        $cargonovo = $_POST["cargo"];
+        if ($emailnovo == "") {
+            $emailnovo = $email;
         }
         if ($nomenovo == "") {
             $nomenovo = $nome;
         }
-        $edit = "UPDATE utilizador SET nome_user = '" . $nomenovo . "' , telefone_user = '" . $telefonenovo . "' WHERE utilizador.id_user ='" . $editar . "'";
+        $edit = "UPDATE administrador SET nome_admin = '" . $nomenovo . "' , cargo_admin = '" . $cargonovo . "' WHERE administrador.id_admin ='" . $editar . "'";
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>
