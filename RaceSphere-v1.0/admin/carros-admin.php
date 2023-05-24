@@ -95,9 +95,7 @@
 
                                 return $enum_values;
                         }
-
-                        // Configura a codificação UTF-8 para a conexão com o banco de dados
-                        $conn->set_charset("utf8");
+                        
                         ?>
                         <div class="form-group col-md-6">
                                 <label for="trac_carro">Tipo de Tração:</label>
