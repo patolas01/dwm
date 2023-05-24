@@ -148,7 +148,7 @@
 
                 <!-- Tabela de visualização dos dados -->
                 <h2 class="mt-5">Carros</h2>
-                <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ID, Marca ou Modelo">
+                <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
                 <div class="container mt-3">
                         <div class="row">
                                 <div class="co-md-8">
