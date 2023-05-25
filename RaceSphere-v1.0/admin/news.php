@@ -28,14 +28,32 @@
         </thead>
         <tbody>
             <?php
-                //foreach select table noticia
+            include '../sqli/conn.php';
+            $query = "SELECT id_noticia, titulo_noticia, cat_noticia, data_noticia FROM noticias";
+            $result = mysqli_query($conn, $query);
+
+            // Creating an HTML table
+            if (mysqli_num_rows($result) > 0) {
+
+                // Fetching and displaying each row of data
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<tr>";
+                    echo "<td>" . $row['id_noticia'] . "</td>";
+                    echo "<td>" . $row['data_noticia'] . "</td>";
+                    echo "<td>" . $row['titulo_noticia'] . "</td>";
+                    echo "<td>" . $row['cat_noticia'] . "</td>";
+                    echo "<td><a href='#' class='btn btn-secondary' value=" . $row['id_noticia'] . ">Editar</a></td>";
+                    echo "</tr>";
+                }
+
+                echo "</table>";
+            } else {
+                echo "No records found.";
+            }
+
+            // Closing the database connection
+            mysqli_close($conn);
             ?>
-            <tr>
-                <th scope="row"></th>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
         </tbody>
     </table>
 
