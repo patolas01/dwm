@@ -18,7 +18,7 @@ session_start();
 </head>
 
 <body>
-    <form action="login.php" method="post">
+    <form id="form" action="login.php" method="post">
         <div class="container py-5 h-100 vh-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col col-xl-10">
@@ -42,14 +42,15 @@ session_start();
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="email">Email</label>
                                             <input type="email" id="email" class="form-control form-control-lg"
-                                                name="email">
+                                                name="email" required>
 
                                         </div>
 
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="form2Example27">Palavra Passe</label>
                                             <input type="password" id="form2Example27"
-                                                class="form-control form-control-lg" name="pass" pattern="^.{6,}$"/>
+                                                class="form-control form-control-lg" name="pass" required
+                                                pattern="^.{6,}$" />
                                         </div>
 
 
@@ -91,10 +92,16 @@ session_start();
                     $_SESSION["nome"] = $nome;
                 }
             
-                header("Location:index.php");
-                exit;
-            } else {
-                echo "Erro na autenticação, credenciais erradas tente de novo";
+                ?>
+                <script>
+                    window.setTimeout(function () {
+
+                        location.href = "index.php";
+                    }, 0);
+                </script>
+                <?php
+
+                
             }
         } else {
             $code = $conn->error; // error code of the most recent operation

@@ -25,6 +25,15 @@
         </div>
         <form class="form-inline">
             <a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+
+            <?php 
+                if (!isset($_SESSION["nome"])) {
+                    echo ' <form class="form-inline"><a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a></form>';
+                }else{
+                    echo ' <form class="form-inline"><a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">'$SESSION["nome"]'</a></form>';
+                }
+
+            ?>
         </form>
     </div>
 </nav>
