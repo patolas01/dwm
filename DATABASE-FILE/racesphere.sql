@@ -22,6 +22,9 @@ SET time_zone = "+00:00";
 -- Database: `racesphere`
 --
 
+
+CREATE DATABASE racesphere CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -34,7 +37,7 @@ CREATE TABLE `administrador` (
   `cargo_admin` enum('press','admin') NOT NULL,
   `email_admin` varchar(100) NOT NULL,
   `password_admin` varchar(150) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -54,7 +57,7 @@ CREATE TABLE `carro` (
   `hp_carro` int(11) NOT NULL,
   `desc_carro` mediumtext NOT NULL,
   `idcarrofoto` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 --
 -- Extraindo dados da tabela `carro`
@@ -75,7 +78,7 @@ CREATE TABLE `carrofoto` (
   `nome` varchar(255) CHARACTER SET latin1 NOT NULL,
   `patch` varchar(255) CHARACTER SET latin1 NOT NULL,
   `dataUpload` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -89,7 +92,7 @@ CREATE TABLE `circuito` (
   `cidade_circuito` varchar(50) NOT NULL,
   `nac_circuito` varchar(80) NOT NULL,
   `layout_circuito` longblob
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -104,7 +107,7 @@ CREATE TABLE `equipa` (
   `nac_equipa` varchar(50) NOT NULL,
   `cat_equipa` enum('f1','wrc','wec') NOT NULL,
   `subcat_equipa` enum('HYPERCAR','LMP2','LMGTE') DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -117,7 +120,7 @@ CREATE TABLE `equipamento` (
   `nome_equipamento` varchar(50) NOT NULL,
   `img_equipamento` longblob,
   `desc_equipamento` text NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -130,7 +133,7 @@ CREATE TABLE `equipamentofoto` (
   `nome` varchar(255) CHARACTER SET latin1 NOT NULL,
   `patch` varchar(255) CHARACTER SET latin1 NOT NULL,
   `dataUpload` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ;
 
 -- --------------------------------------------------------
 
@@ -145,7 +148,7 @@ CREATE TABLE `etapa_wrc` (
   `inicio_sessao` time NOT NULL,
   `fim_sessao` time NOT NULL,
   `dia_etapa` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -160,7 +163,7 @@ CREATE TABLE `noticias` (
   `thumb_noticia` longblob,
   `cat_noticia` enum('f1','wrc','wec') NOT NULL,
   `data_noticia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 --
 -- Extraindo dados da tabela `noticias`
@@ -180,7 +183,7 @@ CREATE TABLE `noticias_imagem` (
   `id_noticia` int(11) NOT NULL,
   `alt_nimg` varchar(150) NOT NULL,
   `img_nimg` longblob
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -196,7 +199,7 @@ CREATE TABLE `piloto` (
   `cat_piloto` enum('f1','wrc','wec') NOT NULL,
   `id_equipa` int(11) NOT NULL,
   `foto_piloto` longblob
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -210,7 +213,7 @@ CREATE TABLE `prova_f1` (
   `id_circuito` int(11) NOT NULL,
   `inicio_prova` date NOT NULL,
   `fim_prova` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -224,7 +227,7 @@ CREATE TABLE `prova_wec` (
   `id_circuito` int(11) NOT NULL,
   `inicio_prova` date NOT NULL,
   `fim_prova` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -239,7 +242,7 @@ CREATE TABLE `prova_wrc` (
   `inicio_prova` date NOT NULL,
   `fim_prova` date NOT NULL,
   `img_prova` longblob
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -253,7 +256,7 @@ CREATE TABLE `resultado_f1` (
   `posicao_res` int(11) NOT NULL,
   `laptime_res` time DEFAULT NULL,
   `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -267,7 +270,7 @@ CREATE TABLE `resultado_wec` (
   `posicao_res` int(11) NOT NULL,
   `laptime_res` time DEFAULT NULL,
   `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -281,7 +284,7 @@ CREATE TABLE `resultado_wrc` (
   `posicao_res` int(11) NOT NULL,
   `laptime_res` time DEFAULT NULL,
   `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -296,7 +299,7 @@ CREATE TABLE `sessao_f1` (
   `dia_sessao` date NOT NULL,
   `inicio_sessao` time NOT NULL,
   `fim_sessao` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -312,7 +315,7 @@ CREATE TABLE `sessao_wec` (
   `fim_sessao` time NOT NULL,
   `duracao_corrida` time DEFAULT NULL,
   `id_prova` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 -- --------------------------------------------------------
 
@@ -326,7 +329,7 @@ CREATE TABLE `utilizador` (
   `email_user` varchar(100) NOT NULL,
   `password_user` varchar(150) NOT NULL,
   `telefone_user` int(11) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ;
 
 --
 -- Indexes for dumped tables
