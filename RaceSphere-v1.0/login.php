@@ -47,7 +47,7 @@
 
                                         
                                         <div class="pt-1 mb-4">
-                                            <button class="btn btn-dark btn-lg btn-block" type="button">Iniciar Sessão</button>
+                                            <button class="btn btn-dark btn-lg btn-block" type="submit">Iniciar Sessão</button>
                                         </div>
 
                                         <p>Ainda não tem conta? <a href="register.php" style="color: #393f81;">Registe-se aqui</a></p>
