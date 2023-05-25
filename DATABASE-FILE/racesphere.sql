@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-Maio-2023 às 16:23
+-- Generation Time: 25-Maio-2023 às 10:13
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `racesphere`
 --
-CREATE DATABASE IF NOT EXISTS `racesphere` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `racesphere`;
 
 -- --------------------------------------------------------
 
@@ -54,8 +52,30 @@ CREATE TABLE `carro` (
   `comb_carro` enum('Gasóleo','Gasolina','Elétrico','Hibrido','Combustível de Competição') NOT NULL,
   `cilind_carro` float NOT NULL,
   `hp_carro` int(11) NOT NULL,
-  `desc_carro` text NOT NULL
+  `desc_carro` mediumtext NOT NULL,
+  `idcarrofoto` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `carro`
+--
+
+INSERT INTO `carro` (`id_carro`, `marca_carro`, `modelo_carro`, `ano_carro`, `trac_carro`, `caixa_carro`, `comb_carro`, `cilind_carro`, `hp_carro`, `desc_carro`, `idcarrofoto`) VALUES
+(1, 'ferrari', '330 P4', 1967, 'RWD', 'Manual', 'ElÃ©trico', 300, 250, 'sjbsdihdsibhdshdssd', NULL),
+(2, 'mercedes', 'x3', 2003, '4WD', 'Sequencial', 'Hibrido', 360, 300, 'fdhd fd fbdfd fd df fd jdf  dfb df bdfnb dfn dfn df dfn dfn dfn dfnb dfbn dfn  dfc ndf', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `carrofoto`
+--
+
+CREATE TABLE `carrofoto` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `patch` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `dataUpload` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -98,6 +118,19 @@ CREATE TABLE `equipamento` (
   `img_equipamento` longblob,
   `desc_equipamento` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `equipamentofoto`
+--
+
+CREATE TABLE `equipamentofoto` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `patch` varchar(255) CHARACTER SET latin1 NOT NULL,
+  `dataUpload` datetime NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -312,6 +345,12 @@ ALTER TABLE `carro`
   ADD PRIMARY KEY (`id_carro`);
 
 --
+-- Indexes for table `carrofoto`
+--
+ALTER TABLE `carrofoto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `circuito`
 --
 ALTER TABLE `circuito`
@@ -328,6 +367,12 @@ ALTER TABLE `equipa`
 --
 ALTER TABLE `equipamento`
   ADD PRIMARY KEY (`id_equipamento`);
+
+--
+-- Indexes for table `equipamentofoto`
+--
+ALTER TABLE `equipamentofoto`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `etapa_wrc`
@@ -404,6 +449,11 @@ ALTER TABLE `administrador`
 ALTER TABLE `carro`
   MODIFY `id_carro` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `carrofoto`
+--
+ALTER TABLE `carrofoto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `circuito`
 --
 ALTER TABLE `circuito`
@@ -418,6 +468,11 @@ ALTER TABLE `equipa`
 --
 ALTER TABLE `equipamento`
   MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `equipamentofoto`
+--
+ALTER TABLE `equipamentofoto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `etapa_wrc`
 --

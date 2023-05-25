@@ -100,7 +100,7 @@
                                                                         echo "<td>" . $row["idcarrofoto"] . "</td>";
                                                                         echo "<td>";
                                                                         echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button>";
-                                                                        echo " <button class='btn btn-primary btn-edit'><a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] . "\" class=\"btn btn-primary\">Editar</a></button>";
+                                                                        echo "<button class='btn btn-primary btn-edit'><a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] . "\" class=\"btn btn-primary\">Editar</a></button>";
                                                                         echo "</td>";
                                                                         echo "</tr>";
                                                                 }
