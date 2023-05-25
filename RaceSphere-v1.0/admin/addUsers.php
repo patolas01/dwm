@@ -11,6 +11,7 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/danielAdmin.js"></script>
 </head>
 
 <body>
@@ -66,7 +67,7 @@
 
 
                             <div class="form-button mt-3">
-                                <button id="registoAdminPressman" type="submit" class="btn btn-primary">Registar</button>
+                                <button name="enviar" type="submit" class="btn btn-primary">Registar</button>
                             </div>
                         </form>
                     </div>
@@ -76,6 +77,12 @@
     </div>
     <?php
     include '../footer.php';
+    if(isset($_POST["enviar"])){
+        $emailNovoAdminPressman=$_POST["email_admin"];
+        $nomeNovoAdminPressman=$_POST["email_admin"];
+        $cargoNovoAdminPressman=$_POST["email_admin"];
+        $passwordNovoAdminPressmanNaoEncriptada=$_POST["email_admin"];
+    }
     ?>
 </body>
 
