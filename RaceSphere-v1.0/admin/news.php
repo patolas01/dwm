@@ -45,7 +45,6 @@
                     echo "<td><a href='#' class='btn btn-secondary' value=" . $row['id_noticia'] . ">Editar</a></td>";
                     echo "</tr>";
                 }
-
                 echo "</table>";
             } else {
                 echo "No records found.";
@@ -56,7 +55,6 @@
             ?>
         </tbody>
     </table>
-
     <?php include('footer.php'); ?>
 </body>
 
