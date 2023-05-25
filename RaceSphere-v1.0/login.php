@@ -18,6 +18,10 @@ session_start();
 </head>
 
 <body>
+
+        <a href="admin.php" class="admin-button">Admin</a>
+
+
     <form id="form" action="login.php" method="post">
         <div class="container py-5 h-100 vh-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
@@ -91,7 +95,7 @@ session_start();
                     $_SESSION = array();
                     $_SESSION["nome"] = $nome;
                 }
-            
+
                 ?>
                 <script>
                     window.setTimeout(function () {
@@ -101,7 +105,7 @@ session_start();
                 </script>
                 <?php
 
-                
+
             }
         } else {
             $code = $conn->error; // error code of the most recent operation
