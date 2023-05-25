@@ -172,6 +172,49 @@ div.driverName {
     transform: scale(105%);
 }
 
+form#news {
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.grid-item {
+    /**border: 1px solid black;**/
+    padding: 10px;
+}
+
+.join {
+    grid-row: span 2;
+}
+
+#image-preview {
+    background-image: url("http://via.placeholder.com/250x180");
+    width: 250px;
+    height: 180px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+table#newsManage{
+    width: 60%;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 
 
 
