@@ -23,7 +23,7 @@ SET time_zone = "+00:00";
 --
 
 
-CREATE DATABASE racesphere CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+--CREATE DATABASE racesphere CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
