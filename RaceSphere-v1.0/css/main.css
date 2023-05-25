@@ -16,3 +16,16 @@ nav a {
     color: black;
 }
 
+nav#admin{
+    background-color: #2c75fd;
+    color: white;
+}
+
+nav#admin a{
+    color: white;
+}
+
+nav#admin button{
+    color: white;
+}
+

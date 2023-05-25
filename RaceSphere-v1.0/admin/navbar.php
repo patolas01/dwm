@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-md-top">
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-md-top" id="admin">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
             aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,6 +25,16 @@
                     <a class="nav-link" href="carros-admin.php">Carros</a>
                 </li>
             </ul>
+
         </div>
+        <?php
+        session_start();
+        if (!isset($_SESSION["nome"])) {
+            echo '<form class="form-inline"><a href="../login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a></form>';
+        } else {
+            echo '<form class="form-inline"><button class="btn" onclick="confirmLogoutAdmin();">' . $_SESSION["nome"] . ' <img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/logout-rounded--v1.png" alt="logout"/></button></form>';
+        }
+
+        ?>
     </div>
 </nav>

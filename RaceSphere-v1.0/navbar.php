@@ -22,18 +22,16 @@
                 </li>
             </ul>
 
+
         </div>
-        <form class="form-inline">
-            <a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+        <?php
+        session_start();
+        if (!isset($_SESSION["nome"])) {
+            echo ' <form class="form-inline"><a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a></form>';
+        } else {
+            echo ' <form class="form-inline"><button class="btn" onclick="confirmLogout();">' . $_SESSION["nome"] . ' <img src="https://img.icons8.com/?size=22&id=61022&format=png" alt="logout"></button></form>';
+        }
 
-            <?php 
-                if (!isset($_SESSION["nome"])) {
-                    echo ' <form class="form-inline"><a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a></form>';
-                }else{
-                    echo ' <form class="form-inline"><a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">'$SESSION["nome"]'</a></form>';
-                }
-
-            ?>
-        </form>
+        ?>
     </div>
 </nav>

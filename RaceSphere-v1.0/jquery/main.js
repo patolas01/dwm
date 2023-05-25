@@ -68,3 +68,31 @@ loadDrivers();
 
 
 
+function confirmLogout() {
+	// Display confirmation prompt
+
+	if (confirm("Are you sure you want to proceed?")) {
+		// If OK is clicked, redirect to PHP page
+		alert(window.location.href);
+		setTimeout(function () {
+			window.location.href = "logout.php";
+		}, 10);
+	}
+
+}
+
+function confirmLogout() {
+	// Display confirmation prompt
+
+	if (confirm("Are you sure you want to proceed?")) {
+		// If OK is clicked, redirect to PHP page
+		alert(window.location.href);
+		setTimeout(function () {
+			window.location.href = "../logout.php";
+		}, 10);
+	}
+
+}
+
+
+
