@@ -56,6 +56,14 @@ CREATE TABLE `carro` (
   `idcarrofoto` int(11) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Extraindo dados da tabela `carro`
+--
+
+INSERT INTO `carro` (`id_carro`, `marca_carro`, `modelo_carro`, `ano_carro`, `trac_carro`, `caixa_carro`, `comb_carro`, `cilind_carro`, `hp_carro`, `desc_carro`, `idcarrofoto`) VALUES
+(1, 'ferrari', '330 P4', 1967, 'RWD', 'Manual', 'ElÃ©trico', 300, 250, 'sjbsdihdsibhdshdssd', NULL),
+(2, 'mercedes', 'x3', 2003, '4WD', 'Sequencial', 'Hibrido', 360, 300, 'fdhd fd fbdfd fd df fd jdf  dfb df bdfnb dfn dfn df dfn dfn dfn dfnb dfbn dfn  dfc ndf', NULL);
+
 -- --------------------------------------------------------
 
 --
