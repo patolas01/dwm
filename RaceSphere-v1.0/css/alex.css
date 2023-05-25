@@ -140,15 +140,11 @@ body {
     background-color: #dadada;
 }
 
-.admin-button {
+#admin-button {
     position: fixed;
     bottom: 10px;
     right: 10px;
     padding: 10px;
-    background-color: grey;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
     font-size: 16px;
     z-index: 9999;
 }

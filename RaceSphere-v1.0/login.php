@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-        <a href="admin.php" class="admin-button">Admin</a>
+        <a href="admin/index.php" class="btn btn-secondary" id="admin-button">Admin</a>
 
 
     <form id="form" action="login.php" method="post">

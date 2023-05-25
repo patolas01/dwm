@@ -9,20 +9,20 @@
                     class="d-inline-block align-top"></a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="users.php">Utilizadores</a>
+                    <a class="nav-link" href="userManagement.php">Utilizadores</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="news.php">Noticias</a>
                 </li>
                 <!--Dropdown para pilotos, equipas, circuitos, etc.-->
                 <li class="nav-item">
-                    <a class="nav-link" href="categorias.php">Categorias</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="cargos.php">Cargos</a>
+                    <a class="nav-link disabled" href="categorias.php">Categorias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="carros-admin.php">Carros</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="pilotos.php">Pilotos</a>
                 </li>
             </ul>
 
@@ -30,7 +30,7 @@
         <?php
         session_start();
         if (!isset($_SESSION["nome"])) {
-            echo '<form class="form-inline"><a href="../login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a></form>';
+            echo '<form class="form-inline"><a href="../login.php" class="btn btn-dark my-2 my-sm-0">Login</a></form>';
         } else {
             echo '<form class="form-inline"><button class="btn" onclick="confirmLogoutAdmin();">' . $_SESSION["nome"] . ' <img width="22" height="22" src="https://img.icons8.com/ios-glyphs/30/FFFFFF/logout-rounded--v1.png" alt="logout"/></button></form>';
         }
