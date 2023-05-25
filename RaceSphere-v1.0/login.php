@@ -42,7 +42,7 @@ session_start();
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="email">Email</label>
                                             <input type="email" id="email" class="form-control form-control-lg"
-                                                name="email" pattern="/^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/" />
+                                                name="email">
 
                                         </div>
 
@@ -50,7 +50,7 @@ session_start();
                                             <label class="form-label" for="form2Example27">Palavra Passe</label>
                                             <input type="password" id="form2Example27"
                                                 class="form-control form-control-lg" name="pass"
-                                                pattern="/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/" />
+                                              />
                                         </div>
 
 
