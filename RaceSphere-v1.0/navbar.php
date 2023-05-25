@@ -20,10 +20,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="showroom.php">Showroom</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="login.php">LoginIn(Provisorio)</a>
-                </li>
             </ul>
+
         </div>
+        <form class="form-inline">
+            <a href="login.php" class="btn btn-outline-dark my-2 my-sm-0">Login</a>
+        </form>
     </div>
 </nav>
