@@ -29,27 +29,48 @@
         }
     }
     ?>
-    <form action="editAdminPress.php?id=<?= $editar ?>" method="POST">
-        <center><br>
-            <input type="text" name="nome" placeholder=<?php echo "'".$nome."'"?>><br><br>
-            <?php
-            if ($cargo == "admin") { ?>
-                <select name="cargo">
+     <form action="editAdminPress.php?id=<?= $editar ?>" method="POST">
+    <div class="form-body1">
+        <div class="row">
+            <div class="form-holder">
+                <div class="form-content">
+                    <div class="form-items">
+                        <h3>Editar <?php echo " " . $cargo . " " . $nome ?></h3>
+                        <p>Preencha o formulário</p>
+                        <form action="editAdminPress.php?id=<?= $editar ?>" action="POST" class="requires-validation" novalidate>
+
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="nome" placeholder=<?php echo "'" . $nome . "'" ?>>
+                            </div>
+
+                            <div class="col-md-12">
+                            <?php
+                            if ($cargo == "admin") { ?>
+                <select name="cargo" class="form-select mt-3">
                     <option value="admin" selected>Administrador</option>
                     <option value="pressman">Pressman</option>
                 </select><br><br>
                 <?php
-            } else {
-                ?>
-                <select name="cargo">
+                            } else {
+                                ?>
+                <select name="cargo" class="form-select mt-3">
                     <option value="admin">Administrador</option>
                     <option value="pressman" selected>Pressman</option>
                 </select><br><br>
                 <?php
-            }
-            ?>
-            <input type="submit" name="editar2">
-        </center>
+                            }
+                            ?>
+                            </div><br>
+                            <div class="col-md-12">
+                                <input type="submit" value="Atualizar" name="editar2">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        
     </form>
     <?php
     if (isset($_POST["editar2"])) {
@@ -81,3 +102,7 @@
 </body>
 
 </html>
+
+<!--
+   
+-->
