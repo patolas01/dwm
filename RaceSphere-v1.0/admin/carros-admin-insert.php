@@ -76,7 +76,6 @@
             $result_enum_values = $conn->query($sql_enum_values);
             $enum_values = array();
 
-
             while ($row = $result_enum_values->fetch_assoc()) {
                 $enum_values[] = $row['COLUMN_TYPE'];
             }
@@ -89,10 +88,8 @@
             {
                 preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
                 $enum_values = explode("','", $matches[1]);
-
                 return $enum_values;
             }
-
             ?>
             <div class="form-group col-md-10">
                 <label for="trac_carro">Tipo de Tração:</label>
@@ -151,7 +148,6 @@
 <script>
     var mensagem = "<?php echo $mensagem; ?>";
     var corDeFundo = "<?php echo $corDeFundo; ?>";
-
     var mensagemElement = document.createElement("div");
     mensagemElement.textContent = mensagem;
     mensagemElement.style.backgroundColor = corDeFundo;
@@ -162,7 +158,7 @@
     mensagemElement.style.padding = "10px";
     mensagemElement.style.borderRadius = "5px";
     document.body.appendChild(mensagemElement);
-
+    
     setTimeout(function() {
         mensagemElement.parentNode.removeChild(mensagemElement);
     }, 5000);

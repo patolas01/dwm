@@ -4,10 +4,8 @@ $(document).ready(function () {
                 document.getElementById("insert-form").submit();
         });
 
-        // Ao enviar o formulário de inserir
         $("#insert-form").submit(function (event) {
                 event.preventDefault();
-
                 var id_carro = $("#id_carro").val();
                 var marca_carro = $("#marca_carro").val();
                 var modelo_carro = $("#modelo_carro").val();

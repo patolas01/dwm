@@ -183,6 +183,60 @@ div.driverName {
 }
 
 div#categoria {
-    text-align: center; 
+    text-align: center;
     margin-top: 30px;
+}
+
+div.f1,
+div.wec,
+div.wrc {
+    width: fit-content;
+    height: fit-content;
+    display: inline-block;
+    padding-left: 40px;
+    padding-bottom: 20px;
+}
+
+div.f1 img,
+div.wec img,
+div.wrc img {
+    margin-top: 10px;
+    width: 65%;
+}
+
+div.nomePiloto {
+    width: 300px;
+    height: 50px;
+    line-height: 20px;
+    text-align: center;
+    border-top: 1px solid black;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #ffffff;
+}
+
+div.fotoPiloto {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #dfe7da;
+}
+
+div.categoriaPiloto {
+    width: 300px;
+    height: 50px;
+    text-align: center;
+    line-height: 19px;
+    border-top: 1px solid black;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    background-color: #ffffff;
 }

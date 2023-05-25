@@ -18,9 +18,6 @@
         <?php
         include 'navbar.php';
         include '../sqli/conn.php';
-
-
-
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $marca_carro = $_POST['marca_carro'];
                 $modelo_carro = $_POST['modelo_carro'];
@@ -33,18 +30,14 @@
                 $desc_carro = $_POST['desc_carro'];
                 $idcarrofoto = $_POST['idcarrofoto'];
 
-
-
                 $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro)
         VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro')";
         }
         ?>
-
         <div class="container mt-3">
                 <div class="container mt-3">
                         <h2 class="mt-5">
-                                Lista de carros:
-                                <a href="carros-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
+                                Lista de carros:<a href="carros-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
                         </h2>
                 </div>
                 <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
@@ -72,7 +65,6 @@
                                                         <?php
                                                         $sql_select = "SELECT * FROM carro ORDER BY id_carro ASC";
                                                         $result = $conn->query($sql_select);
-
                                                         if ($_SERVER["REQUEST_METHOD"] == "DELETE" && isset($_GET['id'])) {
                                                                 $idCarro = $_GET['id'];
                                                                 $sqlEleminarCarro = "DELETE FROM carro WHERE id_carro = '$idCarro'";
@@ -83,7 +75,6 @@
                                                                         http_response_code(500);
                                                                 }
                                                         }
-
                                                         if ($result->num_rows > 0) {
                                                                 while ($row = $result->fetch_assoc()) {
                                                                         echo "<tr>";
@@ -131,16 +122,14 @@
                 mensagemElement.style.padding = "10px";
                 mensagemElement.style.borderRadius = "5px";
                 document.body.appendChild(mensagemElement);
-
+                
                 setTimeout(function() {
                         mensagemElement.parentNode.removeChild(mensagemElement);
                 }, 5000);
         }
 
-
         function eleminarCarro(idCarro) {
                 var confirmarEleminar = confirm("Tem certeza que deseja eleminar estes dados?");
-
                 if (confirmarEleminar) {
                         fetch(`carros-admin.php?id=${idCarro}`, {
                                         method: "DELETE"
@@ -160,7 +149,6 @@
                                 });
                 }
         }
-
 
         document.addEventListener("click", function(event) {
                 if (event.target.classList.contains("btn-delete")) {
@@ -182,7 +170,6 @@
                 }
         }
 
-        // Pesquisar
         $("#search").keyup(function() {
                 var searchText = $(this).val().toLowerCase();
 

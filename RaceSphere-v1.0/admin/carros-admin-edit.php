@@ -1,10 +1,7 @@
 <?php
 include '../sqli/conn.php';
-// Verificar se o parâmetro está presente na URL
 if (isset($_GET['id_carro'])) {
     $id_carro = $_GET['id_carro'];
-
-    // Recuperar os dados do carro com base no ID e preencher os campos do formulário
     $sql = "SELECT * FROM carro WHERE id_carro = '$id_carro'";
     $result = $conn->query($sql);
 
@@ -59,7 +56,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <html lang="pt-pt">
 
 <head>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -74,9 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <?php
     include 'navbar.php';
-    
     ?>
-
     <div class="container mt-3">
         <div class="container mt-3">
             <h2 class="mt-5">
@@ -118,11 +112,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             {
                 preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
                 $enum_values = explode("','", $matches[1]);
-
                 return $enum_values;
             }
             ?>
-
             <div class="form-group col-md-10">
                 <label for="trac_carro">Tipo de Tração:</label>
                 <select class="form-control" id="trac_carro" name="trac_carro">
@@ -206,7 +198,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <script>
     var mensagem = "<?php echo $mensagem; ?>";
     var corDeFundo = "<?php echo $corDeFundo; ?>";
-
     var mensagemElement = document.createElement("div");
     mensagemElement.textContent = mensagem;
     mensagemElement.style.backgroundColor = corDeFundo;
