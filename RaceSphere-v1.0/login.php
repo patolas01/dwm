@@ -49,8 +49,7 @@ session_start();
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="form2Example27">Palavra Passe</label>
                                             <input type="password" id="form2Example27"
-                                                class="form-control form-control-lg" name="pass"
-                                              />
+                                                class="form-control form-control-lg" name="pass" pattern="^.{6,}$"/>
                                         </div>
 
 
@@ -75,13 +74,12 @@ session_start();
 
     <?php
 
-
-
     if (isset($_POST['submit'])) {
         $email = $_POST['email'];
         $plaintext_password = $_POST['pass'];
         $password = hash('sha512', $plaintext_password);
-        $query = "select email_user, password_user, from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
+        $query = "select email_user, password_user, nome_user from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
+
         $result_set = $conn->query($query);
 
         if ($result_set) {
@@ -92,11 +90,9 @@ session_start();
                     $_SESSION = array();
                     $_SESSION["nome"] = $nome;
                 }
-                echo "Bem-Vindo " . $_SESSION["nome"];
-                ~
-                    header("Location: index.php");
-                exit();
-
+            
+                header("Location:index.php");
+                exit;
             } else {
                 echo "Erro na autenticação, credenciais erradas tente de novo";
             }
@@ -106,7 +102,6 @@ session_start();
             printf("<p>Query error: %d %s</p>", $code, $message);
         }
     }
-
     ?>
 </body>
 
