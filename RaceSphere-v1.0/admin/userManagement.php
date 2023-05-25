@@ -28,7 +28,7 @@
         $result_set = $conn->query($query);
         if ($result_set) {
             ?>
-            <h1>Tabela Admins e Pressmans</h1>
+            <h1>Admins e Pressmans</h1>
             <table class="table table-success table-striped-columns">
                 <tr>
                     <th>Id</th>
@@ -88,7 +88,7 @@
         $result_set = $conn->query($query);
         if ($result_set) {
             ?>
-            <h1>Tabela Users</h1>
+            <h1>Users</h1>
             <table class="table table-success table-striped-columns">
                 <tr>
                     <th>Id</th>
