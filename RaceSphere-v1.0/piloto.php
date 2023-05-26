@@ -22,12 +22,6 @@
         </form>
     </div>
     <hr>
-    <script>
-        $("#categoria").on("change", function () {
-            console.log($('#categoria').find(":selected").val());
-        })
-    </script>
-    <script src="jquery/main.js"></script>
     <?php
     if (isset($_POST['submit'])) {
         $categoria = $_POST["categoria"];
