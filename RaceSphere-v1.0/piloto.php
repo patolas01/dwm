@@ -39,7 +39,7 @@
                 echo '<div class="' . $row["cat_piloto"] . '">';
                 echo '<div class="nomePiloto"><h3>' . $row['nome_piloto'] . '</h3></div>';
                 echo '<div class="fotoPiloto">';
-                echo '<img src="data:image/jpeg;base64,' . base64_encode($row['foto_piloto']) . '"/>';
+                echo '<img src="img/bd-img/pilotos/' .$row['foto_piloto']. '"/>';
                 echo '</div>';
                 $row['cat_piloto'] = strtoupper($row['cat_piloto']);
                 echo '<div class="categoriaPiloto"><h3>'.$row['cat_piloto'].'</h3></div>';
@@ -49,7 +49,7 @@
                 if ($result_set->num_rows >= 1) {
 
                 } else {
-                    echo "Erro na query";
+                    echo "Não existem pilotos nesta categoria!";
                 }
             } else {
                 $code = $conn->errno; // error code of the most recent operation
