@@ -83,7 +83,7 @@ session_start();
         $email = $_POST['email'];
         $plaintext_password = $_POST['pass'];
         $password = hash('sha512', $plaintext_password);
-        $query = "select email_user, password_user, nome_user from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
+        $query = "select email_user, password_user, nome_user, cargo_user from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
 
         $result_set = $conn->query($query);
 
