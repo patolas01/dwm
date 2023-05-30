@@ -22,7 +22,7 @@
                     <label for="file-picker">Foto</label>
                     <!--input file-->
                     <div class="custom-file">
-                        <input type="file" name="foto" class="custom-file-input" id="file-picker" accept="image/*">
+                        <input type="file" name="foto" class="custom-file-input" id="file-picker" accept="image/*" required>
                         <label class="custom-file-label" for="file-picker">Escolher a foto...</label>
                     </div>
                     <div id="image-preview"></div>
@@ -30,11 +30,11 @@
             </div>
             <div class="grid-item">
                 <label for="titulo-noticia">Titulo</label>
-                <input name="titulo-noticia" class="form-control" type="text">
+                <input name="titulo-noticia" class="form-control" type="text" required>
             </div>
             <div class="grid-item">
                 <label for="categoria">Categoria</label>
-                <select name="categoria" class="form-control">
+                <select name="categoria" class="form-control" required>
                     <option>Escolher...</option>
                     <option value="f1">F1</option>
                     <option value="wrc">WRC</option>
@@ -47,7 +47,7 @@
             <label for="descEditor">Descrição</label>
                 <div id="descEditor" name="descEditor">
                 </div>
-            <input type="text" name="descHTML" id="descHTML">
+            <input name="descHTML" id="descHTML">
         </div>
         <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
     </form>
