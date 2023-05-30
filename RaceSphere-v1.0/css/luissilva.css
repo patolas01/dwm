@@ -114,24 +114,11 @@ p {
     color: white;
 }
 
-.container-fluid{
-    margin-top: 25px;
-}
-
-.container-fluid  .bar {
-    position: relative;
-    width: 50vw;
-    height: 90vh;
-    overflow: hidden;
-}
-
 .container-fluid .bar-wrapper {
     position: relative;
     width: 100%;
     height: 500px;
     background: none;
-    overflow: hidden;
-    
 }
 
 .container-fluid .bar-wrapper .title,
@@ -142,18 +129,12 @@ p {
 }
 
 .container-fluid .bar-img {
-    margin: 0;
-    padding: 0;
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
-    transition: transform 0.3s ease;
 }
 
-.container-fluid .bar-img:hover {
-    transform: scale(1.1);
-}
 
 .container-fluid #leftBar {
     background-image: url(../img/carros_back.jpg);

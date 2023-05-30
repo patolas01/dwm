@@ -21,7 +21,7 @@
 
         <div id="showrrom"class="container-fluid">
                 <div class="row">
-                        <div class="col-6">
+                        <div class="col-7">
                                 <a href="carros-showroom.php" class="bar">
                                         <div class="bar-img" id="leftBar">
                                                 <div class="bar-wrapper">
@@ -31,7 +31,7 @@
                                         </div>
                                 </a>
                         </div>
-                        <div class="col-6">
+                        <div class="col-7">
                                 <a href="equipamentos-showroom.php" class="bar">
                                         <div class="bar-img" id="rightBar">
                                                 <div class="bar-wrapper">
