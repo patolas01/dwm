@@ -114,37 +114,57 @@ p {
     color: white;
 }
 
-.container-fluid .bar-wrapper {
-    position: relative;
-    width: 100%;
-    height: 500px;
-    background: none;
+.row {
+    margin-left: -15px;
+    margin-right: -15px;
 }
 
-.container-fluid .bar-wrapper .title,
-.container-fluid .bar-wrapper .descr {
+.bar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.bar-wrapper {
+    position: relative;
+    width: 100%;
+    height: 565px;  
+}
+
+.title,
+.descr {
     margin-left: 20px;
     padding: 0;
     overflow: hidden;
 }
 
-.container-fluid .bar-img {
+.bar-img {
     width: 100%;
     height: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s ease;
+    filter: grayscale(100%);
+    filter: transform 0.3s ease;
 }
 
+.bar-img:hover {
+    transform: scale(1.1);
+    filter: none;
+}
 
-.container-fluid #leftBar {
+#leftBar {
     background-image: url(../img/carros_back.jpg);
+    
 }
 
-.container-fluid #rightBar {
+#rightBar {
     background-image: url(../img/equip_back.jpg);
 }
 
-.container-fluid a.bar {
+.bar a {
     color: inherit;
     text-decoration: none;
 }
