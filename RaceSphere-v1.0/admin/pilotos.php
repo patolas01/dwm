@@ -10,7 +10,9 @@
 <body>
     <?php include('navbar.php');
     include '../sqli/conn.php';
-    echo $_SESSION['cargo_user'];
+    echo '<pre>';
+    print_r($_SESSION);
+    echo '</pre>';
     if ($_SESSION['cargo_user'] == "admin") {
         $query = 'select * from racesphere.piloto;';
         $result_set = $conn->query($query);
