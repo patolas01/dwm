@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php
-session_start(); ?>
 <html lang="pt-pt">
 
 <head>
@@ -24,24 +22,11 @@ session_start(); ?>
         </form>
     </div>
     <hr>
-    <script>
-        $("#categoria").on("change", function () {
-            console.log($('#categoria').find(":selected").val());
-        })
-    </script>
-    <script src="jquery/main.js"></script>
     <?php
+    include 'sqli/conn.php';
     if (isset($_POST['submit'])) {
+        
         $categoria = $_POST["categoria"];
-        $host = "localhost";
-        $database = "racesphere";
-        $user = "root";
-        $pass = "";
-        $conn = new mysqli($host, $user, $pass, $database);
-        if ($conn->connect_errno) {
-            echo "Failed to connect to MySQL: " . $conn->connect_error;
-            exit();
-        } else {
             if ($categoria == "1")
                 $query = 'select * from racesphere.piloto;';
             else
@@ -72,7 +57,6 @@ session_start(); ?>
                 printf("<p>Query error: %d %s</p>", $code, $message);
             }
         }
-    }
     ?>
     <?php include "footer.php"; ?>
 </body>

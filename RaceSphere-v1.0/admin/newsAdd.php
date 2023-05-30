@@ -47,7 +47,7 @@
             <label for="descEditor">Descrição</label>
             <div id="descEditor" name="descEditor">
             </div>
-            <input type="text" name="descHTML" value="">
+            <input type="text" name="descHTML" id="descHTML" value="">
         </div>
         <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
     </form>
@@ -61,7 +61,7 @@
             //console.log(editor1.getHTMLCode());
             //alert(document.getElementsByName('descHTML').value);
             document.getElementsByName('descHTML').value = editor1.getHTMLCode();
-           // alert(document.getElementsByName('descHTML').value);
+            alert(document.getElementsByName('descHTML').value);
         });
 
         //foto-preview
