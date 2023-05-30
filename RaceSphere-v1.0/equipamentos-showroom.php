@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
         <?php include('bootstrapInc.php'); ?>
         <link rel="stylesheet" href="css/luissilva.css">
-        <title>Equipamentos-Showrrom</title>
+        <title>Equipamentos-Showroom</title>
 </head>
 
 <body>

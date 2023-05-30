@@ -124,6 +124,55 @@ p {
     text-decoration: none;
 }
 
+/*Showrrom carros*/
+.showroom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.showroom .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #979797;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.car-info {
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #424242;
+    width: 800px;
+    height: 500px;
+}
+
+
+.car-details {
+    width: 60%;
+    margin-left: 40px;
+}
+
+.car-info h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.car-info p {
+    margin-bottom: 5px;
+}
 
 /*Carros-Admin, Carros-Admin-Insert, Carros-Admin-Edit*/
 h2 {
