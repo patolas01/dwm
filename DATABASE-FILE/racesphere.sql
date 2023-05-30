@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 28-Maio-2023 às 22:20
+-- Generation Time: 30-Maio-2023 às 11:03
 -- Versão do servidor: 5.7.17
 -- PHP Version: 5.6.30
 
@@ -21,20 +21,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `racesphere`
 --
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `administrador`
---
-
-CREATE TABLE `administrador` (
-  `id_admin` int(11) NOT NULL,
-  `nome_admin` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `cargo_admin` enum('press','admin') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_admin` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `password_admin` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+CREATE DATABASE IF NOT EXISTS `racesphere` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `racesphere`;
 
 -- --------------------------------------------------------
 
@@ -135,17 +123,17 @@ CREATE TABLE `equipamentofoto` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `etapa_wrc`
+-- Estrutura da tabela `etapa`
 --
 
-CREATE TABLE `etapa_wrc` (
-  `id_prova` int(11) NOT NULL,
-  `num_etapa` int(11) NOT NULL,
+CREATE TABLE `etapa` (
   `id_etapa` int(11) NOT NULL,
-  `inicio_sessao` time NOT NULL,
-  `fim_sessao` time NOT NULL,
-  `dia_etapa` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `num_etapa` int(11) NOT NULL,
+  `dia_etapa` date NOT NULL,
+  `inicio_etapa` time NOT NULL,
+  `fim_etapa` time NOT NULL,
+  `id_prova` int(11) NOT NULL
+);
 
 -- --------------------------------------------------------
 
@@ -161,6 +149,30 @@ CREATE TABLE `noticias` (
   `cat_noticia` enum('f1','wrc','wec') COLLATE utf8mb4_unicode_ci NOT NULL,
   `data_noticia` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Extraindo dados da tabela `noticias`
+--
+
+INSERT INTO `noticias` (`id_noticia`, `titulo_noticia`, `desc_noticia`, `thumb_noticia`, `cat_noticia`, `data_noticia`) VALUES
+(1, 'teste', '', '6474a1c9ad59a_equip_back.jpg', 'f1', '2023-05-29 12:59:53'),
+(2, 'carros', '', '6474a24d21662_carros_back.jpg', 'wrc', '2023-05-29 13:02:05'),
+(3, 'jkahskd', '', '6474a5304a6df_5_iii.png', 'wrc', '2023-05-29 13:14:24'),
+(4, 'jkahskdasd', '', '6474a5836bd00_5_iii.png', 'wrc', '2023-05-29 13:15:47'),
+(5, 'jkahskd', '', '6474a7307dfd7_5_iii.png', 'wrc', '2023-05-29 13:22:56'),
+(6, 'asdasd', 'dsadasd', '6474a7410c308_carros_back.jpg', 'wrc', '2023-05-29 13:23:13'),
+(7, 'asdasd', 'dsadasd', '6474a7f74ea0b_carros_back.jpg', 'wrc', '2023-05-29 13:26:15'),
+(8, 'asdasd', 'dsadasd', '6474c4835f06b_carros_back.jpg', 'wrc', '2023-05-29 15:28:03'),
+(9, 'asdasd', 'dsadasd', '6474c49394522_carros_back.jpg', 'wrc', '2023-05-29 15:28:19'),
+(10, 'asdasd', 'dsadasd', '6474c4afe0538_carros_back.jpg', 'wrc', '2023-05-29 15:28:47'),
+(11, 'asdasd', 'dsadasd', '6474c4bd8aed2_carros_back.jpg', 'wrc', '2023-05-29 15:29:01'),
+(12, 'asdasd', 'dsadasd', '6474c530bb9df_carros_back.jpg', 'wrc', '2023-05-29 15:30:56'),
+(13, 'asdasd', 'dsadasd', '6474c5fa82934_carros_back.jpg', 'wrc', '2023-05-29 15:34:18'),
+(14, 'asdasd', 'dsadasd', '6474c631c2abf_carros_back.jpg', 'wrc', '2023-05-29 15:35:13'),
+(15, 'asdasd', 'dsadasd', '6474c63a2bdc6_carros_back.jpg', 'wrc', '2023-05-29 15:35:22'),
+(16, 'asdasd', 'dsadasd', '6474c6c632584_carros_back.jpg', 'wrc', '2023-05-29 15:37:42'),
+(17, 'asdasd', 'dsadasd', '6474c6d55b7e5_carros_back.jpg', 'wrc', '2023-05-29 15:37:57'),
+(18, 'asdasd', 'dsadasd', '6475b0770e63a_carros_back.jpg', 'wrc', '2023-05-30 08:14:47');
 
 -- --------------------------------------------------------
 
@@ -194,118 +206,51 @@ CREATE TABLE `piloto` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `prova_f1`
+-- Estrutura da tabela `prova`
 --
 
-CREATE TABLE `prova_f1` (
+CREATE TABLE `prova` (
   `id_prova` int(11) NOT NULL,
-  `gp_prova` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_circuito` int(11) NOT NULL,
-  `inicio_prova` date NOT NULL,
-  `fim_prova` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `prova_wec`
---
-
-CREATE TABLE `prova_wec` (
-  `id_prova` int(11) NOT NULL,
-  `nome_prova` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_circuito` int(11) NOT NULL,
-  `inicio_prova` date NOT NULL,
-  `fim_prova` date NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `prova_wrc`
---
-
-CREATE TABLE `prova_wrc` (
-  `id_prova` int(11) NOT NULL,
-  `nome_prova` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `local_prova` varchar(80) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `nome_prova` varchar(255) NOT NULL,
   `inicio_prova` date NOT NULL,
   `fim_prova` date NOT NULL,
-  `img_prova` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `local` varchar(255) DEFAULT NULL,
+  `categoria` enum('f1','wrc','wec') NOT NULL,
+  `id_circuito` int(11) NOT NULL
+);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `resultado_f1`
+-- Estrutura da tabela `resultado`
 --
 
-CREATE TABLE `resultado_f1` (
-  `id_sessao` int(11) NOT NULL,
+CREATE TABLE `resultado` (
+  `id_resultado` int(11) NOT NULL,
+  `id_etapa` int(11) DEFAULT NULL,
+  `id_sessao` int(11) DEFAULT NULL,
   `id_piloto` int(11) NOT NULL,
   `posicao_res` int(11) NOT NULL,
-  `laptime_res` time DEFAULT NULL,
-  `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `laptime_res` time NOT NULL,
+  `dnf` enum('sim','nao') NOT NULL,
+  `categoria` enum('f1','wrc','wec') NOT NULL
+);
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `resultado_wec`
+-- Estrutura da tabela `sessao`
 --
 
-CREATE TABLE `resultado_wec` (
+CREATE TABLE `sessao` (
   `id_sessao` int(11) NOT NULL,
-  `id_equipa` int(11) NOT NULL,
-  `posicao_res` int(11) NOT NULL,
-  `laptime_res` time DEFAULT NULL,
-  `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `resultado_wrc`
---
-
-CREATE TABLE `resultado_wrc` (
-  `id_etapa` int(11) NOT NULL,
-  `id_piloto` int(11) NOT NULL,
-  `posicao_res` int(11) NOT NULL,
-  `laptime_res` time DEFAULT NULL,
-  `dnf` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `sessao_f1`
---
-
-CREATE TABLE `sessao_f1` (
-  `id_sessao` int(11) NOT NULL,
-  `tipo_prova` enum('P','Q','R','SS','SP') COLLATE utf8mb4_unicode_ci NOT NULL,
-  `id_prova` int(11) NOT NULL,
-  `dia_sessao` date NOT NULL,
-  `inicio_sessao` time NOT NULL,
-  `fim_sessao` time NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `sessao_wec`
---
-
-CREATE TABLE `sessao_wec` (
-  `id_sessao` int(11) NOT NULL,
-  `tipo_prova` enum('P','Q','W','R') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tipo_sessao` enum('P1','P2','P3','Q','R','W') NOT NULL,
   `dia_sessao` date NOT NULL,
   `inicio_sessao` time NOT NULL,
   `fim_sessao` time NOT NULL,
-  `duracao_corrida` time DEFAULT NULL,
-  `id_prova` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  `id_prova` int(11) NOT NULL,
+  `categoria` enum('f1','wrc','wec') NOT NULL
+);
 
 -- --------------------------------------------------------
 
@@ -318,25 +263,20 @@ CREATE TABLE `utilizador` (
   `nome_user` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email_user` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password_user` varchar(150) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `telefone_user` int(11) DEFAULT NULL
+  `telefone_user` int(11) DEFAULT NULL,
+  `cargo_user` enum('admin','press') COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `utilizador`
 --
 
-INSERT INTO `utilizador` (`id_user`, `nome_user`, `email_user`, `password_user`, `telefone_user`) VALUES
-(1, 'teste', 'teste@gmail.com', 'd614a4af09eb093f76b67e87cf62f8c49c44709216016e6a66cd69101e04936abe1f87434ba150422a2578d0d75fc44263bd3cce89efc4ecd0ecbdaeb2560562', 911);
+INSERT INTO `utilizador` (`id_user`, `nome_user`, `email_user`, `password_user`, `telefone_user`, `cargo_user`) VALUES
+(1, 'teste', 'teste@gmail.com', '1326134cb3db0705e4442013d79f7512121d74ee793ff177261fe52b581b6e9f77910c97ad7b981100b2287d7f3ea0a0775f1f61322a1448d72aef5ac9830654', 911, NULL);
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `administrador`
---
-ALTER TABLE `administrador`
-  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `carro`
@@ -375,9 +315,9 @@ ALTER TABLE `equipamentofoto`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `etapa_wrc`
+-- Indexes for table `etapa`
 --
-ALTER TABLE `etapa_wrc`
+ALTER TABLE `etapa`
   ADD PRIMARY KEY (`id_etapa`);
 
 --
@@ -399,33 +339,21 @@ ALTER TABLE `piloto`
   ADD PRIMARY KEY (`id_piloto`);
 
 --
--- Indexes for table `prova_f1`
+-- Indexes for table `prova`
 --
-ALTER TABLE `prova_f1`
+ALTER TABLE `prova`
   ADD PRIMARY KEY (`id_prova`);
 
 --
--- Indexes for table `prova_wec`
+-- Indexes for table `resultado`
 --
-ALTER TABLE `prova_wec`
-  ADD PRIMARY KEY (`id_prova`);
+ALTER TABLE `resultado`
+  ADD PRIMARY KEY (`id_resultado`);
 
 --
--- Indexes for table `prova_wrc`
+-- Indexes for table `sessao`
 --
-ALTER TABLE `prova_wrc`
-  ADD PRIMARY KEY (`id_prova`);
-
---
--- Indexes for table `sessao_f1`
---
-ALTER TABLE `sessao_f1`
-  ADD PRIMARY KEY (`id_sessao`);
-
---
--- Indexes for table `sessao_wec`
---
-ALTER TABLE `sessao_wec`
+ALTER TABLE `sessao`
   ADD PRIMARY KEY (`id_sessao`);
 
 --
@@ -438,11 +366,6 @@ ALTER TABLE `utilizador`
 -- AUTO_INCREMENT for dumped tables
 --
 
---
--- AUTO_INCREMENT for table `administrador`
---
-ALTER TABLE `administrador`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `carro`
 --
@@ -474,15 +397,15 @@ ALTER TABLE `equipamento`
 ALTER TABLE `equipamentofoto`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `etapa_wrc`
+-- AUTO_INCREMENT for table `etapa`
 --
-ALTER TABLE `etapa_wrc`
+ALTER TABLE `etapa`
   MODIFY `id_etapa` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `noticias`
 --
 ALTER TABLE `noticias`
-  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_noticia` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `noticias_imagem`
 --
@@ -494,29 +417,19 @@ ALTER TABLE `noticias_imagem`
 ALTER TABLE `piloto`
   MODIFY `id_piloto` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `prova_f1`
+-- AUTO_INCREMENT for table `prova`
 --
-ALTER TABLE `prova_f1`
+ALTER TABLE `prova`
   MODIFY `id_prova` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `prova_wec`
+-- AUTO_INCREMENT for table `resultado`
 --
-ALTER TABLE `prova_wec`
-  MODIFY `id_prova` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `resultado`
+  MODIFY `id_resultado` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `prova_wrc`
+-- AUTO_INCREMENT for table `sessao`
 --
-ALTER TABLE `prova_wrc`
-  MODIFY `id_prova` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sessao_f1`
---
-ALTER TABLE `sessao_f1`
-  MODIFY `id_sessao` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `sessao_wec`
---
-ALTER TABLE `sessao_wec`
+ALTER TABLE `sessao`
   MODIFY `id_sessao` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `utilizador`
