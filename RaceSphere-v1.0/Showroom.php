@@ -19,37 +19,31 @@
         include 'navbar.php';
         ?>
 
-        <div class="container-fluid">
+        <div id="showrrom"class="container-fluid">
                 <div class="row">
-                        <div class="col-md bar">
-                                <div class="bar-wrapper">
-                                        <h1 class="title">CARROS</h1>
-                                        <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e
-                                                revisitar
-                                                memórias antigas
-                                                ou então explorar toda a tecnologia moderna e evolução do mundo
-                                                automóvel</p>
-                                </div>
-                                <div class="bar-img" id="leftBar">
-
-                                </div>
+                        <div class="col-6">
+                                <a href="carros-showroom.php" class="bar">
+                                        <div class="bar-img" id="leftBar">
+                                                <div class="bar-wrapper">
+                                                        <h1 class="title">CARROS</h1>
+                                                        <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e revisitar memórias antigas ou então explorar toda a tecnologia moderna e evolução do mundo automóvel</p>
+                                                </div>
+                                        </div>
+                                </a>
                         </div>
-                        <div class="col-md bar">
-                                <div class="bar-wrapper">
-                                        <h1 class="title">EQUIPAMENTOS</h1>
-                                        <p class="descr">Segurança em primeiro lugar, o conforto vem muito depois.
-                                                Observe
-                                                alguns dos equipamentos usados em diversas categorias. Desde Fatos,
-                                                Luvas,
-                                                Capacetes e Sapatos</p>
-                                </div>
-
-                                <div class="bar-img" id="rightBar">
-
-                                </div>
+                        <div class="col-6">
+                                <a href="equipamentos-showroom.php" class="bar">
+                                        <div class="bar-img" id="rightBar">
+                                                <div class="bar-wrapper">
+                                                        <h1 class="title">EQUIPAMENTOS</h1>
+                                                        <p class="descr">Segurança em primeiro lugar, o conforto vem muito depois. Observe alguns dos equipamentos usados em diversas categorias. Desde Fatos, Luvas, Capacetes e Sapatos</p>
+                                                </div>
+                                        </div>
+                                </a>
                         </div>
                 </div>
         </div>
+
 
 
         <?php
