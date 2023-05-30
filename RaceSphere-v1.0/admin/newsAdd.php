@@ -15,7 +15,7 @@
     <?php include('navbar.php'); ?>
 
     <h1>Gerir Notícias</h1>
-    <form id="news" action="newsAdd.php" method="post">
+    <form id="news" action="newsAdd.php" method="post" enctype="multipart/form-data">
         <div class="grid-container">
             <div class="grid-item join">
                 <div class="form-group">
@@ -45,9 +45,9 @@
         <hr>
         <div class="form-group">
             <label for="descEditor">Descrição</label>
-            <div id="descEditor" name="descEditor">
-            </div>
-            <input type="text" name="descHTML" id="descHTML" value="">
+                <div id="descEditor" name="descEditor">
+                </div>
+            <input type="text" name="descHTML" id="descHTML">
         </div>
         <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
     </form>
@@ -60,7 +60,7 @@
         editor1.attachEvent("change", function () {
             //console.log(editor1.getHTMLCode());
             //alert(document.getElementsByName('descHTML').value);
-            document.getElementsByName('descHTML').value = editor1.getHTMLCode();
+            document.getElementsById('descHTML').value = editor1.getHTMLCode();
             alert(document.getElementsByName('descHTML').value);
         });
 
@@ -88,11 +88,38 @@
 
     if (isset($_POST['guardar'])) {
         $titulo = $_POST['titulo-noticia'];
-        //$foto = $_FILES['imageFile']['foto'];
         $categoria = $_POST['categoria'];
         $desc = $_POST['descHTML'];
-        echo $desc.' - '.$titulo.' - '.$categoria;
+
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['foto'];
+            // Especifique o caminho para a pasta onde deseja guardadar as imagens
+            $uploadDirectory = '../img/bd-img/news/';
+            // Gera um nome único para o arquivo
+            $fileName = uniqid() . '_' . $file['name'];
+            $destination = $uploadDirectory . $fileName;
+            echo 'alert(' . $destination . ')';
+            // Verifica se o tipo de arquivo é uma imagem
+            if (exif_imagetype($file['tmp_name'])) {
+                // Move o arquivo para a pasta de destino
+                if (move_uploaded_file($file['tmp_name'], $destination)) {
+
+                    $query = "INSERT INTO noticias (titulo_noticia, desc_noticia, thumb_noticia, cat_noticia) VALUES ('$titulo','$desc','$fileName','$categoria');";
+                    $conn->query($query);
+                    //prompt msg a dizer q a imagem foi guardada
+                } else {
+                    echo 'Ocorreu um erro ao guardar a imagem.';
+                }
+            } else {
+                echo 'O ficheiro enviado não é uma imagem válida.';
+            }
+        } else {
+            echo 'Nenhum ficheiro foi enviado.';
+        }
+        echo $desc . ' - ' . $titulo . ' - ' . $categoria;
     }
+
+
     ?>
 
 
