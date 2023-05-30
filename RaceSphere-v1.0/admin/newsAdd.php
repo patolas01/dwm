@@ -80,6 +80,8 @@
                 reader.readAsDataURL(file);
             });
         };
+
+        
     </script>
 
 
