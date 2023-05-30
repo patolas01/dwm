@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <?php include('bootstrapInc.php'); ?>
     <link rel="stylesheet" href="../css/luissilva.css">
-    <title>Carros Admin</title>
+    <title>Carros-Admin-Edit</title>
 </head>
 
 <body>
