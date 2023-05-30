@@ -1,17 +1,47 @@
 <?php
-    session_start();
-    ?>
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Count Page Access</title>
+    <!--Ajax em Baixo-->
+    <script>
+        function showUser(str) {
+            if (str == "") {
+                document.getElementById("txtHint").innerHTML = "";
+                return;
+            } else {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("txtHint").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "getuser.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
 </head>
 
 <body>
     <?php if (isset($_SESSION)) {
         if ($_SESSION["email"] == "admin@gmail.com") {
             ?>
+            <form>
+                <select name="users" onchange="showUser(this.value)">
+                    <option value="">Select a person:</option>
+                    <option value="admin@gmail.com">administrador</option>
+                    <option value="estupido@gg.com">xddddd</option>
+                    <option value="kekw@mail.com">kekw</option>
+                    <option value="XDDD@XDDD.XDDD">XDDD</option>
+                </select>
+            </form>
+            <br>
+            <div id="txtHint"><b>Person info will be listed here...</b></div>
+            <!--Ajax em Cima-->
             <center>
                 <?php
                 $host = "localhost";
