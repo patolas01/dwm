@@ -16,6 +16,7 @@
 <body id="rally-index">
     <?php
     include 'navbar.php';
+    include 'sqli/conn.php';
     ?>
     <div class="sticky-top" id="rightinfo">
         <div id="rightTitles">
@@ -109,7 +110,7 @@
             <div class="vencedor">
                 <div class="vencedorDentro">
                     <div id="firstplace">
-                        <h4>1º Lugar</h4>
+                        <h4>2º Lugar</h4>
                     </div>
                 </div>
             </div>
@@ -123,7 +124,7 @@
             <div class="vencedor">
                 <div class="vencedorDentro">
                     <div id="firstplace">
-                        <h4>1º Lugar</h4>
+                        <h4>3º Lugar</h4>
                     </div>
                 </div>
             </div>
@@ -135,29 +136,27 @@
                     <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
                     <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
                 </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="img/img_daniel/rally wrc.jpg" class="d-block w-100" alt="xd">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Ford arranca o ano de 2022 com vitória</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                <?php
+                $query = "select * from noticias INNER JOIN noticias_imagem ON noticias.id_noticia=noticias_imagem.id_noticia where cat_noticia='wrc' order by data_noticia LIMIT 3";
+                $result_set = $conn->query($query);
+                if ($result_set) {
+                    while ($row = $result_set->fetch_assoc()) { ?>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/bd-img/news/<?php echo $row['thumb_noticia'] ?>" class="d-block w-100" alt="Thumbnail noticia">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5><?php echo $row['titulo_noticia'] ?></h5>
+                                    <p class="desc-slideshow"><?php echo $row['desc_noticia'] ?>.</p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/img_daniel/rally-collection.avif" class="d-block w-100" alt="xd">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Red Bull acaba o rally de Portugal em grande</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <img src="img/img_daniel/fundo vencedor.png" class="d-block w-100" alt="xd">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Jõao Matos da Silva assina contrato com Ferrari</h5>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                        </div>
-                    </div>
-                </div>
+                        <?php
+                    }
+                }
+                else{
+                    ?><script>alert("Query mal feita")</script><?php
+                }
+                ?>
                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>
