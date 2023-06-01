@@ -207,13 +207,67 @@ form#news {
     margin-top: 10px;
 }
 
-table#newsManage{
+table#newsManage {
     width: 60%;
     margin-top: 30px;
     margin-bottom: 200px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+}
+
+table#newsManage td{
+    vertical-align: middle;
+}
+
+table#newsManage a img {
+    width: 20px;
+}
+
+#newsManage tr.hidden {
+    display: none;
+}
+
+div.newsTooltip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 5%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.newsTooltip input {
+    margin-bottom: 15px;
+    margin-top: 0;
+    margin-left: auto;
+}
+
+
+#newsManage td.idCell {
+    position: relative;
+}
+
+#newsManage td.idCell::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5%;
+    width: 5px;
+    height: 90%;
+}
+
+#newsManage td.idCell.cat-f1::before {
+    background-color: red;
+}
+
+#newsManage td.idCell.cat-wec::before {
+    background-color: green;
+}
+
+#newsManage td.idCell.cat-wrc::before {
+    background-color: blue;
 }
 
 

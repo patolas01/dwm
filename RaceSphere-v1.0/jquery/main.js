@@ -31,9 +31,6 @@ setInterval(function () { makeTimer(); }, 1000);
 
 
 
-
-
-
 //Paulo Leal
 function loadDrivers() {
 	// var firstName = ["Max", "Sergio", "Fernando"];
@@ -93,6 +90,27 @@ function confirmLogoutAdmin() {
 	}
 
 }
+
+
+$(document).ready(function () {
+	// Search function
+	$('#searchInput').on('input', function () {
+		var searchText = $(this).val().toLowerCase();
+		var searchByData = !isNaN(Date.parse(searchText));
+
+		$('#newsManage tbody tr').each(function () {
+			var titulo_noticia = $(this).find('td:eq(2)').text().toLowerCase();
+			var data_noticia = $(this).find('td:eq(1)').text().toLowerCase();
+
+			if ((searchByData && data_noticia.includes(searchText)) ||
+				(!searchByData && titulo_noticia.includes(searchText))) {
+				$(this).removeClass('hidden');
+			} else {
+				$(this).addClass('hidden');
+			}
+		});
+	});
+});
 
 
 
