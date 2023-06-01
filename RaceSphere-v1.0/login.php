@@ -19,7 +19,7 @@ session_start();
 
 <body>
 
-        <a href="admin/index.php" class="btn btn-secondary" id="admin-button">Admin</a>
+    <a href="admin/index.php" class="btn btn-secondary" id="admin-button">Admin</a>
 
 
     <form id="form" action="login.php" method="post">
@@ -83,23 +83,22 @@ session_start();
         $email = $_POST['email'];
         $plaintext_password = $_POST['pass'];
         $password = hash('sha512', $plaintext_password);
-        $query = "select email_user, password_user, nome_user from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
+        $query = "select email_user, password_user, nome_user, cargo_user from utilizador where email_user='" . $email . "' and password_user='" . $password . "'";
 
         $result_set = $conn->query($query);
 
         if ($result_set) {
             if ($result_set->num_rows == 1) {
                 while ($row = $result_set->fetch_assoc()) {
-
+                    $cargo_user = $row['cargo_user'];
                     $nome = $row['nome_user'];
                     $_SESSION = array();
                     $_SESSION["nome"] = $nome;
+                    $_SESSION["cargo_user"] = $cargo_user;
                 }
-
                 ?>
                 <script>
                     window.setTimeout(function () {
-
                         location.href = "index.php";
                     }, 0);
                 </script>
