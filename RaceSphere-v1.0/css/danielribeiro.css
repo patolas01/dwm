@@ -204,6 +204,9 @@ h3#titulolateral{
 /*Css calendário*/
 /*css lateral direita*/
 /*css esquerda*/
+p.desc-slideshow{
+  overflow: hidden;
+}
 /*css Mini-Caixas de Noticias*/
 div#caixa1{
   width: 100%;
