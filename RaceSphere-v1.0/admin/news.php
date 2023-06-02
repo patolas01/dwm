@@ -22,7 +22,7 @@
     <br>
 
     <div class="newsTooltip">
-        <a href="newsAdd.php" class="btn btn-success">Adicionar Noticia</a>
+        <a href="newsAdd.php" class="btn btn-success"><img id="addBtn" src="../img/icons8-add-30.png"> Adicionar Noticia</a>
         <form id="searchForm" class="form-inline mt-3">
             <input id="searchInput" class="form-control mr-sm-2" type="search" placeholder="Pesquisar"
                 aria-label="Search">
