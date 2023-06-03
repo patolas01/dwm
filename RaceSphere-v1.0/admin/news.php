@@ -18,7 +18,7 @@
     ?>
 
 
-    <h1>Gerir Notícias</h1>
+    <h1>Gerir Notícias</h1> 
     <br>
 
     <div class="newsTooltip">
