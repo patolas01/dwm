@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         exit;
     }
 
-    $id_equipa = $row["id_equipa"];
     $nome_equipa = $row["nome_equipa"];
     $nac_equipa = $row["nac_equipa"];
     $cat_equipa = $row["cat_equipa"];
@@ -91,25 +90,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         ?>
 
         <form method="post">
-            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa ?>">
+            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa;?>">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa ?>">
+                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa;?>">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nacionalidade Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nac_equipa" value="<?php echo $nac_equipa ?>">
+                    <input type="text" class="form-control" name="nac_equipa" value="<?php echo $nac_equipa;?>">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Categoria Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa ?>">
+                    <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa;?>">
                 </div>
             </div>
 
