@@ -1,4 +1,6 @@
 <?php
+include '../sqli/conn.php';
+
 $nome_equipa = "";
 $cat_equipa = "";
 
@@ -16,25 +18,34 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
 
         // adicionar equipa a bd
+        $sql = "INSERT INTO equipa(nome_equipa, cat_equipa) VALUES ('$nome_equipa', '$cat_equipa')";
+        $result = $conn->query($sql);
+
+        if (!$result) {
+            $errorMessage = "Invalid query: " . $conn->error;
+            break;
+        }
 
         $nome_equipa = "";
         $cat_equipa = "";
 
         $successMessage = "Equipa adicionada!!";
+
+        header("location: equipas.php");
+        exit;
     } while (false);
 
 }
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Equipas</title>
-    
     <?php include('bootstrapInc.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -51,9 +62,10 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
                  <strong>$errorMessage</strong>
                  <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
+                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                 </div>            
             ";
-            
+
         }
         ?>
 
@@ -80,10 +92,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                              <div class= 'alert alert-success alert-dismissible fade show' role='alert'>
                               <strong>$successMessage</strong>
                               <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
+                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
                              </div>
                             </div>
                         </div>
-                    "; //<button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button> botao da versao 5 do bootstrap
+                    "; // botao da versao 5 do bootstrap
             }
             ?>
 
