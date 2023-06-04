@@ -154,20 +154,30 @@ div.driverName {
 }
 
 .newsBox {
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     text-align: left;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 4%;
     padding-bottom: 4%;
-    width: 100%;
+    width: 90svw;
+    justify-content: center;
 }
 
 .newsBox .card {
+    flex-basis: 20%;
     transition-duration: 212ms;
     border: 2px solid gainsboro;
     width: 20%;
     margin-left: 1%;
     margin-right: 1%;
+    margin-bottom: 2%;
+}
+
+.newsBox .card img {
+    object-fit: cover;
+    height: 150px;
 }
 
 .newsBox .card:hover {
@@ -221,7 +231,7 @@ table#newsManage {
     border-radius: 10px;
 }
 
-table#newsManage td{
+table#newsManage td {
     vertical-align: middle;
 }
 
@@ -276,7 +286,7 @@ div.newsTooltip input {
 }
 
 
-img#addBtn{
+img#addBtn {
     margin-top: 0;
     margin-right: 5px;
     margin-bottom: 3px;
