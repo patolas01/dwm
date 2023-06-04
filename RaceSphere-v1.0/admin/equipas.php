@@ -26,6 +26,7 @@
             <tr>
                 <th scope="col">ID</th>
                 <th scope="col">Nome Equipa</th>
+                <th scope="col">Nacionalidade Equipa</th>
                 <th scope="col">Categoria Equipa</th>
             </tr>
         </thead>
@@ -33,7 +34,7 @@
             <?php
             include '../sqli/conn.php';
 
-            $sql = "SELECT id_equipa, nome_equipa, cat_equipa FROM equipa";
+            $sql = "SELECT id_equipa, nome_equipa, nac_equipa,cat_equipa FROM equipa";
             $result = $conn->query($sql);
 
             if (!$result) {
@@ -45,10 +46,11 @@
                 <tr>
                   <td>$row[id_equipa]</td>
                    <td>$row[nome_equipa]</td>
+                   <td>$row[nac_equipa]</td>
                    <td>$row[cat_equipa]</td>
                   <td>
                       <a class='btn btn-primary btn-sm' href='equipasEdit.php?id=$row[id_equipa]'>Editar</a>
-                       <a class='btn btn-primary btn-sm' href='equipasDelete.php?id=$row[id_equipa]'>Apagar</a>
+                      <a class='btn btn-danger btn-sm' href='equipasDelete.php?id=$row[id_equipa]'>Apagar</a>
                   </td>
                </tr>
                 ";

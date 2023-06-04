@@ -1,6 +1,7 @@
 <?php
 include '../sqli/conn.php';
 
+$id_equipa = "";
 $nome_equipa = "";
 $nac_equipa = "";
 $cat_equipa = "";
@@ -8,38 +9,53 @@ $cat_equipa = "";
 $errorMessage = "";
 $successMessage = "";
 
-if ($_SERVER["REQUEST_METHOD"] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+
+    if (!isset($_GET["id_equipa"])) {
+        header("equipas.php");
+        exit;
+    }
+
+    $id_equipa = $_GET["id_equipa"];
+
+    $sql = "SELECT id_equipa, nome_equipa, nac_equipa, cat_equipa FROM equipa WHERE id_equipa = $id_equipa";
+    $result = $conn->query($sql);
+    $row = $result->fetch_assoc();
+
+    if (!$row) {
+        header("equipas.php");
+        exit;
+    }
+
+    $id_equipa = $row["id_equipa"];
+    $nome_equipa = $row["nome_equipa"];
+    $nac_equipa = $row["nac_equipa"];
+    $cat_equipa = $row["cat_equipa"];
+} else {
+    $id_equipa = $_POST["id_equipa"];
     $nome_equipa = $_POST["nome_equipa"];
     $nac_equipa = $_POST["nac_equipa"];
     $cat_equipa = $_POST["cat_equipa"];
 
-
     do {
-        if (empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa)) {
+        if (empty($id_equipa) || empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa)) {
             $errorMessage = "Todos os campos precisam de estar preenchidos!";
             break;
         }
 
-        // adicionar equipa a bd
-        $sql = "INSERT INTO equipa(nome_equipa, nac_equipa, cat_equipa) VALUES ('$nome_equipa', '$nac_equipa','$cat_equipa')";
+        //atualizar equipa na bd
+        $sql = "UPDATE equipa SET nome_equipa = '$nome_equipa' ,  nac_equipa = '$nac_equipa' , cat_equipa = '$cat_equipa' WHERE id_equipa = $id_equipa";
         $result = $conn->query($sql);
 
-        if (!$result) {
-            $errorMessage = "Invalid query: " . $conn->error;
-            break;
+        if(!$result){
+            $errorMessage = "Invalid query: " . $conn-> error;
+            break;  
         }
 
-        $nome_equipa = "";
-        $nac_equipa = "";
-        $cat_equipa = "";
-        
-
-        $successMessage = "Equipa adicionada!!";
-
-        header("location: equipas.php");
+        $successMessage = "Cliente atualizado com sucesso!";
+        header("equipas.php");
         exit;
     } while (false);
-
 }
 ?>
 
@@ -60,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     include('navbar.php');
     ?>
     <div class="container my-5">
-        <h2>Nova Equipa</h2>
+        <h2>Atualizar Equipa</h2>
         <?php
         if (!empty($errorMessage)) {
             echo "
@@ -75,6 +91,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         ?>
 
         <form method="post">
+            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa ?>">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">

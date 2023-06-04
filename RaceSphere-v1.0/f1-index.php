@@ -118,6 +118,7 @@
         }
 
         .noticias {
+            width: 80%;
             margin-top: 50px;
             display: flex;
             flex-wrap: wrap;
@@ -131,7 +132,7 @@
 </head>
 
 <body>
-    <?php include "navbar.php"; ?>
+    <?php include('navbar.php'); ?>
 
     <div class="image-container">
         <img src="img/img_alex/imgtitulo.jpg" alt="Your Image" style="height: 350px; width: 100%; ">
@@ -143,7 +144,7 @@
 
 
     <div class="container noticias">
-        <div class="card" style="width: 17rem;">
+        <div class="card" style="width: 16rem;">
             <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Equipas de F1</h5>
@@ -154,7 +155,7 @@
             </div>
         </div>
 
-        <div class="card" style="width: 17rem;">
+        <div class="card" style="width: 16rem;">
             <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Equipas de F1</h5>
@@ -165,7 +166,7 @@
             </div>
         </div>
 
-        <div class="card" style="width: 17rem;">
+        <div class="card" style="width: 16rem;">
             <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Equipas de F1</h5>
@@ -176,7 +177,7 @@
             </div>
         </div>
 
-        <div class="card" style="width: 17rem;">
+        <div class="card" style="width: 16rem;">
             <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">Equipas de F1</h5>
