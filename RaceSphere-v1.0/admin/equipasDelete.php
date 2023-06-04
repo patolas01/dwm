@@ -11,4 +11,4 @@ if ($conn->query($sql) === TRUE) {
     echo "Error deleting record: " . $conn->error;
 }
 
-?> 
+?>

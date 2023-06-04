@@ -40,7 +40,7 @@ session_start(); ?>
                         <h2 class="mt-5">
                                 Lista de carros:<a href="carros-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
                         </h2>
-                </div>
+                </div>.
                 <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
                 <div class="container mt-3">
                         <div class="row">
