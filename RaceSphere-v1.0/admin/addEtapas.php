@@ -11,7 +11,7 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/danielAdmin.js"></script>
+    <script src="js/daniel.js"></script>
 </head>
 
 <body>
@@ -47,15 +47,20 @@
                             </div>
 
                             <div class="col-md-12">
-                                <select name="cargo" class="form-select mt-3" required>
+                                <select name="prova" class="form-select mt-3" required>
                                     <option selected disabled value="">Prova</option>
                                     <?php
-                                    $query="Select nome_prova from prova"; ?>
-                                    <option value="admin">Administrador</option>
-                                    <option value="press">Pressman</option>
+                                    $query = "Select id_prova, nome_prova from prova GROUP BY prova.nome_prova;";
+                                    $result_set = $conn->query($query);
+                                    if ($result_set) {
+                                        while ($row = $result_set->fetch_assoc()) { ?>
+                                            <option value=<?php echo "'".$row['id_prova']."'"?>><?php echo $row['nome_prova']; ?></option>
+                                            <?php
+                                        }
+                                    } ?>
                                 </select>
-                                <div class="valid-feedback">Cargo selecionado</div>
-                                <div class="invalid-feedback">Por favor selecione um cargo</div>
+                                <div class="valid-feedback">Prova selecionado</div>
+                                <div class="invalid-feedback">Por favor selecione uma prova</div>
                             </div>
 
                             <div class="form-check">
@@ -77,11 +82,11 @@
     </div>
     <?php
     include '../footer.php';
-    if(isset($_POST["enviar"])){
-        $emailNovoAdminPressman=$_POST["email_admin"];
-        $nomeNovoAdminPressman=$_POST["email_admin"];
-        $cargoNovoAdminPressman=$_POST["email_admin"];
-        $passwordNovoAdminPressmanNaoEncriptada=$_POST["email_admin"];
+    if (isset($_POST["enviar"])) {
+        $emailNovoAdminPressman = $_POST["email_admin"];
+        $nomeNovoAdminPressman = $_POST["email_admin"];
+        $cargoNovoAdminPressman = $_POST["email_admin"];
+        $passwordNovoAdminPressmanNaoEncriptada = $_POST["email_admin"];
     }
     ?>
 </body>
