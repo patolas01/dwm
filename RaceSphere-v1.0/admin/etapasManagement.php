@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RaceSphere Rally</title>
+    <title>Edição de utilizadores</title>
     <?php
     include 'bootstrapInc.php';
     ?>
@@ -13,82 +13,67 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
-<body id="rally-index">
+<body>
     <?php
     include 'navbar.php';
     include '../sqli/conn.php';
-    //Tabela Admins e Pressman
-    ?>
+    $editar = $_GET["id"]; ?>
     <div id="botaoAddUsers">
-        <a href="addProvas.php"><button class="btn btn-primary btn-lg">Adicionar Provas</button></a>
+        <a href="addEtapas.php"><button class="btn btn-primary btn-lg">Adicionar Etapas</button></a>
     </div>
     <div id="tabelasListagemUsers">
         <?php
-        $query = "select * from prova order by nome_prova";
+        $query = "select * from etapa where id_prova='" . $editar . "' order by num_etapa";
         $result_set = $conn->query($query);
         if ($result_set) {
             ?>
-            <h1>Provas</h1>
+            <h1>Etapas</h1>
             <table class="table table-success table-striped-columns">
                 <tr>
                     <th>Id</th>
-                    <th>Nome</th>
+                    <th>Numero</th>
+                    <th>Dia</th>
                     <th>Inicio</th>
                     <th>Fim</th>
-                    <th>Local</th>
-                    <th>Categoria</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
                 <?php
                 while ($row = $result_set->fetch_assoc()) {
-                    $id_prova = $row['id_prova'];
+                    $id_etapa = $row['id_etapa'];
                     ?>
                     <tr>
                         <td>
                             <?php
-                            echo $row['id_prova'];
+                            echo $row['id_etapa'];
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo $row['nome_prova'];
+                            echo $row['num_etapa'];
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo $row['inicio_prova'];
+                            echo $row['dia_etapa'];
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo $row['fim_prova'];
+                            echo $row['inicio_etapa'];
                             ?>
                         </td>
                         <td>
                             <?php
-                            echo $row['local'];
+                            echo $row['fim_etapa'];
                             ?>
                         </td>
                         <td>
-                            <?php
-                            echo $row['categoria'];
-                            ?>
+                            <form action="editEtapas.php" method="POST"><button><a
+                                        href="editEtapas.php?id=<?= $id_etapa ?>">Editar</a></button></form>
                         </td>
                         <td>
-                            <form <?php if($row['categoria']=="wrc"){
-                                echo "action='etapasManagement.php?id=".$id_prova."'";
-                                }else{
-                                    echo "action='sessaoManagement.php?id=".$id_prova."'"; 
-                                } ?>  method="POST"><button><a
-                                        <?php if($row['categoria']=="wrc"){
-                                            ?> href="etapasManagement.php?id=<?= $id_prova ?>" <?php
-                                        }else{  
-                                            ?> href="sessaoManagement.php?id=<?= $id_prova ?>" <?php
-                                        } ?>>Editar</a></button></form>
-                        </td>
-                        <td>
-                            <form action="provaManagement.php" method="POST"><button name="eliminar" type="submit"
+                            <form action="etapasManagement.php" method="POST"><button name="eliminar" type="submit"
                                     value="<?php echo $id_prova ?>" onclick='this.form.submit()'>Eliminar</button></form>
                         </td>
                     </tr>
@@ -106,13 +91,13 @@
 
         if (isset($_POST['eliminar'])) {
             $eliminar = $_POST['eliminar'];
-            $delete = "DELETE FROM prova where id_prova='$eliminar'";
+            $delete = "DELETE FROM etapa where id_etapa='$eliminar'";
             $result_set = $conn->query($delete);
             if ($result_set) {
                 ?>
                 <script>
                     window.setTimeout(function () {
-                        location.href = "provaManagement.php";
+                        location.href = "etapasManagement.php";
                     }, 0);
                 </script>
                 <?php
