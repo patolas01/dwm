@@ -20,6 +20,18 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             break;
         }
 
+        // Validate nome_equipa field
+        if (!preg_match("/^[a-zA-Z\s]*$/", $nome_equipa)) {
+            $errorMessage = "O nome da equipa só pode conter letras e espaços.";
+            break;
+        }
+
+        // Validate nac_equipa field
+        if (!preg_match("/^[a-zA-Z\s]*$/", $nac_equipa)) {
+            $errorMessage = "A nacionalidade da equipa só pode conter letras e espaços.";
+            break;
+        }
+
         // adicionar equipa a bd
         $sql = "INSERT INTO equipa(nome_equipa, nac_equipa, cat_equipa) VALUES ('$nome_equipa', '$nac_equipa','$cat_equipa')";
         $result = $conn->query($sql);
@@ -114,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
 
             <div class="row mb-3">
                 <div class="offset-sm-3 col-sm-3 d-grid">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
                 <div class="col-sm-3 d-grid">
                     <a class="btn btn-outline-primary" href="equipas.php" role="button">Cancelar</a>

@@ -8,8 +8,6 @@
     <?php include('bootstrapInc.php'); ?>
     <title>Gerir Equipas</title>
     <link rel="stylesheet" href="../css/alex.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 
 </head>
 
@@ -52,7 +50,7 @@
                    <td>$row[nac_equipa]</td>
                    <td>$row[cat_equipa]</td>
                   <td>
-                      <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa=<?php echo $row[id_equipa]; ?>'>Editar</a>
+                      <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa={$row['id_equipa']}'>Editar</a>
                       <a class='btn btn-danger btn-sm' href='equipasDelete.php?id=$row[id_equipa]'>Apagar</a>
                   </td>
                </tr>
