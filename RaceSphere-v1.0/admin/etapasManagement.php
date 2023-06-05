@@ -19,7 +19,7 @@
     include '../sqli/conn.php';
     $editar = $_GET["id"]; ?>
     <div id="botaoAddUsers">
-        <a href="addEtapas.php"><button class="btn btn-primary btn-lg">Adicionar Etapas</button></a>
+        <a href="addEtapas.php?id=<?php echo $editar;?>"><button class="btn btn-primary btn-lg">Adicionar Etapas</button></a>
     </div>
     <div id="tabelasListagemUsers">
         <?php
