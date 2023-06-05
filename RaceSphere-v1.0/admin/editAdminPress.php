@@ -90,7 +90,7 @@
         if ($nomenovo == "") {
             $nomenovo = $nome;
         }
-        $edit = "UPDATE utilizador SET nome_user = '" . $nomenovo . "' , telefone_user = '" . $telefonenovo . "', cargo_user = '" . $cargonovo . "' WHERE utilizador.id_user ='" . $editar . "'";
+        $edit = "UPDATE utilizador SET nome_user = '$nomenovo' , telefone_user = '$telefonenovo', cargo_user = '$cargonovo' WHERE utilizador.id_user = '$editar'";
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>
