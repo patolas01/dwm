@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php 
-session_start(); ?>
 <html lang="pt-pt">
  
 <head>
@@ -29,10 +27,10 @@ session_start(); ?>
                 $cilind_carro = $_POST['cilind_carro'];
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
-                $idcarrofoto = $_POST['idcarrofoto'];
+                $fotocarro = $_POST['fotocarro'];
 
-                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro)
-        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro')";
+                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
+        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
         }
         ?>
         <div class="container mt-3">
@@ -58,7 +56,7 @@ session_start(); ?>
                                                                 <th>Cilindros</th>
                                                                 <th class="col-1">Potência</th>
                                                                 <th class="col-1">Descrição</th>
-                                                                <th>Id foto</th>
+                                                                <th>fotocarro</th>
                                                                 <th class="col-3">Ações</th>
                                                         </tr>
                                                 </thead>
@@ -89,10 +87,12 @@ session_start(); ?>
                                                                         echo "<td>" . $row["cilind_carro"] . "</td>";
                                                                         echo "<td>" . $row["hp_carro"] . "</td>";
                                                                         echo "<td>" . $row["desc_carro"] . "</td>";
-                                                                        echo "<td>" . $row["idcarrofoto"] . "</td>";
+                                                                        echo "<td>" . $row["fotocarro"] . "</td>";
                                                                         echo "<td>";
                                                                         echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button>";
-                                                                        echo "<button class='btn btn-primary btn-edit'><a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] . "\" class=\"btn btn-primary\">Editar</a></button>";
+                                                                        echo "<button class='btn btn-primary btn-edit'><a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] .
+                                                                                "trac_carro=" . $row["trac_carro"] . "caixa_carro=" . $row["caixa_carro"] . "comb_carro=" . $row["comb_carro"] . "cilind_carro=" . $row["cilind_carro"] . "hp_carro=" . $row["hp_carro"] .
+                                                                                "desc_carro=" . $row["desc_carro"] . "fotocarro=" . $row["fotocarro"] . "\" class=\"btn btn-primary\">Editar</a></button>";
                                                                         echo "</td>";
                                                                         echo "</tr>";
                                                                 }
@@ -123,7 +123,7 @@ session_start(); ?>
                 mensagemElement.style.padding = "10px";
                 mensagemElement.style.borderRadius = "5px";
                 document.body.appendChild(mensagemElement);
-                
+
                 setTimeout(function() {
                         mensagemElement.parentNode.removeChild(mensagemElement);
                 }, 5000);

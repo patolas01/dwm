@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php
-session_start(); ?>
 <html lang="pt-pt">
 
 <head>
@@ -30,10 +28,10 @@ session_start(); ?>
         $cilind_carro = $_POST['cilind_carro'];
         $hp_carro = $_POST['hp_carro'];
         $desc_carro = $_POST['desc_carro'];
-        $idcarrofoto = $_POST['idcarrofoto'];
+        $fotocarro = $row["fotocarro"];
 
-        $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro)
-        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro')";
+        $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
+        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
 
         if ($conn->query($sql) === TRUE) {
             $mensagem = "Dados inseridos com sucesso!";
@@ -56,10 +54,6 @@ session_start(); ?>
             </h2>
         </div>
         <form id="insert-form" method="POST">
-            <div class="form-group col-md-10">
-                <label for="id_carro">ID:</label>
-                <input type="text" class="form-control" id="id_carro" name="id_carro">
-            </div>
             <div class="form-group col-md-10">
                 <label for="marca_carro">Marca:</label>
                 <input type="text" class="form-control" id="marca_carro" name="marca_carro" maxlength="50" required>
@@ -135,7 +129,7 @@ session_start(); ?>
                 <input type="text" class="form-control" id="desc_carro" name="desc_carro" required>
             </div>
             <div class="form-group col-md-10">
-                <label for="idcarrofoto">Id foto carro:</label>
+                <label for="idcarrofoto">Foto carro:</label>
                 <input type="text" class="form-control" id="idcarrofoto" name="idcarrofoto">
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
