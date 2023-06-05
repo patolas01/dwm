@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 include '../sqli/conn.php';
 if (isset($_GET['id_carro'])) {
     $id_carro = $_GET['id_carro'];

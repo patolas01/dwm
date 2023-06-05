@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<?php
-session_start(); ?>
 <html lang="pt-pt">
  
 <head>
