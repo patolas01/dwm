@@ -28,7 +28,7 @@
         $cilind_carro = $_POST['cilind_carro'];
         $hp_carro = $_POST['hp_carro'];
         $desc_carro = $_POST['desc_carro'];
-        $fotocarro = $row["fotocarro"];
+        $fotocarro = $_POST["fotocarro"];
 
         $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
         VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
@@ -129,8 +129,8 @@
                 <input type="text" class="form-control" id="desc_carro" name="desc_carro" required>
             </div>
             <div class="form-group col-md-10">
-                <label for="idcarrofoto">Foto carro:</label>
-                <input type="text" class="form-control" id="idcarrofoto" name="idcarrofoto">
+                <label for="fotocarro">Foto carro:</label>
+                <input type="text" class="form-control" id="fotocarro" name="fotocarro">
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>

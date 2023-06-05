@@ -500,3 +500,21 @@ html, body {
    color: green;
 }
 /*css addUsers.php*/
+/*css provaWrc.php*/
+.fotoDaProva img{
+  width: 100%;
+}
+.fotoDaProva{
+  width: 300px;
+  height: 200px;
+}
+.nomeDaProva{
+  width: 300px;
+}
+.localDaProva{
+  width: 300px;
+}
+.container .row{
+  padding-top: 50px;
+}
+/*css provaWrc.php*/

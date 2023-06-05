@@ -18,72 +18,89 @@
     include 'navbar.php';
     include '../sqli/conn.php';
     $editar = $_GET["id"];
-    $query = "select email_admin, cargo_admin, nome_admin from administrador where id_admin='" . $editar . "'";
+    $query = "select * from utilizador where id_user='" . $editar . "'";
     $result_set = $conn->query($query);
     if ($result_set) {
         while ($row = $result_set->fetch_assoc()) {
-            $cargo = $row['cargo_admin'];
-            $nome = $row['nome_admin'];
-            $email = $row['email_admin'];
-            $pass = $row['cargo_admin'];
+            $cargo = $row['cargo_user'];
+            $nome = $row['nome_user'];
+            $telefone = $row['telefone_user'];
         }
     }
     ?>
-     <form action="editAdminPress.php?id=<?= $editar ?>" method="POST">
-    <div class="form-body1">
-        <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Editar <?php echo " " . $cargo . " " . $nome ?></h3>
-                        <p>Preencha o formulário</p>
-                        <form action="editAdminPress.php?id=<?= $editar ?>" action="POST" class="requires-validation" novalidate>
+    <form action="editAdminPress.php?id=<?= $editar ?>" method="POST">
+        <div class="form-body1">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>Editar
+                                <?php
+                                $cargo = ucfirst($cargo);
+                                echo " " . $cargo . " " . $nome;
+                                $cargo = lcfirst($cargo); ?>
+                            </h3>
+                            <p>Preencha o formulário</p>
+                            <form action="editAdminPress.php?id=<?= $editar ?>" action="POST"
+                                class="requires-validation" novalidate>
 
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" name="nome" placeholder=<?php echo "'" . $nome . "'" ?>>
-                            </div>
-
-                            <div class="col-md-12">
-                            <?php
-                            if ($cargo == "admin") { ?>
-                <select name="cargo" class="form-select mt-3">
-                    <option value="admin" selected>Administrador</option>
-                    <option value="pressman">Pressman</option>
-                </select><br><br>
-                <?php
-                            } else {
-                                ?>
-                <select name="cargo" class="form-select mt-3">
-                    <option value="admin">Administrador</option>
-                    <option value="pressman" selected>Pressman</option>
-                </select><br><br>
-                <?php
-                            }
-                            ?>
-                            </div><br>
-                            <div class="col-md-12">
-                                <input type="submit" value="Atualizar" name="editar2">
-                            </div>
-                        </form>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="nome" placeholder=<?php echo "'" . $nome . "'" ?>>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="telefone" placeholder=<?php echo "'" . $telefone . "'" ?>>
+                                </div>
+                                <div class="col-md-12">
+                                    <?php
+                                    if ($cargo == "admin") { ?>
+                                        <select name="cargo" class="form-select mt-3">
+                                            <option value="admin" selected>Administrador</option>
+                                            <option value="press">Pressman</option>
+                                            <option value="">User</option>
+                                        </select><br><br>
+                                        <?php
+                                    } elseif($cargo == "press") {
+                                        ?>
+                                        <select name="cargo" class="form-select mt-3">
+                                            <option value="admin">Administrador</option>
+                                            <option value="press" selected>Pressman</option>
+                                            <option value="">User</option>
+                                        </select><br><br>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <select name="cargo" class="form-select mt-3">
+                                            <option value="admin">Administrador</option>
+                                            <option value="press">Pressman</option>
+                                            <option value="" selected>User</option>
+                                        </select><br><br>
+                                        <?php
+                                    }
+                                    ?>
+                                </div><br>
+                                <div class="col-md-12">
+                                    <input type="submit" value="Atualizar" name="editar2">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+
     </form>
     <?php
     if (isset($_POST["editar2"])) {
-        $emailnovo = $_POST["email"];
+        $telefonenovo = $_POST["telefone"];
         $nomenovo = $_POST["nome"];
         $cargonovo = $_POST["cargo"];
-        if ($emailnovo == "") {
-            $emailnovo = $email;
+        if ($telefonenovo == "") {
+            $telefonenovo = $telefone;
         }
         if ($nomenovo == "") {
             $nomenovo = $nome;
         }
-        $edit = "UPDATE administrador SET nome_admin = '" . $nomenovo . "' , cargo_admin = '" . $cargonovo . "' WHERE administrador.id_admin ='" . $editar . "'";
+        $edit = "UPDATE utilizador SET nome_user = '$nomenovo' , telefone_user = '$telefonenovo', cargo_user = '$cargonovo' WHERE utilizador.id_user = '$editar'";
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>

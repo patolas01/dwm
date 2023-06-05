@@ -71,7 +71,7 @@
                     echo "</tr>";
                 }
             } else {
-                echo "No records found.";
+                echo "Nenhuma notícia encontrada";
             }
 
             // Closing the database connection

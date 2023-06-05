@@ -2,17 +2,18 @@
 <html lang="pt">
 
 <head>
+
+    <?php include('bootstrapInc.php'); ?>
+    <title>Nova Notícia</title>
+    <link rel="stylesheet" href="../css/pauloLeal.css">
     <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
     <script type="text/javascript" src="richtexteditor/rte.js"></script>
     <script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
-    <?php include('bootstrapInc.php'); ?>
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/pauloLeal.css">
 
 </head>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php include('navbar.php');?>
 
     <h1>Gerir Notícias</h1>
     <form id="news" action="newsAdd.php" method="post" enctype="multipart/form-data">
@@ -47,6 +48,7 @@
         <div class="form-group">
             <label for="descEditor">Descrição</label>
             <div id="descEditor" name="descEditor">
+                <p></p>
             </div>
         </div>
         <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
@@ -54,12 +56,8 @@
     <script>
         var editor1 = new RichTextEditor("#descEditor");
 
-        //onclick submit
+        // onclick submit
         editor1.attachEvent("change", function () {
-            desc = editor1.getHTMLCode();
-            //console.log(editor1.getHTMLCode());
-            //alert(document.getElementsByName('descHTML').value);
-            //document.getElementsById('descHTML').value = editor1.getHTMLCode();
             var variable = editor1.getHTMLCode();
 
             var xmlhttp = new XMLHttpRequest();
@@ -74,10 +72,13 @@
                 }
             };
 
-            var params = "variable=" + encodeURIComponent(variable); // Parameter to be sent
+            var params = "desc=" + encodeURIComponent(variable); // Parameter to be sent
             xmlhttp.send(params);
-
         });
+
+
+
+
 
         //foto-preview
         window.onload = function () {
@@ -100,43 +101,18 @@
         };
 
 
-        // ajax
-        function sendData() {
-            var data = {
-                desc: editor1.getHTMLCode(),
-            };
-
-            var xhr = new XMLHttpRequest();
-
-            //👇 set the PHP page you want to send data to
-            xhr.open("POST", "newsAdd.php", true);
-            xhr.setRequestHeader("Content-Type", "application/json");
-
-            //👇 what to do when you receive a response
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == XMLHttpRequest.DONE) {
-                    alert(xhr.responseText);
-                }
-            };
-
-            //👇 send the data
-            xhr.send(JSON.stringify(data));
-        }
-
-
-
-
-
     </script>
 
 
     <?php
     include "../sqli/conn.php";
 
+
+
     if (isset($_POST['guardar'])) {
+        $desc = 'teste de descrição'; //$_POST['desc'];
         $titulo = $_POST['titulo-noticia'];
         $categoria = $_POST['categoria'];
-        $desc = json_decode(file_get_contents("php://input"), true);
 
         if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
             $file = $_FILES['foto'];
@@ -145,7 +121,7 @@
             // Gera um nome único para o arquivo
             $fileName = uniqid() . '_' . $file['name'];
             $destination = $uploadDirectory . $fileName;
-            echo 'PATH:: ' . $destination;
+            //echo 'PATH:: ' . $destination;
             // Verifica se o tipo de arquivo é uma imagem
             if (exif_imagetype($file['tmp_name'])) {
                 // Move o arquivo para a pasta de destino
@@ -163,7 +139,8 @@
         } else {
             echo 'Nenhum ficheiro foi enviado.';
         }
-        echo ' - '. $desc . ' - ' . $titulo . ' - ' . $categoria;
+        include('../bootstrap/modals/alertSuccess.php');
+        //echo ' - ' . $desc . ' - ' . $titulo . ' - ' . $categoria;
     }
 
 

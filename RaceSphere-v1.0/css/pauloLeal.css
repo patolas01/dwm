@@ -293,8 +293,15 @@ img#addBtn {
 }
 
 .catN-f1:hover{
-    box-shadow: 0px 0px 10px 6px #c610007b;
+    box-shadow: 0px 0px 10px 6px #FF18017b;
 }
+.catN-wrc:hover {
+    box-shadow: 0px 0px 10px 6px #2b66be7b;
+}
+.catN-wec:hover {
+    box-shadow: 0px 0px 10px 6px #00b4307b;
+}
+
 
 
 
