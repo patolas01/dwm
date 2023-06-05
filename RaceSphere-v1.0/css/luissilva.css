@@ -60,7 +60,7 @@ body {
 /*Showroom*/
 h1,
 p {
-    margin-top: 30px;
+    margin-top: 20px;
     color: white;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -80,7 +80,7 @@ p {
 
 .bar-wrapper {
     position: absolute;
-    width: auto;
+    width: 75%;
     height: auto;
     top: 0;
     left: 0;
