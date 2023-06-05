@@ -182,9 +182,7 @@ div.driverName {
 
 .newsBox .card:hover {
     cursor: pointer;
-    border-color: #4d4d4d;
-    box-shadow: 0px 0px 15px;
-    transform: scale(105%);
+    transform: scale(103%);
 }
 
 form#news {
@@ -292,6 +290,10 @@ img#addBtn {
     margin-bottom: 3px;
     padding: 0;
     height: 20px;
+}
+
+.catN-f1:hover{
+    box-shadow: 0px 0px 10px 6px #c610007b;
 }
 
 
