@@ -9,13 +9,18 @@
                     class="d-inline-block align-top"></a>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="f1-index.php">F1</a>
+                    <a class="nav-link" href="news.php">Notícias</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="rally-index.php">WRC</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="wec-index.php">WEC</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Categorias
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="f1-index.php">F1</a>
+                        <a class="dropdown-item" href="rally-index.php">WRC</a>
+                        <a class="dropdown-item" href="wec-index.php">WEC</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="showroom.php">Showroom</a>

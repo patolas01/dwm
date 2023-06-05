@@ -24,6 +24,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="pilotos.php">Pilotos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="equipas.php">Equipas</a>
+                </li>
             </ul>
 
         </div>

@@ -1,3 +1,8 @@
+/*COLORS:
+WRC - #00b430
+WEC - #2b66be
+F1 - #FF1801 */
+
 body {
     background-color: rgb(242, 242, 242);
     text-align: center;
@@ -74,7 +79,7 @@ div.outerCard:hover {
 }
 
 .resultCard#wrc {
-    background: rgb(40, 78, 134);
+    background: #2b66be;
     background: linear-gradient(0deg, rgba(40, 78, 134, 1) 0%, rgba(78, 155, 255, 1) 100%);
     color: white;
 }
@@ -149,20 +154,30 @@ div.driverName {
 }
 
 .newsBox {
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
     text-align: left;
+    margin-left: auto;
+    margin-right: auto;
     padding-top: 4%;
     padding-bottom: 4%;
-    width: 100%;
+    width: 90svw;
+    justify-content: center;
 }
 
 .newsBox .card {
+    flex-basis: 20%;
     transition-duration: 212ms;
     border: 2px solid gainsboro;
     width: 20%;
     margin-left: 1%;
     margin-right: 1%;
+    margin-bottom: 2%;
+}
+
+.newsBox .card img {
+    object-fit: cover;
+    height: 150px;
 }
 
 .newsBox .card:hover {
@@ -207,7 +222,7 @@ form#news {
     margin-top: 10px;
 }
 
-table#newsManage{
+table#newsManage {
     width: 60%;
     margin-top: 30px;
     margin-bottom: 200px;
@@ -216,6 +231,68 @@ table#newsManage{
     border-radius: 10px;
 }
 
+table#newsManage td {
+    vertical-align: middle;
+}
+
+table#newsManage a img {
+    width: 20px;
+}
+
+#newsManage tr.hidden {
+    display: none;
+}
+
+div.newsTooltip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 5%;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.newsTooltip input {
+    margin-bottom: 15px;
+    margin-top: 0;
+    margin-left: auto;
+}
+
+
+#newsManage td.idCell {
+    position: relative;
+}
+
+#newsManage td.idCell::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5%;
+    width: 5px;
+    height: 90%;
+}
+
+#newsManage td.idCell.cat-f1::before {
+    background-color: #FF1801;
+}
+
+#newsManage td.idCell.cat-wec::before {
+    background-color: #00b430;
+}
+
+#newsManage td.idCell.cat-wrc::before {
+    background-color: #2b66be;
+}
+
+
+img#addBtn {
+    margin-top: 0;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    padding: 0;
+    height: 20px;
+}
 
 
 
