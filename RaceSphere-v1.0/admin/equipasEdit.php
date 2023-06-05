@@ -20,6 +20,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $sql = "SELECT id_equipa, nome_equipa, nac_equipa, cat_equipa FROM equipa WHERE id_equipa = $id_equipa";
     $result = $conn->query($sql);
+
+    if ($result === false) {
+        die("Error: " . $conn->error);
+    }
+
     $row = $result->fetch_assoc();
 
     if (!$row) {
@@ -43,16 +48,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
 
         //atualizar equipa na bd
-        $sql = "UPDATE equipa SET nome_equipa = '$nome_equipa' ,  nac_equipa = '$nac_equipa' , cat_equipa = '$cat_equipa' WHERE id_equipa = $id_equipa";
-        $result = $conn->query($sql);
+        $stmt = $conn->prepare("UPDATE equipa SET nome_equipa = ?, nac_equipa = ?, cat_equipa = ? WHERE id_equipa = ?");
+        $stmt->bind_param("sssi", $nome_equipa, $nac_equipa, $cat_equipa, $id_equipa);
 
-        if(!$result){
-            $errorMessage = "Invalid query: " . $conn-> error;
-            break;  
+        if (!$stmt->execute()) {
+            $errorMessage = "Erro ao atualizar a equipa: " . $stmt->error;
+            break;
         }
 
-        $successMessage = "Cliente atualizado com sucesso!";
-        header("equipas.php");
+        $successMessage = "Equipa atualizada com sucesso!";
+        header("Location: equipas.php");
         exit;
     } while (false);
 }
@@ -90,25 +95,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         ?>
 
         <form method="post">
-            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa;?>">
+            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa; ?>">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa;?>">
+                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa; ?>">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nacionalidade Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nac_equipa" value="<?php echo $nac_equipa;?>">
+                    <input type="text" class="form-control" name="nac_equipa" value="<?php echo $nac_equipa; ?>">
                 </div>
             </div>
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Categoria Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa;?>">
+                    <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa; ?>">
                 </div>
             </div>
 
