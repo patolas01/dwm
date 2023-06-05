@@ -55,14 +55,24 @@
                                     if ($cargo == "admin") { ?>
                                         <select name="cargo" class="form-select mt-3">
                                             <option value="admin" selected>Administrador</option>
-                                            <option value="pressman">Pressman</option>
+                                            <option value="press">Pressman</option>
+                                            <option value="">User</option>
                                         </select><br><br>
                                         <?php
-                                    } else {
+                                    } elseif($cargo == "press") {
                                         ?>
                                         <select name="cargo" class="form-select mt-3">
                                             <option value="admin">Administrador</option>
-                                            <option value="pressman" selected>Pressman</option>
+                                            <option value="press" selected>Pressman</option>
+                                            <option value="">User</option>
+                                        </select><br><br>
+                                        <?php
+                                    }else{
+                                        ?>
+                                        <select name="cargo" class="form-select mt-3">
+                                            <option value="admin">Administrador</option>
+                                            <option value="press">Pressman</option>
+                                            <option value="" selected>User</option>
                                         </select><br><br>
                                         <?php
                                     }

@@ -139,8 +139,8 @@
                             ?>
                         </td>
                         <td>
-                            <form action="editUsers.php" method="POST"><button><a
-                                        href="editUsers.php?id=<?= $id_user ?>">Editar</a></button></form>
+                            <form action="editAdminPress.php" method="POST"><button><a
+                                        href="editAdminPress.php?id=<?= $id_user ?>">Editar</a></button></form>
                         </td>
                         <td>
                             <form action="userManagement.php" method="POST"><button name="eliminaruser" type="submit"
