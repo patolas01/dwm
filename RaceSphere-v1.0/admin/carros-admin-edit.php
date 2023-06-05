@@ -158,7 +158,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" class="form-control" id="desc_carro" name="desc_carro" required value="<?php echo $desc_carro; ?>">
             </div>
             <div class="form-group col-md-10">
-                <label for="fotocarro">Id foto carro:</label>
+                <label for="fotocarro">Foto carro:</label>
                 <input type="text" class="form-control" id="fotocarro" name="fotocarro" value="<?php echo $fotocarro ; ?>">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
