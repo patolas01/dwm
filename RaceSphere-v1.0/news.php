@@ -14,6 +14,8 @@
 
     <div class="newsBox">
 
+
+
         <?php
         include('sqli/conn.php');
 
@@ -23,7 +25,6 @@
         if (mysqli_num_rows($result) > 0) {
 
             while ($row = mysqli_fetch_assoc($result)) {
-
                 echo '<div class="card catN-'.$row['cat_noticia'].'" id="'.$row['id_noticia'].'">';
                 echo '  <img src="img/bd-img/news/'.$row['thumb_noticia'].'" class="card-img-top" alt="imagem da noticia">';
                 echo '  <div class="card-body">';
@@ -32,7 +33,6 @@
                 echo '    <p class="card-text">'.$row['desc_noticia'].'</p>';
                 echo '  </div>';
                 echo '</div>';
-
             }
 
         } else {
