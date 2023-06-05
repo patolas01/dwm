@@ -1,7 +1,4 @@
 <?php
-
-session_start();
-
 include '../sqli/conn.php';
 if (isset($_GET['id_carro'])) {
     $id_carro = $_GET['id_carro'];
@@ -19,7 +16,7 @@ if (isset($_GET['id_carro'])) {
         $cilind_carro = $row['cilind_carro'];
         $hp_carro = $row['hp_carro'];
         $desc_carro = $row['desc_carro'];
-        $idcarrofoto = $row['idcarrofoto'];
+        $fotocarro = $row['fotocarro'];
     } else {
         echo "Carro não encontrado.";
         exit;
@@ -42,9 +39,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cilind_carro = $_POST['cilind_carro'];
     $hp_carro = $_POST['hp_carro'];
     $desc_carro = $_POST['desc_carro'];
-    $idcarrofoto = $_POST['idcarrofoto'];
+    $fotocarro = $_POST['fotocarro'];
 
-    $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', idcarrofoto='$idcarrofoto' WHERE id_carro='$id_carro'";
+    $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
 
     if ($conn->query($sql) === TRUE) {
         header("Location: carros-admin.php");
@@ -84,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form id="insert-form" method="POST">
             <div class="form-group col-md-10">
                 <label for="id_carro">ID:</label>
-                <input type="text" class="form-control" id="id_carro" name="id_carro" value="<?php echo $id_carro; ?>" readonly>
+                <input type="text" class="form-control" id="id_carro" name="id_carro" value="<?php echo $id_carro; ?>" readonly disabled>
             </div>
             <div class="form-group col-md-10">
                 <label for="marca_carro">Marca:</label>
@@ -161,12 +158,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="text" class="form-control" id="desc_carro" name="desc_carro" required value="<?php echo $desc_carro; ?>">
             </div>
             <div class="form-group col-md-10">
-                <label for="idcarrofoto">Id foto carro:</label>
-                <input type="text" class="form-control" id="idcarrofoto" name="idcarrofoto" value="<?php echo $idcarrofoto; ?>">
+                <label for="fotocarro">Id foto carro:</label>
+                <input type="text" class="form-control" id="fotocarro" name="fotocarro" value="<?php echo $fotocarro ; ?>">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST"){
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $marca_carro = $_POST['marca_carro'];
                 $modelo_carro = $_POST['modelo_carro'];
                 $ano_carro = $_POST['ano_carro'];
@@ -176,9 +173,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cilind_carro = $_POST['cilind_carro'];
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
-                $idcarrofoto = $_POST['idcarrofoto'];
+                $fotocarro = $row["fotocarro"];
 
-                $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', idcarrofoto='$idcarrofoto' WHERE id_carro='$id_carro'";
+                $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
 
                 if ($conn->query($sql) === TRUE) {
                     $mensagem = "Dados atualizados com sucesso.";

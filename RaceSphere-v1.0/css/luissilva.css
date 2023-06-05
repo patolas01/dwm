@@ -83,7 +83,7 @@ p {
     width: auto;
     height: auto;
     top: 0;
-    left: 0;    
+    left: 0;
     z-index: 1;
 }
 
@@ -112,7 +112,7 @@ p {
 
 #leftBar {
     background-image: url(../img/carros_back.jpg);
-    
+
 }
 
 #rightBar {
@@ -127,10 +127,10 @@ p {
 /*Showrrom carros*/
 .showroom {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
-    height: 100vh;
-
+    height: auto;
+    margin-top: 50px;
 }
 
 .sidebar {
@@ -156,7 +156,8 @@ p {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     background-color: #424242;
     width: 800px;
-    height: 500px;
+    height: 600px;
+    border-radius: 5px;
 }
 
 
@@ -172,6 +173,26 @@ p {
 
 .car-info p {
     margin-bottom: 5px;
+}
+
+div.car-image img {
+    width: 300px;
+    height: 150px;
+}
+
+.table-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.car-details {
+    width: 60%;
+}
+
+.car-image {
+    width: 40%;
+    text-align: right;
 }
 
 /*Carros-Admin, Carros-Admin-Insert, Carros-Admin-Edit*/

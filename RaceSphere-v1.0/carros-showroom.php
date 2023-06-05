@@ -34,6 +34,7 @@
             $cilind = $row["cilind_carro"];
             $hp = $row["hp_carro"];
             $descricao = $row["desc_carro"];
+            $fotocarro = $row["fotocarro"];
         } else {
             echo "Carro não encontrado.";
             exit;
@@ -54,6 +55,7 @@
             $cilind = $row["cilind_carro"];
             $hp = $row["hp_carro"];
             $descricao = $row["desc_carro"];
+            $fotocarro = $row["fotocarro"];
         } else {
             echo "Não há carros disponíveis.";
             exit;
@@ -100,21 +102,27 @@
                 }
                 ?>
             </div>
-            <table>
-                <tr>
-                    <td colspan="2" class="car-details">
-                        <h2><?php echo $marca . ' ' . $modelo; ?></h2>
-                        <p>Ano: <?php echo $ano; ?></p>
-                        <p>Tracção: <?php echo $trac; ?></p>
-                        <p>Caixa: <?php echo $caixa; ?></p>
-                        <p>Combustível: <?php echo $comb; ?></p>
-                        <p>Cilindrada: <?php echo $cilind; ?></p>
-                        <p>Potência: <?php echo $hp; ?></p>
-                        <p>Descrição: <?php echo $descricao; ?></p>
-                    </td>
-                </tr>
-            </table>
+            <div class="table-container">
+                <div class="car-details">
+                    <h2><?php echo $marca . ' ' . $modelo; ?></h2>
+                    <p>Ano: <?php echo $ano; ?></p>
+                    <p>Tracção: <?php echo $trac; ?></p>
+                    <p>Caixa: <?php echo $caixa; ?></p>
+                    <p>Combustível: <?php echo $comb; ?></p>
+                    <p>Cilindrada: <?php echo $cilind; ?></p>
+                    <p>Potência: <?php echo $hp; ?></p>
+                    <p>Descrição: <?php echo $descricao; ?></p>
+                </div>
+                <div class="car-image">
+                    <?php
+                    $fotocarro = $row["fotocarro"];
+                    ?>
+                    <img src="admin/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                </div>
+            </div>
+
         </div>
+
     </div>
     <?php
     include 'footer.php';
