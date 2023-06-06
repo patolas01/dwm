@@ -72,7 +72,9 @@
                         </td>
                         <td>
                             <?php
+                            $row['categoria']=strtoupper($row['categoria']);
                             echo $row['categoria'];
+                            $row['categoria']=strtolower($row['categoria']);
                             ?>
                         </td>
                         <td>
