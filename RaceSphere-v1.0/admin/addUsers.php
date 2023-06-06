@@ -11,7 +11,7 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/danielAdmin.js"></script>
+    <script src="js/addUsers.js"></script>
 </head>
 
 <body>
@@ -26,18 +26,17 @@
                     <div class="form-items">
                         <h3>Novo Admin/Pressman</h3>
                         <p>Preencha o formulário</p>
-                        <form action="addUsers.php" action="POST" class="requires-validation" novalidate>
+                        <form action="addUsers.php" action="POST" id="form" class="requires-validation">
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" name="name" placeholder="Nome" required>
-                                <div class="valid-feedback">O campo nome é válido!</div>
-                                <div class="invalid-feedback">O campo nome não pode estar a branco!</div>
                             </div>
 
                             <div class="col-md-12">
-                                <input class="form-control" type="email" name="email" placeholder="E-mail" required>
-                                <div class="valid-feedback">O Email é valido!</div>
-                                <div class="invalid-feedback">O campo de Email não pode estar em branco!</div>
+                                <input class="form-control" type="email" name="email" placeholder="E-mail" required pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$">
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="text" name="telefone" placeholder="Telefone" required pattern="/^([9][1236\s])[0-9\s]*$/">
                             </div>
 
                             <div class="col-md-12">
@@ -45,26 +44,15 @@
                                     <option selected disabled value="">Cargo</option>
                                     <option value="admin">Administrador</option>
                                     <option value="press">Pressman</option>
+                                    <option value="NULL">Utilizador</option>
                                 </select>
-                                <div class="valid-feedback">Cargo selecionado</div>
-                                <div class="invalid-feedback">Por favor selecione um cargo</div>
                             </div>
 
 
                             <div class="col-md-12">
                                 <input class="form-control" type="password" name="password" placeholder="Password"
-                                    required>
-                                <div class="valid-feedback">Password é válida!</div>
-                                <div class="invalid-feedback">O campo de password não pode estar em branco!</div>
+                                    required pattern="^[a-zA-Z]\w{3,16}$">
                             </div>
-
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                <label class="form-check-label">Eu confirmo que todas os campos estão preenchidos
-                                    corretamente</label>
-                                <div class="invalid-feedback">Por favor confirme que todos os dados estão corretos</div>
-                            </div>
-
 
                             <div class="form-button mt-3">
                                 <button name="enviar" type="submit" class="btn btn-primary">Registar</button>
@@ -78,10 +66,13 @@
     <?php
     include '../footer.php';
     if(isset($_POST["enviar"])){
-        $emailNovoAdminPressman=$_POST["email_admin"];
-        $nomeNovoAdminPressman=$_POST["email_admin"];
-        $cargoNovoAdminPressman=$_POST["email_admin"];
-        $passwordNovoAdminPressmanNaoEncriptada=$_POST["email_admin"];
+        $emailNovoUser=$_POST["email"];
+        $nomeNovoUser=$_POST["nome"];
+        $cargoNovoUser=$_POST["cargo"];
+        $telefoneNovoUser=$_POST["telefone"];
+        $passwordNovoUserNaoEncriptada=$_POST["password"];
+        $passwordNovoUser = hash('sha512', $passwordNovoUserNaoEncriptada);
+        $query="INSERT INTO utilizador (id_user , nome_user , email_user , password_user , telefone_user , cargo_user) VALUES (NULL, $nomeNovoUser, $emailNovoUser, $passwordNovoUser, $telefoneNovoUser, )";
     }
     ?>
 </body>
