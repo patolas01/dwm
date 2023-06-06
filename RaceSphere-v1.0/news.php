@@ -31,15 +31,12 @@
         if ($count > 3 && $count < 7) {
             $vertItems[] = $row;
         }
-        if ($count > 6) {
-            $cardItems[] = $row;
-        }
         $count++;
     } ?>
- <h1 class="news">Notícias Principais</h1>
- <br>
+    <h1 class="news">Notícias Principais</h1>
+    <br>
     <div class="container">
-        <div class="row">
+        <div id="mainSection" class="row">
             <div class="col-md-7">
                 <div class="bd-example w-100">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -62,7 +59,7 @@
                                 echo '<img src="img/bd-img/news/' . $item["thumb_noticia"] . '" class="d-block w-100" alt="imagem de noticia">';
                                 echo '<div class="carousel-caption d-none d-md-block">';
                                 echo '<h5>' . $item["titulo_noticia"] . '</h5>';
-                                echo '<p>' . $item["desc_noticia"] . '</p>';
+                                //echo '<p>' . $item["desc_noticia"] . '</p>';
                                 echo '</div>';
                                 echo '</div>';
                                 $active = false;
@@ -95,9 +92,7 @@
                         echo '</div>';
                         echo '<div class="col-md-8">';
                         echo '<div class="card-body">';
-                        echo '<p class="card-text"><small class="text-muted">' . $item['dia'] . '/' . $item['mes'] . ' - ' . $item['hora'] . ':' . $item['minuto'] . '</small></p>';
-                        echo '<h5 class="card-title just">' . $item['titulo_noticia'] . '</h5>';
-                        echo '<p class="card-text">' . $item['desc_noticia'] . '</p>';
+                        echo '<h6 class="card-title just">' . $item['titulo_noticia'] . '</h6>';
                         echo '</div>';
                         echo '</div>';
                         echo '</div>';
@@ -109,25 +104,46 @@
             </div>
         </div>
     </div>
+    <hr>
 
-    <div class="newsBox">
-        <?php
-        foreach ($cardItems as $item) {
-            echo '<div class="card catN-' . $item['cat_noticia'] . '" id="' . $item['id_noticia'] . '">';
-            echo '<img src="img/bd-img/news/' . $item['thumb_noticia'] . '" class="card-img-top" alt="imagem da noticia">';
-            echo '<div class="card-body">';
-            echo '<p class="card-text"><small class="text-muted">' . $item['dia'] . '/' . $item['mes'] . ' - ' . $item['hora'] . ':' . $item['minuto'] . '</small></p>';
-            echo '<h5 class="card-title just">' . $item['titulo_noticia'] . '</h5>';
-            echo '<p class="card-text">' . $item['desc_noticia'] . '</p>';
-            echo '</div>';
+    <?php
+
+    // Retrieve distinct categories from the table
+    $categoryQuery = "SELECT DISTINCT cat_noticia FROM noticias ORDER BY cat_noticia";
+    $categoryResult = mysqli_query($conn, $categoryQuery);
+
+    if (mysqli_num_rows($categoryResult) > 0) {
+        while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
+            $category = strtoupper($categoryRow['cat_noticia']);
+            echo '<h2>' . $category . '</h2>';
+            echo '<div class="newsBox">';
+
+            // Retrieve news items for the current category
+            $newsQuery = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes, DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = '$category' ORDER BY data_noticia LIMIT 4";
+            $newsResult = mysqli_query($conn, $newsQuery);
+
+            if (mysqli_num_rows($newsResult) > 0) {
+                while ($row = mysqli_fetch_assoc($newsResult)) {
+                    echo '<div class="card catN-' . $row['cat_noticia'] . '" id="' . $row['id_noticia'] . '">';
+                    echo '<img src="img/bd-img/news/' . $row['thumb_noticia'] . '" class="card-img-top" alt="imagem da noticia">';
+                    echo '<div class="card-body">';
+                    echo '<p class="card-text"><small class="text-muted">' . $row['dia'] . '/' . $row['mes'] . ' - ' . $row['hora'] . ':' . $row['minuto'] . '</small></p>';
+                    echo '<h5 class="card-title just">' . $row['titulo_noticia'] . '</h5>';
+                    echo '<p class="card-text">' . $row['desc_noticia'] . '</p>';
+                    echo '</div>';
+                    echo '</div>';
+                }
+            } else {
+                echo "Nenhuma notícia encontrada para a categoria " . $category;
+            }
             echo '</div>';
         }
+    } else {
+        echo "Nenhuma categoria encontrada";
+    }
 
-        if (empty($carouselItems) && empty($cardItems)) {
-            echo "Nenhuma notícia encontrada";
-        }
-        ?>
-    </div>
+    mysqli_close($conn);
+    ?>
 
 
     <?php include('footer.php'); ?>

@@ -5,130 +5,6 @@
     <?php include('bootstrapInc.php'); ?>
     <title>Página Principal da Formula 1</title>
     <link rel="stylesheet" href="css/alex.css">
-    <style>
-        .image-container {
-            height: 350px;
-            width: 100%;
-            position: relative;
-            display: inline-block;
-        }
-
-        .image {
-            height: 350px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            height: 350px;
-            width: 100%;
-            transform: translate(-50%, -50%);
-            background-color: rgba(0, 0, 0, 0.3);
-
-            text-align: center;
-        }
-
-        .title {
-            font-family: "Titillium font";
-            font-size: 100px;
-            font-weight: bold;
-            color: #fff;
-            text-transform: uppercase;
-            margin: 0;
-            letter-spacing: 10px;
-        }
-
-        .leaderboard {
-            font-family: Arial, sans-serif;
-            width: 60%;
-            margin: 0 auto;
-            margin-top: 25px;
-        }
-
-        .leaderboard-header {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-        }
-
-        .leaderboard-item {
-            width: 100%;
-            list-style-type: none;
-            padding: 10px;
-            border-bottom: 1px solid #ccc;
-            display: flex;
-            align-items: center;
-        }
-
-        .position {
-            font-weight: bold;
-            margin-right: 10px;
-        }
-
-        .driver {
-            font-weight: bold;
-            flex-grow: 1;
-        }
-
-        .points {
-            font-weight: bold;
-            margin-left: auto;
-
-        }
-
-        .podium {
-            display: flex;
-            justify-content: center;
-        }
-
-
-        .pilot img {
-            border: solid black;
-            margin-top: 50px;
-            border-radius: 50%;
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            margin: 10px;
-        }
-
-        .pilot1st img {
-            border: solid black;
-            margin-top: 50px;
-            border-radius: 50%;
-            width: 300px;
-            height: 300px;
-            object-fit: cover;
-            margin: 10px;
-        }
-
-        .pilot,
-        .pilot1st p {
-            font-size: 15pt;
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-        }
-
-        .text p {
-            font-size: 11pt;
-        }
-
-        .noticias {
-            width: 80%;
-            margin-top: 50px;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
-
-        .card {
-            margin-bottom: 1rem;
-        }
-    </style>
 </head>
 
 <body>
@@ -137,7 +13,7 @@
     <div class="image-container">
         <img src="img/img_alex/imgtitulo.jpg" alt="Your Image" style="height: 350px; width: 100%; ">
         <div class="overlay">
-            <h1 class="title">Formula 1 </h1>
+            <img src="img/f1-logo.svg" alt="logo formula 1">
         </div>
     </div>
 

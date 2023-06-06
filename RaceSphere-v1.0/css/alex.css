@@ -75,11 +75,11 @@ body {
 
 /*LOGIN*/
 
-.card{
+.card {
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
 }
 
-#form{
+#form {
     background-color: #dadada;
 }
 
@@ -90,4 +90,139 @@ body {
     padding: 10px;
     font-size: 16px;
     z-index: 9999;
+}
+
+.image-container {
+    height: 350px;
+    width: 100%;
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    object-fit: cover;
+}
+
+.image {
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 350px;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    backdrop-filter: brightness(20%);
+    background: radial-gradient(transparent 60%, black);
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay img{
+    width: 20svw;
+}
+
+.overlay h6 {
+    /*font-family: "Titillium font";*/
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    /*text-transform: uppercase;*/
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.leaderboard {
+    font-family: Arial, sans-serif;
+    width: 60%;
+    margin: 0 auto;
+    margin-top: 25px;
+}
+
+.leaderboard-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+.leaderboard-item {
+    width: 100%;
+    list-style-type: none;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.position {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.driver {
+    font-weight: bold;
+    flex-grow: 1;
+}
+
+.points {
+    font-weight: bold;
+    margin-left: auto;
+
+}
+
+.podium {
+    display: flex;
+    justify-content: center;
+}
+
+
+.pilot img {
+    border: solid black;
+    margin-top: 50px;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.pilot1st img {
+    border: solid black;
+    margin-top: 50px;
+    border-radius: 50%;
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    margin: 10px;
+}
+
+.pilot,
+.pilot1st p {
+    font-size: 15pt;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.text p {
+    font-size: 11pt;
+}
+
+.noticias {
+    width: 80%;
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    margin-bottom: 1rem;
 }
