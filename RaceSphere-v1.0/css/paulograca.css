@@ -244,15 +244,22 @@ div.categoriaPiloto {
 .form {
     text-align: center;
 }
-form input, form select{
+
+form input,
+form select {
     margin-top: 10px;
 }
 
-h1.tit{
+h1.tit {
     text-align: center;
 }
 
-.erro{
+.erro {
     text-align: center;
-    background-color:#ffcccb;
+    background-color: #ffcccb;
+}
+
+.form-select {
+    width: 48%;
+    margin-left: 15px;
 }

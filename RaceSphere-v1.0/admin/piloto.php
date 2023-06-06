@@ -34,6 +34,7 @@
                 }
 
                 while ($row = mysqli_fetch_assoc($result)) {
+                    $row['cat_piloto'] = strtoupper($row['cat_piloto']);
                     echo "
                 <tr>
                   <td>$row[nome_piloto]</td>

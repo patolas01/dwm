@@ -40,7 +40,7 @@
         $id_piloto = $_POST["id_piloto"];
         $nome_piloto = $_POST["nome_piloto"];
         $nac_piloto = $_POST["nac_piloto"];
-        $cat_piloto = $_POST["cat_piloto"];
+        $cat_piloto = $_POST["categoria"];
 
         do {
             if (
@@ -50,11 +50,11 @@
                 break;
             }
             if (!preg_match("/^[a-zA-Z\s]*$/", $nome_piloto)) {
-                $errorMessage = "O nome da piloto só pode conter letras e espaços.";
+                echo '<div class="erro">O nome do piloto só pode conter letras!</div>';
                 break;
             }
             if (!preg_match("/^[a-zA-Z\s]*$/", $nac_piloto)) {
-                $errorMessage = "A nacionalidade da piloto só pode conter letras e espaços.";
+                echo '<div class="erro">A nacionalidade tem de conter apenas letras!</div>';
                 break;
             }
             $stmt = $conn->prepare("UPDATE piloto SET nome_piloto = ?, nac_piloto = ?, cat_piloto = ? WHERE id_piloto = ?");
@@ -88,9 +88,28 @@
 
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Categoria do piloto</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cat_piloto" value="<?php echo $cat_piloto; ?>">
-                </div>
+                <select id="categoria" name="categoria" class="form-select">
+                    <?php switch ($cat_piloto) {
+                        case 'f1':
+                            echo '
+                <option value="f1" selected>Formula 1</option>
+                <option value="wec">World Endurace Championship</option>
+                <option value="wrc">Rally</option>';
+                            break;
+                        case 'wrc':
+                            echo '
+                <option value="f1">Formula 1</option>
+                <option value="wec">World Endurace Championship</option>
+                <option value="wrc" selected>Rally</option>';
+                            break;
+                        case 'wec':
+                            echo '
+                <option value="f1">Formula 1</option>
+                <option value="wec" selected >World Endurace Championship</option>
+                <option value="wrc">Rally</option>';
+                            break;
+                    } ?>
+                </select>
             </div>
             <div class="row mb-3">
                 <div class="offset-sm-3 col-sm-3 d-grid">
