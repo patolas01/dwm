@@ -28,7 +28,7 @@
             // Verifica se o arquivo é uma imagem
             if ($fotoTipo == "image/jpeg" || $fotoTipo == "image/png" || $fotoTipo == "image/jpg") {
                 // Define o diretório onde a imagem será armazenada
-                $diretorio = "C:\Users\Lenovo\Documents\GitHub\dwm\RaceSphere-v1.0\admin\carrosimg\ ";
+                $diretorio = "../admin/carrosimg/";
 
                 // Gera um nome único para a imagem, por exemplo, usando um timestamp
                 $fotocarro = time() . '_' . $fotoNome;
@@ -59,13 +59,16 @@
                         $corDeFundo = "red";
                     }
                 } else {
-                    echo "Ocorreu um erro ao salvar a imagem.";
+                    $mensagem = "Erro ao salvar a imagem: " . $conn->error;
+                    $corDeFundo = "red";
                 }
             } else {
-                echo "O arquivo enviado não é uma imagem válida.";
+                $mensagem = "Arquivo não é uma imagem: " . $conn->error;
+                $corDeFundo = "red";
             }
         } else {
-            echo "Nenhum arquivo de imagem foi enviado.";
+            $mensagem = "Imagem não inserida: " . $conn->error;
+            $corDeFundo = "red";
         }
     }
     ?>
@@ -142,11 +145,11 @@
             </div>
             <div class="form-group col-md-10">
                 <label for="cilind_carro">Cilindrada:</label>
-                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro">
+                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro" maxlength="4">
             </div>
             <div class="form-group col-md-10">
                 <label for="hp_carro">Potência:</label>
-                <input type="number" class="form-control" id="hp_carro" name="hp_carro">
+                <input type="number" class="form-control" id="hp_carro" name="hp_carro" maxlength="4">
             </div>
             <div class="form-group col-md-10">
                 <label for="desc_carro">Descrição:</label>
@@ -154,7 +157,7 @@
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro">
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255">
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>

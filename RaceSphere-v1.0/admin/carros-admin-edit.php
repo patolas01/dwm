@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="ano_carro">Ano:</label>
-                <input type="number" class="form-control" id="ano_carro" name="ano_carro" required value="<?php echo $ano_carro; ?>">
+                <input type="number" class="form-control" id="ano_carro" name="ano_carro" required value="<?php echo $ano_carro; ?>" min="1900" max="2030">
             </div>
             <?php
             $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";
@@ -147,11 +147,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="cilind_carro">Cilindrada:</label>
-                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro" value="<?php echo $cilind_carro; ?>">
+                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro" value="<?php echo $cilind_carro; ?>" maxlength="4">
             </div>
             <div class="form-group col-md-10">
                 <label for="hp_carro">Potência:</label>
-                <input type="number" class="form-control" id="hp_carro" name="hp_carro" value="<?php echo $hp_carro; ?>">
+                <input type="number" class="form-control" id="hp_carro" name="hp_carro" value="<?php echo $hp_carro; ?>" maxlength="4">
             </div>
             <div class="form-group col-md-10">
                 <label for="desc_carro">Descrição:</label>
@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro">
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
@@ -175,17 +175,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $desc_carro = $_POST['desc_carro'];
 
                 if ($_FILES['fotocarro']['name']) {
-                    $targetDir = "C:\Users\Lenovo\Documents\GitHub\dwm\RaceSphere-v1.0\admin\carrosimg\ "; // Substitua pelo diretório onde deseja salvar as imagens
+                    $targetDir = "../admin/carrosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
                     $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
                     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-                    
-                    // Verificar o tipo de arquivo (opcional)
+
+                    // Verificar o tipo de arquivo
                     if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
                         $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
                         $corDeFundo = "red";
                     } else {
                         if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
-                            $fotocarro = trim(pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME));
+                            $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
                         } else {
                             $mensagem = "Erro ao fazer o upload da imagem.";
                             $corDeFundo = "red";
