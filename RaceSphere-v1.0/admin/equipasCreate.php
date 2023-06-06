@@ -2,8 +2,10 @@
 include '../sqli/conn.php';
 
 $nome_equipa = "";
+$logo_equipa = "";
 $nac_equipa = "";
 $cat_equipa = "";
+
 
 $errorMessage = "";
 $successMessage = "";
@@ -13,6 +15,9 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     $nac_equipa = $_POST["nac_equipa"];
     $cat_equipa = $_POST["cat_equipa"];
 
+    $logo_equipa = $_FILES["foto"]["name"];
+    $targetDir = "../img/";
+    $targetFile = $targetDir . basename($_FILES["foto"]["name"]);
 
     do {
         if (empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa)) {
@@ -20,38 +25,33 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             break;
         }
 
-        // Validate nome_equipa field
+        // Validar nome_equipa field
         if (!preg_match("/^[a-zA-Z\s]*$/", $nome_equipa)) {
             $errorMessage = "O nome da equipa só pode conter letras e espaços.";
             break;
         }
 
-        // Validate nac_equipa field
+        // Validar nac_equipa field
         if (!preg_match("/^[a-zA-Z\s]*$/", $nac_equipa)) {
             $errorMessage = "A nacionalidade da equipa só pode conter letras e espaços.";
             break;
         }
-
-        // adicionar equipa a bd
-        $sql = "INSERT INTO equipa(nome_equipa, nac_equipa, cat_equipa) VALUES ('$nome_equipa', '$nac_equipa','$cat_equipa')";
-        $result = $conn->query($sql);
-
-        if (!$result) {
-            $errorMessage = "Invalid query: " . $conn->error;
-            break;
+        if (move_uploaded_file($_FILES["foto"]["tmp_name"], $targetFile)) {
+            // adicionar equipa a bd
+            $sql = "INSERT INTO equipa(nome_equipa, logo_equipa,nac_equipa, cat_equipa) VALUES ('$nome_equipa', '$logo_equipa','$nac_equipa','$cat_equipa')";
+            $result = $conn->query($sql);
+            if (!$result) {
+                $errorMessage = "Invalid query: " . $conn->error;
+            } else {
+                $successMessage = "Equipa adicionada!";
+                header("location: equipas.php");
+                exit;
+            }
+        } else {
+            
+            $errorMessage = "Falha no upload do ficheiro.";
         }
-
-        $nome_equipa = "";
-        $nac_equipa = "";
-        $cat_equipa = "";
-        
-
-        $successMessage = "Equipa adicionada!!";
-
-        header("location: equipas.php");
-        exit;
     } while (false);
-
 }
 ?>
 
@@ -86,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         }
         ?>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">
@@ -108,6 +108,37 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 </div>
             </div>
 
+            <div class="form-group row">
+                <label for="file-picker" class="col-sm-3 col-form-label">Foto</label>
+                <div class="col-sm-6">
+                    <input type="file" name="foto" class="custom-file-input" id="file-picker" accept="image/*" required>
+                    <label class="custom-file-label" for="file-picker" id="file-name">Escolher a foto...</label>
+                </div>
+                <div id="image-preview" class="col-sm-3"></div>
+            </div>
+
+            <script>
+                var fileInput = document.getElementById("file-picker");
+                var fileLabel = document.getElementById("file-name");
+                var imagePreview = document.getElementById("image-preview");
+
+                fileInput.addEventListener("change", function () {
+                    var file = fileInput.files[0];
+
+                    if (file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var imageUrl = e.target.result;
+                            fileLabel.textContent = file.name;
+                            imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
+
+
+
             <?php
             if (!empty($successMessage)) {
                 echo "
@@ -120,12 +151,12 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                              </div>
                             </div>
                         </div>
-                    "; // botao da versao 5 do bootstrap
+                    ";
             }
             ?>
 
             <div class="row mb-3">
-                <div class="offset-sm-3 col-sm-3 d-grid">
+                <div class="offset-sm-3 col-sm-1 d-grid">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
                 <div class="col-sm-3 d-grid">
