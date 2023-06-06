@@ -36,7 +36,7 @@
                 <th scope="col">Data</th>
                 <th scope="col">Titulo</th>
                 <th scope="col">Categoria</th>
-                <th scope="col"></th>
+                <th scope="col" id="buttons"></th>
             </tr>
         </thead>
         <tbody>
@@ -67,7 +67,7 @@
                     echo "<td>" . $row['data_noticia'] . "</td>";
                     echo "<td>" . $row['titulo_noticia'] . "</td>";
                     echo "<td>" . strtoupper($row['cat_noticia']) . "</td>";
-                    echo "<td><a href='#' class='btn btn-secondary' value=" . $row['id_noticia'] . ">Editar</a> <a href='' data-toggle='modal' data-target='#deleteModal' data-id=" . $row['id_noticia'] . " class='btn btn-danger'><img src='../img/icons8-delete-50.png'></a></td>";
+                    echo "<td><a href='newsEdit.php?id=".$row['id_noticia']."' class='btn btn-secondary' value=" . $row['id_noticia'] . ">Editar</a> <a href='' data-toggle='modal' data-target='#deleteModal' data-id=" . $row['id_noticia'] . " class='btn btn-danger'><img src='../img/icons8-delete-50.png'></a></td>";
                     echo "</tr>";
                 }
             } else {

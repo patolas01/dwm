@@ -18,6 +18,8 @@
     include 'navbar.php';
     include 'sqli/conn.php';
     ?>
+    <h1>Calendário WRC 2023 </h1>
+    <div id="imagemCalendario"><img src="img/img_daniel/WRC-calendar-2023-map_2.jpg"></div>
     <div class="container text-center">
         <?php
         $contador = 4;

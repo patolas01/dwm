@@ -516,6 +516,7 @@ html, body {
 }
 .container .row{
   padding-top: 50px;
+  margin-top: 20px;
 }
 .orange-btn{
   background-color: #F77D24;
@@ -532,5 +533,12 @@ i{
   border-left: 1px solid rgba(255,255,255,0.35);
   padding: 15px;
   margin-left: 15px;
+}
+#imagemCalendario{
+  width: 85%;
+  margin: auto;
+}
+#imagemCalendario img{
+  width: 100%;
 }
 /*css provaWrc.php*/
