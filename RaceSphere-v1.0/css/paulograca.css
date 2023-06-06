@@ -240,3 +240,19 @@ div.categoriaPiloto {
     border-right: 1px solid black;
     background-color: #ffffff;
 }
+
+.form {
+    text-align: center;
+}
+form input, form select{
+    margin-top: 10px;
+}
+
+h1.tit{
+    text-align: center;
+}
+
+.erro{
+    text-align: center;
+    background-color:#ffcccb;
+}
