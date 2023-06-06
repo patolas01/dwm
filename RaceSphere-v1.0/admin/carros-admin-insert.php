@@ -19,30 +19,54 @@
     include '../sqli/conn.php';
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $marca_carro = $_POST['marca_carro'];
-        $modelo_carro = $_POST['modelo_carro'];
-        $ano_carro = $_POST['ano_carro'];
-        $trac_carro = $_POST['trac_carro'];
-        $caixa_carro = $_POST['caixa_carro'];
-        $comb_carro = $_POST['comb_carro'];
-        $cilind_carro = $_POST['cilind_carro'];
-        $hp_carro = $_POST['hp_carro'];
-        $desc_carro = $_POST['desc_carro'];
-        $fotocarro = $_POST["fotocarro"];
+        // Verificar se a imagem foi enviada corretamente
+        if (isset($_FILES['fotocarro'])) {
+            $fotoNome = $_FILES['fotocarro']['name']; // Nome do arquivo enviado
+            $fotoTipo = $_FILES['fotocarro']['type']; // Tipo do arquivo enviado
+            $fotoTemp = $_FILES['fotocarro']['tmp_name']; // Localização temporária do arquivo
 
-        $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
-        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
+            // Verifica se o arquivo é uma imagem
+            if ($fotoTipo == "image/jpeg" || $fotoTipo == "image/png" || $fotoTipo == "image/jpg") {
+                // Define o diretório onde a imagem será armazenada
+                $diretorio = "C:\Users\Lenovo\Documents\GitHub\dwm\RaceSphere-v1.0\admin\carrosimg\ ";
 
-        if ($conn->query($sql) === TRUE) {
-            $mensagem = "Dados inseridos com sucesso!";
-            $corDeFundo = "green";
+                // Gera um nome único para a imagem, por exemplo, usando um timestamp
+                $fotocarro = time() . '_' . $fotoNome;
+
+                // Move a imagem para o diretório desejado
+                if (move_uploaded_file($fotoTemp, $diretorio . $fotocarro)) {
+
+                    // Agora podemos inserir os dados no banco de dados
+                    $marca_carro = $_POST['marca_carro'];
+                    $modelo_carro = $_POST['modelo_carro'];
+                    $ano_carro = $_POST['ano_carro'];
+                    $trac_carro = $_POST['trac_carro'];
+                    $caixa_carro = $_POST['caixa_carro'];
+                    $comb_carro = $_POST['comb_carro'];
+                    $cilind_carro = $_POST['cilind_carro'];
+                    $hp_carro = $_POST['hp_carro'];
+                    $desc_carro = $_POST['desc_carro'];
+
+                    // Insere os dados no banco de dados
+                    $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
+                            VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
+
+                    if ($conn->query($sql) === TRUE) {
+                        $mensagem = "Dados inseridos com sucesso!";
+                        $corDeFundo = "green";
+                    } else {
+                        $mensagem = "Erro ao inserir os dados: " . $conn->error;
+                        $corDeFundo = "red";
+                    }
+                } else {
+                    echo "Ocorreu um erro ao salvar a imagem.";
+                }
+            } else {
+                echo "O arquivo enviado não é uma imagem válida.";
+            }
         } else {
-            $mensagem = "Erro ao inserir os dados: " . $conn->error;
-            $corDeFundo = "red";
+            echo "Nenhum arquivo de imagem foi enviado.";
         }
-
-        ini_set('display_errors', 1);
-        error_reporting(E_ALL);
     }
     ?>
 
@@ -53,7 +77,7 @@
                 <a href="carros-admin.php" class="btn btn-primary ml-3">Lista</a>
             </h2>
         </div>
-        <form id="insert-form" method="POST">
+        <form id="insert-form" method="POST" enctype="multipart/form-data">
             <div class="form-group col-md-10">
                 <label for="marca_carro">Marca:</label>
                 <input type="text" class="form-control" id="marca_carro" name="marca_carro" maxlength="50" required>
@@ -130,7 +154,7 @@
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="text" class="form-control" id="fotocarro" name="fotocarro">
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro">
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>
@@ -153,7 +177,7 @@
     mensagemElement.style.padding = "10px";
     mensagemElement.style.borderRadius = "5px";
     document.body.appendChild(mensagemElement);
-    
+
     setTimeout(function() {
         mensagemElement.parentNode.removeChild(mensagemElement);
     }, 5000);

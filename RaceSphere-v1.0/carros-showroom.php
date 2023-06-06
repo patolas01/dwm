@@ -117,7 +117,7 @@
                     <?php
                     $fotocarro = $row["fotocarro"];
                     ?>
-                    <img src="admin/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                    <img src="admin/carrosimg/ <?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
                 </div>
             </div>
 
