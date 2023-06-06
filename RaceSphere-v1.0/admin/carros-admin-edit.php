@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="text" class="form-control" id="fotocarro" name="fotocarro" value="<?php echo $fotocarro ; ?>">
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
@@ -173,7 +173,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cilind_carro = $_POST['cilind_carro'];
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
-                $fotocarro = $row["fotocarro"];
+
+                if ($_FILES['fotocarro']['name']) {
+                    $targetDir = "C:\Users\Lenovo\Documents\GitHub\dwm\RaceSphere-v1.0\admin\carrosimg\ "; // Substitua pelo diretório onde deseja salvar as imagens
+                    $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
+                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                    
+                    // Verificar o tipo de arquivo (opcional)
+                    if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+                        $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
+                        $corDeFundo = "red";
+                    } else {
+                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
+                            $fotocarro = trim(pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME));
+                        } else {
+                            $mensagem = "Erro ao fazer o upload da imagem.";
+                            $corDeFundo = "red";
+                        }
+                    }
+                }
+
 
                 $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
 
