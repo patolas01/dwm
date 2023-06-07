@@ -16,7 +16,7 @@ Ribeiro	     addEtapas.php -> Back-end
 	     etapasManagement.php
 
 
-	     ...	-> Front-end
+	     provaWrc.php -> Front-end
 	     rally-index.php
 	     rally-etapas.php
 	     provaWrc.php
@@ -55,9 +55,9 @@ Paulo Leal - news.php
 -----------------------------------------------------------------------------
 
 Paulo Graça- pilotos.php
-	     ...-> Back-end
-	     ...
-	     ...
+	     piloto.php-> Back-end
+	     pilotoDelete.php
+	     pilotoEdit.php
 
 
 	     piloto.php -> Front-end
