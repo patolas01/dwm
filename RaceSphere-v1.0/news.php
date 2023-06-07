@@ -116,7 +116,7 @@
         while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
             $category = strtoupper($categoryRow['cat_noticia']);
             echo '<h2 class="newsBoxTitle">' . $category . '</h2>';
-            echo '<div class="newsBox">';
+            echo '<div class="newsBox" id="cat">';
 
             $newsQuery = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes, DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = '$category' ORDER BY data_noticia LIMIT 4";
             $newsResult = mysqli_query($conn, $newsQuery);

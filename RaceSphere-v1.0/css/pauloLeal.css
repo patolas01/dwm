@@ -162,7 +162,11 @@ div.driverName {
     padding-top: 1%;
     padding-bottom: 5%;
     width: 80svw;
-    justify-content: left;
+    justify-content: center;
+}
+
+.newsBox#cat{
+    justify-content: left!important;
 }
 
 .newsBox .card {
