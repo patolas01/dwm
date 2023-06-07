@@ -114,7 +114,7 @@ $(document).ready(function () {
 
 
 	//news form validation
-	$('form#news').submit(function (event) {
+	$('form#news1').submit(function (event) {
 		event.preventDefault();
 
 		var titulo = $('#titulo-noticia').val();
@@ -126,8 +126,8 @@ $(document).ready(function () {
 		if (cat.trim() === '') {
 			alert('Escolha uma categoria');
 		}
+		else {
+			$(this).submit();
+		}
 	});
 });
-
-
-

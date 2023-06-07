@@ -15,7 +15,7 @@
 
     $query = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes,
     DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS
-    minuto, desc_noticia, thumb_noticia FROM noticias ORDER BY data_noticia";
+    minuto, desc_noticia, thumb_noticia FROM noticias ORDER BY data_noticia DESC";
     $result = mysqli_query($conn, $query);
 
     // Fetch the four most recent news items
