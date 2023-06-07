@@ -21,6 +21,10 @@ nav#admin a:hover{
     backdrop-filter: brightness(60%);
 }
 
+nav#admin a.navbar-brand:hover{
+    backdrop-filter: none;
+}
+
 nav#admin{
     background-color: #2c75fd;
     color: white;
