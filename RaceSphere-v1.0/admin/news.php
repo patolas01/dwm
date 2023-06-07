@@ -45,11 +45,8 @@
             $query = "SELECT id_noticia, titulo_noticia, cat_noticia, data_noticia FROM noticias";
             $result = mysqli_query($conn, $query);
 
-            // Creating an HTML table
+            
             if (mysqli_num_rows($result) > 0) {
-
-
-                // Fetching and displaying each row of data
                 while ($row = mysqli_fetch_assoc($result)) {
                     $color = '';
                     if ($row['cat_noticia'] == 'f1') {
@@ -74,7 +71,6 @@
                 echo "Nenhuma notícia encontrada";
             }
 
-            // Closing the database connection
             mysqli_close($conn);
             ?>
         </tbody>

@@ -110,7 +110,24 @@ $(document).ready(function () {
 			}
 		});
 	});
+
+
+
+	//news form validation
+	$('form#news1').submit(function (event) {
+		event.preventDefault();
+
+		var titulo = $('#titulo-noticia').val();
+		var cat = $('#categoria').val();
+
+		if (titulo.trim() === '') {
+			alert('Campo Titulo não pode ser vazio');
+		}
+		if (cat.trim() === '') {
+			alert('Escolha uma categoria');
+		}
+		else {
+			$(this).submit();
+		}
+	});
 });
-
-
-

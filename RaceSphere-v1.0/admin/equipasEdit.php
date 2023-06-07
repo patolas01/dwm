@@ -5,6 +5,7 @@ $id_equipa = "";
 $nome_equipa = "";
 $nac_equipa = "";
 $cat_equipa = "";
+$foto = "";
 
 $errorMessage = "";
 $successMessage = "";
@@ -40,6 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $nome_equipa = $_POST["nome_equipa"];
     $nac_equipa = $_POST["nac_equipa"];
     $cat_equipa = $_POST["cat_equipa"];
+    $foto = $_FILES["foto"];
 
     do {
         if (empty($id_equipa) || empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa)) {
@@ -47,6 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
 
+        
         // Validate nome_equipa field
         if (!preg_match("/^[a-zA-Z\s]*$/", $nome_equipa)) {
             $errorMessage = "O nome da equipa só pode conter letras e espaços.";
@@ -129,6 +132,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa; ?>">
                 </div>
             </div>
+
+            <div class="form-group row">
+                <label for="file-picker" class="col-sm-3 col-form-label">Foto</label>
+                <div class="col-sm-6">
+                    <input type="file" name="foto" class="custom-file-input" id="file-picker" accept="image/*" required>
+                    <label class="custom-file-label" for="file-picker" id="file-name">Escolher a foto...</label>
+                </div>
+                <div id="image-preview" class="col-sm-3"></div>
+            </div>
+
+            <script>
+                var fileInput = document.getElementById("file-picker");
+                var fileLabel = document.getElementById("file-name");
+                var imagePreview = document.getElementById("image-preview");
+
+                fileInput.addEventListener("change", function () {
+                    var file = fileInput.files[0];
+
+                    if (file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var imageUrl = e.target.result;
+                            fileLabel.textContent = file.name;
+                            imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
+
 
             <?php
             if (!empty($successMessage)) {

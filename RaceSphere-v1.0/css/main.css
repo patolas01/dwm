@@ -13,7 +13,12 @@ nav {
 }
 
 nav a {
+    transition-duration: 380ms;
     color: black;
+}
+
+nav#admin a:hover{
+    backdrop-filter: brightness(60%);
 }
 
 nav#admin{

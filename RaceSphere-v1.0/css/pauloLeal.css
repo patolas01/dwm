@@ -161,8 +161,12 @@ div.driverName {
     margin-right: auto;
     padding-top: 1%;
     padding-bottom: 5%;
-    width: 90svw;
+    width: 80svw;
     justify-content: center;
+}
+
+.newsBox#cat{
+    justify-content: left!important;
 }
 
 .newsBox .card {
@@ -382,7 +386,6 @@ form#searchForm {
 }
 
 input#searchInput {
-
     border: 1px solid #555;
     width: 100%;
     padding: 9px 4px 9px 40px;
@@ -390,7 +393,57 @@ input#searchInput {
     background-color: white;
 }
 
+#sideNews {
+    height: 360px;
+}
 
+#sideNews .row {
+    height: 360px;
+}
+
+#sideNews .vertRow {
+    margin-bottom: 10px;
+    padding: 0;
+    height: calc(100% / 3);
+}
+
+.vertRow{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vertRow .card {
+    cursor: pointer;
+    transition-duration: 200ms;
+    height: 100%;
+    
+}
+
+.vertRow .card .row {
+    height: 100%;
+    
+}
+
+.vertRow .card .row .col-md-8 {
+    height: 80%;
+}
+
+.vertRow .card-body {
+    height: 90px;
+    overflow: hidden;
+}
+
+.newsBoxTitle{
+    text-align: left;
+    width: 77svw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.newsBox{
+    align-items: left;
+}
 
 
 /*Responsive*/

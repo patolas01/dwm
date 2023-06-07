@@ -22,7 +22,7 @@
                     <a class="nav-link" href="carros-admin.php">Carros</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="pilotos.php">Pilotos</a>
+                    <a class="nav-link" href="piloto.php">Pilotos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="equipas.php">Equipas</a>
