@@ -119,7 +119,7 @@
             // Especifique o caminho para a pasta onde deseja guardadar as imagens
             $uploadDirectory = '../img/bd-img/news/';
             // Gera um nome único para o arquivo
-            $fileName = uniqid() . '_' . $file['name'];
+            $fileName = uniqid();
             $destination = $uploadDirectory . $fileName;
             //echo 'PATH:: ' . $destination;
             // Verifica se o tipo de arquivo é uma imagem

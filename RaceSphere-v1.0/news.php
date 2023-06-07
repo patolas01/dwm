@@ -80,13 +80,13 @@
                 </div>
             </div>
 
-            <div class="col-md-5">
+            <div class="col-md-5" id="sideNews">
                 <div class="row">
                     <?php
                     foreach ($vertItems as $item) {
-                        echo '<div class="col-md-12">';
-                        echo '<div class="card mb-3 catN-' . $item['cat_noticia'] . '" id="' . $item['id_noticia'] . '">';
-                        echo '<div class="row no-gutters">';
+                        echo '<div class="col-md-12 vertRow">';
+                        echo '<div class="card catN-' . $item['cat_noticia'] . '" id="' . $item['id_noticia'] . '">';
+                        echo '<div class="row">';
                         echo '<div class="col-md-4">';
                         echo '<img src="img/bd-img/news/' . $item['thumb_noticia'] . '" class="card-img" alt="imagem da noticia">';
                         echo '</div>';
@@ -108,17 +108,16 @@
 
     <?php
 
-    // Retrieve distinct categories from the table
+    //Por Categoria
     $categoryQuery = "SELECT DISTINCT cat_noticia FROM noticias ORDER BY cat_noticia";
     $categoryResult = mysqli_query($conn, $categoryQuery);
 
     if (mysqli_num_rows($categoryResult) > 0) {
         while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
             $category = strtoupper($categoryRow['cat_noticia']);
-            echo '<h2>' . $category . '</h2>';
+            echo '<h2 class="newsBoxTitle">' . $category . '</h2>';
             echo '<div class="newsBox">';
 
-            // Retrieve news items for the current category
             $newsQuery = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes, DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = '$category' ORDER BY data_noticia LIMIT 4";
             $newsResult = mysqli_query($conn, $newsQuery);
 

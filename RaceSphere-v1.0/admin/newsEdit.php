@@ -22,10 +22,10 @@
 
     $getPlace = "SELECT * FROM noticias WHERE id_noticia = $idnoticia";
     $result = $conn->query($getPlace);
-    $row2 = mysqli_fetch_assoc($result)
-        ?>
+    $row2 = mysqli_fetch_assoc($result);
+?>
     <h1>Gerir Notícias</h1>
-    <form id="news" action="newsEdit.php?id=<?php echo $id_noticia; ?>" method="post" enctype="multipart/form-data">
+    <form id="news" action="newsEdit.php?id=<?php echo $idnoticia; ?>" method="post" enctype="multipart/form-data">
         <div class="grid-container">
             <div class="grid-item join">
                 <div class="form-group">
@@ -47,13 +47,13 @@
                 <label for="categoria">Categoria</label>
                 <select name="categoria" class="form-control" required>
                     <?php
-                    if ($row2['cat_notica'] == "f1") { ?>
+                    if ($row2['cat_noticia'] == "f1") { ?>
                         <option value="f1" selected>F1</option>
                         <option value="wrc">WRC</option>
                         <option value="wec">WEC</option>
                         <?php
                     }
-                    if ($row2['cat_notica'] == "wrc") {
+                    if ($row2['cat_noticia'] == "wrc") {
                         ?>
                         <option value="f1">F1</option>
                         <option value="wrc" selected>WRC</option>
@@ -80,12 +80,7 @@
     </form>
     <script>
         window.addEventListener("load", (event) => {
-            var defaultImagePath = '../img/bd-img/news/default-image.jpg';
             // Get the file picker input element
-            var filePicker = document.getElementById('filePicker');
-
-
-
             var e = '../img/bd-img/news/';
             var imagePreview = document.getElementById('image-preview');
             imagePreview.style.backgroundImage = 'url(' + e + '<?php echo $row2['thumb_noticia'] ?>)';
@@ -158,7 +153,7 @@
             // Especifique o caminho para a pasta onde deseja guardadar as imagens
             $uploadDirectory = '../img/bd-img/news/';
             // Gera um nome único para o arquivo
-            $fileName = uniqid() . '_' . $file['name'];
+            $fileName = uniqid();
             $destination = $uploadDirectory . $fileName;
             //echo 'PATH:: ' . $destination;
             // Verifica se o tipo de arquivo é uma imagem
@@ -181,7 +176,11 @@
         }
         include('../bootstrap/modals/alertSuccess.php');
         sleep(3);
-        header("Location: news.php");
+        ?>
+        <script>
+            window.location.href = "news.php";
+        </script>
+        <?php
         exit;
         //echo ' - ' . $desc . ' - ' . $titulo . ' - ' . $categoria;
     }
