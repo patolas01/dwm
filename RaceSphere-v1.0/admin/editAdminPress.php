@@ -59,7 +59,7 @@
                                             <option value="">User</option>
                                         </select><br><br>
                                         <?php
-                                    } elseif($cargo == "press") {
+                                    } elseif ($cargo == "press") {
                                         ?>
                                         <select name="cargo" class="form-select mt-3">
                                             <option value="admin">Administrador</option>
@@ -67,7 +67,7 @@
                                             <option value="">User</option>
                                         </select><br><br>
                                         <?php
-                                    }else{
+                                    } else {
                                         ?>
                                         <select name="cargo" class="form-select mt-3">
                                             <option value="admin">Administrador</option>
@@ -100,7 +100,11 @@
         if ($nomenovo == "") {
             $nomenovo = $nome;
         }
-        $edit = "UPDATE utilizador SET nome_user = '$nomenovo' , telefone_user = '$telefonenovo', cargo_user = '$cargonovo' WHERE utilizador.id_user = '$editar'";
+        if ($cargonovo == "") {
+            $edit = "UPDATE utilizador SET nome_user = '$nomenovo' , telefone_user = '$telefonenovo', cargo_user = NULL WHERE utilizador.id_user = '$editar'";
+        } else {
+            $edit = "UPDATE utilizador SET nome_user = '$nomenovo' , telefone_user = '$telefonenovo', cargo_user = '$cargonovo' WHERE utilizador.id_user = '$editar'";
+        }
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>
