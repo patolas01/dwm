@@ -32,12 +32,12 @@
             </div>
             <div class="grid-item">
                 <label for="titulo-noticia">Titulo</label>
-                <input name="titulo-noticia" class="form-control" type="text" required>
+                <input id="titulo-noticia" name="titulo-noticia" class="form-control" type="text" required>
             </div>
             <div class="grid-item">
                 <label for="categoria">Categoria</label>
-                <select name="categoria" class="form-control" required>
-                    <option>Escolher...</option>
+                <select id="categoria" name="categoria" class="form-control">
+                    <option value="">Escolher...</option>
                     <option value="f1">F1</option>
                     <option value="wrc">WRC</option>
                     <option value="wec">WEC</option>

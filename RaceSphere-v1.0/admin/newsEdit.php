@@ -40,12 +40,12 @@
             </div>
             <div class="grid-item">
                 <label for="titulo-noticia">Titulo</label>
-                <input name="titulo-noticia" class="form-control" type="text"
+                <input id="titulo-noticia" name="titulo-noticia" class="form-control" type="text"
                     value="<?php echo $row2['titulo_noticia']; ?>" required>
             </div>
             <div class="grid-item">
                 <label for="categoria">Categoria</label>
-                <select name="categoria" class="form-control" required>
+                <select name="categoria" id="categoria" class="form-control" required>
                     <?php
                     if ($row2['cat_noticia'] == "f1") { ?>
                         <option value="f1" selected>F1</option>
