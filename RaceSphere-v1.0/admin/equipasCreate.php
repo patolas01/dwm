@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
                 exit;
             }
         } else {
-            
+
             $errorMessage = "Falha no upload do ficheiro.";
         }
     } while (false);
@@ -104,9 +104,19 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Categoria Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cat_equipa" value="<?php echo $cat_equipa ?>">
+                    <select id="categoria" name="cat_equipa" class="form-control">
+                        <option value="">Escolher...</option>
+                        <option value="f1" <?php if ($cat_equipa === "f1")
+                            echo "selected"; ?>>F1</option>
+                        <option value="wrc" <?php if ($cat_equipa === "wrc")
+                            echo "selected"; ?>>WRC</option>
+                        <option value="wec" <?php if ($cat_equipa === "wec")
+                            echo "selected"; ?>>WEC</option>
+                    </select>
                 </div>
             </div>
+
+
 
             <div class="form-group row">
                 <label for="file-picker" class="col-sm-3 col-form-label">Foto</label>
