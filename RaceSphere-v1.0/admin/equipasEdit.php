@@ -42,8 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $nome_equipa = $_POST["nome_equipa"];
     $nac_equipa = $_POST["nac_equipa"];
     $cat_equipa = $_POST["cat_equipa"];
-    $logo_equipa = $_FILES["logo_equipa"]["tmp_name"];
-
+    $logo_equipa = $_POST["current_logo"];
 
     do {
         if (empty($id_equipa) || empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa) || empty($logo_equipa)) {
@@ -51,31 +50,29 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
 
-
-        // Validate nome_equipa field
+        // Validar nome_equipa field
         if (!preg_match("/^[a-zA-Z\s]*$/", $nome_equipa)) {
             $errorMessage = "O nome da equipa só pode conter letras e espaços.";
             break;
         }
 
-        // Validate nac_equipa field
+        // Validar nac_equipa field
         if (!preg_match("/^[a-zA-Z\s]*$/", $nac_equipa)) {
             $errorMessage = "A nacionalidade da equipa só pode conter letras e espaços.";
             break;
         }
 
-            $stmt = $conn->prepare("UPDATE equipa SET nome_equipa = ?, nac_equipa = ?, cat_equipa = ? WHERE id_equipa = ?");
-            $stmt->bind_param("sssi", $nome_equipa, $nac_equipa, $cat_equipa, $id_equipa);
-        
-            if (!$stmt->execute()) {
-                $errorMessage = "Erro ao atualizar a equipa: " . $stmt->error;
-                break;
-            }
+        $stmt = $conn->prepare("UPDATE equipa SET nome_equipa = ?, nac_equipa = ?, cat_equipa = ?, logo_equipa = ? WHERE id_equipa = ?");
+        $stmt->bind_param("ssssi", $nome_equipa, $nac_equipa, $cat_equipa, $logo_equipa, $id_equipa);
+
+        if (!$stmt->execute()) {
+            $errorMessage = "Erro ao atualizar a equipa: " . $stmt->error;
+            break;
+        }
 
         $successMessage = "Equipa atualizada com sucesso!";
         header("Location: equipas.php");
         exit;
-    
     } while (false);
 }
 ?>
@@ -113,6 +110,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
         <form method="post">
             <input type="hidden" name="id_equipa" value="<?php echo $id_equipa; ?>">
+            <input type="hidden" name="current_logo" value="<?php echo $logo_equipa; ?>">
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">
