@@ -61,6 +61,9 @@
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="local" placeholder=<?php echo "'" . $local . "'" ?>>
+                                </div><br>
+                                <div class="col-md-12">
+                                    <input type="file" name="foto" id="file-picker" accept="image/*">
                                 </div>
                                 <div class="col-md-12">
                                     <?php
@@ -152,11 +155,39 @@
         if ($id_circuitonovo == "") {
             $id_circuitonovo = $id_circuito;
         }
-        if ($categorianovo == "wrc") {
-            $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['foto'];
+            // Especifique o caminho para a pasta onde deseja guardar as imagens
+            $uploadDirectory = '../img/bd-img/logos/';
+            // Gera um nome único para o arquivo
+            $fileName = uniqid();
+            $destination = $uploadDirectory . $fileName;
+            //echo 'PATH:: ' . $destination;
+            // Verifica se o tipo de arquivo é uma imagem
+            if (exif_imagetype($file['tmp_name'])) {
+                // Move o arquivo para a pasta de destino
+                if (move_uploaded_file($file['tmp_name'], $destination)) {
+
+                    if ($categorianovo == "wrc") {
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+                    } else {
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+                    }
+                    //prompt msg a dizer q a imagem foi guardada
+                } else {
+                    echo 'Ocorreu um erro ao guardar a imagem.';
+                }
+            } else {
+                echo 'O ficheiro enviado não é uma imagem válida.';
+            }
         } else {
-            $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+            if ($categorianovo == "wrc") {
+                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+            } else {
+                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+            }
         }
+        
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>
