@@ -64,9 +64,9 @@ h1.titulo  {
 main{
     height: 100vh;
 }
+
+
 /*Showroom*/
-
-
 #showrrom h1,
 #showrrom p {
     margin-top: 20px;
@@ -134,31 +134,29 @@ main{
     color: inherit;
     text-decoration: none;
 }
+/*Showrrom carros - Lista*/
+.card-image {
+    width: auto;
+    height: 180px; /* Defina a altura desejada para as imagens dos cards */
+    object-fit: cover; /* Para manter a proporção e preencher o espaço */
+}
 
-/*Showrrom carros*/
+#pesquisa{
+    margin-top: 5%;
+}
+
+.card-container {
+    height: 500px;
+    overflow-y: auto;
+}
+
+/*Showrrom carro*/
 .showroom {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     height: auto;
     margin-top: 50px;
-}
-
-.sidebar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.showroom .btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #979797;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
 }
 
 .car-info {
