@@ -115,7 +115,6 @@
         include 'footer.php';
         ?>
 </body>
-<script src="js/carros-admin.js"></script>
 <script>
         function exibirMensagem(mensagem, corDeFundo) {
                 var mensagemElement = document.createElement("div");

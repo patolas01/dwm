@@ -213,7 +213,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include 'footer.php';
     ?>
 </body>
-<script src="js/carros-admin.js"></script>
 <script>
     var mensagem = "<?php echo $mensagem; ?>";
     var corDeFundo = "<?php echo $corDeFundo; ?>";
