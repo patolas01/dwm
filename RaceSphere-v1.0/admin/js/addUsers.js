@@ -1,3 +1,4 @@
+//made by Daniel Ribeiro
 $(document).ready(function () {
  
     // Validate Username

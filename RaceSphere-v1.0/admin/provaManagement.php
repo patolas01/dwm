@@ -24,7 +24,7 @@
     </div>
     <div id="tabelasListagemUsers">
         <?php
-        $query = "select * from prova order by nome_prova";
+        $query = "select * from prova order by categoria, nome_prova";
         $result_set = $conn->query($query);
         if ($result_set) {
             ?>
@@ -37,7 +37,8 @@
                     <th>Fim</th>
                     <th>Local</th>
                     <th>Categoria</th>
-                    <th>Editar</th>
+                    <th>Etapas/Sessões</th>
+                    <th>Editar Prova</th>
                     <th>Eliminar</th>
                 </tr>
                 <?php
@@ -87,7 +88,11 @@
                                             ?> href="etapasManagement.php?id=<?= $id_prova ?>" <?php
                                         }else{  
                                             ?> href="sessaoManagement.php?id=<?= $id_prova ?>" <?php
-                                        } ?>>Editar</a></button></form>
+                                        } ?>>Gerir</a></button></form>
+                        </td>
+                        <td>
+                            <form action="editProva.php?id=<?= $id_prova ?>" method="POST"><button><a
+                                        href="editProva.php?id=<?= $id_prova ?>">Editar</a></button></form>
                         </td>
                         <td>
                             <form action="provaManagement.php" method="POST"><button name="eliminar" type="submit"
