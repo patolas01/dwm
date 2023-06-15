@@ -7,7 +7,7 @@
     <script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
     <?php include('bootstrapInc.php'); ?>
     <title>Gerir Equipas</title>
-    <link rel="stylesheet" href="../css/alex.css">
+    <link rel="stylesheet" href="css/alex.css">
 
 </head>
 
@@ -16,11 +16,15 @@
     include('navbar.php');
     ?>
 
-    <div class="container my-5"
-        style="height: auto; width: 50%; align-items: center;margin-left: auto; margin-right: auto;">
+    <div class="container my-5">
         <h2>Lista de Equipas:</h2>
         <a class="btn btn-primary" href="equipasCreate.php" role="button" style="margin-bottom: 15px;">Nova Equipa</a>
         <br>
+
+        <div class="search-bar">
+            <input class="search-input form-control" type="text" id="searchInput"
+                placeholder="Procurar por equipa ou categoria">
+        </div>
 
         <table class="table">
             <thead>
@@ -44,23 +48,41 @@
 
                 while ($row = mysqli_fetch_assoc($result)) {
                     echo "
-                <tr>
-                  <td>$row[id_equipa]</td>
-                   <td>$row[nome_equipa]</td>
-                   <td>$row[nac_equipa]</td>
-                   <td>$row[cat_equipa]</td>
-                  <td>
-                      <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa={$row['id_equipa']}'>Editar</a>
-                      <a class='btn btn-danger btn-sm' href='equipasDelete.php?id=$row[id_equipa]'>Apagar</a>
-                  </td>
-               </tr>
-                ";
+                <tr class='team-card' data-category='{$row['cat_equipa']}' data-nationality='{$row['nac_equipa']}'>
+                    <td>{$row['id_equipa']}</td>
+                    <td>{$row['nome_equipa']}</td>
+                    <td>{$row['nac_equipa']}</td>
+                    <td>{$row['cat_equipa']}</td>
+                    <td>
+                        <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa={$row['id_equipa']}'>Editar</a>
+                        <a class='btn btn-danger btn-sm' href='equipasDelete.php?id={$row['id_equipa']}' onclick=\"return confirm('Tem a certeza que deseja apagar esta linha?')\">Apagar</a>
+                    </td>
+                </tr>";
                 }
                 ?>
             </tbody>
         </table>
     </div>
 
+    <script>
+        function searchTeams() {
+            const searchInput = document.getElementById('searchInput');
+            const filterValue = searchInput.value.toLowerCase();
+            const teamCards = document.querySelectorAll('.team-card');
+            teamCards.forEach(card => {
+                const teamName = card.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const category = card.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                const nationality = card.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                if (teamName.includes(filterValue) || category.includes(filterValue) || nationality.includes(filterValue)) {
+                    card.style.display = 'table-row';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', searchTeams);
+    </script>
 
     <?php include('footer.php'); ?>
 </body>

@@ -5,36 +5,6 @@
     <?php include('bootstrapInc.php'); ?>
     <title>Equipas</title>
     <link rel="stylesheet" href="css/alex.css">
-    <style>
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 20px;
-            margin-top: 20px;
-        }
-
-        .team-card {
-            text-align: center;
-        }
-
-        .team-card img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .team-card h3 {
-            margin-top: 10px;
-        }
-        
-        .title-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-    </style>
 </head>
 
 <body>
@@ -43,6 +13,14 @@
     <div class="container">
         <div class="title-container">
             <h1>Equipas</h1>
+        </div>
+        
+        <div class="search-bar">
+            <input class="search-input form-control" type="text" id="searchInput" placeholder="Procurar por equipa ou categoria">
+            <button class="filter-button btn btn-primary" data-category="all">All</button>
+            <button class="filter-button btn btn-primary" data-category="f1">F1</button>
+            <button class="filter-button btn btn-primary" data-category="wrc">WRC</button>
+            <button class="filter-button btn btn-primary" data-category="wec">WEC</button>
         </div>
 
         <div class="team-grid">
@@ -64,7 +42,7 @@
                     $logo_equipa = $row["logo_equipa"];
 
                     // Display the team information
-                    echo '<div class="team-card">';
+                    echo '<div class="team-card" data-category="' . $cat_equipa . '">';
                     echo '<a href="team.php?id=' . $id_equipa . '">';
                     echo '<img src="img/' . $logo_equipa . '" alt="' . $nome_equipa . '">';
                     echo '</a>';
@@ -85,6 +63,48 @@
     </div>
 
     <?php include('footer.php'); ?>
+    
+    <script>
+        // Filter teams based on category
+        function filterTeams(category) {
+            const teamCards = document.querySelectorAll('.team-card');
+            teamCards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Search teams by team name or category
+        function searchTeams() {
+            const searchInput = document.getElementById('searchInput');
+            const filterValue = searchInput.value.toLowerCase();
+            const teamCards = document.querySelectorAll('.team-card');
+            teamCards.forEach(card => {
+                const teamName = card.querySelector('h3').textContent.toLowerCase();
+                const category = card.getAttribute('data-category').toLowerCase();
+                if (teamName.includes(filterValue) || category.includes(filterValue)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        
+        // Event listeners for filter buttons and search input
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                filterTeams(category);
+            });
+        });
+        
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('keyup', searchTeams);
+    </script>
 </body>
 
 </html>
