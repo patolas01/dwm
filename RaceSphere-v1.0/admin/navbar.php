@@ -31,6 +31,9 @@
                     <a class="nav-link" href="provaManagement.php">Provas</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="circuitos.php">Circuitos</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="equipamentos-admin.php">Equipamentos</a>
                 </li>
             </ul>
