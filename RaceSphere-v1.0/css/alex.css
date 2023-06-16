@@ -230,7 +230,7 @@ body {
 /*Equipas Front-end*/
 .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
     margin-top: 20px;
 }
@@ -241,10 +241,10 @@ body {
 
 .team-card img {
     width: 200px;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
+    height: 150px;
+    object-fit: contain;
 }
+
 
 .team-card h3 {
     margin-top: 10px;
