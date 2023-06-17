@@ -17,21 +17,6 @@
         <?php
         include 'navbar.php';
         include '../sqli/conn.php';
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $marca_carro = $_POST['marca_carro'];
-                $modelo_carro = $_POST['modelo_carro'];
-                $ano_carro = $_POST['ano_carro'];
-                $trac_carro = $_POST['trac_carro'];
-                $caixa_carro = $_POST['caixa_carro'];
-                $comb_carro = $_POST['comb_carro'];
-                $cilind_carro = $_POST['cilind_carro'];
-                $hp_carro = $_POST['hp_carro'];
-                $desc_carro = $_POST['desc_carro'];
-                $fotocarro = $_POST['fotocarro'];
-
-                $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
-        VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
-        }
         ?>
         <div class="container mt-3">
                 <div class="container mt-3">

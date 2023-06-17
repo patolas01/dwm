@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <?php include('bootstrapInc.php'); ?>
     <link rel="stylesheet" href="../css/luissilva.css">
-    <title>Carros-Admin-Insert</title>
+    <title>Equipamentos-Admin-Insert</title>
 </head>
 
 <body>
@@ -20,36 +20,30 @@
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar se a imagem foi enviada corretamente
-        if (isset($_FILES['fotocarro'])) {
-            $fotoNome = $_FILES['fotocarro']['name']; // Nome do arquivo enviado
-            $fotoTipo = $_FILES['fotocarro']['type']; // Tipo do arquivo enviado
-            $fotoTemp = $_FILES['fotocarro']['tmp_name']; // Localização temporária do arquivo
+        if (isset($_FILES['img_equipamento'])) {
+            $fotoNome = $_FILES['img_equipamento']['name']; // Nome do arquivo enviado
+            $fotoTipo = $_FILES['img_equipamento']['type']; // Tipo do arquivo enviado
+            $fotoTemp = $_FILES['img_equipamento']['tmp_name']; // Localização temporária do arquivo
 
             // Verifica se o arquivo é uma imagem
             if ($fotoTipo == "image/jpeg" || $fotoTipo == "image/png" || $fotoTipo == "image/jpg") {
                 // Define o diretório onde a imagem será armazenada
-                $diretorio = "../admin/carrosimg/";
+                $diretorio = "../img/bd-img/equipamentosimg/";
 
                 // Gera um nome único para a imagem, por exemplo, usando um timestamp
-                $fotocarro = time() . '_' . $fotoNome;
+                $img_equipamento = time() . '_' . $fotoNome;
 
                 // Move a imagem para o diretório desejado
-                if (move_uploaded_file($fotoTemp, $diretorio . $fotocarro)) {
+                if (move_uploaded_file($fotoTemp, $diretorio . $img_equipamento)) {
 
                     // Agora podemos inserir os dados no banco de dados
-                    $marca_carro = $_POST['marca_carro'];
-                    $modelo_carro = $_POST['modelo_carro'];
-                    $ano_carro = $_POST['ano_carro'];
-                    $trac_carro = $_POST['trac_carro'];
-                    $caixa_carro = $_POST['caixa_carro'];
-                    $comb_carro = $_POST['comb_carro'];
-                    $cilind_carro = $_POST['cilind_carro'];
-                    $hp_carro = $_POST['hp_carro'];
-                    $desc_carro = $_POST['desc_carro'];
+                    $nome_equipamento = $_POST['nome_equipamento'];
+                    $desc_equipamento = $_POST['desc_equipamento'];
+                    $img_equipamento = $_POST['img_equipamento'];
 
                     // Insere os dados no banco de dados
-                    $sql = "INSERT INTO carro (marca_carro, modelo_carro, ano_carro, trac_carro, caixa_carro, comb_carro, cilind_carro, hp_carro, desc_carro, fotocarro)
-                            VALUES ('$marca_carro', '$modelo_carro', '$ano_carro', '$trac_carro', '$caixa_carro', '$comb_carro', '$cilind_carro', '$hp_carro', '$desc_carro', '$fotocarro')";
+                    $sql = "INSERT INTO equipamento (nome_equipamento, desc_equipamento, img_equipamento)
+                            VALUES ('$nome_equipamento', '$desc_equipamento', '$img_equipamento')";
 
                     if ($conn->query($sql) === TRUE) {
                         $mensagem = "Dados inseridos com sucesso!";
@@ -76,88 +70,22 @@
     <div class="container mt-3">
         <div class="container mt-3">
             <h2 class="mt-5">
-                Inserir Carro:
-                <a href="carros-admin.php" class="btn btn-primary ml-3">Lista</a>
+                Inserir Equipamento:
+                <a href="equipamentos-admin.php" class="btn btn-primary ml-3">Lista</a>
             </h2>
         </div>
         <form id="insert-form" method="POST" enctype="multipart/form-data">
             <div class="form-group col-md-10">
-                <label for="marca_carro">Marca:</label>
-                <input type="text" class="form-control" id="marca_carro" name="marca_carro" maxlength="50" required>
+                <label for="nome_equipamento">Nome:</label>
+                <input type="text" class="form-control" id="nome_equipamento" name="nome_equipamento" maxlength="50" required>
             </div>
             <div class="form-group col-md-10">
-                <label for="modelo_carro">Modelo:</label>
-                <input type="text" class="form-control" id="modelo_carro" name="modelo_carro" maxlength="60" required>
+                <label for="desc_equipamento">Descrição:</label>
+                <input type="text" class="form-control" id="desc_equipamento" name="desc_equipamento" required>
             </div>
             <div class="form-group col-md-10">
-                <label for="ano_carro">Ano:</label>
-                <input type="number" class="form-control" id="ano_carro" name="ano_carro" required>
-            </div>
-            <?php
-            $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";
-            $result_enum_values = $conn->query($sql_enum_values);
-            $enum_values = array();
-
-            while ($row = $result_enum_values->fetch_assoc()) {
-                $enum_values[] = $row['COLUMN_TYPE'];
-            }
-
-            $trac_carro_enum = extract_enum_values($enum_values[0]);
-            $caixa_carro_enum = extract_enum_values($enum_values[1]);
-            $comb_carro_enum = extract_enum_values($enum_values[2]);
-
-            function extract_enum_values($enum_definition)
-            {
-                preg_match("/^enum\(\'(.*)\'\)$/", $enum_definition, $matches);
-                $enum_values = explode("','", $matches[1]);
-                return $enum_values;
-            }
-            ?>
-            <div class="form-group col-md-10">
-                <label for="trac_carro">Tipo de Tração:</label>
-                <select class="form-control" id="trac_carro" name="trac_carro">
-                    <?php
-                    foreach ($trac_carro_enum as $option) {
-                        echo "<option value='$option'>$option</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group col-md-10">
-                <label for="caixa_carro">Tipo de Caixa:</label>
-                <select class="form-control" id="caixa_carro" name="caixa_carro">
-                    <?php
-                    foreach ($caixa_carro_enum as $option) {
-                        echo "<option value='$option'>$option</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group col-md-10">
-                <label for="comb_carro">Tipo de Combustível:</label>
-                <select class="form-control" id="comb_carro" name="comb_carro">
-                    <?php
-                    foreach ($comb_carro_enum as $option) {
-                        echo "<option value='$option'>$option</option>";
-                    }
-                    ?>
-                </select>
-            </div>
-            <div class="form-group col-md-10">
-                <label for="cilind_carro">Cilindrada:</label>
-                <input type="number" class="form-control" id="cilind_carro" name="cilind_carro" maxlength="4">
-            </div>
-            <div class="form-group col-md-10">
-                <label for="hp_carro">Potência:</label>
-                <input type="number" class="form-control" id="hp_carro" name="hp_carro" maxlength="4">
-            </div>
-            <div class="form-group col-md-10">
-                <label for="desc_carro">Descrição:</label>
-                <input type="text" class="form-control" id="desc_carro" name="desc_carro" required>
-            </div>
-            <div class="form-group col-md-10">
-                <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255">
+                <label for="img_equipamento">Foto Equipamento:</label>
+                <input type="file" class="form-control" id="img_equipamento" name="img_equipamento" maxlength="255">
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>
