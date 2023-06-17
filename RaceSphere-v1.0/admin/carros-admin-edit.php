@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255" value="<?php echo $fotocarro; ?>">>
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255" value="<?php echo $fotocarro; ?>">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php

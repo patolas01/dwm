@@ -39,7 +39,6 @@
                     // Agora podemos inserir os dados no banco de dados
                     $nome_equipamento = $_POST['nome_equipamento'];
                     $desc_equipamento = $_POST['desc_equipamento'];
-                    $img_equipamento = $_POST['img_equipamento'];
 
                     // Insere os dados no banco de dados
                     $sql = "INSERT INTO equipamento (nome_equipamento, desc_equipamento, img_equipamento)
