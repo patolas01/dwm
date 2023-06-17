@@ -111,9 +111,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         }
         ?>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data" action="circuitosEdit.php?id=<?php echo $id_circuito; ?>">
             <input type="hidden" name="id_circuito" value="<?php echo $id_circuito; ?>">
             <input type="hidden" name="current_layout" value="<?php echo $layout_circuito; ?>">
+
+
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome</label>
                 <div class="col-sm-6">
@@ -125,7 +127,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Cidade</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="cidade_circuito" value="<?php echo $cidade_circuito; ?>">
+                    <input type="text" class="form-control" name="cidade_circuito"
+                        value="<?php echo $cidade_circuito; ?>">
                 </div>
             </div>
 
@@ -150,33 +153,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     </div>
                 </div>
             </div>
-      
 
 
-        <script>
-            var fileInput = document.getElementById("file-picker");
-            var fileLabel = document.getElementById("file-name");
-            var imagePreview = document.getElementById("image-preview");
+            <script>
+                var fileInput = document.getElementById("file-picker");
+                var fileLabel = document.getElementById("file-name");
+                var imagePreview = document.getElementById("image-preview");
 
-            fileInput.addEventListener("change", function () {
-                var file = fileInput.files[0];
+                fileInput.addEventListener("change", function () {
+                    var file = fileInput.files[0];
 
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var imageUrl = e.target.result;
-                        fileLabel.textContent = file.name;
-                        imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        </script>
+                    if (file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var imageUrl = e.target.result;
+                            fileLabel.textContent = file.name;
+                            imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
 
 
-        <?php
-        if (!empty($successMessage)) {
-            echo "
+            <?php
+            if (!empty($successMessage)) {
+                echo "
                         <div class= 'row mb-3'>
                             <div class= 'offset-sm-3 col-sm-6'>
                              <div class= 'alert alert-success alert-dismissible fade show' role='alert'>
@@ -187,17 +189,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                             </div>
                         </div>
                     "; // botao da versao 5 do bootstrap
-        }
-        ?>
+            }
+            ?>
 
-        <div class="row mb-3">
-            <div class="offset-sm-3 col-sm-3 d-grid">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="circuitos.php" role="button">Cancelar</a>
+                </div>
             </div>
-            <div class="col-sm-3 d-grid">
-                <a class="btn btn-outline-primary" href="circuitos.php" role="button">Cancelar</a>
-            </div>
-        </div>
         </form>
     </div>
 
