@@ -28,11 +28,12 @@
             $fim = $row['fim_prova'];
             $local = $row['local'];
             $categoria = $row['categoria'];
+            $foto_prova = $row['logo_prova'];
             $id_circuito = $row['id_circuito'];
         }
     }
     ?>
-    <form action="editProva.php?id=<?= $editar ?>" method="POST">
+    <form action="editProva.php?id=<?= $editar ?>" method="POST" enctype="multipart/form-data">
         <div class="form-body1">
             <div class="row">
                 <div class="form-holder">
@@ -42,11 +43,14 @@
                                 <?php echo $nome ?>
                             </h3>
                             <p>Preencha o formulário</p>
-                            <form action="editAdminPress.php?id=<?= $editar ?>" action="POST"
-                                class="requires-validation" novalidate>
+                            <form action="editProva.php?id=<?= $editar ?>" action="POST" class="requires-validation"
+                                novalidate>
 
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="nome" placeholder=<?php echo "'" . $nome . "'" ?>>
+                                    <h5 id="nomecheck">
+
+                                    </h5>
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" onfocus="(this.type='date')" type="text" name="inicio"
@@ -56,15 +60,22 @@
                                     <input class="form-control" onfocus="(this.type='date')" type="text" name="fim"
                                         id="data_fim" value=<?php echo "'" . $fim . "'" ?>>
                                     <h5 id="datafimcheck">
-                                        
+
                                     </h5>
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="local" placeholder=<?php echo "'" . $local . "'" ?>>
                                 </div><br>
                                 <div class="col-md-12">
-                                    <input type="file" name="foto" id="file-picker" accept="image/*">
+                                    <label for="file-picker">Foto</label>
+                                    <!--input file-->
+                                    <div class="custom-file">
+                                        <input type="file" name="fotoprova" class="custom-file-input" id="file-picker"
+                                            accept="image/*">
+                                        <label class="custom-file-label" for="file-picker">Escolher a foto...</label>
+                                    </div>
                                 </div>
+                                <img id="fotopreview" src="<?php echo '../img/bd-img/logos/' . $foto_prova ?>">
                                 <div class="col-md-12">
                                     <?php
                                     if ($categoria == "f1") { ?>
@@ -143,9 +154,6 @@
         if ($fimnovo == "") {
             $fimnovo = $fim;
         }
-        if ($categorianovo == "") {
-            $categorianovo = $categoria;
-        }
         if ($nomenovo == "") {
             $nomenovo = $nome;
         }
@@ -155,8 +163,8 @@
         if ($id_circuitonovo == "") {
             $id_circuitonovo = $id_circuito;
         }
-        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-            $file = $_FILES['foto'];
+        if (isset($_FILES['fotoprova']) && $_FILES['fotoprova']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['fotoprova'];
             // Especifique o caminho para a pasta onde deseja guardar as imagens
             $uploadDirectory = '../img/bd-img/logos/';
             // Gera um nome único para o arquivo
@@ -167,11 +175,10 @@
             if (exif_imagetype($file['tmp_name'])) {
                 // Move o arquivo para a pasta de destino
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
-
                     if ($categorianovo == "wrc") {
-                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = NULL WHERE prova.id_prova = '$editar'";
                     } else {
-                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
                     }
                     //prompt msg a dizer q a imagem foi guardada
                 } else {
@@ -187,7 +194,7 @@
                 $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
             }
         }
-        
+
         $result_set = $conn->query($edit);
         if ($result_set) {
             ?>
