@@ -66,23 +66,24 @@
     </div>
 
     <script>
-        function searchTeams() {
+        //Pesquisa
+        function searchCircuits() {
             const searchInput = document.getElementById('searchInput');
             const filterValue = searchInput.value.toLowerCase();
-            const teamCards = document.querySelectorAll('.team-card');
-            teamCards.forEach(card => {
-                const teamName = card.querySelector('td:nth-child(2)').textContent.toLowerCase();
-                const category = card.querySelector('td:nth-child(4)').textContent.toLowerCase();
-                const nationality = card.querySelector('td:nth-child(3)').textContent.toLowerCase();
-                if (teamName.includes(filterValue) || category.includes(filterValue) || nationality.includes(filterValue)) {
-                    card.style.display = 'table-row';
+            const circuitRows = document.querySelectorAll('.table tbody tr');
+            circuitRows.forEach(row => {
+                const circuitName = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const circuitCity = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                const circuitCountry = row.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                if (circuitName.includes(filterValue) || circuitCity.includes(filterValue) || circuitCountry.includes(filterValue)) {
+                    row.style.display = 'table-row';
                 } else {
-                    card.style.display = 'none';
+                    row.style.display = 'none';
                 }
             });
         }
         const searchInput = document.getElementById('searchInput');
-        searchInput.addEventListener('input', searchTeams);
+        searchInput.addEventListener('input', searchCircuits);
     </script>
 
     <?php include('footer.php'); ?>
