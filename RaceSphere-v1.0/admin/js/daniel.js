@@ -30,6 +30,7 @@ $(document).ready(function () {
       $("#id_circuitos").show();
     }
   });
+  const nomeDaProva = document.getElementById("nomeProva");
   const datafim = document.getElementById("data_fim");
   const datainicio = document.getElementById("data_inicio");
   datafim.addEventListener("blur", () => {
@@ -45,9 +46,21 @@ $(document).ready(function () {
             datafimError = true;
         }
   });
+  nomeDaProva.addEventListener("blur", () => {
+  if(nomeDaProva != ""){
+          $("#nomecheck").show();
+          $("#nomecheck").html("Nome do evento não pode ficar a branco");
+          nomeDaProvaError=true;
+          return false;
+  }else{
+    $("#nomecheck").hide();
+    nomeDaProvaError = false;
+  }
+});
   $("#botaoeditar").click(function () {
     if (
-        datafimError == true
+        datafimError == true &&
+        nomeDaProvaError == true
     ) {
         return true;
     } else {

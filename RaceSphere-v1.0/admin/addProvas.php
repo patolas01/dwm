@@ -5,13 +5,13 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Adição de utilizadores</title>
+    <title>Edição de utilizadores</title>
     <?php
     include 'bootstrapInc.php';
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/addUsers.js"></script>
+    <script src="js/daniel.js"></script>
 </head>
 
 <body>
@@ -19,97 +19,129 @@
     include 'navbar.php';
     include '../sqli/conn.php';
     ?>
-    <div class="form-body1">
-        <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Novo Admin/Pressman</h3>
-                        <p>Preencha o formulário</p>
-                        <form action="addUsers.php" method="POST">
+    <form action="addProvas.php" method="POST" enctype="multipart/form-data">
+        <div class="form-body1">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>Inserir nova prova
+                            </h3>
+                            <p>Preencha o formulário</p>
+                            <form action="addProvas.php" action="POST"
+                                class="requires-validation" novalidate>
 
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" id="usernames" name="name" placeholder="Nome">
-                                <h5 id="usercheck">
-                                    Por favor insira o nome
-                                </h5>
-                            </div>
-
-                            <div class="col-md-12">
-                                <input class="form-control" type="email" name="email" id="email" placeholder="E-mail"
-                                    required>
-                                <small id="emailvalid" class="form-text text-muted invalid-feedback">
-                                    Email deve ser válido
-                                </small>
-                            </div>
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" name="telefone" id="telefone"
-                                    placeholder="Telefone" required>
-                                <small id="emailvalid" class="form-text text-muted invalid-feedback">
-                                    Telefone deve ser válido
-                                </small>
-                            </div>
-
-                            <div class="col-md-12">
-                                <select name="cargo" class="form-select mt-3">
-                                    <option value="admin" selected>Administrador</option>
-                                    <option value="press">Pressman</option>
-                                </select>
-                            </div>
-
-
-                            <div class="col-md-12">
-                                <input class="form-control" type="password" id="password" name="password"
-                                    placeholder="Password">
-                                <h5 id="passcheck" style="color: red;">
-                                    Por favor insira password
-                                </h5>
-                            </div>
-
-                            <div class="form-button mt-3">
-                                <button name="enviar" type="submit" id="submitbtn" class="btn btn-primary">Registar</button>
-                            </div>
-                            <div id="userExists"></div>
-                        </form>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" id="nomeProva" name="nome" placeholder="Nome da Prova">
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="date" name="inicio"
+                                        id="data_inicio" placeholder="Data de inicio da prova">
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="date" name="fim"
+                                        id="data_fim" placeholder="Data de fim da prova">
+                                    <h5 id="datafimcheck">
+                                        
+                                    </h5>
+                                </div>
+                                <div class="col-md-12">
+                                    <input class="form-control" type="text" name="local" placeholder="Local da prova">
+                                </div><br>
+                                <div class="col-md-12">
+                                    <input type="file" name="foto" id="file-picker" accept="image/*">
+                                </div>
+                                <div class="col-md-12"> 
+                                        <select name="categoria" class="form-select mt-3" id="selectCategoria">
+                                            <option value="" disabled>Selecione uma categoria</option>
+                                            <option value="f1">Formula 1</option>
+                                            <option value="wrc">World Rally Championship</option>
+                                            <option value="wec">World Endurance Championship</option>
+                                        </select><br>       
+                                </div>
+                                <div class="col-md-12" id="id_circuitos">
+                                    <select name="id_circuito" class="form-select mt-3">
+                                        <option value="" disabled>Selecione um circuito</option>
+                                        <?php
+                                        $query = "select * from circuito";
+                                        $result_set = $conn->query($query);
+                                        if ($result_set) {
+                                            while ($row = $result_set->fetch_assoc()) {
+                                                $nome_circuito = $row['nome_circuito'];
+                                                $id_circuito_tabela_circuitos = $row['id_circuito'];
+                                                    ?>
+                                                    <option value=<?php echo "'" . $id_circuito_tabela_circuitos . "'"; ?>> <?php echo $nome_circuito; ?></option>
+                                                    <?php
+                                            }
+                                        }
+                                        ?>
+                                    </select><br><br>
+                                </div><br>
+                                <div class="col-md-12">
+                                    <input type="submit" id="botaoeditar" value="Inserir" name="editar2">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    </form>
     <?php
-    include '../footer.php';
-    if (isset($_POST["enviar"])) {
-        $emailNovoUser = $_POST["email"];
-        $nomeNovoUser = $_POST["name"];
-        $cargoNovoUser = $_POST["cargo"];
-        $telefoneNovoUser = $_POST["telefone"];
-        $passwordNovoUserNaoEncriptada = $_POST["password"];
-        $passwordNovoUser = hash('sha512', $passwordNovoUserNaoEncriptada);
-        $existe = "SELECT * from utilizador where email_user='" . $emailNovoUser . "'";
-        $result_set = $conn->query($existe);
-        $jaexiste = mysqli_num_rows($result_set);
-        if ($jaexiste == 0) {
-            $insert = "INSERT INTO utilizador (id_user , nome_user , email_user , password_user , telefone_user , cargo_user) VALUES (NULL, '$nomeNovoUser', '$emailNovoUser', '$passwordNovoUser', '$telefoneNovoUser', '$cargoNovoUser' )";
-            $result_set = $conn->query($insert);
-            if ($result_set) {
-                ?>
-                <script>
-                    window.setTimeout(function () {
-                        location.href = "userManagement.php";
-                    }, 0);
-                </script>
-                <?php
+    if (isset($_POST["editar2"])) {
+        $nomenovo = $_POST["nome"];
+        $inicionovo = $_POST["inicio"];
+        $fimnovo = $_POST["fim"];
+        $localnovo = $_POST["local"];
+        $categorianovo = $_POST["categoria"];
+        $id_circuitonovo = $_POST['id_circuito'];
+        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['foto'];
+            // Especifique o caminho para a pasta onde deseja guardar as imagens
+            $uploadDirectory = '../img/bd-img/logos/';
+            // Gera um nome único para o arquivo
+            $fileName = uniqid();
+            $destination = $uploadDirectory . $fileName;
+            //echo 'PATH:: ' . $destination;
+            // Verifica se o tipo de arquivo é uma imagem
+            if (exif_imagetype($file['tmp_name'])) {
+                // Move o arquivo para a pasta de destino
+                if (move_uploaded_file($file['tmp_name'], $destination)) {
+                    if ($categorianovo == "wrc") {
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+                    } else {
+                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+                    }
+                    //prompt msg a dizer q a imagem foi guardada
+                } else {
+                    echo 'Ocorreu um erro ao guardar a imagem.';
+                }
+            } else {
+                echo 'O ficheiro enviado não é uma imagem válida.';
             }
         } else {
+            if ($categorianovo == "wrc") {
+                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+            } else {
+                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+            }
+        }
+        
+        $result_set = $conn->query($edit);
+        if ($result_set) {
             ?>
             <script>
-                $(document).ready(function () {
-                    $('#userExists').text("Este Admin/Pressman já existe");
-                })
+                window.setTimeout(function () {
+                    location.href = "provaManagement.php";
+                }, 0);
             </script>
             <?php
+        } else {
+            echo "Query update mal feita";
         }
     }
+    include '../footer.php';
     ?>
 </body>
 
