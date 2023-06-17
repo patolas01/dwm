@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-pt">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -10,120 +10,91 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <?php include('bootstrapInc.php'); ?>
     <link rel="stylesheet" href="css/luissilva.css">
-    <title>Carros-Showroom</title>
+    <title>Carros</title>
 </head>
 
 <body>
     <?php
     include 'navbar.php';
     include 'sqli/conn.php';
-    // Verifica se foi fornecido um ID de carro
-    if (isset($_GET['idCarro'])) {
-        $idCarro = $_GET['idCarro'];
-        // Obtém os dados do carro pelo ID
-        $sql_select = "SELECT * FROM carro WHERE id_carro = '$idCarro'";
-        $result = $conn->query($sql_select);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $marca = $row["marca_carro"];
-            $modelo = $row["modelo_carro"];
-            $ano = $row["ano_carro"];
-            $trac = $row["trac_carro"];
-            $caixa = $row["caixa_carro"];
-            $comb = $row["comb_carro"];
-            $cilind = $row["cilind_carro"];
-            $hp = $row["hp_carro"];
-            $descricao = $row["desc_carro"];
-            $fotocarro = $row["fotocarro"];
-        } else {
-            echo "Carro não encontrado.";
-            exit;
-        }
-    } else {
-        // Obtém o primeiro carro da tabela
-        $sql_select = "SELECT * FROM carro ORDER BY id_carro ASC LIMIT 1";
-        $result = $conn->query($sql_select);
-        if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
-            $idCarro = $row["id_carro"];
-            $marca = $row["marca_carro"];
-            $modelo = $row["modelo_carro"];
-            $ano = $row["ano_carro"];
-            $trac = $row["trac_carro"];
-            $caixa = $row["caixa_carro"];
-            $comb = $row["comb_carro"];
-            $cilind = $row["cilind_carro"];
-            $hp = $row["hp_carro"];
-            $descricao = $row["desc_carro"];
-            $fotocarro = $row["fotocarro"];
-        } else {
-            echo "Não há carros disponíveis.";
-            exit;
+
+    // Obter marcas de carro distintas
+    $queryMarcas = "SELECT DISTINCT marca_carro FROM carro";
+    $resultadoMarcas = $conn->query($queryMarcas);
+    $marcas = [];
+    if ($resultadoMarcas->num_rows > 0) {
+        while ($row = $resultadoMarcas->fetch_assoc()) {
+            $marcas[] = $row["marca_carro"];
         }
     }
     ?>
 
-    <div class="showroom">
-        <div class="car-info">
-            <div class="sidebar">
-                <?php
-                // Verifica se existe um carro anterior
-                $sql_anterior = "SELECT * FROM carro WHERE id_carro < '$idCarro' ORDER BY id_carro DESC LIMIT 1";
-                $result_anterior = $conn->query($sql_anterior);
-                if ($result_anterior->num_rows > 0) {
-                    $row_anterior = $result_anterior->fetch_assoc();
-                    $idCarroAnterior = $row_anterior["id_carro"];
-                    echo '<a href="?idCarro=' . $idCarroAnterior . '" class="btn">Anterior</a>';
-                } else {
-                    // Não há carro anterior, redireciona para o último carro
-                    $sql_ultimo = "SELECT * FROM carro ORDER BY id_carro DESC LIMIT 1";
-                    $result_ultimo = $conn->query($sql_ultimo);
-                    $row_ultimo = $result_ultimo->fetch_assoc();
-                    $idCarroUltimo = $row_ultimo["id_carro"];
-                    echo '<a href="?idCarro=' . $idCarroUltimo . '" class="btn">Anterior</a>';
-                }
-                ?>
-
-                <?php
-                // Verifica se existe um próximo carro
-                $sql_proximo = "SELECT * FROM carro WHERE id_carro > '$idCarro' ORDER BY id_carro ASC LIMIT 1";
-                $result_proximo = $conn->query($sql_proximo);
-                if ($result_proximo->num_rows > 0) {
-                    $row_proximo = $result_proximo->fetch_assoc();
-                    $idCarroProximo = $row_proximo["id_carro"];
-                    echo '<a href="?idCarro=' . $idCarroProximo . '" class="btn">Próximo</a>';
-                } else {
-                    // Não há próximo carro, redireciona para o primeiro carro
-                    $sql_primeiro = "SELECT * FROM carro ORDER BY id_carro ASC LIMIT 1";
-                    $result_primeiro = $conn->query($sql_primeiro);
-                    $row_primeiro = $result_primeiro->fetch_assoc();
-                    $idCarroPrimeiro = $row_primeiro["id_carro"];
-                    echo '<a href="?idCarro=' . $idCarroPrimeiro . '" class="btn">Próximo</a>';
-                }
-                ?>
+    <div class="container">
+        <div class="row">
+            <div id="pesquisa" class="col-12 col-md-4 mb-4">
+                <form action="" method="GET">
+                    <div class="form-group">
+                        <label for="marcaSelect">Marca:</label>
+                        <select class="form-control" id="marcaSelect" name="marca">
+                            <option value="">Todas as marcas</option>
+                            <?php
+                            foreach ($marcas as $marca) {
+                                echo '<option value="' . $marca . '">' . $marca . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Filtrar</button>
+                </form>
             </div>
-            <div class="table-container">
-                <div class="car-details">
-                    <h2><?php echo $marca . ' ' . $modelo; ?></h2>
-                    <p>Ano: <?php echo $ano; ?></p>
-                    <p>Tracção: <?php echo $trac; ?></p>
-                    <p>Caixa: <?php echo $caixa; ?></p>
-                    <p>Combustível: <?php echo $comb; ?></p>
-                    <p>Cilindrada: <?php echo $cilind; ?></p>
-                    <p>Potência: <?php echo $hp; ?></p>
-                    <p>Descrição: <?php echo $descricao; ?></p>
-                </div>
-                <div class="car-image">
-                    <?php
-                    $fotocarro = $row["fotocarro"];
-                    ?>
-                    <img src="admin/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+            <div class="col-12 col-md-8">
+                <h1 class="titulo">Carros</h1>
+
+                <div class="card-container">
+                    <div class="row">
+                        <?php
+                        // Construir a consulta SQL com base na marca selecionada (se houver)
+                        $sql = "SELECT * FROM carro";
+                        if (isset($_GET['marca']) && !empty($_GET['marca'])) {
+                            $marcaSelecionada = $_GET['marca'];
+                            $sql .= " WHERE marca_carro = '$marcaSelecionada'";
+                        }
+
+                        $resultado = $conn->query($sql);
+
+                        if ($resultado->num_rows > 0) {
+                            while ($row = $resultado->fetch_assoc()) {
+                                $idCarro = $row["id_carro"];
+                                $marca = $row["marca_carro"];
+                                $modelo = $row["modelo_carro"];
+                                $fotoCarro = $row["fotocarro"];
+                                ?>
+
+                                <div class="col-12 col-sm-4 col-md-4 mb-4">
+                                    <div class="card card-sm">
+                                        <img class="card-img-top card-image" src="admin/carrosimg/<?php echo $fotoCarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><?php echo $marca; ?></h5>
+                                            <p class="card-text"><?php echo $modelo; ?></p>
+                                        </div>
+                                        <div class="card-footer">
+                                            <a href="carro-info.php?id=<?php echo $idCarro; ?>">Ver mais informações</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                        <?php
+                            }
+                        } else {
+                            echo "Nenhum carro encontrado na base de dados.";
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
-
         </div>
-
     </div>
+
     <?php
     include 'footer.php';
     $conn->close();

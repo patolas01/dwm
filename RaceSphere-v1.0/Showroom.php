@@ -48,9 +48,4 @@
         include 'footer.php';
         ?>
 </body>
-<script>
-        // jQuery(document).ready(function ($) {
-        //         alert("Clik numa das imagens para ir para a página respetiva");
-        // });
-</script>
 </html>
