@@ -31,9 +31,9 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Nome Circutio</th>
-                    <th scope="col">Cidade</th>
-                    <th scope="col">Pais</th>
+                    <th scope="col">Nome Circuito</th>
+                    <th scope="col">Cidade Circuito</th>
+                    <th scope="col">Pais Circuito</th>
                 </tr>
             </thead>
             <tbody>
@@ -65,25 +65,25 @@
         </table>
     </div>
 
-    <script>/*
-   function searchTeams() {
+    <script>
+        function searchTeams() {
+            const searchInput = document.getElementById('searchInput');
+            const filterValue = searchInput.value.toLowerCase();
+            const teamCards = document.querySelectorAll('.team-card');
+            teamCards.forEach(card => {
+                const teamName = card.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                const category = card.querySelector('td:nth-child(4)').textContent.toLowerCase();
+                const nationality = card.querySelector('td:nth-child(3)').textContent.toLowerCase();
+                if (teamName.includes(filterValue) || category.includes(filterValue) || nationality.includes(filterValue)) {
+                    card.style.display = 'table-row';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
         const searchInput = document.getElementById('searchInput');
-        const filterValue = searchInput.value.toLowerCase();
-        const teamCards = document.querySelectorAll('.team-card');
-        teamCards.forEach(card => {
-            const teamName = card.querySelector('td:nth-child(2)').textContent.toLowerCase();
-            const category = card.querySelector('td:nth-child(4)').textContent.toLowerCase();
-            const nationality = card.querySelector('td:nth-child(3)').textContent.toLowerCase();
-            if (teamName.includes(filterValue) || category.includes(filterValue) || nationality.includes(filterValue)) {
-                card.style.display = 'table-row';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-    const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('input', searchTeams);
-*/</script>
+        searchInput.addEventListener('input', searchTeams);
+    </script>
 
     <?php include('footer.php'); ?>
 </body>

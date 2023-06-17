@@ -13,11 +13,11 @@ $successMessage = "";
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     if (!isset($_GET["id_circuito"])) {
-        header("circuitos.php");
+        header("Location: circuitos.php");
         exit;
     }
 
-    $id_equipa = $_GET["id_circuito"];
+    $id_circuito = $_GET["id_circuito"];
 
     $sql = "SELECT id_circuito, nome_circuito, cidade_circuito, nac_circuito, layout_circuito FROM circuito WHERE id_circuito = $id_circuito";
     $result = $conn->query($sql);
@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $row = $result->fetch_assoc();
 
     if (!$row) {
-        header("circuitos.php");
+        header("Location: circuitos.php");
         exit;
     }
 
@@ -65,16 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             break;
         }
 
-        $stmt = $conn->prepare("UPDATE equipa SET nome_equipa = ?, nac_equipa = ?, cat_equipa = ?, logo_equipa = ? WHERE id_equipa = ?");
-        $stmt->bind_param("ssssi", $nome_equipa, $nac_equipa, $cat_equipa, $logo_equipa, $id_equipa);
+        $stmt = $conn->prepare("UPDATE circuito SET nome_circuito = ?, cidade_circuito = ?, nac_circuito = ?, layout_circuito = ? WHERE id_circuito = ?");
+        $stmt->bind_param("ssssi", $nome_circuito, $cidade_circuito, $nac_circuito, $layout_circuito, $id_circuito);
 
         if (!$stmt->execute()) {
-            $errorMessage = "Erro ao atualizar a equipa: " . $stmt->error;
+            $errorMessage = "Erro ao atualizar o circuito: " . $stmt->error;
             break;
         }
 
-        $successMessage = "Equipa atualizada com sucesso!";
-        header("Location: equipas.php");
+        $successMessage = "Circuito atualizado com sucesso!";
+        header("Location: circuitos.php");
         exit;
     } while (false);
 }
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Editar Equipas</title>
+    <title>Editar Circuito</title>
     <?php include('bootstrapInc.php'); ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -97,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     include('navbar.php');
     ?>
     <div class="container my-5">
-        <h2>Atualizar Equipa</h2>
+        <h2>Atualizar Circuito</h2>
         <?php
         if (!empty($errorMessage)) {
             echo "
@@ -112,20 +112,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         ?>
 
         <form method="post">
-            <input type="hidden" name="id_equipa" value="<?php echo $id_equipa; ?>">
-            <input type="hidden" name="current_logo" value="<?php echo $logo_equipa; ?>">
+            <input type="hidden" name="id_circuito" value="<?php echo $id_circuito; ?>">
+            <input type="hidden" name="current_layout" value="<?php echo $layout_circuito; ?>">
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Nome Equipa</label>
+                <label class="col-sm-3 col-form-label">Nome</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa; ?>">
-                    <span id="nome_equipa_error" class="text-danger"></span>
+                    <input type="text" class="form-control" name="nome_circuito" value="<?php echo $nome_circuito; ?>">
+                    <span id="nome_circuito_error" class="text-danger"></span>
                 </div>
             </div>
 
             <div class="row mb-3">
-                <label class="col-sm-3 col-form-label">Nacionalidade Equipa</label>
+                <label class="col-sm-3 col-form-label">Cidade</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nac_equipa" value="<?php echo $nac_equipa; ?>">
+                    <input type="text" class="form-control" name="cidade_circuito" value="<?php echo $cidade_circuito; ?>">
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <label class="col-sm-3 col-form-label">Pais</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="nac_circuito" value="<?php echo $nac_circuito; ?>">
                 </div>
             </div>
 
@@ -134,10 +141,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 <div class="col-sm-6">
                     <div class="input-group">
                         <div class="custom-file">
-                            <input type="file" name="logo_equipa" class="custom-file-input" id="file-picker"
+                            <input type="file" name="layout_circuito" class="custom-file-input" id="file-picker"
                                 accept="image/*">
                             <label class="custom-file-label" for="file-picker" id="file-name">
-                                <?php echo $logo_equipa; ?>
+                                <?php echo $layout_circuito; ?>
                             </label>
                         </div>
                     </div>
