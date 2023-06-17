@@ -32,24 +32,39 @@
                                 class="requires-validation" novalidate>
 
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" id="nomeProva" name="nome" placeholder="Nome da Prova">
+                                    <input class="form-control" type="text" id="nome_prova" name="nome" placeholder="Nome da Prova">
+                                    <h5 id="NomeCheck">
+                                        
+                                    </h5>
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="date" name="inicio"
-                                        id="data_inicio" placeholder="Data de inicio da prova">
+                                        id="data_inicio_AddProvas" placeholder="Data de inicio da prova">
+                                        <h5 id="datainiciocheck">
+                                        
+                                    </h5>
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="date" name="fim"
-                                        id="data_fim" placeholder="Data de fim da prova">
+                                        id="data_fim_AddProvas" placeholder="Data de fim da prova">
                                     <h5 id="datafimcheck">
                                         
                                     </h5>
                                 </div>
                                 <div class="col-md-12">
-                                    <input class="form-control" type="text" name="local" placeholder="Local da prova">
-                                </div><br>
+                                    <input class="form-control" type="text" name="local" id="local_prova" placeholder="Local da prova">
+                                    <h5 id="LocalCheck">
+                                        
+                                    </h5>
+                                </div>
                                 <div class="col-md-12">
-                                    <input type="file" name="foto" id="file-picker" accept="image/*">
+                                <label for="file-picker">Foto</label>
+                                    <!--input file-->
+                                    <div class="custom-file">
+                                        <input type="file" name="fotoprova" class="custom-file-input" id="file-picker"
+                                            accept="image/*">
+                                        <label class="custom-file-label" for="file-picker">Escolher a foto...</label>
+                                    </div>
                                 </div>
                                 <div class="col-md-12"> 
                                         <select name="categoria" class="form-select mt-3" id="selectCategoria">
@@ -78,7 +93,7 @@
                                     </select><br><br>
                                 </div><br>
                                 <div class="col-md-12">
-                                    <input type="submit" id="botaoeditar" value="Inserir" name="editar2">
+                                    <input type="submit" id="botaoeditar2" value="Inserir" name="editar2">
                                 </div>
                             </form>
                         </div>
@@ -96,8 +111,8 @@
         $localnovo = $_POST["local"];
         $categorianovo = $_POST["categoria"];
         $id_circuitonovo = $_POST['id_circuito'];
-        if (isset($_FILES['foto']) && $_FILES['foto']['error'] === UPLOAD_ERR_OK) {
-            $file = $_FILES['foto'];
+        if (isset($_FILES['fotoprova']) && $_FILES['fotoprova']['error'] === UPLOAD_ERR_OK) {
+            $file = $_FILES['fotoprova'];
             // Especifique o caminho para a pasta onde deseja guardar as imagens
             $uploadDirectory = '../img/bd-img/logos/';
             // Gera um nome único para o arquivo
@@ -109,9 +124,9 @@
                 // Move o arquivo para a pasta de destino
                 if (move_uploaded_file($file['tmp_name'], $destination)) {
                     if ($categorianovo == "wrc") {
-                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+                        $edit = "INSERT INTO prova (id_prova, nome_prova, inicio_prova, fim_prova, local, categoria, logo_prova, id_circuito) VALUES (NULL,'$nomenovo','$inicionovo','$fimnovo','$localnovo','$categorianovo','$fileName',NULL) ";
                     } else {
-                        $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', prova.local = '$localnovo', categoria = '$categorianovo', logo_prova = '$fileName', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+                        $edit = "INSERT INTO prova (id_prova, nome_prova, inicio_prova, fim_prova, local, categoria, logo_prova, id_circuito) VALUES (NULL,'$nomenovo','$inicionovo','$fimnovo','$localnovo','$categorianovo','$fileName','$id_circuitonovo') ";
                     }
                     //prompt msg a dizer q a imagem foi guardada
                 } else {
@@ -122,9 +137,9 @@
             }
         } else {
             if ($categorianovo == "wrc") {
-                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = NULL WHERE prova.id_prova = '$editar'";
+                $edit = "INSERT INTO prova (id_prova, nome_prova, inicio_prova, fim_prova, local, categoria, logo_prova, id_circuito) VALUES (NULL,'$nomenovo','$inicionovo','$fimnovo','$localnovo','$categorianovo','',NULL) ";
             } else {
-                $edit = "UPDATE prova SET nome_prova = '$nomenovo' , inicio_prova = '$inicionovo', fim_prova = '$fimnovo', local = '$localnovo', categoria = '$categorianovo', id_circuito = '$id_circuitonovo' WHERE prova.id_prova = '$editar'";
+                $edit = "INSERT INTO prova (id_prova, nome_prova, inicio_prova, fim_prova, local, categoria, logo_prova, id_circuito) VALUES (NULL,'$nomenovo','$inicionovo','$fimnovo','$localnovo','$categorianovo','','$id_circuitonovo') ";
             }
         }
         
