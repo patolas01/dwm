@@ -16,9 +16,9 @@
     include('navbar.php');
     ?>
 
-    <div class="container my-5"
-        style="height: auto; width: 50%; align-items: center;margin-left: auto; margin-right: auto;">
+    <div class="container my-5" style="height: auto; width: 50%; align-items: center;margin-left: auto; margin-right: auto;">
         <h1 class="tit">Lista de Pilotos</h1>
+        <a href="addPilotos.php"><button type="button" id="add" class="btn btn-primary">Adicionar Piloto</button></a>
         <br>
 
         <table class="table">
