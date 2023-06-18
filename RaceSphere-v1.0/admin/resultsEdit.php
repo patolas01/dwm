@@ -153,15 +153,12 @@
 
         $updateQuery .= "END WHERE id_resultado = '$idResult'";
 
-        // Perform the update operation
         include '../sqli/conn.php';
 
         if ($conn->query($updateQuery) === TRUE) {
-            // Query executed successfully
             echo "Resultado atualizado com sucesso!";
         } else {
-            // Error occurred during the query execution
-            echo "Error: " . $conn->error;
+            echo "Error: " /* $conn->error*/;
         }
 
         $conn->close();

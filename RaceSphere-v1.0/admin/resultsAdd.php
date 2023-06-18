@@ -135,7 +135,7 @@
                 echo "Resultado inserido com sucesso!";
             } else {
                 // Error occurred during the query execution
-                echo "Error: " . $conn->error;
+                echo "Error: " /*. $conn->error*/;
             }
 
             $conn->close();
