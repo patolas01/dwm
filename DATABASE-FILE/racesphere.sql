@@ -373,11 +373,6 @@ ALTER TABLE `utilizador`
 ALTER TABLE `carro`
   MODIFY `id_carro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `carrofoto`
---
-ALTER TABLE `carrofoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `circuito`
 --
 ALTER TABLE `circuito`
@@ -392,11 +387,6 @@ ALTER TABLE `equipa`
 --
 ALTER TABLE `equipamento`
   MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `equipamentofoto`
---
-ALTER TABLE `equipamentofoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `etapa`
 --
