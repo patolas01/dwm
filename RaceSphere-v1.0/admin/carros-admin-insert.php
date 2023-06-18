@@ -28,7 +28,7 @@
             // Verifica se o arquivo é uma imagem
             if ($fotoTipo == "image/jpeg" || $fotoTipo == "image/png" || $fotoTipo == "image/jpg") {
                 // Define o diretório onde a imagem será armazenada
-                $diretorio = "../admin/carrosimg/";
+                $diretorio = "../img/bd-img/carrosimg/";
 
                 // Gera um nome único para a imagem, por exemplo, usando um timestamp
                 $fotocarro = time() . '_' . $fotoNome;

@@ -263,3 +263,29 @@ h1.tit {
     width: 48%;
     margin-left: 15px;
 }
+
+#add {
+    margin: 10px !important;
+}
+
+div#sessao {
+    text-align: center;
+    margin-top: 30px;
+}
+
+table.sessaoTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+td,
+th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#categoriaSessao{
+    width: 100%;
+}
