@@ -64,7 +64,6 @@
                 break;
             }
             $query = 'UPDATE sessao set tipo_sessao = "'.$tipo_sessao.'", dia_sessao = "'.$dia_sessao.'", inicio_sessao = "'.$inicio_sessao.'", fim_sessao = "'.$fim_sessao.'" , categoria = "'.$categoria.'" where id_sessao = "'.$id_sessao.'";';
-            echo $query;
             $result_set = $conn->query($query);
             if ($result_set) {
                 header("Location: sessao.php");
