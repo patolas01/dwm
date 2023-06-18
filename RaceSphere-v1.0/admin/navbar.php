@@ -12,11 +12,10 @@
                     <a class="nav-link" href="userManagement.php">Utilizadores</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="news.php">Noticias</a>
+                    <a class="nav-link" href="results.php">Resultados</a>
                 </li>
-                <!--Dropdown para pilotos, equipas, circuitos, etc.-->
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="categorias.php">Categorias</a>
+                    <a class="nav-link" href="news.php">Noticias</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="carros-admin.php">Carros</a>
