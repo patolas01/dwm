@@ -594,4 +594,9 @@ i{
 h2.middleTextTitle{
   padding-top: 10px;
 }
+.middleParagraph{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
 /*css noticiaWRC.php*/

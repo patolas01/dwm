@@ -106,12 +106,12 @@
     }
     else{
         ?><h1>Você não tem acesso a esta página</h1> <img src="img/img_daniel/erro.jpg">
-        Pare ter acesso a esta página por favor faça login.
-        Você será rederecionado a página de login dentro de instantes
+        <p class="middleParagraph">Pare ter acesso a esta página por favor faça login.
+        Você será rederecionado a página de login dentro de instantes</p>
         <script>
                 window.setTimeout(function () {
                     location.href = "login.php";
-                }, 5000);
+                }, 6000);
             </script><?php
     }
     ?>
