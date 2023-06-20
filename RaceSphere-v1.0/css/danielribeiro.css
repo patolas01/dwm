@@ -549,3 +549,49 @@ i{
   margin-top: 10px;
 }
 /*css editProva.php*/
+/*css noticiaWRC.php*/
+#thumbnail_notica_wrc{
+  width: 100%;
+  margin: auto;
+}
+.middleTextTitle{
+  text-align: center;
+}
+#noticiasWRC{
+  background-color: aqua;
+}
+#centradoAoMeio{
+  width: 80%;
+  margin: auto;
+  background-color: aquamarine;
+  padding-bottom: 10px;
+}
+#footerBranco{
+  background-color: white;
+}
+#descricaoNoticia{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#divImagensNoticia{
+  width: 75%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto ;
+  text-align: center;
+}
+#divImagensNoticia img{
+  width: 100%;
+}
+.card-body{
+  max-height: 300px;
+  overflow-y: hidden;
+}
+h2.middleTextTitle{
+  padding-top: 10px;
+}
+/*css noticiaWRC.php*/
