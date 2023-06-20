@@ -2,23 +2,20 @@
 <html lang="pt">
 
 <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
+        <?php include('bootstrapInc.php'); ?>
         <title>Politicas de Privacidade</title>
-        <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/pauloLeal.css">
 </head>
 
 <body>
+        <?php include('navbar.php'); ?>
         <div class="mainWrapper privPolicy">
                 <h1>Politicas de Privacidade</h1>
+                <br>
                 <p><span>A sua privacidade é importante para nós. É política do RaceSphere respeitar a sua privacidade
                                 em relação a qualquer informação sua que possamos coletar no site <a
-                                        href="index.html">RaceSphere</a>, e outros sites que possuímos e operamos.</span></p>
+                                        href="index.html">RaceSphere</a>, e outros sites que possuímos e
+                                operamos.</span></p>
                 <p><span>Solicitamos informações pessoais apenas quando realmente precisamos delas para lhe fornecer um
                                 serviço. Fazemo-lo por meios justos e legais, com o seu conhecimento e consentimento.
                                 Também informamos por que estamos coletando e como será usado.</span></p>
@@ -51,6 +48,7 @@
                                 lidamos com
                                 dados do utilizador e informações pessoais, entre em contacto connosco.</span></p>
                 <p><span></span></p>
+                <br>
                 <h3><span>Compromisso do utilizador</span></h3>
 
                 <ul>
@@ -69,6 +67,7 @@
                                         informáticos ou quaisquer outros sistemas de hardware ou software que sejam
                                         capazes de causar danos anteriormente mencionados.</span></li>
                 </ul>
+                <br>
                 <h3><span>Mais informações</span></h3>
                 <p><span>Esperemos que esteja esclarecido e, como mencionado anteriormente, se houver algo que o
                                 utilizador não tem certeza se precisa ou não, geralmente é mais seguro deixar os cookies
@@ -76,6 +75,8 @@
                 </p>
                 <p><span>Esta política é efetiva a partir de&nbsp;19 Março 2023 20:56</span></p>
         </div>
+
+        <?php include('footer.php'); ?>
 </body>
 
 </html>
