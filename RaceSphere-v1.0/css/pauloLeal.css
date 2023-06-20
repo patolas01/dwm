@@ -161,12 +161,12 @@ div.driverName {
     margin-right: auto;
     padding-top: 1%;
     padding-bottom: 5%;
-    width: 80svw;
+    width: 75svw;
     justify-content: center;
 }
 
-.newsBox#cat{
-    justify-content: left!important;
+.newsBox#cat {
+    justify-content: left !important;
 }
 
 .newsBox .card {
@@ -224,13 +224,37 @@ form#news {
     margin-top: 10px;
 }
 
-table#newsManage {
-    width: 60%;
-    margin-top: 30px;
-    margin-bottom: 200px;
+.table-container {
+    height: 60svh;
+    /* Adjust the height as needed */
+    overflow: auto;
+    margin-top: 2%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
+    border: 1px solid #ccc;
+    width: 60%;
+}
+
+
+#resultsDiv{
+    margin-left: auto;
+    margin-right: auto;
+    grid-template-rows: none;
+    width: 60svw;
+}
+
+
+table thead {
+    top: 0;
+    position: sticky;
+    background-color: #f5f5f5;
+    z-index: 2;
+}
+
+table thead tr {
+    position: sticky;
+    border-bottom: 2px solid #4d4d4d !important;
 }
 
 table#newsManage td {
@@ -264,6 +288,7 @@ div.newsTooltip input {
 
 #newsManage td.idCell {
     position: relative;
+    z-index: 0;
 }
 
 #newsManage td.idCell::before {
@@ -322,18 +347,21 @@ img#addBtn {
 }
 
 .catN-f1:hover {
-    box-shadow: 0px 0px 10px 6px #FF18017b;
+    box-shadow: 0px 0px 0px 4px #FF18019d;
 }
 
 .catN-wrc:hover {
-    box-shadow: 0px 0px 10px 6px #2b66be7b;
+    box-shadow: 0px 0px 0px 4px #2b66be9d;
 }
 
 .catN-wec:hover {
-    box-shadow: 0px 0px 10px 6px #00b4307b;
+    box-shadow: 0px 0px 0px 4px #00b4309d;
 }
 
 #mainSection {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75svw;
     height: 380px;
     margin-bottom: 5%;
 }
@@ -393,6 +421,10 @@ input#searchInput {
     background-color: white;
 }
 
+.highlight {
+    background-color: rgba(255, 255, 0, 0.334);
+}
+
 #sideNews {
     height: 360px;
 }
@@ -407,7 +439,7 @@ input#searchInput {
     height: calc(100% / 3);
 }
 
-.vertRow{
+.vertRow {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -417,12 +449,12 @@ input#searchInput {
     cursor: pointer;
     transition-duration: 200ms;
     height: 100%;
-    
+
 }
 
 .vertRow .card .row {
     height: 100%;
-    
+
 }
 
 .vertRow .card .row .col-md-8 {
@@ -434,15 +466,53 @@ input#searchInput {
     overflow: hidden;
 }
 
-.newsBoxTitle{
-    text-align: left;
-    width: 77svw;
+.newsBoxTitle {
+    width: 75svw;
     margin-left: auto;
     margin-right: auto;
+    text-align: left;
+    padding-left: 1%;
 }
 
-.newsBox{
+.newsBox {
     align-items: left;
+}
+
+.hidden{
+    display: none;
+}
+
+input[type="checkbox"]{
+    scale: 1.6;
+}
+
+.resultContainer{
+    margin-bottom: 1.5rem;
+}
+
+form#resultado button{
+    width: 60%;
+    height: 3rem;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 10%;
+}
+
+#editableTable td{
+    vertical-align: middle!important;
+    padding: 5px;
+}
+
+#editableTable tbody tr:first-child /*td:first-child*/ {
+    background-color: #b5a6427a;
+}
+
+#editableTable tbody tr:nth-child(2)/* td:first-child*/ {
+    background-color: #c0c0c07a;
+}
+
+#editableTable tbody tr:nth-child(3)/* td:first-child*/ {
+    background-color: #cd7f327a;
 }
 
 

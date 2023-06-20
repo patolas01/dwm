@@ -8,10 +8,14 @@
     <title>FAQ</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/alex.css">
+    <?php include('bootstrapInc.php'); ?>
 
 </head>
 
 <body>
+    <?php
+    include('navbar.php');
+    ?>
     <main>
 
         <h1 class="faq-heading">FAQ'S</h1>
@@ -149,6 +153,9 @@
                 </div>
             </div>
         </section>
+        <?php
+        include('footer.php');
+        ?>
     </main>
     <script src="js/main.js"></script>
 </body>

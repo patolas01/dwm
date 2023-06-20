@@ -10,32 +10,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <?php include('bootstrapInc.php'); ?>
     <link rel="stylesheet" href="css/luissilva.css">
-    <title>Carro info</title>
+    <title>Equipamento info</title>
 </head>
 
 <body>
     <?php
     include 'navbar.php';
     include 'sqli/conn.php';
-    // Verifica se foi fornecido um ID de carro
-    $idCarro = $_GET['id'];
-    // Obtém os dados do carro pelo ID
-    $sql_select = "SELECT * FROM carro WHERE id_carro = '$idCarro'";
+    // Verifica se foi fornecido um ID de equipamento
+    $idEquipamento = $_GET['id'];
+    // Obtém os dados do equipamento pelo ID
+    $sql_select = "SELECT * FROM equipamento WHERE id_equipamento = '$idEquipamento'";
     $result = $conn->query($sql_select);
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $marca = $row["marca_carro"];
-        $modelo = $row["modelo_carro"];
-        $ano = $row["ano_carro"];
-        $trac = $row["trac_carro"];
-        $caixa = $row["caixa_carro"];
-        $comb = $row["comb_carro"];
-        $cilind = $row["cilind_carro"];
-        $hp = $row["hp_carro"];
-        $descricao = $row["desc_carro"];
-        $fotocarro = $row["fotocarro"];
+        $nome = $row["nome_equipamento"];
+        $descricao = $row["desc_equipamento"];
+        $img_equipamento = $row["img_equipamento"];
     } else {
-        echo "Carro não encontrado.";
+        echo "Equipamento não encontrado.";
         exit;
     }
     ?>
@@ -46,20 +39,14 @@
             </div>
             <div class="table-container">
                 <div class="car-details">
-                    <h2><?php echo $marca . ' ' . $modelo; ?></h2>
-                    <p>Ano: <?php echo $ano; ?></p>
-                    <p>Tracção: <?php echo $trac; ?></p>
-                    <p>Caixa: <?php echo $caixa; ?></p>
-                    <p>Combustível: <?php echo $comb; ?></p>
-                    <p>Cilindrada: <?php echo $cilind; ?></p>
-                    <p>Potência: <?php echo $hp; ?></p>
+                    <h2><?php echo $nome; ?></h2>
                     <p>Descrição: <?php echo $descricao; ?></p>
                 </div>
                 <div class="car-image">
                     <?php
-                    $fotocarro = $row["fotocarro"];
+                    $img_equipamento = $row["img_equipamento"];
                     ?>
-                    <img src="img/bd-img/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                    <img src="img/bd-img/equipamentosimg/<?php echo $img_equipamento; ?>" alt="<?php echo $nome; ?>">
                 </div>
             </div>
 

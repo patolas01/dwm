@@ -72,7 +72,7 @@
 
                                 <div class="col-12 col-sm-4 col-md-4 mb-4">
                                     <div class="card card-sm">
-                                        <img class="card-img-top card-image" src="admin/carrosimg/<?php echo $fotoCarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                                        <img class="card-img-top card-image" src="img/bd-img/carrosimg/<?php echo $fotoCarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
                                         <div class="card-body">
                                             <h5 class="card-title"><?php echo $marca; ?></h5>
                                             <p class="card-text"><?php echo $modelo; ?></p>

@@ -44,6 +44,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $cat_equipa = $_POST["cat_equipa"];
     $logo_equipa = $_POST["current_logo"];
 
+    //Editar IMAGEM
+    if (isset($_FILES['logo_equipa'])) {
+        $file = $_FILES['logo_equipa'];
+        $file_name = $file['name'];
+        $file_tmp = $file['tmp_name'];
+
+        //Verifica se foi enviada
+        if (!empty($file_name) && !empty($file_tmp)) {
+            $upload_dir = '../img/img_alex/';
+            $target_file = $upload_dir . basename($file_name);
+
+            if (move_uploaded_file($file_tmp, $target_file)) {
+                $logo_equipa = $file_name;
+            } else {
+                $errorMessage = "Falha ao enviar o ficheiro. Tente novamente.";
+            }
+        }
+    }
+
     do {
         if (empty($id_equipa) || empty($nome_equipa) || empty($nac_equipa) || empty($cat_equipa) || empty($logo_equipa)) {
             $errorMessage = "Todos os campos precisam de estar preenchidos!";
@@ -98,17 +117,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <?php
         if (!empty($errorMessage)) {
             echo "
-                <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-                 <strong>$errorMessage</strong>
-                 <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>            
-            ";
-
+               <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+               </div>            
+         ";
         }
+
         ?>
 
-        <form method="post">
+        <form method="post" enctype="multipart/form-data" action="equipasEdit.php?id_equipa=<?php echo $id_equipa; ?>">
             <input type="hidden" name="id_equipa" value="<?php echo $id_equipa; ?>">
             <input type="hidden" name="current_logo" value="<?php echo $logo_equipa; ?>">
             <div class="row mb-3">
@@ -155,54 +173,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                     </div>
                 </div>
             </div>
-      
 
 
-        <script>
-            var fileInput = document.getElementById("file-picker");
-            var fileLabel = document.getElementById("file-name");
-            var imagePreview = document.getElementById("image-preview");
+            <script>
+                //Nome do Ficheiro ao editar
+                var fileInput = document.getElementById("file-picker");
+                var fileLabel = document.getElementById("file-name");
+                var imagePreview = document.getElementById("image-preview");
 
-            fileInput.addEventListener("change", function () {
-                var file = fileInput.files[0];
+                fileInput.addEventListener("change", function () {
+                    var file = fileInput.files[0];
 
-                if (file) {
-                    var reader = new FileReader();
-                    reader.onload = function (e) {
-                        var imageUrl = e.target.result;
-                        fileLabel.textContent = file.name;
-                        imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-        </script>
+                    if (file) {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var imageUrl = e.target.result;
+                            fileLabel.textContent = file.name;
+                            imagePreview.innerHTML = '<img src="' + imageUrl + '" class="img-fluid">';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                });
+            </script>
 
+            <?php
 
-        <?php
-        if (!empty($successMessage)) {
-            echo "
-                        <div class= 'row mb-3'>
-                            <div class= 'offset-sm-3 col-sm-6'>
-                             <div class= 'alert alert-success alert-dismissible fade show' role='alert'>
-                              <strong>$successMessage</strong>
-                              <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                             </div>
-                            </div>
-                        </div>
-                    "; // botao da versao 5 do bootstrap
-        }
-        ?>
+            if (!empty($successMessage)) {
+                echo "
+                    <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>$successMessage</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                    </div>            
+                ";
+            }
+            ?>
 
-        <div class="row mb-3">
-            <div class="offset-sm-3 col-sm-3 d-grid">
-                <button type="submit" class="btn btn-primary">Enviar</button>
+            <div class="row mb-3">
+                <div class="offset-sm-3 col-sm-3 d-grid">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+                <div class="col-sm-3 d-grid">
+                    <a class="btn btn-outline-primary" href="equipas.php" role="button">Cancelar</a>
+                </div>
             </div>
-            <div class="col-sm-3 d-grid">
-                <a class="btn btn-outline-primary" href="equipas.php" role="button">Cancelar</a>
-            </div>
-        </div>
         </form>
     </div>
 

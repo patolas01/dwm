@@ -32,35 +32,43 @@ USE `racesphere`;
 
 CREATE TABLE `carro` (
   `id_carro` int(11) NOT NULL,
-  `marca_carro` varchar(50) NOT NULL,
-  `modelo_carro` varchar(60) NOT NULL,
+  `marca_carro` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `modelo_carro` varchar(60) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ano_carro` int(11) NOT NULL,
-  `trac_carro` enum('4WD','RWD','FWD') NOT NULL,
-  `caixa_carro` enum('Manual','Sequencial','AutomÃ¡tico') NOT NULL,
-  `comb_carro` enum('GasÃ³leo','Gasolina','ElÃ©trico','Hibrido','CombustÃ­vel de CompetiÃ§Ã£o') NOT NULL,
+  `trac_carro` enum('4WD','RWD','FWD') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `caixa_carro` enum('Manual','Sequencial','AutomÃ¡tico') COLLATE utf8mb4_unicode_ci NOT NULL,
+  `comb_carro` enum('GasÃ³leo','Gasolina','ElÃ©trico','Hibrido','CombustÃ­vel de CompetiÃ§Ã£o') COLLATE utf8mb4_unicode_ci NOT NULL,
   `cilind_carro` float NOT NULL,
   `hp_carro` int(11) NOT NULL,
-  `desc_carro` mediumtext NOT NULL,
-  `fotocarro` varchar(255) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `desc_carro` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fotocarro` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Extraindo dados da tabela `carro`
 --
 
 INSERT INTO `carro` (`id_carro`, `marca_carro`, `modelo_carro`, `ano_carro`, `trac_carro`, `caixa_carro`, `comb_carro`, `cilind_carro`, `hp_carro`, `desc_carro`, `fotocarro`) VALUES
-(1, 'ferrari', '330 P4', 1967, 'RWD', 'Manual', 'ElÃ©trico', 300, 250, 'sjbsdihdsibhdshdssd', ' 1686062102_294_full-hd-1080p-space-wallpapers-desktop-backgrounds-hd-downloads_1920x1080_h.jpg'),
-(2, 'mercedes', 'x3', 2003, '4WD', 'Sequencial', 'Hibrido', 360, 300, 'fdhd fd fbdfd fd df fd jdf  dfb df bdfnb dfn dfn df dfn dfn dfn dfnb dfbn dfn  dfc ndf', ' 1686057676_3efc38873d53b537cc5bcca0c31f25fa.jpg'),
-(5, 'por', '915', 2005, '4WD', 'Manual', 'Gasolina', 210, 32, 'ola123', '999sdjdsniudsids'),
-(7, 'porche', '915', 2005, '4WD', 'Manual', 'Gasolina', 210, 32, 'nbdsibds vddhav d vgadfg vadfg adf adf gadfg', ''),
-(9, 'dsidfsdsg', 'gfdsgaf', 2511, 'RWD', 'Sequencial', 'Gasolina', 454, 4545, '22441', ''),
-(40, 'fddf', 'vfd', 5225, '4WD', 'Manual', 'GasÃ³leo', 5242, 454, 'errdgbrfds dhfs jds fds dsfj sdfj dsfh ds', '1686058454_3efc38873d53b537cc5bcca0c31f25fa.jpg'),
-(45, 'sdfsdds', 'fdssdsdf', 1515, '4WD', 'Manual', 'GasÃ³leo', 155, 515, 'dsfdsdnhdsikfds', '1686060527_imag es (4).jpg'),
-(46, 'fvvfdf', 'vdfvf', 4141, '4WD', 'Manual', 'GasÃ³leo', 144114, 141414, 'hggbdfb', '1686061796_294_full-hd-1080p-space-wallpapers-desktop-backgrounds-hd-downloads_1920x1080_h.jpg'),
-(47, 'fvvfdf', 'vdfvf', 4141, '4WD', 'Manual', 'GasÃ³leo', 144114, 141414, 'hggbdfb', '1686061837_294_full-hd-1080p-space-wallpapers-desktop-backgrounds-hd-downloads_1920x1080_h.jpg'),
-(48, 'fvvfdf', 'vdfvf', 4141, '4WD', 'Manual', 'GasÃ³leo', 144114, 141414, 'hggbdfb', '1686062051_294_full-hd-1080p-space-wallpapers-desktop-backgrounds-hd-downloads_1920x1080_h.jpg'),
-(49, 'bdbsivf', '161616', 2515, '4WD', 'Manual', 'GasÃ³leo', 151515, 15151, 'fdfdfvnkjdfd  dfn df dfvm dfmfv', '1686062102_294_full-hd-1080p-space-wallpapers-desktop-backgrounds-hd-downloads_1920x1080_h.jpg'),
-(50, 'dsvnds', 'fvffdvfv', 6561, '4WD', 'Manual', 'GasÃ³leo', 15615, 44242, '424424', '1686063802_Cena 14f.png');
+(52, 'ferrari', '330 P4', 1967, '4WD', 'Manual', 'GasÃ³leo', 236, 556, 'saxihsaubkuasu', '1686128761_transferir.jpg'),
+(53, 'mercedes', '2323', 1980, '4WD', 'Manual', 'GasÃ³leo', 123, 235, 'efdsfdsdfdsf', '1686857548_im ages (6).jpg'),
+(54, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860552_images (8).jpg'),
+(55, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860557_images (8).jpg'),
+(56, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860560_images (8).jpg'),
+(57, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860563_images (8).jpg'),
+(58, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860566_images (8).jpg'),
+(59, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860569_images (8).jpg'),
+(60, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860572_images (8).jpg'),
+(61, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860575_images (8).jpg'),
+(62, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860578_images (8).jpg'),
+(63, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860581_images (8).jpg'),
+(64, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860584_images (8).jpg'),
+(65, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860587_images (8).jpg'),
+(66, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860590_images (8).jpg'),
+(67, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860593_images (8).jpg'),
+(68, 'bmw', '333', 1965, '4WD', 'Manual', 'GasÃ³leo', 100, 500, 'fdgsf df fd fd  ', '1686860596_images (8).jpg'),
+(69, 'mclaren', 'p40', 2015, '4WD', 'AutomÃ¡tico', 'Gasolina', 633, 230, 'sedfmso fsd fdsdsf jfds ', '1687030809_im ages (7).jpg'),
+(70, 'nissan', 'x', 2010, '4WD', 'Manual', 'Gasolina', 130, 180, 'xvxxdvxd', '1687031759_ima ges (3).jpg');
+
 
 -- --------------------------------------------------------
 
@@ -104,18 +112,14 @@ CREATE TABLE `equipamento` (
   `desc_equipamento` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- --------------------------------------------------------
-
 --
--- Estrutura da tabela `equipamentofoto`
+-- Extraindo dados da tabela `equipamento`
 --
 
-CREATE TABLE `equipamentofoto` (
-  `id` int(11) NOT NULL,
-  `nome` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `patch` varchar(255) CHARACTER SET latin1 NOT NULL,
-  `dataUpload` datetime NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+INSERT INTO `equipamento` (`id_equipamento`, `nome_equipamento`, `img_equipamento`, `desc_equipamento`) VALUES
+(1, 'luva', '1687032058_ulquiorra-cifer-background-1366x768-laptop-412470.jpg', 'dshvbsdhvdsh ds sdhds dshd sd ds hsd nds dsb dsb ds dsbsd nsdnd'),
+(6, 'capaÃ§ete', '1687032464_910289.jpg', 'fghfg fg  fghf hgf fh'),
+(5, 'luva', '1687032058_ulquiorra-cifer-background-1366x768-laptop-412470.jpg', 'dfsvidsvds dsh dshds dsbds sd dbs dsn dsnd ');
 
 -- --------------------------------------------------------
 
@@ -369,11 +373,6 @@ ALTER TABLE `utilizador`
 ALTER TABLE `carro`
   MODIFY `id_carro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
--- AUTO_INCREMENT for table `carrofoto`
---
-ALTER TABLE `carrofoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
 -- AUTO_INCREMENT for table `circuito`
 --
 ALTER TABLE `circuito`
@@ -388,11 +387,6 @@ ALTER TABLE `equipa`
 --
 ALTER TABLE `equipamento`
   MODIFY `id_equipamento` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `equipamentofoto`
---
-ALTER TABLE `equipamentofoto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `etapa`
 --

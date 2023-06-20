@@ -44,6 +44,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $nac_circuito = $_POST["nac_circuito"];
     $layout_circuito = $_POST["current_layout"];
 
+    //Editar IMAGEM
+    if (isset($_FILES['layout_circuito'])) {
+        $file = $_FILES['layout_circuito'];
+        $file_name = $file['name'];
+        $file_tmp = $file['tmp_name'];
+
+        //Verifica se foi enviada
+        if (!empty($file_name) && !empty($file_tmp)) {
+            $upload_dir = '../img/img_alex/';
+            $target_file = $upload_dir . basename($file_name);
+
+            if (move_uploaded_file($file_tmp, $target_file)) {
+                $layout_circuito = $file_name;
+            } else {
+                $errorMessage = "Falha ao enviar o ficheiro. Tente novamente.";
+            }
+        }
+    }
+
+
     do {
         if (empty($id_circuito) || empty($nome_circuito) || empty($cidade_circuito) || empty($nac_circuito) || empty($layout_circuito)) {
             $errorMessage = "Todos os campos precisam de estar preenchidos!";
@@ -101,17 +121,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <?php
         if (!empty($errorMessage)) {
             echo "
-                <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-                 <strong>$errorMessage</strong>
-                 <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>            
-            ";
-
+               <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+               </div>            
+         ";
         }
         ?>
 
-        <form method="post" enctype="multipart/form-data" action="circuitosEdit.php?id=<?php echo $id_circuito; ?>">
+        <form method="post" enctype="multipart/form-data"
+            action="circuitosEdit.php?id_circuito=<?php echo $id_circuito; ?>">
+
             <input type="hidden" name="id_circuito" value="<?php echo $id_circuito; ?>">
             <input type="hidden" name="current_layout" value="<?php echo $layout_circuito; ?>">
 
@@ -179,18 +199,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <?php
             if (!empty($successMessage)) {
                 echo "
-                        <div class= 'row mb-3'>
-                            <div class= 'offset-sm-3 col-sm-6'>
-                             <div class= 'alert alert-success alert-dismissible fade show' role='alert'>
-                              <strong>$successMessage</strong>
-                              <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                             </div>
-                            </div>
-                        </div>
-                    "; // botao da versao 5 do bootstrap
+                    <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>$successMessage</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                    </div>            
+                ";
             }
             ?>
+
 
             <div class="row mb-3">
                 <div class="offset-sm-3 col-sm-3 d-grid">

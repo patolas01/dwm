@@ -159,7 +159,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255">
+                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255" value="<?php echo $fotocarro; ?>">
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
@@ -175,7 +175,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $desc_carro = $_POST['desc_carro'];
 
                 if ($_FILES['fotocarro']['name']) {
-                    $targetDir = "../admin/carrosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
+                    $targetDir = "../img/bd-img/carrosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
                     $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
                     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
 

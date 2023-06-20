@@ -1,0 +1,102 @@
+Alex Costa - equipas.php
+	     equipasCreate.php -> Back-end
+	     equipasEdit.php
+	     equipasDelete.php
+
+	     f1-index.php
+	     equipas.php -> Front-end
+	     FAQ.php
+	     
+	     alex.css
+-----------------------------------------------------------------------------
+
+Daniel     - provaManagement.php
+Ribeiro	     addEtapas.php -> Back-end
+	     editEtapas.php
+	     etapasManagement.php
+             addProvas.php
+	     editProvas.php
+
+
+	     provaWrc.php -> Front-end
+	     rally-index.php
+	     rally-etapas.php
+	     provaWrc.php
+
+	     danielribeiro.css
+-----------------------------------------------------------------------------
+
+Luis Silva - carros-admin.php
+	     carros-admin-insert.php -> Back-end
+	     carros-admin-edit.php
+	     equipamentos-info.php
+             equipamentos-showroom.php
+             equipamentos-admin-edit.php
+             equipamentos-admin-insert.php
+             equipamentos-admin.php
+
+
+	     carros-showroom.php -> Front-end
+	     tercod.php
+	     Showroom.php
+
+
+	     footer.php -> Attachments
+	     
+	     luissilva.css
+-----------------------------------------------------------------------------
+
+Paulo Leal - news.php
+	     newsAdd.php -> Back-end
+	     newsEdit.php
+	     deleteNews.php
+	     index.php
+	     results.php
+	     resultsAdd.php
+	     resultsEdit.php
+
+	     index.php	     
+	     news.php -> Front-end
+	     PrivacyPolicy.php
+
+	     navbar.php -> Attachments
+
+	     pauloLeal.css
+-----------------------------------------------------------------------------
+
+Paulo Graça- pilotos.php
+	     piloto.php-> Back-end
+	     pilotoDelete.php
+	     pilotoEdit.php
+
+
+	     piloto.php -> Front-end
+	     wec-index.php
+	     sobre.php
+
+	     paulograca.css
+-----------------------------------------------------------------------------
+
+
+Grupo - addUsers.php	
+	editUsers.php
+	editAdminPress.php
+	sessaoManagement.php
+	userManagement.php
+	
+
+
+	login.php
+	logout.php
+	bootstrapInc.php
+
+	main.css	
+
+
+
+
+Testes de Usabilidade:
+
+Teste1 - Alex Costa
+Teste2 - Luis Silva
+Teste3 - Daniel Ribeiro
