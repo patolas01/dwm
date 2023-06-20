@@ -18,6 +18,9 @@
     include 'navbar.php';
     include 'sqli/conn.php';
     $id_noticia = $_GET["id"];
+    if(isset($_SESSION["nome"])){
+
+    
     ?>
     <div id="centradoAoMeio">
         <?php
@@ -99,7 +102,19 @@
             }
             ?>
         </div>
-    </div>
+    </div><?php 
+    }
+    else{
+        ?><h1>Você não tem acesso a esta página</h1> <img src="img/img_daniel/erro.jpg">
+        Pare ter acesso a esta página por favor faça login.
+        Você será rederecionado a página de login dentro de instantes
+        <script>
+                window.setTimeout(function () {
+                    location.href = "login.php";
+                }, 5000);
+            </script><?php
+    }
+    ?>
     <div id="footerBranco">
         <?php
         include 'footer.php';
