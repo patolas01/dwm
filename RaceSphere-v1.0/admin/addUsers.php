@@ -30,9 +30,7 @@
 
                             <div class="col-md-12">
                                 <input class="form-control" type="text" id="usernames" name="name" placeholder="Nome">
-                                <h5 id="usercheck">
-                                    Por favor insira o nome
-                                </h5>
+                                
                             </div>
 
                             <div class="col-md-12">
