@@ -42,7 +42,7 @@
                     $logo_equipa = $row["logo_equipa"];
 
                     // Display the team information
-                    echo '<div class="team-card" data-category="' . $cat_equipa . '">';
+                    echo '<div class="team-card ' . strtolower($cat_equipa) . '" data-category="' . $cat_equipa . '">';
                     echo '<a href="team.php?id=' . $id_equipa . '">';
                     echo '<img src="img/' . $logo_equipa . '" alt="' . $nome_equipa . '">';
                     echo '</a>';
