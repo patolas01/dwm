@@ -14,38 +14,33 @@
 </head>
 
 <body>
-        <?php
-        include 'navbar.php';
-        ?>
-        <div id="showrrom" class="container-fluid">
-                <div class="row no-gutters">
-                        <div class="col-6">
-                                <div class="bar">
-                                        <a href="carros-showroom.php">
-                                                <div class="bar-img" id="leftBar"></div>
-                                                <div class="bar-wrapper">
-                                                        <h1 class="title">CARROS</h1>
-                                                        <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e revisitar memórias antigas ou então explorar toda a tecnologia moderna e evolução do mundo automóvel</p>
-                                                </div>
-
-                                        </a>
-                                </div>
+    <?php include 'navbar.php'; ?>
+    <div id="showroom" class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md-6 order-md-1 order-2">
+                <div class="bar">
+                    <a href="carros-showroom.php">
+                        <div class="bar-img" id="leftBar"></div>
+                        <div class="bar-wrapper">
+                            <h1 class="title">CARROS</h1>
+                            <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e revisitar memórias antigas ou então explorar toda a tecnologia moderna e evolução do mundo automóvel</p>
                         </div>
-                        <div class="col-6">
-                                <div class="bar">
-                                        <a href="equipamentos-showroom.php">
-                                                <div class="bar-img" id="rightBar"></div>
-                                                <div class="bar-wrapper">
-                                                        <h1 class="title">EQUIPAMENTOS</h1>
-                                                        <p class="descr">Segurança em primeiro lugar, o conforto vem muito depois. Observe alguns dos equipamentos usados em diversas categorias. Desde Fatos, Luvas, Capacetes e Sapatos</p>
-                                                </div>
-                                        </a>
-                                </div>
-                        </div>
+                    </a>
                 </div>
+            </div>
+            <div class="col-md-6 order-md-2 order-1">
+                <div class="bar">
+                    <a href="equipamentos-showroom.php">
+                        <div class="bar-img" id="rightBar"></div>
+                        <div class="bar-wrapper">
+                            <h1 class="title">EQUIPAMENTOS</h1>
+                            <p class="descr">Segurança em primeiro lugar, o conforto vem muito depois. Observe alguns dos equipamentos usados em diversas categorias. Desde Fatos, Luvas, Capacetes e Sapatos</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
-        <?php
-        include 'footer.php';
-        ?>
+    </div>
+    <?php include 'footer.php'; ?>
 </body>
 </html>
