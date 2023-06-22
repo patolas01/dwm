@@ -183,12 +183,23 @@ main{
 }
 
 #pesquisa{
-    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .card-container {
     height: 80vh;
     overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Ocultar a barra de rolagem */
+.card-container::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: transparent;
+}
+
+.card-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
 }
 
 /*Showrrom carro*/
@@ -209,7 +220,6 @@ main{
     height: 600px;
     border-radius: 5px;
 }
-
 
 .car-details {
     width: 60%;
