@@ -65,6 +65,10 @@
                 <select name="sessao" id="sessao" class="form-control">
                     <option value="1" <?php if ($session == 1)
                         echo 'selected'; ?>>P1 - ID Prova</option>
+                    <option value="2" <?php if ($session == 2)
+                        echo 'selected'; ?>>P2 - ID Prova</option>
+                    <option value="3" <?php if ($session == 3)
+                        echo 'selected'; ?>>P3 - ID Prova</option>
                 </select>
             </div>
         </div>
