@@ -64,7 +64,7 @@ session_start();
                                                 Sessão</button>
                                         </div>
 
-                                        <p>Ainda não tem conta? <a href="register.php"
+                                        <p>Ainda não tem conta? <a href="registoUser.php"
                                                 style="color: #393f81;">Registe-se aqui</a></p>
                                     </form>
 

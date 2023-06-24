@@ -121,13 +121,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         <?php
         if (!empty($errorMessage)) {
             echo "
-                <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-                 <strong>$errorMessage</strong>
-                 <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>            
-            ";
-
+               <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+               </div>            
+         ";
         }
         ?>
 
@@ -201,18 +199,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             <?php
             if (!empty($successMessage)) {
                 echo "
-                        <div class= 'row mb-3'>
-                            <div class= 'offset-sm-3 col-sm-6'>
-                             <div class= 'alert alert-success alert-dismissible fade show' role='alert'>
-                              <strong>$successMessage</strong>
-                              <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                              <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                             </div>
-                            </div>
-                        </div>
-                    "; // botao da versao 5 do bootstrap
+                    <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                        <strong>$successMessage</strong>
+                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+                    </div>            
+                ";
             }
             ?>
+
 
             <div class="row mb-3">
                 <div class="offset-sm-3 col-sm-3 d-grid">
