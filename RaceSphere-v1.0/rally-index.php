@@ -17,6 +17,26 @@
     <?php
     include 'navbar.php';
     include 'sqli/conn.php';
+    //buscar tempo neste momento
+    $query = "SELECT CURRENT_TIMESTAMP";
+    $result_set = $conn->query($query);
+    if($result_set){
+        while ($row = $result_set->fetch_assoc()) {
+            $tempo=$row['CURRENT_TIMESTAMP'];
+            //tirar horas minutos e segundos
+            $data = substr($tempo, 0,10);
+        }
+    }
+    //buscar o ultimo evento
+    $query = "SELECT DATE_FORMAT(inicio_prova, '%y') AS ano, DATE_FORMAT(inicio_prova, '%d') AS dia1, DATE_FORMAT(inicio_prova, '%m') AS mes1, id_prova,nome_prova,DATE_FORMAT(fim_prova, '%d') AS dia2, logo_prova, DATE_FORMAT(fim_prova, '%m') AS mes2 FROM `prova` WHERE `inicio_prova` <= '$data' AND `categoria` = 'wrc' ORDER BY prova.inicio_prova DESC LIMIT 1";
+    $result_set = $conn->query($query);
+    if($result_set){
+        while ($row = $result_set->fetch_assoc()) {
+            $inicioProvaDia=$row['dia1'];
+            $fimProva=$row['fim_prova'];
+            $logoProva=$row['logo_prova'];
+        }
+    }
     ?>
     <div class="sticky-top" id="rightinfo">
         <div id="rightTitles">
@@ -206,18 +226,38 @@
         <h2 class="middleTextTitle">
             Mais noticias
         </h2>
-        <div id="noticiasQuatro">
-                <?php
-                $query3 = "SELECT * FROM noticias where cat_noticia = 'wrc' ORDER BY id_noticia DESC limit 3";
-                $result_set3 = $conn->query($query3);
-                if ($result_set3) {
-                    while ($row = $result_set3->fetch_assoc()) {
+        <div class="container">
+        <div class="row">
+            <?php
+            $query3 = "SELECT * FROM noticias where cat_noticia = 'wrc' ORDER BY id_noticia DESC limit 4";
+            $result_set3 = $conn->query($query3);
+            if ($result_set3) {
+                while ($row = $result_set3->fetch_assoc()) {
+                    $imagemcarta = $row['thumb_noticia']
                         ?>
-                        <div class="fundoNoticia"><img src="img/bd-img/news/<?php echo $row['thumb_noticia'] ?>"><h5><?php echo $row['titulo_noticia'] ?></h5><p><?php echo $row['desc_noticia'] ?></p></div>
-                        <?php
-                    }
+                    <div class="col-sm-3">
+                        <div class="card" style="width: 18rem;">
+                            <img src=<?php echo "'img/bd-img/news/$imagemcarta'"; ?> class="card-img-top" alt="fotoNoticia">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <?php echo $row["titulo_noticia"]; ?>
+                                </h5>
+                                <p class="card-text ">
+                                    <?php echo $row["desc_noticia"]; ?>
+                                </p>
+                            </div>
+                            <div class="card-body">
+                                <a href="noticiaWRC.php?id=<?php echo $row["id_noticia"]; ?>" class="btn btn-primary">Ver
+                                    Noticia</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
                 }
-                ?>
+            }
+            ?>
+        </div>
+    </div>
         </div>
     </div>
     <?php
