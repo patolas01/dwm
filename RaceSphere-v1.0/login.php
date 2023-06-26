@@ -54,7 +54,7 @@ session_start();
                                             <label class="form-label" for="form2Example27">Palavra Passe</label>
                                             <input type="password" id="form2Example27"
                                                 class="form-control form-control-lg" name="pass" required
-                                                pattern="^.{6,}$" />
+                                                 />
                                         </div>
 
 

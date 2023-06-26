@@ -130,9 +130,7 @@ session_start();
                     <?php
                 }
             } else {
-                ?>
-                <script>alert("")</script>
-                <?php
+                include('js/emailExiste.js');
             }
         } else {
             $code = $conn->error; // error code of the most recent operation
