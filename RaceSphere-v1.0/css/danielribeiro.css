@@ -204,54 +204,7 @@ h3#titulolateral{
 /*Css calendário*/
 /*css lateral direita*/
 /*css esquerda*/
-p.desc-slideshow{
-  overflow: hidden;
-}
 /*css Mini-Caixas de Noticias*/
-div#caixa1{
-  width: 100%;
-  height: 260px;
-  background-image: url("../img/img_daniel/despiste.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-position: center;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-div#caixa2{
-  width: 100%;
-  height: 260px;
-  background-image: url("../img/img_daniel/1-Rovanpera-Toyota-VRP-900.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-position: center;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-div#caixa3{
-  width: 100%;
-  height: 260px;
-  background-image: url("../img/img_daniel/VODAFONE-RALLY-PORTUGAL-AL-ATTIYAH.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-position: center;
-  margin-top: 10px;
-  border-radius: 5px;
-}
-div#caixa4{
-  width: 100%;
-  height: 260px;
-  background-image: url("../img/img_daniel/Kalle\ Rovanpera.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  background-position: center;
-  margin-top: 10px;
-  border-radius: 5px;
-}
 div.descricaoNoticia{
   text-align: center;
   width: 100%;
@@ -301,18 +254,12 @@ div.vencedor{
   padding: 5px;
 }
 /*css pódio*/
-#news{
-  padding-top: 30px;
-  width: 90%;
-  height: fit-content;
-  margin: auto;
-}
+
 .bd-example{
   width: 90%;
   margin: auto;
   height: 500px;
   margin-top: 10px;
-  overflow: hidden;
 }
 .bd-example img{
   object-fit: cover;
@@ -322,8 +269,29 @@ div.vencedor{
 .carousel-caption{
   background: rgb(0,0,0);
   background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0.1540265764508929) 100%);
+  overflow: hidden;
+}
+.descSlideshow{
+  overflow-y: hidden;
+  height: 50px;
+}
+.descNoticia{
+  overflow-y: hidden;
+  height: 300px;
 }
 /*css Mini-Caixas de Noticias*/
+.fundoNoticia{
+  width: 300px;
+  height: 300px;
+}
+.fundoNoticia img{
+  width: 300px;
+  height: 100px;
+}
+.noticiasQuatro{
+  width: 90%;
+  height: 300px;
+}
 /*css esquerda*/
 /*css index rally*/
 /*css userManagement.php*/

@@ -1,6 +1,7 @@
 //made by Daniel Ribeiro
 $(document).ready(function () {
     $("#contaexiste").hide();
+    $("#contaexiste").css('color', 'red')
     // Validate Username
     $("#usercheck").hide();
     $("#usercheck").css("color", "red");
