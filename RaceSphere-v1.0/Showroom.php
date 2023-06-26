@@ -14,12 +14,10 @@
 </head>
 
 <body>
-        <?php
-        include 'navbar.php';
-        ?>
-        <div id="showrrom" class="container-fluid">
+        <?php include 'navbar.php'; ?>
+        <div id="showroom" class="container-fluid">
                 <div class="row no-gutters">
-                        <div class="col-6">
+                        <div class="col-md-6 order-md-1 order-2">
                                 <div class="bar">
                                         <a href="carros-showroom.php">
                                                 <div class="bar-img" id="leftBar"></div>
@@ -27,11 +25,10 @@
                                                         <h1 class="title">CARROS</h1>
                                                         <p class="descr">Uma secção especialmente feita para voltar atrás no tempo e revisitar memórias antigas ou então explorar toda a tecnologia moderna e evolução do mundo automóvel</p>
                                                 </div>
-
                                         </a>
                                 </div>
                         </div>
-                        <div class="col-6">
+                        <div class="col-md-6 order-md-2 order-1">
                                 <div class="bar">
                                         <a href="equipamentos-showroom.php">
                                                 <div class="bar-img" id="rightBar"></div>
@@ -44,8 +41,7 @@
                         </div>
                 </div>
         </div>
-        <?php
-        include 'footer.php';
-        ?>
+        <?php include 'footer.php'; ?>
 </body>
+
 </html>

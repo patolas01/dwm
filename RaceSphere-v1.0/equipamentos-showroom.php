@@ -30,8 +30,9 @@
     ?>
 
     <div class="container">
+        <h1 class="titulo">Equipamentos</h1>
         <div class="row">
-            <div id="pesquisa" class="col-12 col-md-4 mb-4">
+            <div id="pesquisa" class="col-12 col-md-4">
                 <form action="" method="GET">
                     <div class="form-group">
                         <label for="nomeSelect">Nome:</label>
@@ -48,8 +49,6 @@
                 </form>
             </div>
             <div class="col-12 col-md-8">
-                <h1 class="titulo">Equipamentos</h1>
-
                 <div class="card-container">
                     <div class="row">
                         <?php

@@ -30,6 +30,8 @@
                 <label for="sessao">Número de Sessão:</label>
                 <select name="sessao" id="sessao" class="form-control">
                     <option value="1">P1 - ID Prova</option>
+                    <option value="2">P2 - ID Prova</option>
+                    <option value="3">P3 - ID Prova</option>
                 </select>
             </div>
         </div>

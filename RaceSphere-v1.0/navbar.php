@@ -31,6 +31,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="piloto.php">Pilotos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="circuitos.php">Circuitos</a>
+                </li>
             </ul>
 
 

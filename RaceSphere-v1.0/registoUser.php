@@ -30,7 +30,7 @@ session_start();
                         <div class="row g-0">
                             <div class="col-md-6 col-lg-6 d-none d-md-block">
                                 <img src="img/img_alex/loginIMG.jpg" alt="login form" class="img-fluid"
-                                    style="border-radius: 1rem 0 0 1rem;" />
+                                    style="border-radius: 1rem 0 0 1rem; height: 100%; object-fit: cover;" />
                             </div>
 
                             <div class="col-md-6 col-lg-6 d-flex align-items-center">
@@ -69,8 +69,8 @@ session_start();
                                                 name="password" required>
                                         </div>
                                         <h5 id="passcheck">
-                                                Por favor a palavra passe
-                                            </h5>
+                                            Por favor a palavra passe
+                                        </h5>
                                         <div class="form-outline mb-3">
                                             <label class="form-label" for="confirmPassword">Confirme Palavra
                                                 Passe</label>
@@ -78,8 +78,8 @@ session_start();
                                                 class="form-control form-control-lg" name="confirmPassword" required>
                                         </div>
                                         <h5 id="confirmPasscheck">
-                                                Palavra-passe deve coincidir
-                                            </h5>
+                                            Palavra-passe deve coincidir
+                                        </h5>
 
                                         <div class="pt-1 mb-4">
                                             <button class="btn btn-dark btn-lg btn-block" type="submit"
