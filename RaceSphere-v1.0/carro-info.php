@@ -42,30 +42,34 @@
 
     <div class="showroom">
         <div class="car-info">
-            <div class="sidebar">
+            <div class="car-image">
+                <?php $fotocarro = $row["fotocarro"]; ?>
+                <img src="img/bd-img/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
             </div>
-            <div class="table-container">
-                <div class="car-details">
-                    <h2><?php echo $marca . ' ' . $modelo; ?></h2>
-                    <p>Ano: <?php echo $ano; ?></p>
-                    <p>Tracção: <?php echo $trac; ?></p>
-                    <p>Caixa: <?php echo $caixa; ?></p>
-                    <p>Combustível: <?php echo $comb; ?></p>
-                    <p>Cilindrada: <?php echo $cilind; ?></p>
-                    <p>Potência: <?php echo $hp; ?></p>
-                    <p>Descrição: <?php echo $descricao; ?></p>
+            <div class="car-details">
+                <h2><?php echo $marca . ' ' . $modelo; ?></h2>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Ano: <?php echo $ano; ?></p>
+                        <p>Tracção: <?php echo $trac; ?></p>
+                        <p>Caixa: <?php echo $caixa; ?></p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p>Combustível: <?php echo $comb; ?></p>
+                        <p>Cilindrada: <?php echo $cilind; ?></p>
+                        <p>Potência: <?php echo $hp; ?></p>
+                    </div>
                 </div>
-                <div class="car-image">
-                    <?php
-                    $fotocarro = $row["fotocarro"];
-                    ?>
-                    <img src="img/bd-img/carrosimg/<?php echo $fotocarro; ?>" alt="<?php echo $marca . ' ' . $modelo; ?>">
+                <div id="desc">
+                    <h5>Descrição:</h5>
+                    <p class="col-md-5"><?php echo $descricao; ?></p>
                 </div>
+                
             </div>
-
         </div>
-
     </div>
+    </div>
+
     <?php
     include 'footer.php';
     $conn->close();
