@@ -159,7 +159,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255" value="<?php echo $fotocarro; ?>">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fotocarro" name="fotocarro" maxlength="255">
+                    <label class="custom-file-label" for="fotocarro">Escolher arquivo</label>
+                </div>
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
@@ -175,16 +178,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $desc_carro = $_POST['desc_carro'];
 
                 if ($_FILES['fotocarro']['name']) {
-                    $targetDir = "../img/bd-img/carrosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
+                    $diretorio = "../img/bd-img/carrosimg/";
                     $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
-                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+                    $imageFileType = strtolower(pathinfo($diretorio, PATHINFO_EXTENSION));
 
                     // Verificar o tipo de arquivo
                     if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
                         $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
                         $corDeFundo = "red";
                     } else {
-                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
+                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $diretorio)) {
                             $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
                         } else {
                             $mensagem = "Erro ao fazer o upload da imagem.";
