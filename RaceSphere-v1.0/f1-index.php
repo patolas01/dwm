@@ -2,6 +2,10 @@
 <html lang="pt">
 
 <head>
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
     <?php include('bootstrapInc.php'); ?>
     <title>Página Principal da Formula 1</title>
     <link rel="stylesheet" href="css/alex.css">
@@ -17,53 +21,44 @@
         </div>
     </div>
 
+    <h1 class="news-title">Notícias de F1</h1>
+    <br>
 
+    <?php
+    include('sqli/conn.php');
 
-    <div class="container noticias">
-        <div class="card" style="width: 16rem;">
-            <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Equipas de F1</h5>
-                <p class="card-text">As equipas de F1 aprovaram um novo regulamento que permitirá o uso de motores
-                    movidos a
-                    combustão... </p>
-                <a href="#" class="btn btn-primary">Ver Mais</a>
-            </div>
-        </div>
+    $f1Query = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes,
+DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS
+minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = 'F1' ORDER BY data_noticia DESC LIMIT 10";
+    $f1Result = mysqli_query($conn, $f1Query);
 
-        <div class="card" style="width: 16rem;">
-            <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Equipas de F1</h5>
-                <p class="card-text">As equipas de F1 aprovaram um novo regulamento que permitirá o uso de motores
-                    movidos a
-                    combustão... </p>
-                <a href="#" class="btn btn-primary">Ver Mais</a>
-            </div>
-        </div>
+    $count = 0;//Contador para não ter mais de 4 noticias
+    
+    if (mysqli_num_rows($f1Result) > 0) {
+        echo '<div class="news-container">';
+        while ($row = mysqli_fetch_assoc($f1Result)) {
+            if ($count >= 4) {
+                break;
+            }
 
-        <div class="card" style="width: 16rem;">
-            <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Equipas de F1</h5>
-                <p class="card-text">As equipas de F1 aprovaram um novo regulamento que permitirá o uso de motores
-                    movidos a
-                    combustão... </p>
-                <a href="#" class="btn btn-primary">Ver Mais</a>
-            </div>
-        </div>
+            echo '<div class="news-card catN-' . $row['cat_noticia'] . '" id="' . $row['id_noticia'] . '">';
+            echo '<img src="img/bd-img/news/' . $row['thumb_noticia'] . '" class="news-card-img" alt="imagem da noticia">';
+            echo '<div class="news-card-body">';
+            echo '<p class="news-card-text"><small class="text-muted">' . $row['dia'] . '/' . $row['mes'] . ' - ' . $row['hora'] . ':' . $row['minuto'] . '</small></p>';
+            echo '<h5 class="news-card-title just">' . $row['titulo_noticia'] . '</h5>';
+            //echo '<p class="news-card-text">' . $row['desc_noticia'] . '</p>';
+            echo '</div>';
+            echo '</div>';
 
-        <div class="card" style="width: 16rem;">
-            <img src="img/img_alex/noticias3.jpg" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Equipas de F1</h5>
-                <p class="card-text">As equipas de F1 aprovaram um novo regulamento que permitirá o uso de motores
-                    movidos a
-                    combustão... </p>
-                <a href="#" class="btn btn-primary">Ver Mais</a>
-            </div>
-        </div>
-    </div>
+            $count++; // Increment the counter after displaying a news article
+        }
+        echo '</div>';
+    } else {
+        echo "Nenhuma notícia de F1 encontrada.";
+    }
+
+    mysqli_close($conn);
+    ?>
 
     <div class="leaderboard">
         <div class="leaderboard-header">
@@ -87,7 +82,7 @@
         </div>
 
         <ul>
-            <li class="leaderboard-item">
+            <li class="leaderboard-item" style="color: #F3D87A">
                 <span class="position">1</span>
                 <div>
                     <span class="team">Red Bull Racing - </span>
@@ -95,7 +90,7 @@
                 </div>
                 <span class="points">249 PTS</span>
             </li>
-            <li class="leaderboard-item">
+            <li class="leaderboard-item" style="color: #71706e">
                 <span class="position">2</span>
                 <div>
                     <span class="team">Aston Martin - </span>
@@ -103,7 +98,7 @@
                 </div>
                 <span class="points">120 PTS</span>
             </li>
-            <li class="leaderboard-item">
+            <li class="leaderboard-item" style="color: #CD7F32">
                 <span class="position">3</span>
                 <div>
                     <span class="team">Mercedes - </span>

@@ -15,6 +15,18 @@
 
 <body>
     <?php
+    /*//se nao for admin
+    if($_SESSION["cargo"]!="admin"){
+        ?>
+        <script>
+                window.setTimeout(function () {
+                    location.href = "index.php";
+                }, 0);
+            </script><?php
+    }
+    else{
+        //tudo
+    }*/
     include 'navbar.php';
     include '../sqli/conn.php';
     $editar = $_GET["id"];
@@ -36,21 +48,25 @@
             <div class="form-holder">
                 <div class="form-content">
                     <div class="form-items">
-                        <h3>Nova Etapa</h3>
+                        <h3><?php echo "Editar etapa número ".$numero?></h3>
                         <p>Preencha o formulário</p>
                         <form action="editEtapas.php?id=<?= $editar ?>" action="POST" class="requires-validation" novalidate>
-
+                        <div class="col-md-12">
+                                Ronda etapa:
+                                <input class="form-control" type="text" name="ronda" value=<?php echo "'" . $numero . "'" ?>>
+                            </div>
+                            <h5></h5>
                             <div class="col-md-12">
                                 Dia Etapa:
-                                <input class="form-control" type="date" name="dia" placeholder=<?php echo "'" . $dia . "'" ?>>
+                                <input class="form-control" onfocus="(this.type='date')" type="text" name="dia" value=<?php echo "'" . $dia . "'" ?>>
                             </div>
                             <div class="col-md-12">
                                 Inicio Etapa:
-                                <input class="form-control" type="time" name="inicio" placeholder=<?php echo "'" . $inicio . "'" ?>>
+                                <input class="form-control" onfocus="(this.type='tyme')" type="text" name="inicio" value=<?php echo "'" . $inicio . "'" ?>>
                             </div>
                             <div class="col-md-12">
                                 Fim Etapa:
-                                <input class="form-control" type="time" name="fim" placeholder=<?php echo "'" . $fim . "'" ?>>
+                                <input class="form-control" onfocus="(this.type='tyme')" type="text" name="fim" value=<?php echo "'" . $fim . "'" ?>>
                             </div>
 
         <br>
@@ -70,6 +86,7 @@
         $dianovo = $_POST["dia"];
         $inicionovo = $_POST["inicio"];
         $fimnovo = $_POST["fim"];
+        $rondanovo = $_POST["ronda"];
         if ($dianovo == "") {
             $dianovo = $dia;
         }
@@ -79,6 +96,14 @@
         if ($fimnovo == "") {
             $fimnovo = $fim;
         }
+        if ($rondanovo == "") {
+            $rondanovo = $numero;
+        }else if($rondanovo==$numero){
+            ?><script>$(document).ready(function () {
+                $("#nomeCheck").hide();
+            })</script><?php
+        }
+        
         $edit = "UPDATE etapa SET dia_etapa = '" . $dianovo . "' , inicio_etapa = '" . $inicionovo . "' , fim_etapa = '" . $fimnovo . "' WHERE etapa.id_etapa ='" . $editar . "'";
         $result_set = $conn->query($edit);
         if ($result_set) {

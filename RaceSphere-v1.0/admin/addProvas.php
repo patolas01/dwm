@@ -11,11 +11,23 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/daniel.js"></script>
+    <script src="js/addProvas.js"></script>
 </head>
 
 <body>
     <?php
+    /*//se nao for admin
+    if($_SESSION["cargo"]!="admin"){
+        ?>
+        <script>
+                window.setTimeout(function () {
+                    location.href = "index.php";
+                }, 0);
+            </script><?php
+    }
+    else{
+        //tudo
+    }*/
     include 'navbar.php';
     include '../sqli/conn.php';
     ?>
@@ -33,7 +45,7 @@
 
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" id="nome_prova" name="nome" placeholder="Nome da Prova">
-                                    <h5 id="NomeCheck">
+                                    <h5 id="nomeCheck">
                                         
                                     </h5>
                                 </div>
@@ -53,7 +65,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control" type="text" name="local" id="local_prova" placeholder="Local da prova">
-                                    <h5 id="LocalCheck">
+                                    <h5 id="localCheck">
                                         
                                     </h5>
                                 </div>
