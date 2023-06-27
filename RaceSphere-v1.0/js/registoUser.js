@@ -28,6 +28,7 @@ $(document).ready(function () {
         } else {
             $("#usercheck").hide();
             nomeUser.classList.remove("is-invalid");
+            let usernameError = true;
         }
     }
  

@@ -15,6 +15,18 @@
 
 <body>
     <?php
+    /*//se nao for admin
+    if($_SESSION["cargo"]!="admin"){
+        ?>
+        <script>
+                window.setTimeout(function () {
+                    location.href = "index.php";
+                }, 0);
+            </script><?php
+    }
+    else{
+        //tudo
+    }*/
     include 'navbar.php';
     include '../sqli/conn.php';
     $editar = $_GET["id"]; ?>
@@ -31,7 +43,7 @@
             <table class="table table-success table-striped-columns">
                 <tr>
                     <th>Id</th>
-                    <th>Numero</th>
+                    <th>Ronda</th>
                     <th>Dia</th>
                     <th>Inicio</th>
                     <th>Fim</th>
