@@ -60,25 +60,74 @@ $(document).ready(function () {
         validatePassword();
     });
     function validatePassword() {
+        const pass1 = document.getElementById("password");
         let passwordValue = $("#password").val();
         if (passwordValue.length == "") {
             $("#passcheck").show();
+            $("#passcheck").html(
+                "Por favor insira a palavra passe"
+            );
+            pass1.classList.add("is-invalid");
             passwordError = false;
-            return false;
+            
         }
-        if (passwordValue.length < 3 || passwordValue.length > 10) {
+        if (passwordValue.length < 6 || passwordValue.length > 16) {
             $("#passcheck").show();
             $("#passcheck").html(
-                "Tamanho da password deve estar entre 3 a 10 caractéres"
+                "Tamanho da password deve estar entre 6 a 16 caractéres"
             );
+            pass1.classList.add("is-invalid");
             $("#passcheck").css("color", "red");
             passwordError = false;
-            return false;
+            
         } else {
+            pass1.classList.remove("is-invalid");
             $("#passcheck").hide();
+            passwordError = true;
         }
+         const pass2 = document.getElementById("confirmPassword");
+         let confirmPasswordValue = $("#confirmPassword").val();
+         if (confirmPasswordValue!=passwordValue) {
+             $("#confirmPasscheck").show();
+             $("#confirmPasscheck").html(
+                 "Palavra-passe deve coincidir"
+             );
+             pass2.classList.add("is-invalid");
+             $("#confirmPasscheck").css("color", "red");
+             confirmPasswordError = false;
+             return false;
+         } else {
+             pass2.classList.remove("is-invalid");
+             $("#confirmPasscheck").hide();
+             confirmPasswordError = true;
+         }
     }
- 
+
+     // Validate Confirm Password
+     $("#confirmPasscheck").hide();
+     let confirmPasswordError = true;
+     $("#confirmPassword").keyup(function () {
+         validateConfirmPassword();
+     });
+     function validateConfirmPassword() {
+        let passwordValue = $("#password").val();
+         const pass2 = document.getElementById("confirmPassword");
+         let confirmPasswordValue = $("#confirmPassword").val();
+         if (confirmPasswordValue!=passwordValue) {
+             $("#confirmPasscheck").show();
+             $("#confirmPasscheck").html(
+                 "Palavra-passe deve coincidir"
+             );
+             pass2.classList.add("is-invalid");
+             $("#confirmPasscheck").css("color", "red");
+             confirmPasswordError = false;
+             return false;
+         } else {
+             pass2.classList.remove("is-invalid");
+             $("#confirmPasscheck").hide();
+             confirmPasswordError = true;
+         }
+     }
  
     // Submit button
     $("#submitbtn").click(function () {

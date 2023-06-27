@@ -53,7 +53,7 @@ function validateLocal() {
     } else {
         $("#localCheck").hide();
         localProva.classList.remove("is-invalid");
-        let localError = true;
+        localError = true;
     }
 }
 // Validate Inicio Prova
@@ -85,6 +85,7 @@ function validateInicioProva() {
     }else{
         $("#datainiciocheck").hide();
         inicioProva.classList.remove("is-invalid");
+        inicioError = true;
     }
 }
 
@@ -102,7 +103,6 @@ function validateFimProva() {
     let fimValue = $("#data_fim_AddProvas").val();
     let inicioData = new Date(`${inicioProva.value}T00:00`);
     let fimData = new Date (`${fimProva.value}T00:00`);
-    alert("Inicio->"+inicioData+" Fim->"+fimData);
     if(fimData == "Invalid Date"){
         $("#datafimcheck").show();
         $("#datafimcheck").html("Por favor insira a data de fim do evento");
@@ -118,6 +118,7 @@ function validateFimProva() {
     }else{
         $("#datafimcheck").hide();
         fimProva.classList.remove("is-invalid");
+        fimError = true;
     }
 }
 //submit

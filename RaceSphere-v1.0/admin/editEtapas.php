@@ -11,6 +11,7 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="js/editEtapas.js"></script>
 </head>
 
 <body>
@@ -42,44 +43,51 @@
         }
     }
     ?>
-     <form action="editEtapas.php?id=<?= $editar ?>" method="POST">
-    <div class="form-body1">
-        <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3><?php echo "Editar etapa número ".$numero?></h3>
-                        <p>Preencha o formulário</p>
-                        <form action="editEtapas.php?id=<?= $editar ?>" action="POST" class="requires-validation" novalidate>
-                        <div class="col-md-12">
-                                Ronda etapa:
-                                <input class="form-control" type="text" name="ronda" value=<?php echo "'" . $numero . "'" ?>>
-                            </div>
-                            <h5></h5>
-                            <div class="col-md-12">
-                                Dia Etapa:
-                                <input class="form-control" onfocus="(this.type='date')" type="text" name="dia" value=<?php echo "'" . $dia . "'" ?>>
-                            </div>
-                            <div class="col-md-12">
-                                Inicio Etapa:
-                                <input class="form-control" onfocus="(this.type='tyme')" type="text" name="inicio" value=<?php echo "'" . $inicio . "'" ?>>
-                            </div>
-                            <div class="col-md-12">
-                                Fim Etapa:
-                                <input class="form-control" onfocus="(this.type='tyme')" type="text" name="fim" value=<?php echo "'" . $fim . "'" ?>>
-                            </div>
-
-        <br>
-                            <div class="col-md-12">
-                                <input type="submit" value="Atualizar" name="editar2">
-                            </div>
-                        </form>
+    <form action="editEtapas.php?id=<?= $editar ?>" method="POST">
+        <div class="form-body1">
+            <div class="row">
+                <div class="form-holder">
+                    <div class="form-content">
+                        <div class="form-items">
+                            <h3>
+                                <?php echo "Editar etapa número " . $numero ?>
+                            </h3>
+                            <p>Preencha o formulário</p>
+                            <form action="editEtapas.php?id=<?= $editar ?>" action="POST" class="requires-validation"
+                                novalidate>
+                                <div class="col-md-12">
+                                    Ronda etapa:
+                                    <input class="form-control" type="text" name="ronda" value=<?php echo "'" . $numero . "'" ?>>
+                                </div>
+                                <div class="col-md-12">
+                                    Dia Etapa:
+                                    <input class="form-control" id="diaEtapa" onfocus="(this.type='date')" type="text" name="dia"
+                                        value=<?php echo "'" . $dia . "'" ?>>
+                                </div>
+                                <h5 id="diaEtapaCheck"></h5>
+                                <div class="col-md-12">
+                                    Inicio Etapa:
+                                    <input class="form-control" onfocus="(this.type='time')" type="text" name="inicio" id="horaInicio"
+                                        value=<?php echo "'" . $inicio . "'" ?>>
+                                </div>
+                                <h5 id="horaInicioCheck"></h5>
+                                <div class="col-md-12">
+                                    Fim Etapa:
+                                    <input class="form-control" onfocus="(this.type='time')" type="text" name="fim" id="horaFim"
+                                        value=<?php echo "'" . $fim . "'" ?>>
+                                </div>
+                                <h5 id="horaFimCheck"></h5>
+                                <br>
+                                <div class="col-md-12">
+                                    <input type="submit" value="Atualizar" name="editar2">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-        
+
     </form>
     <?php
     if (isset($_POST["editar2"])) {
@@ -98,26 +106,57 @@
         }
         if ($rondanovo == "") {
             $rondanovo = $numero;
-        }else if($rondanovo==$numero){
-            ?><script>$(document).ready(function () {
-                $("#nomeCheck").hide();
-            })</script><?php
         }
-        
-        $edit = "UPDATE etapa SET dia_etapa = '" . $dianovo . "' , inicio_etapa = '" . $inicionovo . "' , fim_etapa = '" . $fimnovo . "' WHERE etapa.id_etapa ='" . $editar . "'";
-        $result_set = $conn->query($edit);
+        // buscar datas das rondas anterior e seguinte
+        $antes = $rondanovo - 1;
+        $depois = $rondanovo + 1;
+        $query1 = "SELECT * FROM etapa where num_etapa='$antes' and id_prova='$editar'";
+        $result_set1 = $conn->query($query1);
+        if ($result_set1) {
+            while ($row1 = $result_set1->fetch_assoc()) {
+                $dataAnterior = $row1['dia_etapa'];
+                
+            }
+        }
+        $query2 = "SELECT * FROM etapa where num_etapa='$depois' and id_prova='$editar'";
+        $result_set2 = $conn->query($query2);
+        if ($result_set2) {
+            while ($row2 = $result_set2->fetch_assoc()) {
+                $dataSeguinte = $row2['dia_etapa'];
+            }
+        }
+        $query = "SELECT * FROM etapa where num_etapa='$rondanovo' and id_prova='$editar'";
+        $result_set = $conn->query($query);
         if ($result_set) {
-            ?>
-            <script>
-                var id_prova =<?php echo $id_prova; ?>;
-                window.setTimeout(function () {
-                    location.href = "etapasManagement.php?id="+ id_prova;
-                }, 0);
-            </script>
-            <?php
-        } else {
-            echo "Query update mal feita";
+            //$jaexiste = mysqli_num_rows($result_set); tentar isto
+            if ($result_set->num_rows == 1) {
+                ?>
+                <script>alert("Esta ronda já existe");</script>
+                <?php
+            } elseif ($dia < $dataAnterior || $dia > $dataSeguinte) {
+                ?>
+                <script>alert("Data errada <?php echo $dia ?>");</script>
+                <?php
+
+            } else {
+
+                $edit = "UPDATE etapa SET num_etapa='$rondanovo' , dia_etapa = '" . $dianovo . "' , inicio_etapa = '" . $inicionovo . "' , fim_etapa = '" . $fimnovo . "' WHERE etapa.id_etapa ='" . $editar . "'";
+                $result_set = $conn->query($edit);
+                if ($result_set) {
+                    ?>
+                    <script>
+                        var id_prova = <?php echo $id_prova; ?>;
+                        window.setTimeout(function () {
+                            location.href = "etapasManagement.php?id=" + id_prova;
+                        }, 0);
+                    </script>
+                    <?php
+                } else {
+                    echo "Query update mal feita";
+                }
+            }
         }
+
     }
     include '../footer.php';
     ?>

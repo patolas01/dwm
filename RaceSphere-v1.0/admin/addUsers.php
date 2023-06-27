@@ -44,6 +44,7 @@
                                 <input class="form-control" type="text" id="usernames" name="name" placeholder="Nome">
                                 
                             </div>
+                            <br>
 
                             <div class="col-md-12">
                                 <input class="form-control" type="email" name="email" id="email" placeholder="E-mail"
@@ -73,6 +74,13 @@
                                     placeholder="Password">
                                 <h5 id="passcheck" style="color: red;">
                                     Por favor insira password
+                                </h5>
+                            </div>
+                            <div class="col-md-12">
+                                <input class="form-control" type="password" id="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirmar Password">
+                                <h5 id="confirmPasscheck" style="color: red;">
+                                    
                                 </h5>
                             </div>
 
