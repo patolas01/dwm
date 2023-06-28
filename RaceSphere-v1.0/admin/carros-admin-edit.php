@@ -176,18 +176,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cilind_carro = $_POST['cilind_carro'];
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
-
+            
                 if ($_FILES['fotocarro']['name']) {
                     $diretorio = "../img/bd-img/carrosimg/";
-                    $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
-                    $imageFileType = strtolower(pathinfo($diretorio, PATHINFO_EXTENSION));
-
+                    $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
+                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+            
                     // Verificar o tipo de arquivo
                     if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
                         $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
                         $corDeFundo = "red";
                     } else {
-                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $diretorio)) {
+                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
                             $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
                         } else {
                             $mensagem = "Erro ao fazer o upload da imagem.";
@@ -195,10 +195,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                     }
                 }
-
-
+            
                 $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
-
+            
                 if ($conn->query($sql) === TRUE) {
                     $mensagem = "Dados atualizados com sucesso.";
                     $corDeFundo = "green";

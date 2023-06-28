@@ -54,6 +54,7 @@
                     if ($conn->query($sql) === TRUE) {
                         $mensagem = "Dados inseridos com sucesso!";
                         $corDeFundo = "green";
+                        header("Location: carros-admin.php");
                     } else {
                         $mensagem = "Erro ao inserir os dados: " . $conn->error;
                         $corDeFundo = "red";
