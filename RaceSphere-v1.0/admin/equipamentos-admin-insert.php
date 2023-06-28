@@ -83,8 +83,11 @@
                 <input type="text" class="form-control" id="desc_equipamento" name="desc_equipamento" required>
             </div>
             <div class="form-group col-md-10">
-                <label for="img_equipamento">Foto Equipamento:</label>
-                <input type="file" class="form-control" id="img_equipamento" name="img_equipamento" maxlength="255">
+                <label for="img_equipamento">Foto equipamento:</label>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fotocarro" name="img_equipamento" maxlength="255">
+                    <label class="custom-file-label" for="fotocarro">Escolher arquivo</label>
+                </div>
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>
