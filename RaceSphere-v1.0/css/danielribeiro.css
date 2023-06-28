@@ -568,3 +568,52 @@ h2.middleTextTitle{
   text-align: center;
 }
 /*css noticiaWRC.php*/
+/*rally-etapas.php*/
+#resultadoEtapa{
+  text-align: center;
+  min-height: 200px;
+}
+#logoProvaResultados{
+  width: 200px;
+  margin: auto;
+}
+#logoResultados{
+  width: 300px;
+  height: 100px;
+  margin: auto;
+}
+#logoResultados img{
+  width: 100%;
+}
+/*rally-etapas.php*/
+/*buscarResultadoAjax.php*/
+#tabelaResultados{
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;;
+  color: grey;
+}
+#tabelaResultados th{
+  background-color: #F77D24;
+  color: white;
+  border: 1px solid black;
+}
+#tabelaResultados tr:nth-child(2){
+  background-color: red;
+  color: white;
+}
+#tabelaResultados tr:nth-child(3){
+  background-color: orangered;
+  color: white;
+}
+#tabelaResultados tr:nth-child(4){
+  background-color: yellowgreen;
+  color: white;
+}
+#tabelaResultados td{
+  border: 1px solid black;
+}
+/*buscarResultadoAjax.php*/
