@@ -39,7 +39,7 @@
                         <div class="fotoDaProva">
                             <img src=<?php echo "'img/bd-img/logos/" . $row['logo_prova'] . "'"; ?>>
                         </div>
-                        <div class="localDaProva"><a href="rally-etapas.php?id=<?php echo $row['local'] ?>" class="orange-btn">Resultados<i class="fa fa-arrow-right"></i></a>
+                        <div class="localDaProva"><a href="rally-etapas.php?id=<?php echo $row['id_prova'] ?>" class="orange-btn">Resultados<i class="fa fa-arrow-right"></i></a>
                         </div>
                     </div>
                     <?php if ($contador == 3) {
