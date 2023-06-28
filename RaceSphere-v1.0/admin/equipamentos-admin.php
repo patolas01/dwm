@@ -26,7 +26,10 @@
                         <div class="col-md-7">
                                 <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
                         </div>
-                        <a href="equipamentos-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
+                        <a href="equipamentos-admin-insert.php" class="btn btn-primary ml-3">
+                                <span class="glyphicon glyphicon-plus"></span> Inserir
+                        </a>
+
                 </div>
                 <div class="container mt-3">
                         <div class="row">
@@ -39,7 +42,7 @@
                                                                         <th class="col-2">Nome</th>
                                                                         <th class="col-5">Descrição</th>
                                                                         <th class="col-2">foto equipamento</th>
-                                                                        <th >Ações</th>
+                                                                        <th>Ações</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody id="table-body">
@@ -64,9 +67,10 @@
                                                                                 echo "<td>" . $row["desc_equipamento"] . "</td>";
                                                                                 echo "<td>" . $row["img_equipamento"] . "</td>";
                                                                                 echo "<td>";
-                                                                                echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_equipamento"] . "'>Eliminar</button>";
-                                                                                echo " <a href=\"equipamentos-admin-edit.php?id_equipamento=" . $row["id_equipamento"] . "&nome_equipamento=" . $row["nome_equipamento"] .
+                                                                                echo "<a href=\"equipamentos-admin-edit.php?id_equipamento=" . $row["id_equipamento"] . "&nome_equipamento=" . $row["nome_equipamento"] .
                                                                                         "&desc_equipamento=" . $row["desc_equipamento"] . "&img_equipamento=" . $row["img_equipamento"] . "\" class=\"btn btn-primary btn-edit\">Editar</a>";
+                                                                                echo " ";
+                                                                                echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_equipamento"] . "'>Eliminar</button>";
                                                                                 echo "</td>";
                                                                                 echo "</tr>";
                                                                         }

@@ -3,7 +3,7 @@ body {
     width: 100%;
 }
 
-h1.titulo  {
+h1.titulo {
     margin-top: 10px;
     text-align: center;
 }
@@ -61,7 +61,7 @@ h1.titulo  {
     content: "\2796";
 }
 
-main{
+main {
     height: 100vh;
 }
 
@@ -178,11 +178,13 @@ main{
 /*Showrrom carros - Lista*/
 .card-image {
     width: auto;
-    height: 180px; /* Defina a altura desejada para as imagens dos cards */
-    object-fit: cover; /* Para manter a proporção e preencher o espaço */
+    height: 180px;
+    /* Defina a altura desejada para as imagens dos cards */
+    object-fit: cover;
+    /* Para manter a proporção e preencher o espaço */
 }
 
-#pesquisa{
+#pesquisa {
     margin-bottom: 5%;
 }
 
@@ -253,12 +255,12 @@ main{
     .showroom {
         margin-top: 20px;
     }
-    
+
     .car-info {
         width: 95%;
         padding: 10px;
     }
-    
+
     .car-image img {
         max-width: 100%;
     }
@@ -284,4 +286,8 @@ h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+button.btn-delete{
+    
 }

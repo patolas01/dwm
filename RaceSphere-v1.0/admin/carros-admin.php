@@ -78,11 +78,11 @@
                                                                                 echo "<td>" . $row["desc_carro"] . "</td>";
                                                                                 echo "<td>" . $row["fotocarro"] . "</td>";
                                                                                 echo "<td>";
-                                                                                echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button>";
-                                                                                echo " <a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] .
+                                                                                echo "<a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] .
                                                                                         "&trac_carro=" . $row["trac_carro"] . "&caixa_carro=" . $row["caixa_carro"] . "&comb_carro=" . $row["comb_carro"] . "&cilind_carro=" . $row["cilind_carro"] . "&hp_carro=" . $row["hp_carro"] .
                                                                                         "&desc_carro=" . $row["desc_carro"] . "&fotocarro=" . $row["fotocarro"] . "\" class=\"btn btn-primary btn-edit\">Editar</a>";
-                                                                                echo "</td>";
+                                                                                echo " ";
+                                                                                echo "<button class='btn btn-danger btn-delete' data-id='" . $row["id_carro"] . "'>Eliminar</button>";
                                                                                 echo "</tr>";
                                                                         }
                                                                 } else {
