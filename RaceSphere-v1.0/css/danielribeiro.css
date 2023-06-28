@@ -571,11 +571,19 @@ h2.middleTextTitle{
 /*rally-etapas.php*/
 #resultadoEtapa{
   text-align: center;
-  min-height: 600px;
+  min-height: 200px;
 }
 #logoProvaResultados{
   width: 200px;
   margin: auto;
+}
+#logoResultados{
+  width: 300px;
+  height: 100px;
+  margin: auto;
+}
+#logoResultados img{
+  width: 100%;
 }
 /*rally-etapas.php*/
 /*buscarResultadoAjax.php*/
