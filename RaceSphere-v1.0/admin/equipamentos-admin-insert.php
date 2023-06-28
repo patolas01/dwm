@@ -47,6 +47,7 @@
                     if ($conn->query($sql) === TRUE) {
                         $mensagem = "Dados inseridos com sucesso!";
                         $corDeFundo = "green";
+                        header("Location: equipamentos-admin.php");
                     } else {
                         $mensagem = "Erro ao inserir os dados: " . $conn->error;
                         $corDeFundo = "red";
