@@ -54,6 +54,7 @@
                     if ($conn->query($sql) === TRUE) {
                         $mensagem = "Dados inseridos com sucesso!";
                         $corDeFundo = "green";
+                        header("Location: carros-admin.php");
                     } else {
                         $mensagem = "Erro ao inserir os dados: " . $conn->error;
                         $corDeFundo = "red";
@@ -157,7 +158,10 @@
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fotocarro" name="fotocarro" maxlength="255">
+                    <label class="custom-file-label" for="fotocarro">Escolher arquivo</label>
+                </div>
             </div>
             <button type="submit" id="insert-button" class="btn btn-primary">Inserir</button>
         </form>

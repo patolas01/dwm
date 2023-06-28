@@ -159,7 +159,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
             <div class="form-group col-md-10">
                 <label for="fotocarro">Foto carro:</label>
-                <input type="file" class="form-control" id="fotocarro" name="fotocarro" maxlength="255" value="<?php echo $fotocarro; ?>">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="fotocarro" name="fotocarro" maxlength="255">
+                    <label class="custom-file-label" for="fotocarro">Escolher arquivo</label>
+                </div>
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
             <?php
@@ -173,12 +176,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $cilind_carro = $_POST['cilind_carro'];
                 $hp_carro = $_POST['hp_carro'];
                 $desc_carro = $_POST['desc_carro'];
-
+            
                 if ($_FILES['fotocarro']['name']) {
-                    $targetDir = "../img/bd-img/carrosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
-                    $targetFile = $targetDir . basename($_FILES['fotocarro']['name']);
+                    $diretorio = "../img/bd-img/carrosimg/";
+                    $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
                     $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
+            
                     // Verificar o tipo de arquivo
                     if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
                         $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
@@ -192,10 +195,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         }
                     }
                 }
-
-
+            
                 $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
-
+            
                 if ($conn->query($sql) === TRUE) {
                     $mensagem = "Dados atualizados com sucesso.";
                     $corDeFundo = "green";

@@ -35,23 +35,21 @@
 
     <div class="showroom">
         <div class="car-info">
-            <div class="sidebar">
+            <div class="car-image">
+                <?php
+                $img_equipamento = $row["img_equipamento"];
+                ?>
+                <img src="img/bd-img/equipamentosimg/<?php echo $img_equipamento; ?>" alt="<?php echo $nome; ?>">
             </div>
-            <div class="table-container">
-                <div class="car-details">
-                    <h2><?php echo $nome; ?></h2>
-                    <p>Descrição: <?php echo $descricao; ?></p>
+            <div class="car-details">
+                <h2><?php echo $nome ?></h2>
+                <div id="desc">
+                    <h5>Descrição:</h5>
+                    <p class="col-md-5"><?php echo $descricao; ?></p>
                 </div>
-                <div class="car-image">
-                    <?php
-                    $img_equipamento = $row["img_equipamento"];
-                    ?>
-                    <img src="img/bd-img/equipamentosimg/<?php echo $img_equipamento; ?>" alt="<?php echo $nome; ?>">
-                </div>
-            </div>
 
+            </div>
         </div>
-
     </div>
     <?php
     include 'footer.php';
