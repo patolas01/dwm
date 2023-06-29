@@ -121,6 +121,23 @@ function validateFimProva() {
         fimError = true;
     }
 }
+//select categoria
+var opcao2 = $('select#selectCategoria option:selected').val();
+if (opcao2 == "wrc") {
+  $("#id_circuitos").hide();
+}
+else {
+  $("#id_circuitos").show();
+}
+$('#selectCategoria').change(function () {
+  var opcao = $('select#selectCategoria option:selected').val();
+  if (opcao == "wrc") {
+    $("#id_circuitos").hide();
+  }
+  else {
+    $("#id_circuitos").show();
+  }
+});
 //submit
 $("#botaoeditar2").click(function () {
     validateNome();

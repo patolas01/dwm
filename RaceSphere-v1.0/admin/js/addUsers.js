@@ -138,7 +138,8 @@ $(document).ready(function () {
             usernameError == true &&
             passwordError == true &&
             telError == true &&
-            emailError == true
+            emailError == true &&
+            confirmPasswordError == true
         ) {
             return true;
         } else {
