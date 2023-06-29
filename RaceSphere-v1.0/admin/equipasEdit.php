@@ -208,7 +208,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
             ?>
 
-            <div class="row mb-3">
+            <div class="row mb-4">
                 <div class="offset-sm-3 col-sm-3 d-grid">
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </div>
