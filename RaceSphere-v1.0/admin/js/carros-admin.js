@@ -47,4 +47,3 @@ $("#search").keyup(function() {
             $(this).toggle($(this).text().toLowerCase().indexOf(searchText) > -1)
     });
 });
-

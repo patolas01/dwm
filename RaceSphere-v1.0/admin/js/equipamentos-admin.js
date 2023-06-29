@@ -1,4 +1,3 @@
-
 function eleminarEquipamento(idEquipamento) {
     var confirmarEleminar = confirm("Tem certeza que deseja eleminar estes dados?");
     if (confirmarEleminar) {
