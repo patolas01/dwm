@@ -213,7 +213,7 @@ main {
     background-color: #424242da;
     width: 90%;
     max-width: 800px;
-    height: 80vh;
+    height: auto;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -257,6 +257,10 @@ main {
 
     .car-image img {
         max-width: 100%;
+    }
+
+    p, h2, h5{
+        font-size: 80%;
     }
 }
 
