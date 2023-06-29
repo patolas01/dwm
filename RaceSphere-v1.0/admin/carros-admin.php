@@ -30,7 +30,7 @@
                 </div>
                 <div class="container mt-3">
                         <div class="row">
-                                <div class="col-12 co-md-8">
+                                <div class="col-12">
                                         <div class="table-responsive">
                                                 <table class="table table-striped mt-3">
                                                         <thead>
@@ -38,15 +38,15 @@
                                                                         <th>ID</th>
                                                                         <th>Marca</th>
                                                                         <th>Modelo</th>
-                                                                        <th>Ano</th>
-                                                                        <th>Tração</th>
-                                                                        <th>Caixa</th>
-                                                                        <th class="col-1">Combustivel</th>
-                                                                        <th>Cilindros</th>
-                                                                        <th class="col-1">Potência</th>
-                                                                        <th class="col-1">Descrição</th>
-                                                                        <th>fotocarro</th>
-                                                                        <th class="col-2">Ações</th>
+                                                                        <th class="d-none d-md-table-cell">Ano</th>
+                                                                        <th class="d-none d-md-table-cell">Tração</th>
+                                                                        <th class="d-none d-md-table-cell">Caixa</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Combustível</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell">Cilindros</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Potência</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Descrição</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">fotocarro</th>
+                                                                        <th class="col-6 col-md-2">Ações</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody id="table-body">
@@ -69,14 +69,14 @@
                                                                                 echo "<td>" . $row["id_carro"] . "</td>";
                                                                                 echo "<td>" . $row["marca_carro"] . "</td>";
                                                                                 echo "<td>" . $row["modelo_carro"] . "</td>";
-                                                                                echo "<td>" . $row["ano_carro"] . "</td>";
-                                                                                echo "<td>" . $row["trac_carro"] . "</td>";
-                                                                                echo "<td>" . $row["caixa_carro"] . "</td>";
-                                                                                echo "<td>" . $row["comb_carro"] . "</td>";
-                                                                                echo "<td>" . $row["cilind_carro"] . "</td>";
-                                                                                echo "<td>" . $row["hp_carro"] . "</td>";
-                                                                                echo "<td>" . $row["desc_carro"] . "</td>";
-                                                                                echo "<td>" . $row["fotocarro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell\">" . $row["ano_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell\">" . $row["trac_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell\">" . $row["caixa_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["comb_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell\">" . $row["cilind_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["hp_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["desc_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["fotocarro"] . "</td>";
                                                                                 echo "<td>";
                                                                                 echo "<a href=\"carros-admin-edit.php?id_carro=" . $row["id_carro"] . "&marca_carro=" . $row["marca_carro"] . "&modelo_carro=" . $row["modelo_carro"] . "&ano_carro=" . $row["ano_carro"] .
                                                                                         "&trac_carro=" . $row["trac_carro"] . "&caixa_carro=" . $row["caixa_carro"] . "&comb_carro=" . $row["comb_carro"] . "&cilind_carro=" . $row["cilind_carro"] . "&hp_carro=" . $row["hp_carro"] .

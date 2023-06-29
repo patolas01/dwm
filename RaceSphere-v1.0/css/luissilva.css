@@ -282,3 +282,10 @@ h2 {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+@media (max-width: 576px) {
+    /* Regras CSS específicas para telas móveis */
+    div.container {
+        padding: 10px;
+    }
+}
