@@ -143,16 +143,12 @@
                 ?>
                 <script>alert("Esta ronda já existe");</script>
                 <?php
-            } elseif ($dianovo < $dataAnterior || $dianovo > $dataSeguinte) {
+            } elseif ($dianovo <= $dataAnterior || $dianovo >= $dataSeguinte) {
                 ?>
                 <script>alert("Data deve estar entre <?php echo $dataAnterior ?> e <?php echo $dataSeguinte ?>");</script>
                 <?php
-
             } else {
-                ?>
-                <script>alert("Data minima-><?php echo $dataAnterior ?> Data manima-> <?php echo $dataSeguinte ?>Data inserida-> <?php echo $dataSeguinte ?>");</script>
-                <?php
-                $edit = "UPDATE etapa SET num_etapa='$rondanovo' , dia_etapa = '" . $dianovo . "' , inicio_etapa = '" . $inicionovo . "' , fim_etapa = '" . $fimnovo . "' WHERE etapa.id_etapa ='" . $editar . "'";
+                $edit = "UPDATE etapa SET num_etapa='$rondanovo' , dia_etapa = '$dianovo' , inicio_etapa = '$inicionovo' , fim_etapa = '$fimnovo' WHERE etapa.id_etapa =' $editar '";
                 $result_set = $conn->query($edit);
                 if ($result_set) {
                     ?>
