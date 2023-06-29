@@ -173,12 +173,12 @@
                         <?php
                         $diaFormatoTroll= strtotime($row['dia_etapa']);
                         $diaFormatoPortugal = date("d-m-Y", $diaFormatoTroll);
-                        echo "Etapa ".$row['num_etapa']." dia ". $diaFormatoPortugal." das ".$row['inicio_etapa']." até às".$row['fim_etapa']; ?> 
+                        echo "Etapa ".$row['num_etapa']." dia ". $diaFormatoPortugal." das ".$row['inicio_etapa']." até às ".$row['fim_etapa']; ?> 
                     </div></a><br>
                     <?php
                 }
                 ?><div class="schedule" id="maisEtapas">
-                    Mais etapas
+                    Mais etapas <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </div>
                     <?php
             }
