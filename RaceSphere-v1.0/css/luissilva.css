@@ -283,6 +283,29 @@ h2 {
     white-space: nowrap;
 }
 
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;;
+  }
+
+div.table-container {
+    max-height: 60vh; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo excede a altura máxima */
+
+}
+
+/* Ocultar skroll*/
+div.table-container::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: transparent;
+}
+
+div.table-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+
 @media (max-width: 576px) {
 
     /* Regras CSS específicas para telas móveis */
