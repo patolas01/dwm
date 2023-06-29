@@ -264,12 +264,12 @@ main {
 /*Carros-Admin, Carros-Admin-Insert, Carros-Admin-Edit*/
 /*Equipamentos-Admin, Equipamentos-Admin-Insert, Equipamentos-Admin-Edit*/
 h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .form-control {
-    font-size: 0.9rem;
+    font-size: 14.4px;
 }
 
 .table {
