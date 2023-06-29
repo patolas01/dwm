@@ -18,13 +18,13 @@
         include 'navbar.php';
         include '../sqli/conn.php';
         ?>
-        <div class="container mt-3">
-                <div class="container mt-3">
+        <div class="container">
+                <div class="container">
                         <h2 class="mt-5">Lista de carros:</h2>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                         <div class="col-md-7">
-                                <input type="text" class="form-control mt-3" id="search" placeholder="Pesquisar por ...">
+                                <input type="text" class="form-control" id="search" placeholder="Pesquisar por ...">
                         </div>
                         <a href="carros-admin-insert.php" class="btn btn-primary ml-3">Inserir</a>
                 </div>
