@@ -41,12 +41,12 @@
                                                                         <th class="d-none d-md-table-cell">Ano</th>
                                                                         <th class="d-none d-md-table-cell">Tração</th>
                                                                         <th class="d-none d-md-table-cell">Caixa</th>
-                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Combustível</th>
-                                                                        <th class="d-none d-md-table-cell d-lg-table-cell">Cilindros</th>
-                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Potência</th>
-                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Descrição</th>
-                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">fotocarro</th>
-                                                                        <th class="col-6 col-md-2">Ações</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Combust</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell">Cilin</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Potên</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell col-1">Descr</th>
+                                                                        <th class="d-none d-md-table-cell d-lg-table-cell">foto</th>
+                                                                        <th class="col-6 col-md-3">Ações</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody id="table-body">
@@ -73,7 +73,7 @@
                                                                                 echo "<td class=\"d-none d-md-table-cell\">" . $row["trac_carro"] . "</td>";
                                                                                 echo "<td class=\"d-none d-md-table-cell\">" . $row["caixa_carro"] . "</td>";
                                                                                 echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["comb_carro"] . "</td>";
-                                                                                echo "<td class=\"d-none d-md-table-cell\">" . $row["cilind_carro"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell\">" . $row["cilind_carro"] . "</td>";
                                                                                 echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["hp_carro"] . "</td>";
                                                                                 echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["desc_carro"] . "</td>";
                                                                                 echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-1\">" . $row["fotocarro"] . "</td>";

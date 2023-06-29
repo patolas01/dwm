@@ -40,9 +40,9 @@
                                                                 <tr>
                                                                         <th class="col-1">ID</th>
                                                                         <th class="col-2">Nome</th>
-                                                                        <th class="col-5">Descrição</th>
-                                                                        <th class="col-2">foto equipamento</th>
-                                                                        <th>Ações</th>
+                                                                        <th class="d-none d-md-table-cell col-3">Descrição</th>
+                                                                        <th class="col-2">foto</th>
+                                                                        <th class="col-6 col-md-2">Ações</th>
                                                                 </tr>
                                                         </thead>
                                                         <tbody id="table-body">
@@ -64,7 +64,7 @@
                                                                                 echo "<tr>";
                                                                                 echo "<td>" . $row["id_equipamento"] . "</td>";
                                                                                 echo "<td>" . $row["nome_equipamento"] . "</td>";
-                                                                                echo "<td>" . $row["desc_equipamento"] . "</td>";
+                                                                                echo "<td class=\"d-none d-md-table-cell d-lg-table-cell col-3\">" . $row["desc_equipamento"] . "</td>";
                                                                                 echo "<td>" . $row["img_equipamento"] . "</td>";
                                                                                 echo "<td>";
                                                                                 echo "<a href=\"equipamentos-admin-edit.php?id_equipamento=" . $row["id_equipamento"] . "&nome_equipamento=" . $row["nome_equipamento"] .
