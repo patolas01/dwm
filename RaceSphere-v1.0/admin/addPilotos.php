@@ -5,6 +5,7 @@
     <?php include('bootstrapInc.php'); ?>
     <title>Adicionar Pilotos</title>
     <link rel="stylesheet" href="../css/paulograca.css">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 
 <body>
@@ -83,7 +84,7 @@
             }
         }
     } else
-        echo "Não tem cargo para adicionar pilotos!";
+        echo "<div class='erro'>Não tem cargo para adicionar sessões!</div>";
     ?>
 </body>
 

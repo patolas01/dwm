@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-md-8">
                 <div class="card-container">
-                    <div class="row">
+                    <div>
                         <?php
                         // Construir a consulta SQL com base na marca selecionada (se houver)
                         $sql = "SELECT * FROM carro";
