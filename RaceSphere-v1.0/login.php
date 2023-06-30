@@ -96,13 +96,31 @@ session_start();
                     $_SESSION["nome"] = $nome;
                     $_SESSION["cargo_user"] = $cargo_user;
                 }
+                if($cargo_user=="admin"){
                 ?>
                 <script>
                     window.setTimeout(function () {
-                        location.href = "index.php";
+                        location.href = "userManagement.php";
                     }, 0);
                 </script>
                 <?php
+                }else if($cargo_user=="press"){
+                    ?>
+                    <script>
+                        window.setTimeout(function () {
+                            location.href = "news.php";
+                        }, 0);
+                    </script>
+                    <?php
+                }else{
+                    ?>
+                    <script>
+                        window.setTimeout(function () {
+                            location.href = "index.php";
+                        }, 0);
+                    </script>
+                    <?php
+                }
 
 
             }
