@@ -16,19 +16,19 @@
 
 <body>
     <?php
-
-    if ($_SESSION["cargo"] != "admin") {
+    include 'navbar.php';
+    if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
         ?>
         <script>
             window.setTimeout(function () {
-                location.href = "index.php";
+                location.href = "../index.php";
             }, 0);
         </script>
         <?php
     } else {
         //tudo
     
-        include 'navbar.php';
+
         include '../sqli/conn.php';
         $editar = $_GET["id"];
         $query = "SELECT etapa.*,inicio_prova, fim_prova from etapa left join prova on etapa.id_prova=prova.id_prova where etapa.id_etapa='" . $editar . "'";
