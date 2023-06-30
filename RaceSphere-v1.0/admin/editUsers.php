@@ -15,85 +15,88 @@
 
 <body>
     <?php
-    /*//se nao for admin
-    if($_SESSION["cargo"]!="admin"){
+
+    if ($_SESSION["cargo"] != "admin") {
         ?>
         <script>
-                window.setTimeout(function () {
-                    location.href = "index.php";
-                }, 0);
-            </script><?php
-    }
-    else{
+            window.setTimeout(function () {
+                location.href = "index.php";
+            }, 0);
+        </script>
+        <?php
+    } else {
         //tudo
-    }*/
-    include 'navbar.php';
-    include '../sqli/conn.php';
-    $editar = $_GET["id"];
-    $query = "select nome_user, email_user, telefone_user from utilizador where id_user='" . $editar . "'";
-    $result_set = $conn->query($query);
-    if ($result_set) {
-        while ($row = $result_set->fetch_assoc()) {
-            $telefone = $row['telefone_user'];
-            $nome = $row['nome_user'];
-            $email = $row['email_user'];
+    
+        include 'navbar.php';
+        include '../sqli/conn.php';
+        $editar = $_GET["id"];
+        $query = "select nome_user, email_user, telefone_user from utilizador where id_user='" . $editar . "'";
+        $result_set = $conn->query($query);
+        if ($result_set) {
+            while ($row = $result_set->fetch_assoc()) {
+                $telefone = $row['telefone_user'];
+                $nome = $row['nome_user'];
+                $email = $row['email_user'];
+            }
         }
-    }
-    ?>
-    <form action="editUsers.php?id=<?= $editar ?>" method="POST">
-    <div class="form-body1">
-        <div class="row">
-            <div class="form-holder">
-                <div class="form-content">
-                    <div class="form-items">
-                        <h3>Editar User <?php echo " ".$nome ?></h3>
-                        <p>Preencha o formulário</p>
-                        <form action="editUsers.php?id=<?= $editar ?>" action="POST" class="requires-validation" novalidate>
+        ?>
+        <form action="editUsers.php?id=<?= $editar ?>" method="POST">
+            <div class="form-body1">
+                <div class="row">
+                    <div class="form-holder">
+                        <div class="form-content">
+                            <div class="form-items">
+                                <h3>Editar User
+                                    <?php echo " " . $nome ?>
+                                </h3>
+                                <p>Preencha o formulário</p>
+                                <form action="editUsers.php?id=<?= $editar ?>" action="POST" class="requires-validation"
+                                    novalidate>
 
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" name="nome" placeholder=<?php echo "'".$nome."'"?>>
-                            </div>
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" name="nome" placeholder=<?php echo "'" . $nome . "'" ?>>
+                                    </div>
 
-                            <div class="col-md-12">
-                                <input class="form-control" type="text" name="telefone" placeholder=<?php echo "'".$telefone."'"?>>
-                            </div><br>
-                            <div class="col-md-12">
-                                <input type="submit" value="Atualizar" name="editar2">
+                                    <div class="col-md-12">
+                                        <input class="form-control" type="text" name="telefone" placeholder=<?php echo "'" . $telefone . "'" ?>>
+                                    </div><br>
+                                    <div class="col-md-12">
+                                        <input type="submit" value="Atualizar" name="editar2">
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-        
-    </form>
-    <?php
-    if (isset($_POST["editar2"])) {
-        $nomenovo = $_POST["nome"];
-        $telefonenovo = $_POST["telefone"];
-        if ($telefonenovo == "") {
-            $telefonenovo = $telefone;
+
+        </form>
+        <?php
+        if (isset($_POST["editar2"])) {
+            $nomenovo = $_POST["nome"];
+            $telefonenovo = $_POST["telefone"];
+            if ($telefonenovo == "") {
+                $telefonenovo = $telefone;
+            }
+            if ($nomenovo == "") {
+                $nomenovo = $nome;
+            }
+            $edit = "UPDATE utilizador SET nome_user = '" . $nomenovo . "' , telefone_user = '" . $telefonenovo . "' WHERE utilizador.id_user ='" . $editar . "'";
+            $result_set = $conn->query($edit);
+            if ($result_set) {
+                ?>
+                <script>
+                    window.setTimeout(function () {
+                        location.href = "userManagement.php";
+                    }, 0);
+                </script>
+                <?php
+            } else {
+                echo "Query update mal feita";
+            }
         }
-        if ($nomenovo == "") {
-            $nomenovo = $nome;
-        }
-        $edit = "UPDATE utilizador SET nome_user = '" . $nomenovo . "' , telefone_user = '" . $telefonenovo . "' WHERE utilizador.id_user ='" . $editar . "'";
-        $result_set = $conn->query($edit);
-        if ($result_set) {
-            ?>
-            <script>
-                window.setTimeout(function () {
-                    location.href = "userManagement.php";
-                }, 0);
-            </script>
-            <?php
-        } else {
-            echo "Query update mal feita";
-        }
-    }
-    include '../footer.php';
-    ?>
+        include '../footer.php';
+    } ?>
 </body>
 
 </html>
