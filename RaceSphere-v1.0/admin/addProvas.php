@@ -16,7 +16,7 @@
 
 <body>
     <?php
-    /*//se nao for admin
+    
     if($_SESSION["cargo"]!="admin"){
         ?>
         <script>
@@ -27,7 +27,7 @@
     }
     else{
         //tudo
-    }*/
+    
     include 'navbar.php';
     include '../sqli/conn.php';
     ?>
@@ -169,7 +169,7 @@
         }
     }
     include '../footer.php';
-    ?>
+    }?>
 </body>
 
 </html>
