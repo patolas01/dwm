@@ -3,7 +3,7 @@ body {
     width: 100%;
 }
 
-h1.titulo  {
+h1.titulo {
     margin-top: 10px;
     text-align: center;
 }
@@ -61,8 +61,8 @@ h1.titulo  {
     content: "\2796";
 }
 
-main{
-    height: 100vh;
+main {
+    height: auto;
 }
 
 
@@ -134,11 +134,9 @@ main{
     text-decoration: none;
 }
 
-/* Responsive styles */
+
 
 @media (max-width: 768px) {
-    /* Adjust the styles for screens up to 768px wide */
-
     .bar-wrapper {
         width: 90%;
         left: 5%;
@@ -158,8 +156,6 @@ main{
 }
 
 @media (max-width: 576px) {
-    /* Adjust the styles for screens up to 576px wide */
-
     .bar-wrapper {
         width: 95%;
         left: 2.5%;
@@ -175,14 +171,14 @@ main{
     }
 }
 
-/*Showrrom carros - Lista*/
+/*Showrrom carros e equipamentos - Lista*/
 .card-image {
     width: auto;
-    height: 180px; /* Defina a altura desejada para as imagens dos cards */
-    object-fit: cover; /* Para manter a proporção e preencher o espaço */
+    height: 180px;
+    object-fit: cover;
 }
 
-#pesquisa{
+#pesquisa {
     margin-bottom: 5%;
 }
 
@@ -192,7 +188,7 @@ main{
     overflow-x: hidden;
 }
 
-/* Ocultar a barra de rolagem */
+/* Ocultar skroll*/
 .card-container::-webkit-scrollbar {
     width: 0.5em;
     background-color: transparent;
@@ -202,7 +198,7 @@ main{
     background-color: transparent;
 }
 
-/*Showrrom carro*/
+/*Showrrom carro e equipamentos info*/
 .showroom {
     display: flex;
     align-items: center;
@@ -217,7 +213,7 @@ main{
     background-color: #424242da;
     width: 90%;
     max-width: 800px;
-    height: 80vh;
+    height: auto;
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -253,26 +249,31 @@ main{
     .showroom {
         margin-top: 20px;
     }
-    
+
     .car-info {
         width: 95%;
         padding: 10px;
     }
-    
+
     .car-image img {
         max-width: 100%;
+    }
+
+    p, h2, h5{
+        font-size: 80%;
     }
 }
 
 
 /*Carros-Admin, Carros-Admin-Insert, Carros-Admin-Edit*/
+/*Equipamentos-Admin, Equipamentos-Admin-Insert, Equipamentos-Admin-Edit*/
 h2 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+    font-size: 24px;
+    margin-bottom: 8px;
 }
 
 .form-control {
-    font-size: 0.9rem;
+    font-size: 14.4px;
 }
 
 .table {
@@ -284,4 +285,35 @@ h2 {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #f2f2f2;;
+  }
+
+div.table-container {
+    max-height: 60vh; /* Defina a altura máxima desejada */
+    overflow-y: auto; /* Adiciona uma barra de rolagem vertical quando o conteúdo excede a altura máxima */
+
+}
+
+/* Ocultar skroll*/
+div.table-container::-webkit-scrollbar {
+    width: 0.5em;
+    background-color: transparent;
+}
+
+div.table-container::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+
+@media (max-width: 576px) {
+
+    /* Regras CSS específicas para telas móveis */
+    div.container {
+        padding: 10px;
+    }
 }

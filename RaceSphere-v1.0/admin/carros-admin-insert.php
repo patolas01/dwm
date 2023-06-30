@@ -92,7 +92,7 @@
             </div>
             <div class="form-group col-md-10">
                 <label for="ano_carro">Ano:</label>
-                <input type="number" class="form-control" id="ano_carro" name="ano_carro" required>
+                <input type="number" class="form-control" id="ano_carro" name="ano_carro" min="1900" max="2030" required>
             </div>
             <?php
             $sql_enum_values = "SELECT COLUMN_TYPE FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'carro' AND COLUMN_NAME IN ('trac_carro', 'caixa_carro', 'comb_carro')";

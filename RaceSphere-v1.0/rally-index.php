@@ -17,36 +17,144 @@
     <?php
     include 'navbar.php';
     include 'sqli/conn.php';
+
     //buscar tempo neste momento
     $query = "SELECT CURRENT_TIMESTAMP";
     $result_set = $conn->query($query);
-    if($result_set){
+    if ($result_set) {
         while ($row = $result_set->fetch_assoc()) {
-            $tempo=$row['CURRENT_TIMESTAMP'];
+            $tempo = $row['CURRENT_TIMESTAMP'];
             //tirar horas minutos e segundos
-            $data = substr($tempo, 0,10);
+            $data = substr($tempo, 0, 10);
         }
     }
     //buscar o ultimo evento
-    $query = "SELECT DATE_FORMAT(inicio_prova, '%y') AS ano, DATE_FORMAT(inicio_prova, '%d') AS dia1, DATE_FORMAT(inicio_prova, '%m') AS mes1, id_prova,nome_prova,DATE_FORMAT(fim_prova, '%d') AS dia2, logo_prova, DATE_FORMAT(fim_prova, '%m') AS mes2 FROM `prova` WHERE `inicio_prova` <= '$data' AND `categoria` = 'wrc' ORDER BY prova.inicio_prova DESC LIMIT 1";
+    $query = "SELECT id_prova, nome_prova, DATE_FORMAT(inicio_prova, '%y') AS ano, DATE_FORMAT(inicio_prova, '%d') AS dia1, DATE_FORMAT(inicio_prova, '%m') AS mes1, id_prova,nome_prova,DATE_FORMAT(fim_prova, '%d') AS dia2, logo_prova, DATE_FORMAT(fim_prova, '%m') AS mes2 FROM `prova` WHERE `inicio_prova` >= '$data' AND `categoria` = 'wrc' ORDER BY prova.inicio_prova DESC LIMIT 1";
     $result_set = $conn->query($query);
-    if($result_set){
+    if ($result_set) {
         while ($row = $result_set->fetch_assoc()) {
-            $inicioProvaDia=$row['dia1'];
-            $fimProva=$row['fim_prova'];
-            $logoProva=$row['logo_prova'];
+            $inicioProvaDia = $row['dia1'];
+            $fimProvaDia = $row['dia2'];
+            $logoProva = $row['logo_prova'];
+            $nomeProva = $row['nome_prova'];
+            $fimProvaMes = $row['mes2'];
+            $inicioProvaMes = $row['mes1'];
+            $anoProva = $row['ano'];
+            $idProva = $row['id_prova'];
+        }
+    }
+
+    switch ($inicioProvaMes) {
+        case "1":
+            $mesExtenso = "Janeiro";
+            $mesExtensoInglês = "January";
+            break;
+        case "2":
+            $mesExtenso = "Fevereiro";
+            $mesExtensoInglês = "February";
+            break;
+        case "3":
+            $mesExtenso = "Março";
+            $mesExtensoInglês = "March";
+            break;
+        case "4":
+            $mesExtenso = "Abril";
+            $mesExtensoInglês = "April";
+            break;
+        case "5":
+            $mesExtenso = "Maio";
+            $mesExtensoInglês = "May";
+            break;
+        case "6":
+            $mesExtenso = "Junho";
+            $mesExtensoInglês = "June";
+            break;
+        case "7":
+            $mesExtenso = "Julho";
+            $mesExtensoInglês = "July";
+            break;
+        case "8":
+            $mesExtenso = "Agosto";
+            $mesExtensoInglês = "August";
+            break;
+        case "9":
+            $mesExtenso = "Setembro";
+            $mesExtensoInglês = "September";
+            break;
+        case "10":
+            $mesExtenso = "Outubro";
+            $mesExtensoInglês = "October";
+            break;
+        case "11":
+            $mesExtenso = "Novembro";
+            $mesExtensoInglês = "November";
+            break;
+        case "12":
+            $mesExtenso = "Dezembro";
+            $mesExtensoInglês = "December";
+            break;
+    }
+    $tempo = $inicioProvaDia . " " . $mesExtensoInglês . " 20" . $anoProva . " 00:00:00 GMT+01:00";
+
+    if ($inicioProvaMes != $fimProvaMes) {
+        switch ($fimProvaMes) {
+            case "1":
+                $mesExtenso2 = "Janeiro";
+                break;
+            case "2":
+                $mesExtenso2 = "Fevereiro";
+                break;
+            case "3":
+                $mesExtenso2 = "Março";
+                break;
+            case "4":
+                $mesExtenso2 = "Abril";
+                break;
+            case "5":
+                $mesExtenso2 = "Maio";
+                break;
+            case "6":
+                $mesExtenso2 = "Junho";
+                break;
+            case "7":
+                $mesExtenso2 = "Julho";
+                break;
+            case "8":
+                $mesExtenso2 = "Agosto";
+                break;
+            case "9":
+                $mesExtenso2 = "Setembro";
+                break;
+            case "10":
+                $mesExtenso2 = "Outubro";
+                break;
+            case "11":
+                $mesExtenso2 = "Novembro";
+                break;
+            case "12":
+                $mesExtenso2 = "Dezembro";
+                break;
         }
     }
     ?>
     <div class="sticky-top" id="rightinfo">
         <div id="rightTitles">
-            <h3 id="titulolateral">Vodafone Rally de Portugal 2023</h3>
-            <h3 id="titulolateral">11-15 Abril</h3>
+            <h3 id="titulolateral">
+                <?php echo $nomeProva ?>
+            </h3>
+            <h3 id="titulolateral">
+                <?php
+                if (!isset($mesExtenso2)) {
+                    echo $inicioProvaDia . "-" . $fimProvaDia . " " . $mesExtenso;
+                } else {
+                    echo $inicioProvaDia . " " . $mesExtenso . "-" . $fimProvaDia . " " . $mesExtenso2;
+                } ?>
+            </h3>
         </div>
 
         <div class="timer" id="timer">
             <div id="logoEvento">
-                <img src="img/img_daniel/logo-vodafone-rally-de-portugal-2023.png">
+                <img src="img/bd-img/logos/<?php echo $logoProva ?>">
             </div>
             <div class="timer" id="days"></div>
             <div class="timer" id="hours"></div>
@@ -55,100 +163,30 @@
         </div>
         <div id="rightSchedule">
             <h3 id="titulolateral">Calendario do Evento</h3>
-            <div class="schedule">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
-                            11 <span>Maio</span>
-                        </div>
-                        <div class="col-6">
-                            Race <span>15:00</span>
-                        </div>
-                        <div class="col">
-                            <div class="scheduleArrow">
-                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
-                            </div>
-                        </div>
+            <?php $query = "SELECT * FROM etapa where id_prova = '$idProva' LIMIT 3";
+            $result_set = $conn->query($query);
+            if ($result_set) {
+                while ($row=$result_set->fetch_assoc()) { ?>
+                <a href="rally-etapas.php?id=<?php echo $idProva ?>">
+                    <div class="schedule">
+                        
+                        <?php
+                        $diaFormatoTroll= strtotime($row['dia_etapa']);
+                        $diaFormatoPortugal = date("d-m-Y", $diaFormatoTroll);
+                        echo "Etapa ".$row['num_etapa']." dia ". $diaFormatoPortugal." das ".$row['inicio_etapa']." até às ".$row['fim_etapa']; ?> 
+                    </div></a><br>
+                    <?php
+                }
+                ?><div class="schedule" id="maisEtapas">
+                    Mais etapas <i class="fa fa-arrow-right" aria-hidden="true"></i>
                     </div>
-                </div>
-            </div>
-            <div class="schedule">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
-                            12 <span>Maio</span>
-                        </div>
-                        <div class="col-6">
-                            Sprint <span>15:00</span>
-                        </div>
-                        <div class="col">
-                            <div class="scheduleArrow">
-                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col">
-                            13 <span>Maio</span>
-                        </div>
-                        <div class="col-6">
-                            Race <span>17:00</span>
-                        </div>
-                        <div class="col">
-                            <div class="scheduleArrow">
-                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="schedule">
-                <div class="container text-center">
-                    <div class="row">
-                        <div class="col-9">
-                            <div class="scheduleArrow">
-                                Mais horários
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="scheduleArrow">
-                                <i id="seta" class="fa fa-arrow-right" aria-hidden="true"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                    <?php
+            }
+            ?>
         </div>
     </div>
     <div id="principal">
         <h1>WRC</h1>
-        <div id="winners">
-            <div class="vencedor">
-                <div class="vencedorDentro">
-                    <div id="firstplace">
-                        <h4>2º Lugar</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="vencedor">
-                <div class="vencedorDentro">
-                    <div id="firstplace">
-                        <h4>1º Lugar</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="vencedor">
-                <div class="vencedorDentro">
-                    <div id="firstplace">
-                        <h4>3º Lugar</h4>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="bd-example">
             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -188,7 +226,7 @@
                                 <?php
                             } else { ?>
                                 <a href="noticiaWRC.php?id=<?php echo $row['id_noticia'] ?>">
-                                    <div class="carousel-item">
+                                    <div class="carousel-item ">
                                         <img src="img/bd-img/news/<?php echo $row['thumb_noticia'] ?>" class="d-block w-100"
                                             alt="Thumbnail noticia">
                                         <div class="carousel-caption d-none d-md-block">
@@ -197,7 +235,7 @@
                                             </h5>
                                             <div class="descSlideshow">
                                                 <p class="desc-slideshow">
-                                                    <?php echo $row['desc_noticia'] ?>
+                                                    <?php echo $row['desc_noticia'] ?>.
                                                 </p>
                                             </div>
                                         </div>
@@ -208,8 +246,8 @@
                         }
                     } else {
                         ?>
-                        <script>alert("Query mal feita")</script>
-                        <?php
+                    <script>alert("Query mal feita")</script>
+                    <?php
                     }
                     ?>
                 </div>
@@ -227,38 +265,39 @@
             Mais noticias
         </h2>
         <div class="container">
-        <div class="row">
-            <?php
-            $query3 = "SELECT * FROM noticias where cat_noticia = 'wrc' ORDER BY id_noticia DESC limit 4";
-            $result_set3 = $conn->query($query3);
-            if ($result_set3) {
-                while ($row = $result_set3->fetch_assoc()) {
-                    $imagemcarta = $row['thumb_noticia']
-                        ?>
-                    <div class="col-sm-3">
-                        <div class="card" style="width: 18rem;">
-                            <img src=<?php echo "'img/bd-img/news/$imagemcarta'"; ?> class="card-img-top" alt="fotoNoticia">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <?php echo $row["titulo_noticia"]; ?>
-                                </h5>
-                                <p class="card-text ">
-                                    <?php echo $row["desc_noticia"]; ?>
-                                </p>
-                            </div>
-                            <div class="card-body">
-                                <a href="noticiaWRC.php?id=<?php echo $row["id_noticia"]; ?>" class="btn btn-primary">Ver
-                                    Noticia</a>
+            <div class="row">
+                <?php
+                $query3 = "SELECT * FROM noticias where cat_noticia = 'wrc' ORDER BY id_noticia DESC limit 4";
+                $result_set3 = $conn->query($query3);
+                if ($result_set3) {
+                    while ($row = $result_set3->fetch_assoc()) {
+                        $imagemcarta = $row['thumb_noticia']
+                            ?>
+                        <div class="col-sm-3">
+                            <div class="card" style="width: 18rem;">
+                                <img src=<?php echo "'img/bd-img/news/$imagemcarta'"; ?> class="card-img-top" alt="fotoNoticia">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <?php echo $row["titulo_noticia"]; ?>
+                                    </h5>
+                                    <p class="card-text ">
+                                        <?php echo $row["desc_noticia"]; ?>
+                                    </p>
+                                </div>
+                                <div class="card-body">
+                                    <a href="noticiaWRC.php?id=<?php echo $row["id_noticia"]; ?>" class="btn btn-primary">Ver
+                                        Noticia</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
+                    }
                 }
-            }
-            ?>
+                ?>
+            </div>
+            <input type="hidden" id="tempo" value="<?php echo $tempo ?>">
         </div>
     </div>
-        </div>
     </div>
     <?php
     include 'footer.php';

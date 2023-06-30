@@ -34,8 +34,6 @@ h1 {
   transition: transform 0.6s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  border: 5px solid black;
 }
 
 .flip-card:hover .flip-card-inner {
@@ -45,8 +43,8 @@ h1 {
 .flip-card-front,
 .flip-card-back {
   position: absolute;
-  width: 300px;
-  height: 350px;
+  width: 100%;
+  height: 100%;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -61,12 +59,13 @@ h1 {
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 .flip-card-front img {
   height: 100%;
   width: 100%;
-  object-fit: cover;
 }
 
 #line2,
@@ -92,6 +91,9 @@ body#rally-index{
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+#maisEtapas{
+  line-height: 50px;
 }
 /*css lateral direita*/
 #principal{
@@ -180,13 +182,15 @@ h3#titulolateral{
   margin: auto;
   -webkit-backdrop-filter: brightness(30%);
   backdrop-filter: brightness(30%);
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 .schedule{
   border-radius: 5px;
   background-color: orangered;
-  margin-right: 5px;
-  margin-top: 5px;
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  text-align: center;
 }
 .scheduleArrow{
   display: table-cell;
@@ -568,3 +572,52 @@ h2.middleTextTitle{
   text-align: center;
 }
 /*css noticiaWRC.php*/
+/*rally-etapas.php*/
+#resultadoEtapa{
+  text-align: center;
+  min-height: 200px;
+}
+#logoProvaResultados{
+  width: 200px;
+  margin: auto;
+}
+#logoResultados{
+  width: 300px;
+  height: 100px;
+  margin: auto;
+}
+#logoResultados img{
+  width: 100%;
+}
+/*rally-etapas.php*/
+/*buscarResultadoAjax.php*/
+#tabelaResultados{
+  margin-left: 5%;
+  margin-right: 5%;
+  width: 90%;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;;
+  color: grey;
+}
+#tabelaResultados th{
+  background-color: #F77D24;
+  color: white;
+  border: 1px solid black;
+}
+#tabelaResultados tr:nth-child(2){
+  background-color: red;
+  color: white;
+}
+#tabelaResultados tr:nth-child(3){
+  background-color: orangered;
+  color: white;
+}
+#tabelaResultados tr:nth-child(4){
+  background-color: yellowgreen;
+  color: white;
+}
+#tabelaResultados td{
+  border: 1px solid black;
+}
+/*buscarResultadoAjax.php*/
