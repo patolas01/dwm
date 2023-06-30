@@ -85,8 +85,8 @@
                                         href="editEtapas.php?id=<?= $id_etapa ?>">Editar</a></button></form>
                         </td>
                         <td>
-                            <form action="etapasManagement.php" method="POST"><button name="eliminar" type="submit"
-                                    value="<?php echo $id_prova ?>" onclick='this.form.submit()'>Eliminar</button></form>
+                            <form action="etapasManagement.php?id=<?= $id_etapa ?>" method="POST"><button name="eliminar" type="submit"
+                                    value="<?php echo $id_etapa ?>" onclick='this.form.submit()'>Eliminar</button></form>
                         </td>
                     </tr>
 
@@ -108,8 +108,10 @@
             if ($result_set) {
                 ?>
                 <script>
+                    let id_prova = <?php echo $editar ?>
+                    alert(id_prova);
                     window.setTimeout(function () {
-                        location.href = "etapasManagement.php";
+                        location.href = "etapasManagement.php?id="+id_prova;
                     }, 0);
                 </script>
                 <?php
