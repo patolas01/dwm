@@ -39,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cilind_carro = $_POST['cilind_carro'];
     $hp_carro = $_POST['hp_carro'];
     $desc_carro = $_POST['desc_carro'];
-    $fotocarro = '';
+    $fotocarro = $_POST['fotocarro'];
+
     if ($_FILES['fotocarro']['name']) {
         $diretorio = "../img/bd-img/carrosimg/";
         $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
@@ -56,7 +57,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $mensagem = "Erro ao fazer o upload da imagem.";
                 $corDeFundo = "red";
             }
-        }
+        } 
+        
+    } else {
+        $fotocarro = $row['fotocarro'];
     }
 
     $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
