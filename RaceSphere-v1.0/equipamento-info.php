@@ -45,7 +45,7 @@
                 <h2><?php echo $nome ?></h2>
                 <div id="desc">
                     <h5>Descrição:</h5>
-                    <p class="col-md-5"><?php echo $descricao; ?></p>
+                    <p class="col-md-10"><?php echo $descricao; ?></p>
                 </div>
 
             </div>
