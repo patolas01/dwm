@@ -17,15 +17,6 @@
         <?php
         include 'navbar.php';
         include '../sqli/conn.php';
-        if ($_SESSION["cargo"] != "admin") {
-                ?>
-                <script>
-                    window.setTimeout(function () {
-                        location.href = "../index.php";
-                    }, 0);
-                </script>
-                <?php
-        }
         ?>
         <div class="container">
                 <div class="container">
