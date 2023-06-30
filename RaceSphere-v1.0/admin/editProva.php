@@ -16,7 +16,7 @@
 
 <body>
     <?php
-
+include 'navbar.php';
     if ($_SESSION["cargo"] != "admin") {
         ?>
         <script>
@@ -28,7 +28,7 @@
     } else {
         //tudo
     
-        include 'navbar.php';
+        
         include '../sqli/conn.php';
         $editar = $_GET["id"];
         $query = "select * from prova where id_prova='" . $editar . "'";
@@ -212,7 +212,7 @@
                 ?>
                 <script>
                     window.setTimeout(function () {
-                        location.href = "provaManagement.php";
+                        location.href = "../index.php";
                     }, 0);
                 </script>
                 <?php

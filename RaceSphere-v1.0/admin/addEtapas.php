@@ -16,18 +16,19 @@
 
 <body>
     <?php
+    include 'navbar.php';
     if ($_SESSION["cargo"] != "admin") {
         ?>
         <script>
             window.setTimeout(function () {
-                location.href = "index.php";
+                location.href = "../index.php";
             }, 0);
         </script>
         <?php
     } else {
 
 
-        include 'navbar.php';
+        
         include '../sqli/conn.php';
         $id_prova = $_GET['id'];
         ?>
