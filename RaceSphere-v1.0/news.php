@@ -89,7 +89,8 @@
                     echo '</div>';
                     echo '<div class="col-md-8">';
                     echo '<div class="card-body">';
-                    echo '<h6 class="card-title just">' . $item['titulo_noticia'] . '</h6>';
+                    echo '<h5 class="card-title">' . $item['titulo_noticia'] . '</h5>';
+                    echo '<a href="news-page.php?id=' . $item['id_noticia'] . '" class="button stretched-link"></a>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -110,11 +111,13 @@
 
     if (mysqli_num_rows($categoryResult) > 0) {
         while ($categoryRow = mysqli_fetch_assoc($categoryResult)) {
-            $category = strtoupper($categoryRow['cat_noticia']);
-            echo '<h2 class="newsBoxTitle">' . $category . '</h2>';
-            echo '<div class="newsBox" id="cat">';
+            $category = $categoryRow['cat_noticia'];
+            //echo '<h2 class="newsBoxTitle">' . $category . '</h2>';
+            echo '<div class="newsSection">';
+            echo '<img class="logoNewsSection" src="img/' . $category . '-logo.svg" alt="logotipo ' . $category . '">';
+            echo '<div class="newsBox cat" id="cat-' . $category . '">';
 
-            $newsQuery = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes, DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = '$category' ORDER BY data_noticia LIMIT 4";
+            $newsQuery = "SELECT id_noticia, titulo_noticia, cat_noticia, DATE_FORMAT(data_noticia, '%m') AS mes, DATE_FORMAT(data_noticia, '%d') AS dia, DATE_FORMAT(data_noticia, '%H') AS hora, DATE_FORMAT(data_noticia, '%i') AS minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = '$category' ORDER BY data_noticia ASC LIMIT 3";
             $newsResult = mysqli_query($conn, $newsQuery);
 
             if (mysqli_num_rows($newsResult) > 0) {
@@ -125,14 +128,27 @@
                     echo '<p class="card-text"><small class="text-muted">' . $row['dia'] . '/' . $row['mes'] . ' - ' . $row['hora'] . ':' . $row['minuto'] . '</small></p>';
                     echo '<h5 class="card-title just">' . $row['titulo_noticia'] . '</h5>';
                     //echo '<p class="card-text">' . $row['desc_noticia'] . '</p>';
+                    echo '<a href="news-page.php?id=' . $row['id_noticia'] . '" class="button stretched-link"></a>';
                     echo '</div>';
                     echo '</div>';
                 }
             } else {
                 echo "Nenhuma notícia encontrada para a categoria " . $category;
             }
+            //Ver Mais
+            
+            echo '<div class="card moreNews">';
+            echo '<div class="card-body">';
+            echo '<h5 class="card-title text-center">Ver Mais</h5>';
+            echo '<img src="img/icons8-three-dots-60.png" alt="ver mais">';
+            echo '<a href="newsSearch.php?cat=' . $category . '" class="button stretched-link"></a>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
             echo '</div>';
         }
+
+
     } else {
         echo "Nenhuma categoria encontrada";
     }

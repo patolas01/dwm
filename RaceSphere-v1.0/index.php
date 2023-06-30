@@ -8,11 +8,24 @@
 </head>
 
 <body>
-    <?php include('navbar.php'); ?>
+    <?php
+    include('navbar.php');
+    function separateNames($fullName)
+    {
+        $names = explode(" ", $fullName, 2); // Split the full name into an array of two elements
+        $firstName = $names[0]; // First name will be the first element of the array
+        $lastName = isset($names[1]) ? $names[1] : ''; // Last name will be the second element of the array (if available)
+    
+        return [$firstName, $lastName];
+    }
+
+    include 'sqli/conn.php';
+
+    ?>
     <div class="resBack">
         <div class="results">
             <div class="outerCard">
-                <img class="outerCard-img" src="img\wrc-logo.svg" alt="logotipo da categoria">
+                <img class="outerCard-img" src="img\wrc-logo-white.svg" alt="logotipo da categoria">
                 <div class="resultCard" id="wrc">
                     <div class="place">
                         <div class="number">3</div>
@@ -47,34 +60,112 @@
                 <div class="resultCard" id="f1">
                     <div class="place">
                         <div class="number">3</div>
-                        <div class="driverPic" id="3"><img src="" alt="driver"></div>
-                        <div class="driverName" id="3">
-                            <h4 class="firstName"></h4>
-                            <p class="lastName"></p>
-                        </div>
+                        <?php
+
+                        $query4 = "SELECT * FROM resultado WHERE posicao_res = 3 AND categoria = 'f1'";
+
+                        $result = mysqli_query($conn, $query4);
+
+                        if ($result) {
+                            // Check if any rows are returned
+                            if (mysqli_num_rows($result) > 0) {
+                                // Loop through the result set and fetch data
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    // Access the column values for each row
+                                    $id = $row['id_piloto'];
+                                    $query4b = "SELECT * FROM piloto WHERE id_piloto = $id";
+                                    $result2 = mysqli_query($conn, $query4b);
+                                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                                        list($firstName, $lastName) = separateNames($row2['nome_piloto']);
+                                        echo '<div class="driverPic" id="3"><img src="img/bd-img/fotos_pilotos/' . $row2['foto_piloto'] . '" alt="driver"></div>';
+                                        echo ' <div class="driverName" id="3">';
+                                        echo '     <h4 class="firstName">' . $firstName . '</h4>';
+                                        echo '      <p class="lastName">' . $lastName . '</p>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                            mysqli_free_result($result);
+                        }
+
+
+
+                        ?>
                     </div>
                     <div class="place">
                         <div class="number">1</div>
-                        <div class="driverPic" id="1"><img src="" alt="driver"></div>
-                        <div class="driverName" id="1">
-                            <h4 class="firstName"></h4>
-                            <p class="lastName"></p>
-                        </div>
+                        <?php
+
+                        $query4 = "SELECT * FROM resultado WHERE posicao_res = 1 AND categoria = 'f1'";
+
+                        $result = mysqli_query($conn, $query4);
+
+                        if ($result) {
+                            // Check if any rows are returned
+                            if (mysqli_num_rows($result) > 0) {
+                                // Loop through the result set and fetch data
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    // Access the column values for each row
+                                    $id = $row['id_piloto'];
+                                    $query4b = "SELECT * FROM piloto WHERE id_piloto = $id";
+                                    $result2 = mysqli_query($conn, $query4b);
+                                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                                        list($firstName, $lastName) = separateNames($row2['nome_piloto']);
+                                        echo '<div class="driverPic" id="1"><img src="img/bd-img/fotos_pilotos/' . $row2['foto_piloto'] . '" alt="driver"></div>';
+                                        echo ' <div class="driverName" id="1">';
+                                        echo '     <h4 class="firstName">' . $firstName . '</h4>';
+                                        echo '      <p class="lastName">' . $lastName . '</p>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                            mysqli_free_result($result);
+                        }
+
+
+
+                        ?>
                     </div>
                     <div class="place">
                         <div class="number">2</div>
-                        <div class="driverPic" id="2"><img src="" alt="driver"></div>
-                        <div class="driverName" id="2">
-                            <h4 class="firstName"></h4>
-                            <p class="lastName"></p>
-                        </div>
+                        <?php
+
+                        $query4 = "SELECT * FROM resultado WHERE posicao_res = 2 AND categoria = 'f1'";
+
+                        $result = mysqli_query($conn, $query4);
+
+                        if ($result) {
+                            // Check if any rows are returned
+                            if (mysqli_num_rows($result) > 0) {
+                                // Loop through the result set and fetch data
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    // Access the column values for each row
+                                    $id = $row['id_piloto'];
+                                    $query4b = "SELECT * FROM piloto WHERE id_piloto = $id";
+                                    $result2 = mysqli_query($conn, $query4b);
+                                    while ($row2 = mysqli_fetch_assoc($result2)) {
+                                        list($firstName, $lastName) = separateNames($row2['nome_piloto']);
+                                        echo '<div class="driverPic" id="2"><img src="img/bd-img/fotos_pilotos/' . $row2['foto_piloto'] . '" alt="driver"></div>';
+                                        echo ' <div class="driverName" id="2">';
+                                        echo '     <h4 class="firstName">' . $firstName . '</h4>';
+                                        echo '      <p class="lastName">' . $lastName . '</p>';
+                                        echo '</div>';
+                                    }
+                                }
+                            }
+                            mysqli_free_result($result);
+                        }
+
+
+
+                        ?>
                     </div>
 
                 </div>
             </div>
 
             <div class="outerCard">
-                <img class="outerCard-img" src="img\wec-logo.png" alt="logotipo da categoria">
+                <img class="outerCard-img" src="img\wec-logo.svg" alt="logotipo da categoria">
                 <div class="resultCard" id="wec">
                     <div class="place">
                         <div class="number">3</div>

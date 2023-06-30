@@ -28,6 +28,7 @@
             <thead>
                 <tr>
                     <th scope="col">ID</th>
+                    <th scope="col">Prova</th>
                     <th scope="col">Etapa/Resultado</th>
                     <th scope="col">Categoria</th>
                     <th scope="col" id="buttons">Opções</th>
@@ -36,7 +37,8 @@
             <tbody>
                 <?php
                 include '../sqli/conn.php';
-                $query = "SELECT id_resultado, COALESCE(id_etapa, id_sessao) AS id_etapa_ou_sessao, categoria FROM resultado WHERE id_etapa IS NOT NULL OR id_sessao IS NOT NULL GROUP BY id_etapa_ou_sessao;";
+                //$query = "SELECT id_resultado, COALESCE(id_etapa, id_sessao) AS id_etapa_ou_sessao, categoria FROM resultado WHERE id_etapa IS NOT NULL OR id_sessao IS NOT NULL GROUP BY id_etapa_ou_sessao;";
+                $query = "SELECT r.id_resultado, COALESCE(r.id_etapa, (SELECT tipo_sessao FROM sessao WHERE id_sessao = r.id_sessao) ) AS id_etapa_ou_tipo_sessao, r.categoria, p.nome_prova FROM resultado r LEFT JOIN etapa e ON r.id_etapa = e.id_etapa LEFT JOIN prova p ON COALESCE(e.id_prova, (SELECT id_prova FROM sessao WHERE id_sessao = r.id_sessao) ) = p.id_prova WHERE r.id_etapa IS NOT NULL OR r.id_sessao IS NOT NULL GROUP BY id_etapa_ou_tipo_sessao";
                 $result = mysqli_query($conn, $query);
 
 
@@ -55,7 +57,8 @@
                         echo "<td class='idCell cat-" . $row['categoria'] . "'>";
                         echo $row['id_resultado'];
                         echo "</td>";
-                        echo "<td>" . $row['id_etapa_ou_sessao'] . "</td>";
+                        echo "<td>" . $row['nome_prova'] . "</td>";
+                        echo "<td>" . $row['id_etapa_ou_tipo_sessao'] . "</td>";
                         echo "<td>" . strtoupper($row['categoria']) . "</td>";
                         echo "<td><a href='resultsEdit.php?id=" . $row['id_resultado'] . "' class='btn btn-secondary' value=" . $row['id_resultado'] . ">Editar</a> <a href='' data-toggle='modal' data-target='#deleteModal' data-id=" . $row['id_resultado'] . " class='btn btn-danger'><img src='../img/icons8-delete-50.png'></a></td>";
                         echo "</tr>";

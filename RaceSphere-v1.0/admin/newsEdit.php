@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="richtexteditor/rte_theme_default.css" />
     <script type="text/javascript" src="richtexteditor/rte.js"></script>
     <script type="text/javascript" src='richtexteditor/plugins/all_plugins.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.1/purify.min.js"></script>
 
 </head>
 
@@ -23,7 +24,7 @@
     $getPlace = "SELECT * FROM noticias WHERE id_noticia = $idnoticia";
     $result = $conn->query($getPlace);
     $row2 = mysqli_fetch_assoc($result);
-?>
+    ?>
     <h1>Gerir Notícias</h1>
     <form id="news" action="newsEdit.php?id=<?php echo $idnoticia; ?>" method="post" enctype="multipart/form-data">
         <div class="grid-container">
@@ -76,6 +77,7 @@
                 <p></p>
             </div>
         </div>
+        <input type="hidden" name="descFinal" id="descFinal">
         <button name="guardar" type="submit" class="btn btn-primary">Guardar</button>
     </form>
     <script>
@@ -91,22 +93,9 @@
 
         // onclick submit
         editor1.attachEvent("change", function () {
-            var variable = editor1.getHTMLCode();
-
-            var xmlhttp = new XMLHttpRequest();
-            var url = "newsAdd.php";
-
-            xmlhttp.open("POST", url, true);
-            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            xmlhttp.onreadystatechange = function () {
-                if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    // Action to be taken after successful submission
-                    console.log(xmlhttp.responseText); // Example: display the response from PHP
-                }
-            };
-
-            var params = "desc=" + encodeURIComponent(variable); // Parameter to be sent
-            xmlhttp.send(params);
+            var desc = editor1.getHTMLCode();
+            var descFinal = DOMPurify.sanitize(desc);
+            document.getElementById("descFinal").value = descFinal;
         });
 
 
@@ -143,7 +132,7 @@
 
 
     if (isset($_POST['guardar'])) {
-        $desc = 'teste de descrição'; //$_POST['desc'];
+        $desc = $_POST['descFinal'];
         $titulo = $_POST['titulo-noticia'];
         $categoria = $_POST['categoria'];
         $id_noticia = $_GET['id'];

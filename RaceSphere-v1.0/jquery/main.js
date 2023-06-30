@@ -34,36 +34,36 @@ setInterval(function () { makeTimer(); }, 1000);
 
 
 //Paulo Leal
-function loadDrivers() {
-	// var firstName = ["Max", "Sergio", "Fernando"];
-	var firstName = ["Max", "Sergio", "Fernando"];
-	var lastName = ["Verstappen", "Perez", "Alonso"];
-	var driverPic = ["img/max.png", "img/perez.png", "img/alo.png"]
+// function loadDrivers() {
+// 	// var firstName = ["Max", "Sergio", "Fernando"];
+// 	var firstName = ["Max", "Sergio", "Fernando"];
+// 	var lastName = ["Verstappen", "Perez", "Alonso"];
+// 	var driverPic = ["img/max.png", "img/perez.png", "img/alo.png"]
 
 
-	//wrc
-	for (let i = 1; i < 4; i++) {
-		$("#wrc .driverName#" + i + " .firstName").text(firstName[i - 1]);
-		$("#wrc .driverName#" + i + " .lastName").text(lastName[i - 1]);
-		$("#wrc .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
-	}
+// 	//wrc
+// 	for (let i = 1; i < 4; i++) {
+// 		$("#wrc .driverName#" + i + " .firstName").text(firstName[i - 1]);
+// 		$("#wrc .driverName#" + i + " .lastName").text(lastName[i - 1]);
+// 		$("#wrc .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
+// 	}
 
-	//f1
-	for (let i = 1; i < 4; i++) {
-		$("#f1 .driverName#" + i + " .firstName").text(firstName[i - 1]);
-		$("#f1 .driverName#" + i + " .lastName").text(lastName[i - 1]);
-		$("#f1 .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
-	}
+// 	//f1
+// 	for (let i = 1; i < 4; i++) {
+// 		$("#f1 .driverName#" + i + " .firstName").text(firstName[i - 1]);
+// 		$("#f1 .driverName#" + i + " .lastName").text(lastName[i - 1]);
+// 		$("#f1 .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
+// 	}
 
-	//wec
-	for (let i = 1; i < 4; i++) {
-		$("#wec .driverName#" + i + " .firstName").text(firstName[i - 1]);
-		$("#wec .driverName#" + i + " .lastName").text(lastName[i - 1]);
-		$("#wec .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
-	}
-}
+// 	//wec
+// 	for (let i = 1; i < 4; i++) {
+// 		$("#wec .driverName#" + i + " .firstName").text(firstName[i - 1]);
+// 		$("#wec .driverName#" + i + " .lastName").text(lastName[i - 1]);
+// 		$("#wec .driverPic#" + i + " img").attr("src", driverPic[i - 1]);
+// 	}
+// }
 
-loadDrivers();
+// loadDrivers();
 
 
 
