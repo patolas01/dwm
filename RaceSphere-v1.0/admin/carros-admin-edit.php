@@ -1,90 +1,79 @@
 <?php
 include '../sqli/conn.php';
-if ($_SESSION["cargo"] != "admin") {
-    ?>
-    <script>
-        window.setTimeout(function () {
-            location.href = "../index.php";
-        }, 0);
-    </script>
-    <?php
-}
+    if (isset($_GET['id_carro'])) {
+        $id_carro = $_GET['id_carro'];
+        $sql = "SELECT * FROM carro WHERE id_carro = '$id_carro'";
+        $result = $conn->query($sql);
 
-if (isset($_GET['id_carro'])) {
-    $id_carro = $_GET['id_carro'];
-    $sql = "SELECT * FROM carro WHERE id_carro = '$id_carro'";
-    $result = $conn->query($sql);
-
-    if ($result->num_rows > 0) {
-        $row = $result->fetch_assoc();
-        $marca_carro = $row['marca_carro'];
-        $modelo_carro = $row['modelo_carro'];
-        $ano_carro = $row['ano_carro'];
-        $trac_carro = $row['trac_carro'];
-        $caixa_carro = $row['caixa_carro'];
-        $comb_carro = $row['comb_carro'];
-        $cilind_carro = $row['cilind_carro'];
-        $hp_carro = $row['hp_carro'];
-        $desc_carro = $row['desc_carro'];
-        $fotocarro = $row['fotocarro'];
-    } else {
-        echo "Carro não encontrado.";
-        exit;
-    }
-} else {
-    echo "ID do carro não especificado.";
-    exit;
-}
-
-$mensagem = "";
-$corDeFundo = "";
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $marca_carro = $_POST['marca_carro'];
-    $modelo_carro = $_POST['modelo_carro'];
-    $ano_carro = $_POST['ano_carro'];
-    $trac_carro = $_POST['trac_carro'];
-    $caixa_carro = $_POST['caixa_carro'];
-    $comb_carro = $_POST['comb_carro'];
-    $cilind_carro = $_POST['cilind_carro'];
-    $hp_carro = $_POST['hp_carro'];
-    $desc_carro = $_POST['desc_carro'];
-    $fotocarro = $_POST['fotocarro'];
-
-    if ($_FILES['fotocarro']['name']) {
-        $diretorio = "../img/bd-img/carrosimg/";
-        $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
-        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-        // Verificar o tipo de arquivo
-        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
-            $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
-            $corDeFundo = "red";
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $marca_carro = $row['marca_carro'];
+            $modelo_carro = $row['modelo_carro'];
+            $ano_carro = $row['ano_carro'];
+            $trac_carro = $row['trac_carro'];
+            $caixa_carro = $row['caixa_carro'];
+            $comb_carro = $row['comb_carro'];
+            $cilind_carro = $row['cilind_carro'];
+            $hp_carro = $row['hp_carro'];
+            $desc_carro = $row['desc_carro'];
+            $fotocarro = $row['fotocarro'];
         } else {
-            if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
-                $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
-            } else {
-                $mensagem = "Erro ao fazer o upload da imagem.";
-                $corDeFundo = "red";
-            }
-        } 
-        
+            echo "Carro não encontrado.";
+            exit;
+        }
     } else {
-        $fotocarro = $row['fotocarro'];
-    }
-
-    $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
-
-    if ($conn->query($sql) === TRUE) {
-        $mensagem = "Dados atualizados com sucesso.";
-        $corDeFundo = "green";
-        header("Location: carros-admin.php");
+        echo "ID do carro não especificado.";
         exit;
-    } else {
-        $mensagem = "Erro ao atualizar os dados: " . $conn->error;
-        $corDeFundo = "red";
     }
-}
+
+    $mensagem = "";
+    $corDeFundo = "";
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $marca_carro = $_POST['marca_carro'];
+        $modelo_carro = $_POST['modelo_carro'];
+        $ano_carro = $_POST['ano_carro'];
+        $trac_carro = $_POST['trac_carro'];
+        $caixa_carro = $_POST['caixa_carro'];
+        $comb_carro = $_POST['comb_carro'];
+        $cilind_carro = $_POST['cilind_carro'];
+        $hp_carro = $_POST['hp_carro'];
+        $desc_carro = $_POST['desc_carro'];
+        $fotocarro = $_POST['fotocarro'];
+
+        if ($_FILES['fotocarro']['name']) {
+            $diretorio = "../img/bd-img/carrosimg/";
+            $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
+            $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+            // Verificar o tipo de arquivo
+            if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+                $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
+                $corDeFundo = "red";
+            } else {
+                if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
+                    $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
+                } else {
+                    $mensagem = "Erro ao fazer o upload da imagem.";
+                    $corDeFundo = "red";
+                }
+            }
+        } else {
+            $fotocarro = $row['fotocarro'];
+        }
+
+        $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
+
+        if ($conn->query($sql) === TRUE) {
+            $mensagem = "Dados atualizados com sucesso.";
+            $corDeFundo = "green";
+            header("Location: carros-admin.php");
+            exit;
+        } else {
+            $mensagem = "Erro ao atualizar os dados: " . $conn->error;
+            $corDeFundo = "red";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="pt-pt">
