@@ -25,6 +25,7 @@ $corDeFundo = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_equipamento = $_POST['nome_equipamento'];
     $desc_equipamento = $_POST['desc_equipamento'];
+    $img_equipamento = $_POST['img_equipamento'];
 
     if ($_FILES['img_equipamento']['name']) {
         $targetDir = "../img/bd-img/equipamentosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
@@ -43,6 +44,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $corDeFundo = "red";
             }
         }
+    }else {
+        // Nenhum novo arquivo enviado, mantenha a foto original
+        $img_equipamento = $row['img_equipamento'];
     }
 
 

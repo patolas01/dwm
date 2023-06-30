@@ -177,9 +177,9 @@
                     </div></a><br>
                     <?php
                 }
-                ?><div class="schedule" id="maisEtapas">
-                    Mais etapas <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                    </div>
+                ?><a href="provaWrc.php"><div class="schedule" id="maisEtapas">
+                    Mais provas <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </div></a>
                     <?php
             }
             ?>
@@ -207,8 +207,8 @@
                                 $idTerceiraNoticia--;
                             }
                             if ($count == 1) { ?>
-                                <a href="noticiaWRC.php?id=<?php echo $row['id_noticia'] ?>">
-                                    <div class="carousel-item active">
+                                
+                                    <div class="carousel-item active"><a href="noticiaWRC.php?id=<?php echo $row['id_noticia'] ?>">
                                         <img src="img/bd-img/news/<?php echo $row['thumb_noticia'] ?>" class="d-block w-100"
                                             alt="Thumbnail noticia">
                                         <div class="carousel-caption d-none d-md-block">
@@ -221,12 +221,12 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a></div>
+                                
                                 <?php
                             } else { ?>
-                                <a href="noticiaWRC.php?id=<?php echo $row['id_noticia'] ?>">
-                                    <div class="carousel-item ">
+                                
+                                    <div class="carousel-item "><a href="noticiaWRC.php?id=<?php echo $row['id_noticia'] ?>">
                                         <img src="img/bd-img/news/<?php echo $row['thumb_noticia'] ?>" class="d-block w-100"
                                             alt="Thumbnail noticia">
                                         <div class="carousel-caption d-none d-md-block">
@@ -239,8 +239,8 @@
                                                 </p>
                                             </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a></div>
+                                
                                 <?php
                             }
                         }
