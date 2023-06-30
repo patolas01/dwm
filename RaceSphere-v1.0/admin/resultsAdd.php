@@ -11,6 +11,8 @@
     <?php
     include('navbar.php');
     include '../bootstrap/modals/modalDelete2.php';
+
+    include '../sqli/conn.php';
     ?>
 
     <h1>Adicionar Resultado</h1>
@@ -23,15 +25,76 @@
                 <select name="categorySelect" id="categorySelect" class="form-control">
                     <option value="f1">F1</option>
                     <option value="wec">WEC</option>
+                    <option value="wrc">WRC</option>
                 </select>
             </div>
 
             <div class="grid-item">
-                <label for="sessao">Número de Sessão:</label>
+                <label for="provaSelect">Prova:</label>
+                <select name="provaSelect" id="provaSelect" class="form-control">
+                    <?php
+                    $provas = "SELECT id_prova, nome_prova FROM prova";
+
+                    $result = $conn->query($provas);
+
+                    if ($result && $result->num_rows > 0) {
+                        // Fetch all rows and store the names in an array
+                        $prova_names = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $prova_names[] = $row['nome_prova'];
+                        }
+                    }
+
+                    foreach ($prova_names as $prova_name):
+                        echo "<option value=" . $row['id_prova'] . ">$prova_name</option>";
+                    endforeach;
+                    ?>
+                </select>
+            </div>
+
+            <div class="grid-item">
+                <label for="sessao">Sessão:</label>
                 <select name="sessao" id="sessao" class="form-control">
-                    <option value="1">P1 - ID Prova</option>
-                    <option value="2">P2 - ID Prova</option>
-                    <option value="3">P3 - ID Prova</option>
+                    <?php
+                    $sessao = "SELECT id_sessao, tipo_sessao FROM sessao";
+
+                    $result = $conn->query($sessao);
+
+                    if ($result && $result->num_rows > 0) {
+                        // Fetch all rows and store the names in an array
+                        $sessao_tipo = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $sessao_tipo[] = $row['tipo_sessao'];
+                        }
+                    }
+
+                    foreach ($sessao_tipo as $sessao_tipo):
+                        echo "<option value=" . $row['id_sessao'] . ">$sessao_tipo</option>";
+                    endforeach;
+                    ?>
+                </select>
+            </div>
+
+            <div class="grid-item">
+                <label for="etapa">Etapa:</label>
+                <select name="etapa" id="etapa" class="form-control">
+                    <?php
+                    $etapa = "SELECT id_etapa, num_etapa FROM etapa";
+
+                    $result = $conn->query($etapa);
+
+                    if ($result && $result->num_rows > 0) {
+                        // Fetch all rows and store the names in an array
+                        $etapa_numero = [];
+                        while ($row = $result->fetch_assoc()) {
+                            $etapa_numero[] = $row['num_etapa'];
+                        }
+                    }
+
+                    foreach ($etapa_numero as $etapa_numero):
+                        echo "<option value=" . $row['id_etapa'] . ">$etapa_numero</option>";
+                    endforeach;
+                    ?>
                 </select>
             </div>
         </div>
@@ -92,7 +155,15 @@
     if (isset($_POST['adicionar'])) {
         // Retrieve the form data
         $category = $_POST['categorySelect'];
-        $session = $_POST['sessao'];
+        $idetapa = null;
+        $idsessao = null;
+        if(isset($_POST['sessao'])){
+            $idsessao = $_POST['sessao'];
+        }
+        if (isset($_POST['etapa'])) {
+            $idetapa = $_POST['etapa'];
+        }
+        
 
         // Prepare the values for the multiple rows insertion
         $positions = $_POST['position'];
@@ -100,7 +171,7 @@
         $laptimes = $_POST['laptime'];
         $dnfs = $_POST['dnf'];
 
-        $insertQuery = "INSERT INTO resultado (categoria, id_sessao, posicao_res, id_piloto, laptime_res, dnf) VALUES ";
+        $insertQuery = "INSERT INTO resultado (categoria, id_sessao, id_etapa, posicao_res, id_piloto, laptime_res, dnf) VALUES ";
 
         $values = array();
 
@@ -117,11 +188,11 @@
             if (!empty($driverId) && !empty($laptime) && !empty($dnf) && $driverId != null) {
                 // Convert empty driverId to NULL
                 if (empty($driverId)) {
-                    $driverId = "1";
+                    $driverId = NULL;
                 }
 
                 // Add the values for each non-empty row to the values array
-                $values[] = "('$category', '$session', '$position', $driverId, '$laptime', '$dnf')";
+                $values[] = "('$category', $idsessao, $idetapa, $position, $driverId, '$laptime, '$dnf')";
             }
         }
 
@@ -137,7 +208,7 @@
                 echo "Resultado inserido com sucesso!";
             } else {
                 // Error occurred during the query execution
-                echo "Error: " /*. $conn->error*/;
+                echo "Error: " . $conn->error;
             }
 
             $conn->close();
