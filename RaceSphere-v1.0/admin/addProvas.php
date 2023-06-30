@@ -17,7 +17,7 @@
 <body>
     <?php
     include 'navbar.php';
-    if($_SESSION["cargo"]!="admin"){
+    if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
         ?>
         <script>
                 window.setTimeout(function () {
