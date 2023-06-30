@@ -50,7 +50,7 @@
             </div>
             <div class="col-12 col-md-8">
                 <div class="card-container">
-                    <div>
+                    <div class="row">
                         <?php
                         // Construir a consulta SQL com base na nome selecionada (se houver)
                         $sql = "SELECT * FROM equipamento";
