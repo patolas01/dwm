@@ -1,5 +1,15 @@
 <?php
 include '../sqli/conn.php';
+if ($_SESSION["cargo"] != "admin") {
+    ?>
+    <script>
+        window.setTimeout(function () {
+            location.href = "../index.php";
+        }, 0);
+    </script>
+    <?php
+}
+
 if (isset($_GET['id_equipamento'])) {
     $id_equipamento = $_GET['id_equipamento'];
     $sql = "SELECT * FROM equipamento WHERE id_equipamento = '$id_equipamento'";

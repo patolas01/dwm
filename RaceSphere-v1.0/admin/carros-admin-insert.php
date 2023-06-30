@@ -17,7 +17,15 @@
     <?php
     include 'navbar.php';
     include '../sqli/conn.php';
-
+    if ($_SESSION["cargo"] != "admin") {
+    ?>
+        <script>
+            window.setTimeout(function() {
+                location.href = "../index.php";
+            }, 0);
+        </script>
+    <?php
+    }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar se a imagem foi enviada corretamente
         if (isset($_FILES['fotocarro'])) {
