@@ -118,7 +118,7 @@ div.driverPic {
 }
 
 div.driverPic img {
-    width: 90px;
+    width: 100px;
     height: 100%;
     overflow: hidden;
     object-fit: cover;
@@ -128,7 +128,7 @@ div.driverPic img {
 div.driverName {
     /* margin-left: 12%; */
     padding-top: 5%;
-    text-align: left;
+    text-align: center;
 }
 
 .driverName .firstName {
