@@ -16,8 +16,8 @@
 
 <body>
     <?php
-include 'navbar.php';
-    if ($_SESSION["cargo"] != "admin") {
+    include 'navbar.php';
+    if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
         ?>
         <script>
             window.setTimeout(function () {
@@ -28,7 +28,7 @@ include 'navbar.php';
     } else {
         //tudo
     
-        
+
         include '../sqli/conn.php';
         ?>
         <div class="form-body1">

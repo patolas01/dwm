@@ -15,8 +15,8 @@
 
 <body>
     <?php
-include 'navbar.php';
-    if ($_SESSION["cargo"] != "admin") {
+    include 'navbar.php';
+    if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
         ?>
         <script>
             window.setTimeout(function () {
@@ -27,7 +27,7 @@ include 'navbar.php';
     } else {
         //tudo
     
-        
+
         include '../sqli/conn.php';
         $editar = $_GET["id"];
         $query = "select nome_user, email_user, telefone_user from utilizador where id_user='" . $editar . "'";

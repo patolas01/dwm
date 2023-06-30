@@ -15,8 +15,8 @@
 
 <body id="rally-index">
     <?php
-include 'navbar.php';
-    if ($_SESSION["cargo"] != "admin") {
+    include 'navbar.php';
+    if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
         ?>
         <script>
             window.setTimeout(function () {
@@ -27,7 +27,7 @@ include 'navbar.php';
     } else {
         //tudo
     
-        
+
         include '../sqli/conn.php';
         //Tabela Admins e Pressman
         ?>
@@ -95,12 +95,12 @@ include 'navbar.php';
                                     echo "action='etapasManagement.php?id=" . $id_prova . "'";
                                 } else {
                                     echo "action='sessaoManagement.php?id=" . $id_prova . "'";
-                                } ?> method="POST"><button><a
-                                            <?php if ($row['categoria'] == "wrc") {
-                                                ?> href="etapasManagement.php?id=<?= $id_prova ?>" <?php
-                                            } else {
-                                                ?> href="sessaoManagement.php?id=<?= $id_prova ?>" <?php
-                                            } ?>>Gerir</a></button></form>
+                                } ?> method="POST">
+                                    <button><a <?php if ($row['categoria'] == "wrc") {
+                                        ?> href="etapasManagement.php?id=<?= $id_prova ?>" <?php
+                                    } else {
+                                        ?> href="sessaoManagement.php?id=<?= $id_prova ?>" <?php
+                                    } ?>>Gerir</a></button></form>
                             </td>
                             <td>
                                 <form action="editProva.php?id=<?= $id_prova ?>" method="POST"><button><a
