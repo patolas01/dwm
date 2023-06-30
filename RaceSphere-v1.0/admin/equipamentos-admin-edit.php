@@ -25,11 +25,32 @@ $corDeFundo = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nome_equipamento = $_POST['nome_equipamento'];
     $desc_equipamento = $_POST['desc_equipamento'];
-    $img_equipamento = $_POST['img_equipamento'];
 
-    $sql = "UPDATE equipamento SET nome_equipamento='$nome_equipamento', desc_equipamento='$desc_equipamento', img_equipamento='$img_equipamento' WHERE id_equipamento='$id_equipamento'";
+    if ($_FILES['img_equipamento']['name']) {
+        $targetDir = "../img/bd-img/equipamentosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
+        $targetFile = $targetDir . basename($_FILES['img_equipamento']['name']);
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        // Verificar o tipo de arquivo
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+            $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
+            $corDeFundo = "red";
+        } else {
+            if (move_uploaded_file($_FILES['img_equipamento']['tmp_name'], $targetFile)) {
+                $img_equipamento = pathinfo($_FILES['img_equipamento']['name'], PATHINFO_BASENAME);
+            } else {
+                $mensagem = "Erro ao fazer o upload da imagem.";
+                $corDeFundo = "red";
+            }
+        }
+    }
+
+
+    $sql = "UPDATE equipamento SET nome_equipamento='$nome_equipamento',  desc_equipamento='$desc_equipamento', img_equipamento='$img_equipamento' WHERE id_equipamento='$id_equipamento'";
 
     if ($conn->query($sql) === TRUE) {
+        $mensagem = "Dados atualizados com sucesso.";
+        $corDeFundo = "green";
         header("Location: equipamentos-admin.php");
         exit;
     } else {
@@ -64,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="equipamentos-admin.php" class="btn btn-primary ml-3">Lista</a>
             </h2>
         </div>
-        <form id="insert-form" method="POST">
+        <form id="insert-form" method="POST" enctype="multipart/form-data">
             <div class="form-group col-md-10">
                 <label for="id_equipamento">ID:</label>
                 <input type="text" class="form-control" id="id_equipamento" name="id_equipamento" value="<?php echo $id_equipamento; ?>" readonly disabled>
@@ -73,7 +94,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="nome_equipamento">Nome:</label>
                 <input type="text" class="form-control" id="nome_equipamento" name="nome_equipamento" maxlength="50" required value="<?php echo $nome_equipamento; ?>">
             </div>
-            
+
             <div class="form-group col-md-10">
                 <label for="desc_equipamento">Descrição:</label>
                 <input type="text" class="form-control" id="desc_equipamento" name="desc_equipamento" required value="<?php echo $desc_equipamento; ?>">
@@ -86,44 +107,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $nome_equipamento = $_POST['nome_equipamento'];
-                $desc_equipamento = $_POST['desc_equipamento'];
-
-                if ($_FILES['img_equipamento']['name']) {
-                    $targetDir = "../img/bd-img/equipamentosimg/"; // Substitua pelo diretório onde deseja salvar as imagens
-                    $targetFile = $targetDir . basename($_FILES['img_equipamento']['name']);
-                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-
-                    // Verificar o tipo de arquivo
-                    if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
-                        $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
-                        $corDeFundo = "red";
-                    } else {
-                        if (move_uploaded_file($_FILES['img_equipamento']['tmp_name'], $targetFile)) {
-                            $img_equipamento = pathinfo($_FILES['img_equipamento']['name'], PATHINFO_BASENAME);
-                        } else {
-                            $mensagem = "Erro ao fazer o upload da imagem.";
-                            $corDeFundo = "red";
-                        }
-                    }
-                }
-
-
-                $sql = "UPDATE equipamento SET nome_equipamento='$nome_equipamento',  desc_equipamento='$desc_equipamento', img_equipamento='$img_equipamento' WHERE id_equipamento='$id_equipamento'";
-
-                if ($conn->query($sql) === TRUE) {
-                    $mensagem = "Dados atualizados com sucesso.";
-                    $corDeFundo = "green";
-                    header("Location: equipamentos-admin.php");
-                    exit;
-                } else {
-                    $mensagem = "Erro ao atualizar os dados: " . $conn->error;
-                    $corDeFundo = "red";
-                }
-            }
-            ?>
         </form>
     </div>
     <?php
