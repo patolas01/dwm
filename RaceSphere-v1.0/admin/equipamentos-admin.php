@@ -17,7 +17,7 @@
         <?php
         include 'navbar.php';
         include '../sqli/conn.php';
-        if ($_SESSION["cargo"] != "admin") {
+        if ($_SESSION["cargo"] != "admin" || !isset($_SESSION["cargo"])) {
                 ?>
                 <script>
                     window.setTimeout(function () {
@@ -25,7 +25,7 @@
                     }, 0);
                 </script>
                 <?php
-        }
+            }
         ?>
         <div class="container">
                 <div class="container">

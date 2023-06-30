@@ -15,8 +15,10 @@
 
 <body>
     <?php
+    ob_start();
     include 'navbar.php';
     include '../sqli/conn.php';
+    
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Verificar se a imagem foi enviada corretamente
         if (isset($_FILES['fotocarro'])) {
