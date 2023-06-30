@@ -90,6 +90,7 @@
     <?php
     include '../footer.php';
     if (isset($_POST["enviar"])) {
+        echo "PUTA ISTO FUNCIONA OU NAO?";
         $dianovo = $_POST["dia"];
         $inicionovo = $_POST["inicio"];
         $fimnovo = $_POST["fim"];
