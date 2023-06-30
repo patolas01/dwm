@@ -18,10 +18,6 @@ session_start();
 </head>
 
 <body>
-
-    <a href="admin/index.php" class="btn btn-secondary" id="admin-button">Admin</a>
-
-
     <form id="form" action="login.php" method="post">
         <div class="container py-5 h-100 vh-100">
             <div class="row d-flex justify-content-center align-items-center h-100">
