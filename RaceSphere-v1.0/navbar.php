@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "admin") {
+if (isset($_SESSION["cargo"]) && ($_SESSION["cargo"] == "admin" || $_SESSION["cargo"] == "press")) {
     ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-md-top">
         <div class="container-fluid">
