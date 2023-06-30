@@ -17,20 +17,16 @@
     <div id="container">
         <h1>RaceSphere</h1>
         <div class="about">
-            <h3>Quem somos?</h3>
+            <h2>Quem somos?</h2>
             <p>Este website foi criado por Alex Costa, Daniel Ribeiro, Luis Silva, Paulo Leal e Paulo Graça.
                 Nós somos alunos do Curso Técnico Superior Profissional de Desenvolvimento Web e Multimédia na
                 Escola Superior Tecnologia e Gestão do Instituito Politécnico de Leiria.</p>
         </div>
-        <hr>
         <div class="about">
-            <h3>Qual o nosso objetivo?</h3>
-            <p>A realização deste site teve como objetivo a junção dos 3 tipos de desportos motorizados mais conhecidos
-                de todo o mundo (Formula 1 , MotoGP e Rally).</p>
+            <h2>Qual o nosso objetivo?</h2>
+            <p>A realização deste site teve como objetivo a junção de tipos de desportos automóvel (Formula 1 , World Endurance Championship e Rally).</p>
         </div>
     </div>
     <?php include 'footer.php'; ?>
 </body>
-<!--kekw graça-->
-
 </html>

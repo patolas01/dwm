@@ -92,6 +92,9 @@ body#rally-index{
   background-size: cover;
   background-position: center;
 }
+#maisEtapas{
+  line-height: 50px;
+}
 /*css lateral direita*/
 #principal{
   height: 1500px;
@@ -179,13 +182,15 @@ h3#titulolateral{
   margin: auto;
   -webkit-backdrop-filter: brightness(30%);
   backdrop-filter: brightness(30%);
-  padding-bottom: 5px;
+  padding-bottom: 10px;
 }
 .schedule{
   border-radius: 5px;
   background-color: orangered;
-  margin-right: 5px;
-  margin-top: 5px;
+  width: 90%;
+  height: 50px;
+  margin: auto;
+  text-align: center;
 }
 .scheduleArrow{
   display: table-cell;

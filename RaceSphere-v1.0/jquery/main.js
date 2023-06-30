@@ -1,8 +1,10 @@
 //Daniel Ribeiro
 function makeTimer() {
 
-	//var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");	
-	var endTime = new Date("30 December 2023 00:00:00 GMT+01:00");
+	//var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
+	var tempo= document.getElementById('tempo');	
+	var tempoValue= tempo.value;
+	var endTime = new Date(tempoValue);
 	endTime = (Date.parse(endTime) / 1000);
 
 	var now = new Date();
