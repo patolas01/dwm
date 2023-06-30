@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "admin") {
+if (isset($_SESSION["cargo"]) && ($_SESSION["cargo"] == "admin" || $_SESSION["cargo"] == "press")) {
     ?>
     <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-md-top">
         <div class="container-fluid">
@@ -49,6 +49,7 @@ if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "admin") {
                 </button>
             </form>
         </div>
+<<<<<<< HEAD
     </nav>
     <?php
 } else {
@@ -101,3 +102,16 @@ if (isset($_SESSION["cargo"]) && $_SESSION["cargo"] == "admin") {
 ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"></script>
+=======
+        <?php
+        session_start();
+        if (!isset($_SESSION["nome"])) {
+            echo ' <form class="form-inline"><a href="login.php" class="btn btn-dark my-2 my-sm-0">Login</a></form>';
+        } else {
+            echo ' <form class="form-inline"><button class="btn" onclick="confirmLogout();">' . $_SESSION["nome"] . ' <img src="https://img.icons8.com/?size=22&id=61022&format=png" alt="logout"></button></form>';
+        }
+
+        ?>
+    </div>
+</nav>
+>>>>>>> aba4ad1e96e22a981e75cfbe1830e63c267f817d
