@@ -94,13 +94,13 @@ session_start();
                     $nome = $row['nome_user'];
                     $_SESSION = array();
                     $_SESSION["nome"] = $nome;
-                    $_SESSION["cargo_user"] = $cargo_user;
+                    $_SESSION["cargo"] = $cargo_user;
                 }
                 if($cargo_user=="admin"){
                 ?>
                 <script>
                     window.setTimeout(function () {
-                        location.href = "userManagement.php";
+                        location.href = "admin/userManagement.php";
                     }, 0);
                 </script>
                 <?php
@@ -108,7 +108,7 @@ session_start();
                     ?>
                     <script>
                         window.setTimeout(function () {
-                            location.href = "news.php";
+                            location.href = "admin/news.php";
                         }, 0);
                     </script>
                     <?php

@@ -15,19 +15,19 @@
 
 <body>
     <?php
-
+include 'navbar.php';
     if ($_SESSION["cargo"] != "admin") {
         ?>
         <script>
             window.setTimeout(function () {
-                location.href = "index.php";
+                location.href = "../index.php";
             }, 0);
         </script>
         <?php
     } else {
         //tudo
     
-        include 'navbar.php';
+        
         include '../sqli/conn.php';
         $editar = $_GET["id"]; ?>
         <div id="botaoAddUsers">

@@ -16,19 +16,19 @@
 
 <body>
     <?php
-    
+    include 'navbar.php';
     if($_SESSION["cargo"]!="admin"){
         ?>
         <script>
                 window.setTimeout(function () {
-                    location.href = "index.php";
+                    location.href = "../index.php";
                 }, 0);
             </script><?php
     }
     else{
         //tudo
     
-    include 'navbar.php';
+    
     include '../sqli/conn.php';
     ?>
     <form action="addProvas.php" method="POST" enctype="multipart/form-data">
