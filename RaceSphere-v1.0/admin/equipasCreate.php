@@ -64,7 +64,6 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Criar Equipas</title>
     <?php include('bootstrapInc.php'); ?>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
 <body>
@@ -76,13 +75,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         <?php
         if (!empty($errorMessage)) {
             echo "
-                <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-                 <strong>$errorMessage</strong>
-                 <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>            
-            ";
-
+               <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+               </div>            
+         ";
         }
         ?>
 
@@ -90,7 +87,8 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
             <div class="row mb-3">
                 <label class="col-sm-3 col-form-label">Nome Equipa</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" name="nome_equipa" value="<?php echo $nome_equipa ?>">
+                    <input type="text" class="form-control" name="nome_equipa"
+                        value="<?php echo $nome_equipa ?>">
                 </div>
             </div>
 

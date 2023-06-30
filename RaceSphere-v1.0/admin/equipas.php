@@ -8,7 +8,6 @@
     <?php include('bootstrapInc.php'); ?>
     <title>Gerir Equipas</title>
     <link rel="stylesheet" href="css/alex.css">
-
 </head>
 
 <body>
@@ -26,42 +25,44 @@
                 placeholder="Procurar por equipa ou categoria">
         </div>
 
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nome Equipa</th>
-                    <th scope="col">Nacionalidade Equipa</th>
-                    <th scope="col">Categoria Equipa</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                include '../sqli/conn.php';
+        <div class="table-responsive"> <!--Scroll para o lado em baixa resolution-->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome Equipa</th>
+                        <th scope="col">Nacionalidade Equipa</th>
+                        <th scope="col">Categoria Equipa</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    include '../sqli/conn.php';
 
-                $sql = "SELECT id_equipa, nome_equipa, nac_equipa,cat_equipa FROM equipa ORDER BY id_equipa";
-                $result = $conn->query($sql);
+                    $sql = "SELECT id_equipa, nome_equipa, nac_equipa,cat_equipa FROM equipa ORDER BY id_equipa";
+                    $result = $conn->query($sql);
 
-                if (!$result) {
-                    die("Invalid Query: " . $conn->error);
-                }
+                    if (!$result) {
+                        die("Invalid Query: " . $conn->error);
+                    }
 
-                while ($row = mysqli_fetch_assoc($result)) {
-                    echo "
-                <tr class='team-card' data-category='{$row['cat_equipa']}' data-nationality='{$row['nac_equipa']}'>
-                    <td>{$row['id_equipa']}</td>
-                    <td>{$row['nome_equipa']}</td>
-                    <td>{$row['nac_equipa']}</td>
-                    <td>{$row['cat_equipa']}</td>
-                    <td>
-                        <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa={$row['id_equipa']}'>Editar</a>
-                        <a class='btn btn-danger btn-sm' href='equipasDelete.php?id={$row['id_equipa']}' onclick=\"return confirm('Tem a certeza que deseja apagar esta linha?')\">Apagar</a>
-                    </td>
-                </tr>";
-                }
-                ?>
-            </tbody>
-        </table>
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        echo "
+                    <tr class='team-card' data-category='{$row['cat_equipa']}' data-nationality='{$row['nac_equipa']}'>
+                        <td>{$row['id_equipa']}</td>
+                        <td>{$row['nome_equipa']}</td>
+                        <td>{$row['nac_equipa']}</td>
+                        <td>{$row['cat_equipa']}</td>
+                        <td>
+                            <a class='btn btn-primary btn-sm' href='equipasEdit.php?id_equipa={$row['id_equipa']}'>Editar</a>
+                            <a class='btn btn-danger btn-sm' href='equipasDelete.php?id={$row['id_equipa']}' onclick=\"return confirm('Tem a certeza que deseja apagar esta linha?')\">Apagar</a>
+                        </td>
+                    </tr>";
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>

@@ -80,13 +80,11 @@ if ($_SERVER["REQUEST_METHOD"] == 'POST') {
         <?php
         if (!empty($errorMessage)) {
             echo "
-                <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
-                 <strong>$errorMessage</strong>
-                 <button type='button' class='close' aria-label='Close'><span aria-hidden='true'>&times;</span></button> 
-                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-                </div>            
-            ";
-
+               <div class= 'alert alert-warning alert-dismissible fade show' role='alert'>
+                    <strong>$errorMessage</strong>
+                   <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+               </div>            
+         ";
         }
         ?>
 
