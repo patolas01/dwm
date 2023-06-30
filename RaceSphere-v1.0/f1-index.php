@@ -46,7 +46,6 @@ minuto, desc_noticia, thumb_noticia FROM noticias WHERE cat_noticia = 'F1' ORDER
             echo '<div class="news-card-body">';
             echo '<p class="news-card-text"><small class="text-muted">' . $row['dia'] . '/' . $row['mes'] . ' - ' . $row['hora'] . ':' . $row['minuto'] . '</small></p>';
             echo '<h5 class="news-card-title just">' . $row['titulo_noticia'] . '</h5>';
-            //echo '<p class="news-card-text">' . $row['desc_noticia'] . '</p>';
             echo '</div>';
             echo '</div>';
 
