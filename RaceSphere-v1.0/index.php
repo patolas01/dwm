@@ -352,6 +352,10 @@
         </div>
     </div>
 
+    <iframe width="1200" height="500" src="https://www.youtube.com/embed/bJkOASExGM4"
+        title="RaceSphere | Video Promocional" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
     <h1>Notícias</h1>
     <div class="newsBox">
         <?php
