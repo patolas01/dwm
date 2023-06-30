@@ -39,11 +39,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cilind_carro = $_POST['cilind_carro'];
     $hp_carro = $_POST['hp_carro'];
     $desc_carro = $_POST['desc_carro'];
-    $fotocarro = $_POST['fotocarro'];
+    $fotocarro = '';
+    if ($_FILES['fotocarro']['name']) {
+        $diretorio = "../img/bd-img/carrosimg/";
+        $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
+        $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
+
+        // Verificar o tipo de arquivo
+        if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
+            $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
+            $corDeFundo = "red";
+        } else {
+            if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
+                $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
+            } else {
+                $mensagem = "Erro ao fazer o upload da imagem.";
+                $corDeFundo = "red";
+            }
+        }
+    }
 
     $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
 
     if ($conn->query($sql) === TRUE) {
+        $mensagem = "Dados atualizados com sucesso.";
+        $corDeFundo = "green";
         header("Location: carros-admin.php");
         exit;
     } else {
@@ -78,7 +98,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <a href="carros-admin.php" class="btn btn-primary ml-3">Lista</a>
             </h2>
         </div>
-        <form id="insert-form" method="POST">
+        <form id="insert-form" method="POST" enctype="multipart/form-data">
             <div class="form-group col-md-10">
                 <label for="id_carro">ID:</label>
                 <input type="text" class="form-control" id="id_carro" name="id_carro" value="<?php echo $id_carro; ?>" readonly disabled>
@@ -165,50 +185,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <button type="submit" id="update-button" class="btn btn-primary">Atualizar</button>
-            <?php
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $marca_carro = $_POST['marca_carro'];
-                $modelo_carro = $_POST['modelo_carro'];
-                $ano_carro = $_POST['ano_carro'];
-                $trac_carro = $_POST['trac_carro'];
-                $caixa_carro = $_POST['caixa_carro'];
-                $comb_carro = $_POST['comb_carro'];
-                $cilind_carro = $_POST['cilind_carro'];
-                $hp_carro = $_POST['hp_carro'];
-                $desc_carro = $_POST['desc_carro'];
-            
-                if ($_FILES['fotocarro']['name']) {
-                    $diretorio = "../img/bd-img/carrosimg/";
-                    $targetFile = $diretorio . basename($_FILES['fotocarro']['name']);
-                    $imageFileType = strtolower(pathinfo($targetFile, PATHINFO_EXTENSION));
-            
-                    // Verificar o tipo de arquivo
-                    if ($imageFileType != "jpg" && $imageFileType != "jpeg" && $imageFileType != "png") {
-                        $mensagem = "Apenas arquivos JPG, JPEG e PNG são permitidos.";
-                        $corDeFundo = "red";
-                    } else {
-                        if (move_uploaded_file($_FILES['fotocarro']['tmp_name'], $targetFile)) {
-                            $fotocarro = pathinfo($_FILES['fotocarro']['name'], PATHINFO_BASENAME);
-                        } else {
-                            $mensagem = "Erro ao fazer o upload da imagem.";
-                            $corDeFundo = "red";
-                        }
-                    }
-                }
-            
-                $sql = "UPDATE carro SET marca_carro='$marca_carro', modelo_carro='$modelo_carro', ano_carro='$ano_carro', trac_carro='$trac_carro', caixa_carro='$caixa_carro', comb_carro='$comb_carro', cilind_carro='$cilind_carro', hp_carro='$hp_carro', desc_carro='$desc_carro', fotocarro='$fotocarro' WHERE id_carro='$id_carro'";
-            
-                if ($conn->query($sql) === TRUE) {
-                    $mensagem = "Dados atualizados com sucesso.";
-                    $corDeFundo = "green";
-                    header("Location: carros-admin.php");
-                    exit;
-                } else {
-                    $mensagem = "Erro ao atualizar os dados: " . $conn->error;
-                    $corDeFundo = "red";
-                }
-            }
-            ?>
         </form>
     </div>
     <?php
