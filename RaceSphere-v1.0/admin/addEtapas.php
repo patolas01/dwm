@@ -11,7 +11,7 @@
     ?>
     <link rel="stylesheet" href="../css/danielribeiro.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/addEtapas.js"></script>
+    <script src="js/editEtapas.js"></script>
 </head>
 
 <body>
